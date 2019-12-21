@@ -1,8 +1,8 @@
 # Frontend
 ### Table of Contents 
-[1. Introduction](#Introduction) 
-[2. Local Development](#Installation)
-[3. Usage](#Usage)
+1. [Introduction](#Introduction) 
+2. [Local Development](#Installation)
+3. [Usage](#Usage)
 
 <a name="Introduction"></a>
 
