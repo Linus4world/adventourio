@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { AppComponent } from './app.component';
 
 const routes: Routes = [
   {
     path: '',
     children: [
+      {
+        path: 'start', loadChildren: './start/start.module#StartPageModule'
+      },
       {
         path: 'tab1', loadChildren: './tab1/tab1.module#Tab1PageModule'
       },

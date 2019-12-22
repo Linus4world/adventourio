@@ -1,0 +1,16 @@
+<ion-content class="ion-padding">
+  <div class="center ion-no-margin">
+    <img src="../../assets/logo.png">
+    <h1>Welcome to our app!</h1>
+    <p>Before you can get started, we require some personal information about you to offer you the best user experience</p>
+  </div>
+  <ion-card>
+    <ion-card-content>
+      <ion-label position="floating">How should we call you?</ion-label>
+      <ion-input minlength=1 [(ngModel)]="name" required></ion-input>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+<ion-button id="submit" expand="full" color="success" class="ion-no-margin" (click)="submit()" routerLink="/tab1">
+  Submit
+</ion-button>
