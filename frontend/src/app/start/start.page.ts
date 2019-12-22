@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Storage } from '@ionic/storage';
 const uuidv1 = require('uuid/v1');
 
+/**
+ * Start page that will only be shown when the user logs in for the first time
+ */
 @Component({
   selector: 'app-start-page',
   templateUrl: './start.page.html',

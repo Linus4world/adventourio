@@ -10,6 +10,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { IonicStorageModule } from '@ionic/storage';
 import { LoadingGuard } from './provider/loading-guard.provider';
+import { HTTP } from './provider/http.provider';
+import { Account } from './provider/account.provider';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,6 +25,8 @@ import { LoadingGuard } from './provider/loading-guard.provider';
     StatusBar,
     SplashScreen,
     LoadingGuard,
+    HTTP,
+    Account,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
