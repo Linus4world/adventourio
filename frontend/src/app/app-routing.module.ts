@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { LoadingGuard } from './provider/loading-guard.provider';
 
 const routes: Routes = [
   {
@@ -9,7 +10,7 @@ const routes: Routes = [
         path: 'start', loadChildren: './start/start.module#StartPageModule'
       },
       {
-        path: 'tab1', loadChildren: './tab1/tab1.module#Tab1PageModule'
+        path: 'tab1', loadChildren: './tab1/tab1.module#Tab1PageModule', canLoad: [LoadingGuard]
       },
       {
         path: 'tab2', loadChildren: './tab2/tab2.module#Tab2PageModule'

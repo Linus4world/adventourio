@@ -9,6 +9,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { IonicStorageModule } from '@ionic/storage';
+import { LoadingGuard } from './provider/loading-guard.provider';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,6 +22,7 @@ import { IonicStorageModule } from '@ionic/storage';
   providers: [
     StatusBar,
     SplashScreen,
+    LoadingGuard,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
