@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Storage } from '@ionic/storage';
+import { NavController } from '@ionic/angular';
 const uuidv1 = require('uuid/v1');
 
 /**
@@ -14,16 +15,17 @@ export class StartPage implements OnInit {
   name = 'Mr. NoName';
   id: string;
 
-  constructor(private storage: Storage) { }
+  constructor(private storage: Storage, private navCtrl: NavController) { }
 
   ngOnInit() {}
 
   submit() {
-    console.log(this.name);
     this.storage.set('name', this.name);
     this.id = uuidv1();
-    console.log(this.id);
     this.storage.set('id', this.id);
+    console.log(this.name);
+    console.log(this.id);
+    this.navCtrl.navigateForward('/tab1');
   }
 
 }
