@@ -1,12 +1,15 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
 
 @Injectable()
 export class HTTP {
-    private options;
-    constructor(private http: HttpClient) {}
+    private headers = new HttpHeaders();
+    private options = {headers: this.headers};
+    constructor(private http: HttpClient) {
+        this.headers.append('content-type', 'text/plain');
+    }
 
     public GET(url: string): Observable<any> {
         return this.http.get(environment.serverURL + url);

@@ -12,12 +12,14 @@ import { IonicStorageModule } from '@ionic/storage';
 import { LoadingGuard } from './provider/loading-guard.provider';
 import { HTTP } from './provider/http.provider';
 import { Account } from './provider/account.provider';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [
     BrowserModule,
+    HttpClientModule,
     IonicModule.forRoot(),
     IonicStorageModule.forRoot(),
     AppRoutingModule],
