@@ -15,7 +15,7 @@ export class Tab2Page implements AfterViewInit {
 
   getPosition() {
     this.geolocationProvider.getPosition().then(pos => {
-      this.openlayersProvider.setCenter(pos.coords.latitude, pos.coords.longitude, 15);
+      this.openlayersProvider.setCenter(pos.coords.latitude, pos.coords.longitude, 19);
     });
   }
 
