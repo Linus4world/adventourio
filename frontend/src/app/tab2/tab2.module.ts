@@ -4,11 +4,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Tab2Page } from './tab2.page';
-import { OpenlayerModule } from '../components/openlayer/openlayer.module';
 
 @NgModule({
   imports: [
-    OpenlayerModule,
     IonicModule,
     CommonModule,
     FormsModule,
