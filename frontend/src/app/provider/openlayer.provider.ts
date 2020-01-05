@@ -21,9 +21,20 @@ export class OpenlayerProvider {
      * The factor to which the map zooms. The user can later change this in the view
      */
     zoom = 13;
-    map: Map;
-    private view: View;
+
+    /**
+     * A marker indicating the user's current position
+     */
     private marker: Feature;
+    private target: Feature;
+    /**
+     * The map displayed in the html
+     */
+    map: Map;
+    /**
+     * The view of the map. Can be positioned using the setCenter() function
+     */
+    private view: View;
 
     constructor() { }
 
@@ -39,6 +50,20 @@ export class OpenlayerProvider {
             new Style({
                 image: new Circle({
                     fill: new Fill({ color: [255, 0, 0, 1] }),
+                    stroke: new Stroke({ color: [0, 0, 0, 1] }),
+                    radius: 5
+                })
+            })
+        );
+
+        this.target = new Feature({
+            name: 'Current Target'
+        });
+
+        this.target.setStyle(
+            new Style({
+                image: new Circle({
+                    fill: new Fill({ color: [0, 0, 255, 1] }),
                     stroke: new Stroke({ color: [0, 0, 0, 1] }),
                     radius: 5
                 })
@@ -71,9 +96,8 @@ export class OpenlayerProvider {
 
     /**
      * Updates the map to center the given point with the given zoom
-     * @param center The coordinates of the point of the center of the map.
-     * The coordinates are given in EPSG:4326 format (latitude, longitude) and will be converted to EPSG:3857.
-     * Note that the map later uses long, lat not lat, long
+     * @param lat latitude in EPSG:4326 format
+     * @param long latitude in EPSG:4326 format
      * @param zoom The factor to which the map zooms. The user can later change this in the view.
      */
     public setCenter(lat: number, long: number, zoom?: number) {
@@ -81,11 +105,25 @@ export class OpenlayerProvider {
         if (zoom !== undefined) {
             this.view.setZoom(zoom);
         }
-        this.setMarker(fromLonLat([long, lat]));
+        this.setMarker(lat, long);
     }
 
-    private setMarker(center: number[]) {
-        this.marker.setGeometry(new Point(center));
+    /**
+     * Sets the marker to the given position
+     * @param lat latitude in EPSG:4326 format
+     * @param long latitude in EPSG:4326 format
+     */
+    private setMarker(lat: number, long: number) {
+        this.marker.setGeometry(new Point(fromLonLat([long, lat])));
+    }
+
+    /**
+     * Sets the target marker to the given position.
+     * @param lat latitude in EPSG:4326 format
+     * @param long latitude in EPSG:4326 format
+     */
+    public setCurrentTarget(lat: number, long: number) {
+        this.marker.setGeometry(new Point(fromLonLat([long, lat])));
     }
 
 }
