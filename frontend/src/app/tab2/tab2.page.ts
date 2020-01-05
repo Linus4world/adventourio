@@ -1,4 +1,4 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit, OnDestroy } from '@angular/core';
 import { GeolocationProvider } from '../provider/geolocation.provider';
 import { OpenlayerProvider } from '../provider/openlayer.provider';
 
@@ -7,7 +7,7 @@ import { OpenlayerProvider } from '../provider/openlayer.provider';
   templateUrl: 'tab2.page.html',
   styleUrls: ['tab2.page.scss']
 })
-export class Tab2Page implements AfterViewInit {
+export class Tab2Page implements AfterViewInit, OnDestroy {
 
   position: {lat: number, long: number} = {lat: 48.135124, long: 11.581981};
 
@@ -20,7 +20,7 @@ export class Tab2Page implements AfterViewInit {
   }
 
   startTracking() {
-    this.geolocationProvider.trackPosition();
+    this.geolocationProvider.trackPosition((data) => this.openlayersProvider.setCenter(data.coords.latitude, data.coords.longitude));
   }
 
   stopTracking() {
@@ -29,6 +29,10 @@ export class Tab2Page implements AfterViewInit {
 
   ngAfterViewInit(): void {
     this.openlayersProvider.createMap();
+  }
+
+  ngOnDestroy(): void {
+    this.stopTracking();
   }
 
 }

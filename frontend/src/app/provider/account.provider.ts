@@ -18,6 +18,9 @@ export class Account {
         });
     }
 
+    /**
+     * Loads all account informations from the local storage and assigns them to the local variables.
+     */
     public update(): Promise<void> {
         console.log('Loading account information...');
         return Promise.all([
@@ -26,10 +29,16 @@ export class Account {
         ]).then(() => console.log('Loading complete!'));
     }
 
+    /**
+     * Returns the name of the user
+     */
     public getName(): string {
         return '' + this.name;
     }
 
+    /**
+     * Returns the UUID of the user
+     */
     public getID(): string {
         return '' + this.id;
     }

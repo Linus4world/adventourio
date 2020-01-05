@@ -13,21 +13,6 @@ import {Style, Fill, Stroke, Circle} from 'ol/style';
 @Injectable()
 export class OpenlayerProvider {
     /**
-     * The coordinates of the point of the center of the map. The coordinates are given in EPSG:3857 format (latitude, longitude).
-     * Note that the map later uses long, lat not lat, long
-     */
-    center: { lat: number, long: number } = { lat: 48.135124, long: 11.581981 };
-    /**
-     * The factor to which the map zooms. The user can later change this in the view
-     */
-    zoom = 13;
-
-    /**
-     * A marker indicating the user's current position
-     */
-    private marker: Feature;
-    private target: Feature;
-    /**
      * The map displayed in the html
      */
     map: Map;
@@ -35,6 +20,14 @@ export class OpenlayerProvider {
      * The view of the map. Can be positioned using the setCenter() function
      */
     private view: View;
+    /**
+     * A marker indicating the user's current position
+     */
+    private marker: Feature;
+    /**
+     * A marker indicating the user's current target
+     */
+    private target: Feature;
 
     constructor() { }
 
@@ -72,8 +65,8 @@ export class OpenlayerProvider {
 
         this.view = new View({
             projection: 'EPSG:3857',
-            center: fromLonLat([this.center.long, this.center.lat]),
-            zoom: this.zoom
+            center: fromLonLat([11.581981, 48.135124]),
+            zoom: 13
         });
 
         this.map = new Map({
