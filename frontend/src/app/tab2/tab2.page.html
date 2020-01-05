@@ -6,4 +6,9 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<!-- <ion-content> -->
+  <ion-button (click)="getPosition()">Get Position</ion-button>
+  <ion-button (click)="startTracking()">Start Tracking</ion-button>
+  <!-- <openlayer [center] = "position"></openlayer> -->
+  <div id="map" class="map"></div>
+<!-- </ion-content> -->
