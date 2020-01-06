@@ -16,6 +16,7 @@ export class AppComponent {
 
   hideTabBarPages = [
     'start',
+    'q'
   ];
   hideTabBar = false;
 
