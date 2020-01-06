@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Questionaire
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-slides pager="true" [options]="slideOpts">
+    <ion-slide>
+      <div>
+        <h1>Hey there {{'NAME' | accountLoader}}!</h1>
+        <br>
+        <h3>
+          Please answer the following questions to start your journey!
+        </h3>
+      </div>
+    </ion-slide>
+    <ion-slide *ngFor="let question of questions">
+      <h1>Slide 2</h1>
+    </ion-slide>
+    <ion-slide>
+      <h1>Slide 3</h1>
+    </ion-slide>
+  </ion-slides>
+</ion-content>

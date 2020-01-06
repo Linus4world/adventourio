@@ -10,6 +10,9 @@ const routes: Routes = [
         path: 'start', loadChildren: './start/start.module#StartPageModule'
       },
       {
+        path: 'q', loadChildren: './questionaire/questionaire.module#QuestionaireModule'
+      },
+      {
         path: 'tab1', loadChildren: './tab1/tab1.module#Tab1PageModule', canLoad: [LoadingGuard]
       },
       {
