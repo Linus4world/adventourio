@@ -2,15 +2,17 @@ import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { Platform } from '@ionic/angular';
 
+export enum AccountValue {
+    id = "id",
+    name = "name",
+}
+
 /**
  * Stores all user information
  */
 @Injectable()
 export class Account {
-
-    private id: string;
-    private name: string;
-
+    private values: {[key: string]: any} = {};
 
     constructor(private storage: Storage, platform: Platform) {
         platform.ready().then(() => {
@@ -21,25 +23,30 @@ export class Account {
     /**
      * Loads all account informations from the local storage and assigns them to the local variables.
      */
-    public update(): Promise<void> {
+    public async update(): Promise<void> {
         console.log('Loading account information...');
-        return Promise.all([
-            this.storage.get('id').then(v => this.id = v),
-            this.storage.get('name').then(v => this.name = v),
-        ]).then(() => console.log('Loading complete!'));
+        for(const key of Object.values(AccountValue)){
+            await this.storage.get(key).then(v => this.values[key] = v);
+        }
+        console.log('Loading complete!');
     }
 
     /**
      * Returns the name of the user
      */
     public getName(): string {
-        return '' + this.name;
+        return this.values[AccountValue.name];
     }
 
     /**
      * Returns the UUID of the user
      */
     public getID(): string {
-        return '' + this.id;
+        return this.values[AccountValue.id];
+    }
+
+    public async store(key: AccountValue, value: any): Promise<void>{
+        await this.storage.set(key, value);
+        this.values[key] = value;
     }
 }
