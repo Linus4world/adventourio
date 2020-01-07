@@ -23,8 +23,10 @@ export class StartPage {
   async submit() {
     await this.account.store(AccountValue.name, this.name);
     this.id = uuidv1()
-    this.navCtrl.navigateForward('/q');
+    console.log(this.id);
+    console.log(this.name);
     await this.account.store(AccountValue.id, this.id);
+    this.navCtrl.navigateForward('/q');
   }
 
 }
