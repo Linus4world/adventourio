@@ -1,6 +1,6 @@
+from utils import *
 import numpy as np
 import random
-from random_word import RandomWords
 
 
 class Blank:
@@ -24,11 +24,45 @@ class Story:
         user_answers = None
         user_questions = None
         for chapter in self.chapters:
-            # select the most likely scenario
             scenario = chapter.get_next_scenario(user_questions, user_answers)
             scenario.run_scenario()
             user_answers = scenario.user_answers
             user_questions = scenario.user_questions
+
+    def load_story(self):
+        pass
+
+    @staticmethod
+    def setup():
+        # Creating the intro
+        intro = Scenario()
+
+        intro.add_blank('B1', words=['beautiful', 'ugly'])
+        # intro.add_blank('B2', words=['happy', 'sad'])
+        intro.add_blank('B2', random_word='verb')
+
+        intro.add_question('something else')
+        intro.add_question('multiple choice', dict(A='scenario1', B='scenario2'), 1)
+
+        intro.plot = 'Hello, how are you doing in this B1 day? _input_' \
+                     'Oh I am very B2 that you are doing well \n' \
+                     'Would you like to do A or B? _input_' \
+                     'Some more text'
+
+        intro.fill_in_the_blanks()
+
+        story.chapters.append(Chapter([intro]))
+
+        # Creating two more scenarios
+
+        scenario1 = Scenario()
+        scenario1.plot = 'PLOT A'
+        scenario1.name = 'scenario1'
+        scenario2 = Scenario()
+        scenario2.plot = 'PLOT B'
+        scenario2.name = 'scenario2'
+
+        story.chapters.append(Chapter([scenario1, scenario2]))
 
 
 class Chapter:
@@ -96,53 +130,7 @@ class Scenario:
         pass
 
 
-def get_random_word(part_of_speech):
-    rw = RandomWords()
-    return rw.get_random_word(hasDictionaryDef="true",
-                              # includePartOfSpeech='adjective',
-                              includePartOfSpeech=part_of_speech,
-                              minCorpusCount=50,
-                              minDictionaryCount=1,
-                              maxDictionaryCount=50,
-                              minLength=5,
-                              maxLength=10)
-
-
-def setup():
-
-    story = Story()
-
-    # Creating the intro
-    intro = Scenario()
-
-    intro.add_blank('B1', words=['beautiful', 'ugly'])
-    intro.add_blank('B2', words=['happy', 'sad'])
-    # intro.add_blank('B2', random_word='verb')
-
-    intro.add_question('something else')
-    intro.add_question('multiple choice', dict(A='scenario1', B='scenario2'), 1)
-
-    intro.plot = 'Hello, how are you doing in this B1 day? _input_' \
-                 'Oh I am very B2 that you are doing well \n' \
-                 'Would you like to do A or B? _input_' \
-                 'Some more text'
-
-    intro.fill_in_the_blanks()
-
-    story.chapters.append(Chapter([intro]))
-
-    # Creating two more scenarios
-
-    scenario1 = Scenario()
-    scenario1.plot = 'PLOT A'
-    scenario1.name = 'scenario1'
-    scenario2 = Scenario()
-    scenario2.plot = 'PLOT B'
-    scenario2.name = 'scenario2'
-
-    story.chapters.append(Chapter([scenario1, scenario2]))
-
-    story.run_story()
-
 if __name__ == "__main__":
-    setup()
+    story = Story()
+    story.setup()
+    story.run_story()
