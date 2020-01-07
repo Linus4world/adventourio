@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Questionaire
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-slides pager="true" [options]="slideOpts" class="full-height" #mySlider>
+      <ion-slide>
+        <div>
+          <img src="../../assets/journey.jpeg">
+          <p class="large-font">Hey there {{'NAME' | accountLoader}}!
+            <br><br>
+            Before we get started, please answer the following questions to personalize your journey!
+          </p>
+        </div>
+      </ion-slide>
+
+      <ion-slide *ngFor="let question of questions">
+        <div>
+          <h1>{{question.question}}</h1>
+          <ion-radio-group [(ngModel)]="answers[question.id]">
+            <ion-list-header>
+              <ion-label>Please coose one</ion-label>
+            </ion-list-header>
+
+            <ion-item *ngFor="let option of question.options">
+              <ion-label>{{option}}</ion-label>
+              <ion-radio slot="start" [value]="option"></ion-radio>
+            </ion-item>
+          </ion-radio-group>
+        </div>
+      </ion-slide>
+
+      <ion-slide>
+        <div>
+          <img src="../../assets/map.png">
+          <h1>Thank you!</h1>
+          <h2>We now have all the information we need to create your personal adventure!</h2>
+          <br>
+          <ion-button (click)="start()">Start</ion-button>
+        </div>
+      </ion-slide>
+    </ion-slides>
+</ion-content>
+<div class="flex">
+  <ion-button shape="round" (click)="left()">
+    <ion-icon name="arrow-dropleft" slot="icon-only"></ion-icon>
+  </ion-button>
+  <ion-button shape="round" (click)="right()">
+    <ion-icon name="arrow-dropright" slot="icon-only"></ion-icon>
+  </ion-button>
+</div>
