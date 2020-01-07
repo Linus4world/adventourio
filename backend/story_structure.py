@@ -10,8 +10,10 @@ class Blank:
 
 
 class UserQuestion:
-    def __init__(self, q_type='', scenario_mapping=None, weight=0):
+    def __init__(self, name='', q_type='', scenario_mapping=None, weight=0):
+        self.name = name
         self.q_type = q_type
+        # Maps the user input to a scenario.name dict(option_A='scenario1',option_B='scenario2')
         self.scenario_mapping = scenario_mapping
         self.weight = weight
 
@@ -29,6 +31,7 @@ class Story:
             user_answers = scenario.user_answers
             user_questions = scenario.user_questions
 
+    # This will be a BIG BIG task
     def load_story(self):
         pass
 
@@ -124,11 +127,6 @@ class Scenario:
             if c < number_of_questions:
                 user_answer = input("> ")
                 self.user_answers.append(user_answer)
-
-    # Use a json or yaml file to load the plot and the blanks
-    def load_scenario(self, scenario_file):
-        pass
-
 
 if __name__ == "__main__":
     story = Story()
