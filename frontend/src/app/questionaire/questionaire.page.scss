@@ -1,9 +1,14 @@
 ion-slide {
     padding: 2em;
+    align-items: start;
+}
+
+.full-height{
+    height: 100%;
 }
 
 .large-font {
-    font-size: 1.5em;
+    font-size: 1.2em;
     text-align: start;
     font-weight: 100;
 }
@@ -14,11 +19,11 @@ img {
 }
 
 .flex {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
     display: flex;
     justify-content: space-between;
-    background-color: lightblue;
-    padding: 0.5em;
+    padding: 1em;
+
+    ion-button {
+        z-index: 1;
+    }
 }
