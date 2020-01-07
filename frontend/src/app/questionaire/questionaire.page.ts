@@ -6,7 +6,7 @@ import { IonSlides, NavController} from '@ionic/angular';
   templateUrl: './questionaire.page.html',
   styleUrls: ['./questionaire.page.scss'],
 })
-export class QuestionairePage implements OnInit {
+export class QuestionairePage {
   @ViewChild('mySlider', {static: false}) slides: IonSlides;
 
   slideOpts = {
@@ -15,10 +15,11 @@ export class QuestionairePage implements OnInit {
   };
 
   questions: [{id: number, question: string, options: string[]}];
+  answers = {};
 
   constructor(private navCtrl: NavController) {
     this.questions = [{
-      id: 0,
+      id: 5,
       question: 'What genre do you like most?',
       options: [
         'Sci-fi',
@@ -26,9 +27,15 @@ export class QuestionairePage implements OnInit {
         'Super Hero'
       ]
     }];
+
+    for (const question of this.questions) {
+      this.answers[question.id] = question.options[0];
+    }
    }
 
-  ngOnInit() {}
+  ionViewWillEnter() {
+    this.slides.slideTo(0);
+  }
 
   left() {
     this.slides.slidePrev();
@@ -39,7 +46,8 @@ export class QuestionairePage implements OnInit {
   }
 
   start() {
-    this.navCtrl.navigateRoot('/tab1');
+    console.warn(this.answers);
+    this.navCtrl.navigateRoot('/tab2');
   }
 
 }
