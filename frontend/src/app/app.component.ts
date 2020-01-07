@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
+import { Account } from './provider/account.provider';
 
 @Component({
   selector: 'app-root',
@@ -15,6 +16,7 @@ export class AppComponent {
 
   hideTabBarPages = [
     'start',
+    'q'
   ];
   hideTabBar = false;
 
@@ -22,7 +24,9 @@ export class AppComponent {
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    private router: Router
+    private router: Router,
+    // tslint:disable-next-line:variable-name
+    _account: Account // To ensure loading on start
   ) {
     this.initializeApp();
   }
