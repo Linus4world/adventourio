@@ -64,16 +64,16 @@ This will run a live development server at port 8000. You can access it by navig
 - TSLint
 
 ##### Folder Structure
-`./`
-Here you can find the `package.json`, `.gitignore` and the `README.md`.
-`./node_modules/`
-Your node dependencies installed by `npm i`. Please do not add this to git!
-`./e2e/`
-Contains end-to-end tests
-`./src/`
-This is where the magic is happening.
-`./src/app/`
-Here you can find the logic of the app, as well as all pages of the app.
+- `./`
+    Here you can find the `package.json`, `.gitignore` and the `README.md`.
+- `./node_modules/`
+    Your node dependencies installed by `npm i`. Please do not add this to git!
+- `./e2e/`
+    Contains end-to-end tests
+- `./src/`
+    This is where the magic is happening.
+- `./src/app/`
+    Here you can find the logic of the app, as well as all pages of the app.
 
 ##### Deployment
 *NOTE: Deployment is usually a little bit tricky.* 
