@@ -3,8 +3,9 @@ import { Storage } from '@ionic/storage';
 import { Platform } from '@ionic/angular';
 
 export enum AccountValue {
-    id = "id",
-    name = "name",
+    id = 'id',
+    name = 'name',
+    friends = 'friends'
 }
 
 /**
@@ -25,7 +26,7 @@ export class Account {
      */
     public async update(): Promise<void> {
         console.log('Loading account information...');
-        for(const key of Object.values(AccountValue)){
+        for (const key of Object.values(AccountValue)) {
             await this.storage.get(key).then(v => this.values[key] = v);
         }
         console.log('Loading complete!');
@@ -45,7 +46,14 @@ export class Account {
         return this.values[AccountValue.id];
     }
 
-    public async store(key: AccountValue, value: any): Promise<void>{
+    /**
+     * Returns the friend list of the user
+     */
+    public getFriends(): string[] {
+        return this.values[AccountValue.friends];
+    }
+
+    public async store(key: AccountValue, value: any): Promise<void> {
         await this.storage.set(key, value);
         this.values[key] = value;
     }

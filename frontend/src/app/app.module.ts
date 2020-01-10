@@ -16,6 +16,7 @@ import { Account } from './provider/account.provider';
 import { HttpClientModule } from '@angular/common/http';
 import { GeolocationProvider } from './provider/geolocation.provider';
 import { OpenlayerProvider } from './provider/openlayer.provider';
+import { GameProvider } from './provider/game.provider';
 
 @NgModule({
   declarations: [AppComponent],
@@ -35,6 +36,7 @@ import { OpenlayerProvider } from './provider/openlayer.provider';
     Geolocation,
     GeolocationProvider,
     OpenlayerProvider,
+    GameProvider,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
