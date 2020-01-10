@@ -15,7 +15,7 @@ The frontend project is the client implentation of our application. It uses Ioni
 
 ### Local Development
 
-Here is a guide on how to setup the development environment:
+Here is a guide on how to setup the development environment. This video on youtube also looks good if you want to get started with Ionic 4: https://www.youtube.com/watch?v=r2ga-iXS5i4
 
 ##### Prerequisites
 1. [NodeJS](https://nodejs.org/en/)
@@ -57,6 +57,11 @@ or
 npm start
 ```
 This will run a live development server at port 8000. You can access it by navigating to `http://localhost:8000` in your browser. If you change the code, the server will automatically update and show the changes.
+
+##### Useful Visual Studio Code Extensions
+- Angular 8 Snippets, Typescript, Html, ...
+- Ionic 4 Snippets
+- TSLint
 
 ##### Folder Structure
 `./`
