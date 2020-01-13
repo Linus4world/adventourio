@@ -1,0 +1,288 @@
+{
+  "places": [
+    {
+      "id": 1,
+      "category": "entertainment",
+      "stages": [
+        {
+          "stage": 1,
+          "description": "exploring the place",
+          "places": [
+            {
+              "id": 1,
+              "title": "StudentenStadt - rotes Haus bistro",
+              "description": null,
+              "challenge": "There is a bell, hanging somewhere in the Bistro. You need to find out what happens, if you ring it, but be careful! If you do it yourself, you have to deal with the consequences on your own...",
+              "last": true
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "description": "exploring the culture",
+          "places": []
+        },
+        {
+          "stage": 3,
+          "description": "exploring the history",
+          "places": [
+            {
+              "id": 6,
+              "title": "TU Film",
+              "description": null,
+              "challenge": "Each Christmas, there is a tradition of showing a certain old movie three times here. Find out which movie it is!",
+              "last": true
+            }
+          ]
+        },
+        {
+          "stage": 0,
+          "description": "no challenge",
+          "places": [
+            {
+              "id": null,
+              "title": "StudentenStadt - Manhattan",
+              "description": null,
+              "challenge": null,
+              "last": true
+            },
+            {
+              "id": null,
+              "title": "Bierstube",
+              "description": null,
+              "challenge": null,
+              "last": "true"
+            },
+            {
+              "id": null,
+              "title": "Neuraum club",
+              "description": null,
+              "challenge": null,
+              "last": true
+            },
+            {
+              "id": null,
+              "title": "Hans im Gluck",
+              "description": null,
+              "challenge": null,
+              "last": true
+            },
+            {
+              "id": null,
+              "title": "Barschwein",
+              "description": null,
+              "challenge": null,
+              "last": true
+            },
+            {
+              "id": 4,
+              "title": "Schellingsalon",
+              "description": null,
+              "challenge": null,
+              "last": true
+            },
+            {
+              "id": 5,
+              "title": "Englischer Garten",
+              "description": null,
+              "challenge": null,
+              "last": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "category": "University",
+      "stages": [
+        {
+          "stage": 1,
+          "description": "exploring the place",
+          "places": [
+            {
+              "id": 1,
+              "title": "StudentenStadt",
+              "description": null,
+              "challenge": "If you stand at the main square, and look around, there are four buildings around you. Find out, what is each common title!"
+            },
+            {
+              "id": 2,
+              "title": "StudiTUM",
+              "description": null,
+              "challenge": "you may not neccesairly be able to come in by yourself. Find out a way to do it!"
+            },
+            {
+              "id": 3,
+              "title": "Mensa Innenstadt",
+              "description": null,
+              "challenge": "There is a nice cafe somewehere in here, with a kind of crazy title. Can you find it?"
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "description": "exploring the culture",
+          "places": [
+            {
+              "id": 1,
+              "title": "Georg-Kühne-Zeichensaal (5505.01.550)",
+              "description": null,
+              "challenge": "Do you see those groups of people with drawings of mechanical parts? Go to them, and find out which subject they are trying to pass – the hardest and longest...subject in the Machine Course. Careful! You need to write the full title, no typos allowed!"
+            },
+            {
+              "id": 2,
+              "title": "Physik Bibliothek",
+              "description": null,
+              "challenge": "Well then, physics library, huh? Not many people know about it, since it’s so hidden! Congratulation for finding it! Now, find a physic student of your choice, that does not mind being bothered, and tell him to solve this simple physics exrcise!"
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "description": "exploring the history",
+          "place": [
+            {
+              "id": 1,
+              "title": "Mensa Garching",
+              "description": null,
+              "challenge": "Well, nice for you, you found the new, shiny mensa. But did you know there is also a more obscure, old one, that all locals know? Find it! It’s not that far away!"
+            },
+            {
+              "id": 2,
+              "title": "Hochbruck - Quantum",
+              "description": null,
+              "challenge": "Each Christmas, there is a tradition of showing a certain old movie three times here. Find out which movie it is!"
+            }
+          ]
+        },
+        {
+          "stage": 0,
+          "description": "no challenge",
+          "places": [
+            {
+              "id": 4,
+              "title": "Hochbruck - Quantum",
+              "description": null,
+              "challenge": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "category": "Sightseeing",
+      "stages": [
+        {
+          "stage": 1,
+          "description": "exploring the place",
+          "places": [
+            {
+              "id": 1,
+              "title": "Pinakotheken Wiese",
+              "description": null,
+              "challenge": "There are three different Pinakoheken. Find out, how they are all called and write it in"
+            },
+            {
+              "id": null,
+              "title": null,
+              "description": null,
+              "challenge": null
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "description": "exploring the culture",
+          "places": [
+            {
+              "id": 1,
+              "title": "Englischer Garten",
+              "description": null,
+              "challenge": "Many locals here, enjoying their time in the nature. Without using English (each one of you is only allowed to speak in your native language!) ask one of them, how old they are and let them write it in the app",
+              "last": true
+            },
+            {
+              "id": null,
+              "title": null,
+              "description": null,
+              "challenge": null,
+              "last": null
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "description": "exploring the history",
+          "places": [
+            {
+              "id": 1,
+              "title": "Odeonsplatz",
+              "description": null,
+              "challenge": "Stay here for a while, and appreciate this magnificent places with such a ich history. The Odeonsplatz takes its title from the Odeon building, which currently serves as the building of the Bavarian ministry of the Interior. But it’s original role was different. Can you find out, what was it?",
+              "last": true
+            },
+            {
+              "id": 2,
+              "title": "Geschwister Scholl platz",
+              "description": null,
+              "challenge": "A very sad, and important story, but an important one to know. Please, inform yourself about the siblings’ story, and to prove it, write in the title of the organization they belonged to.",
+              "last": false
+            }
+          ]
+        },
+        {
+          "stage": 0,
+          "description": "no challenge",
+          "places": [
+            {
+              "id": null,
+              "title": "Marienplatz",
+              "description": null,
+              "challenge": null,
+              "last": true
+            },
+            {
+              "id": null,
+              "title": "Deutsches Museum",
+              "description": null,
+              "challenge": null,
+              "last": false
+            },
+            {
+              "id": null,
+              "title": "Olympiastadium",
+              "description": null,
+              "challenge": null,
+              "last": false
+            },
+            {
+              "id": null,
+              "title": "Schloss Nymphenburg",
+              "description": null,
+              "challenge": null,
+              "last": false
+            },
+            {
+              "id": null,
+              "title": "Frauenkirche",
+              "description": null,
+              "challenge": null,
+              "last": false
+            },
+            {
+              "id": null,
+              "title": "BMW Museum ",
+              "description": null,
+              "challenge": null,
+              "last": false
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+
+

@@ -1,0 +1,72 @@
+{
+    "questions": [
+             {
+            "id": 1,
+            "question": "What places do you want to visit today?",
+            "answers": [
+              {
+                "id": 11,
+                "answer": "Entertainment"
+              },
+              {
+                "id": 12,
+                "answer": "University"
+              },
+              {
+                "id": 13,
+                "answer": "Sightseeing"
+              }
+            ]
+        },
+        {
+          "id": 2,
+          "question": "Do you speak German?",
+          "answers": [
+            {
+              "id": 21,
+              "answer": "yes"
+            },
+            {
+              "id" : 22,
+              "answer": "no"
+            }
+          ]
+        },
+      {
+        "id": 3,
+        "question": "Do you mind drinking alcohol today?",
+        "answers": [
+          {
+            "id": 31,
+            "answer": "yes"
+          },
+          {
+            "id": 32,
+            "answer": "no"
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "question": "What is your favourite movie genre?",
+        "answers": [
+          {
+            "id": 41,
+            "answer": "Adventure/action"
+          },
+          {
+            "id": 42,
+            "answer": "Science-fiction"
+          },
+          {
+            "id": 43,
+            "answer": "Fantasy"
+          },
+          {
+            "id": 44,
+            "answer": "crime"
+          }
+        ]
+      }
+    ]
+}
