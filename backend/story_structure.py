@@ -24,6 +24,7 @@ class UserInput:
 
 class Story:
     def __init__(self):
+        self.story_name = ''
         self.chapters = []
 
     def run_story(self):
@@ -116,8 +117,8 @@ class Scenario:
         self.user_inputs[input_key] = UserInput(name=name, q_type=q_type, scenario_mapping=scenario_mapping, weight=weight,
                                                 answer=answer)
 
-    def store_user_answer(self, q_key, answer):
-        self.user_inputs[q_key].answer = answer
+    def store_user_answer(self, input_key, answer):
+        self.user_inputs[input_key].answer = answer
 
     # Replace all blank.name for a word from the blank.words list in the plot
     def fill_in_the_blank(self, blank_key):
@@ -135,8 +136,9 @@ class Scenario:
             if len(txt) == 2:
                 # Input
                 if txt[0] == 'I' and txt[1].isnumeric():
+                    input_key = txt
                     answer = input("\n> ")
-                    self.store_user_answer(q_key=txt, answer=answer)
+                    self.store_user_answer(input_key=input_key, answer=answer)
                 # Blank
                 elif txt[0] == 'B' and txt[1].isnumeric():
                     blank_key = txt

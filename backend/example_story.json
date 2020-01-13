@@ -1,0 +1,42 @@
+{
+    "story_name": "Example Story",
+    "chapters":{
+      "Name of Chapter 1": {
+          "blanks": {
+            "B1": {
+              "words": ["beautiful", "ugly"]
+            },
+            "B2": {
+              "w_type": "adjective",
+              "random_word": "True"
+            }
+          },
+          "user_inputs": { // This includes both questions to the user and challenges
+            "I1": {
+              "name": "question name example"
+            },
+            "I2": {
+              "name": "question name example",
+              "q_type": "multiple choice",
+              "scenario_mapping":{
+                "A": "scenario1",
+                "B": "scenario2"
+              },
+              "weight": "1"
+            }
+          },
+          "scenario_1": [
+            "Hello, how are you doing in this ~B1 day? ~I1.", // B1 will be replaced by a word, I1 will store the user input
+            "Oh I am very ~B2 that you are doing ~A1", // A1 will be replaced by the input given stored in I1
+            "Would you like to do A or B? ~I2",
+            "Some more text ...",
+            "C1" // Challenge 1 will be displayed
+          ] ,
+          "scenario_2": [""]
+          },
+      "Name of Chapter 2": {
+        "scenario_A": "Plot A",
+        "scenario_B": "Plot B"
+      }
+    }
+}
