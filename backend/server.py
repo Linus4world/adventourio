@@ -1,6 +1,7 @@
 from flask import Flask
 from flask_cors import CORS, cross_origin
 from flask import jsonify
+import json
 
 app = Flask(__name__)
 cors = CORS(app)
@@ -16,13 +17,13 @@ def hello_world():
 @app.route('/questionnaire')
 def questions():
     with open("questionnaire.json") as questionnaire:
-        return jsonify(questionnaire)
+        return jsonify(json.dump(questionnaire))
 
 
 @app.route('/places')
 def places():
     with open("places.json") as place:
-        return jsonify(place)
+        return jsonify(json.dump(place))
 
 
 if __name__ == '__main__':
