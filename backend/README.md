@@ -30,3 +30,10 @@ python server.py
 ```
 
 You can now open your browser and navigate to `http://localhost:5000`
+
+
+### JSON files
+
+#### places 
+
+Places are grouped into three categories, Entertainment, University, Sightseeing. Each category further divided into three stages (as for now for, stage 0 is meant as a buffer stage for places I haven't found a challenge for yet. Feel free to change it if you get an idea).
