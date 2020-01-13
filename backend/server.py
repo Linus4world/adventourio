@@ -15,14 +15,14 @@ def hello_world():
 
 @app.route('/questionnaire')
 def questions():
-    with open("questionaire.json") as questionnaire:
+    with open("questionnaire.json") as questionnaire:
         return json.dumps(questionnaire)
 
 
 @app.route('/places')
 def places():
-    with open("places.json") as places:
-        return json.dumps(places)
+    with open("places.json") as place:
+        return json.dumps(place)
 
 
 if __name__ == '__main__':
