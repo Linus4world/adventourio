@@ -17,13 +17,13 @@ def hello_world():
 @app.route('/questionnaire')
 def questions():
     with open("questionnaire.json") as questionnaire:
-        return jsonify(json.loads(questionnaire))
+        return json.load(questionnaire)
 
 
 @app.route('/places')
 def places():
     with open("places.json") as place:
-        return jsonify(json.loads(place))
+        return json.load(place)
 
 
 if __name__ == '__main__':
