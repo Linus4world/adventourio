@@ -8,18 +8,26 @@ import { Observable } from 'rxjs';
  */
 @Injectable()
 export class HTTP {
-    private headers = new HttpHeaders();
-    private options = {headers: this.headers};
+    private headers = {
+        'content-type': 'text/plain'
+    };
+    private options = {headers: undefined};
     constructor(private http: HttpClient) {
-        this.headers.append('content-type', 'text/plain');
+        this.options.headers = new HttpHeaders(this.headers);
     }
 
     /**
      * Performs a GET request to the REST API of the backend
      * @param url sub URL on the backend (does not start with /)
+     * @param timeout Number of milliseconds before the request will timeout
      */
-    public GET(url: string): Observable<any> {
-        return this.http.get(environment.serverURL + url);
+    public GET(url: string, timeout?: number): Observable<any> {
+        if (timeout) {
+            const headers = new HttpHeaders(this.headers);
+            headers.append('timeout', '' + timeout);
+            return this.http.get(environment.serverURL + url, {headers});
+        }
+        return this.http.get(environment.serverURL + url, this.options);
     }
 
     /**
