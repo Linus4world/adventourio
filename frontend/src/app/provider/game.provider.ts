@@ -10,6 +10,16 @@ export interface Session {
     players: string[];
 }
 
+export interface Questionnaire {
+    questions: [
+        {
+            id: number,
+            question: string,
+            answers: string[]
+        }
+    ];
+}
+
 /**
  * This service takes care of all high-level game mechanics.
  */
@@ -26,9 +36,13 @@ export class GameProvider {
      * with an undefined
      */
     public lookingForPlayers(): Observable<Session> {
-        return this.http.GET('/join/' + this.account.getID(), 60000).pipe(map((response: HttpResponse<any>) => {
+        return this.http.GET('join/' + this.account.getID(), 60000).pipe(map((response: HttpResponse<any>) => {
             this.session = response.body;
             return this.session;
         }));
+    }
+
+    public loadQuestionnaire(): Observable<Questionnaire> {
+        return this.http.GET('questionnaire');
     }
 }
