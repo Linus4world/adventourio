@@ -10,16 +10,10 @@ const routes: Routes = [
     path: 'q', loadChildren: './questionaire/questionaire.module#QuestionairePageModule'
   },
   {
-    path: 'main', loadChildren: './main/main.module#MainPageModule'
+    path: 'main', loadChildren: './main/main.module#MainPageModule', canLoad: [LoadingGuard]
   },
   {
-    path: 'tab1', loadChildren: './tab1/tab1.module#Tab1PageModule', canLoad: [LoadingGuard]
-  },
-  {
-    path: 'tab2', loadChildren: './tab2/tab2.module#Tab2PageModule', canLoad: [LoadingGuard]
-  },
-  {
-    path: 'tab3', loadChildren: './tab3/tab3.module#Tab3PageModule'
+    path: 'game', loadChildren: './game/game.module#GamePageModule', canLoad: [LoadingGuard]
   },
   {
     path: '',

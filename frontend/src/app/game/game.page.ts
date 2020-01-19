@@ -3,11 +3,11 @@ import { GeolocationProvider } from '../provider/geolocation.provider';
 import { OpenlayerProvider } from '../provider/openlayer.provider';
 
 @Component({
-  selector: 'app-tab2',
-  templateUrl: 'tab2.page.html',
-  styleUrls: ['tab2.page.scss']
+  selector: 'app-game',
+  templateUrl: 'game.page.html',
+  styleUrls: ['game.page.scss']
 })
-export class Tab2Page implements AfterViewInit, OnDestroy {
+export class GamePage implements AfterViewInit, OnDestroy {
 
   position: {lat: number, long: number} = {lat: 48.135124, long: 11.581981};
 
