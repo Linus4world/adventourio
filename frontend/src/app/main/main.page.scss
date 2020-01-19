@@ -1,0 +1,29 @@
+ion-content{
+    text-align: center;
+}
+
+#avatar {
+    max-height: 30vh;
+}
+
+#name {
+    margin: 0px;
+}
+
+.text-start{
+    text-align: start;
+}
+
+ion-card{
+    margin: 10px 0 0 0;
+}
+
+ion-card-content{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.flex-item {
+    flex: 1 1 0px;
+    text-align: center;
+}

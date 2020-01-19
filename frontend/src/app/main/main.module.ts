@@ -7,12 +7,14 @@ import { IonicModule } from '@ionic/angular';
 
 import { MainPage } from './main.page';
 import { RouterModule } from '@angular/router';
+import { PipesModule } from '../pipes/pipes.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    PipesModule,
     RouterModule.forChild([{ path: '', component: MainPage}])
   ],
   declarations: [MainPage]

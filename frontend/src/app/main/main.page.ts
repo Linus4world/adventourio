@@ -1,15 +1,17 @@
 import { Component, OnInit } from '@angular/core';
+import { Account, Friend, AccountValue } from '../provider/account.provider';
 
 @Component({
   selector: 'app-main',
   templateUrl: './main.page.html',
   styleUrls: ['./main.page.scss'],
 })
-export class MainPage implements OnInit {
+export class MainPage {
+  friends: Friend[] = [];
 
-  constructor() { }
-
-  ngOnInit() {
-  }
+  constructor(account: Account) {
+    // account.store(AccountValue.friends, [{id: '1', name: 'Daniela'}, {id: '2', name: 'Kim'}, {id: '3', name: 'Rudolf'}]);
+    account.isReady.subscribe(_ => this.friends = account.getFriends());
+   }
 
 }
