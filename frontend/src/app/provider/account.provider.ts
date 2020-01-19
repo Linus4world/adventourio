@@ -1,11 +1,17 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { Platform } from '@ionic/angular';
+import { Subject } from 'rxjs';
 
 export enum AccountValue {
     id = 'id',
     name = 'name',
     friends = 'friends'
+}
+
+export interface Friend {
+    id: string;
+    name: string;
 }
 
 /**
@@ -14,6 +20,7 @@ export enum AccountValue {
 @Injectable()
 export class Account {
     private values: {[key: string]: any} = {};
+    public isReady = new Subject();
 
     constructor(private storage: Storage, platform: Platform) {
         platform.ready().then(() => {
@@ -29,6 +36,7 @@ export class Account {
         for (const key of Object.values(AccountValue)) {
             await this.storage.get(key).then(v => this.values[key] = v);
         }
+        this.isReady.next(true);
         console.log('Loading complete!');
     }
 
@@ -49,7 +57,7 @@ export class Account {
     /**
      * Returns the friend list of the user
      */
-    public getFriends(): string[] {
+    public getFriends(): Friend[] {
         return this.values[AccountValue.friends];
     }
 

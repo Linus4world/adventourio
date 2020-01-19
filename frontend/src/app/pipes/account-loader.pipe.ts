@@ -11,9 +11,10 @@ export class AccountLoaderPipe implements PipeTransform {
   transform(value: any, ...args: any[]): any {
     switch (value) {
       case 'NAME':
-        return this.account.getName();
+        const name = this.account.getName();
+        return (name === undefined ? value : name);
       default:
-        return null;
+        return value;
     }
   }
 
