@@ -16,4 +16,4 @@ import { PipesModule } from '../pipes/pipes.module';
   ],
   declarations: [QuestionairePage]
 })
-export class QuestionaireModule {}
+export class QuestionairePageModule {}
