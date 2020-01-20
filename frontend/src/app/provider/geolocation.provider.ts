@@ -38,7 +38,10 @@ export class GeolocationProvider {
      * Stops the user location tracking by unsubscribing from the Observable.
      */
     public stopTracking() {
-        this.watch.unsubscribe();
-        console.log('Tracking was stopped!');
+        if (this.watch) {
+            this.watch.unsubscribe();
+            this.watch = undefined;
+            console.log('Tracking was stopped!');
+        }
     }
 }

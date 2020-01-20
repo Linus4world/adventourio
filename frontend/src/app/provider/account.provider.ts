@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { Platform } from '@ionic/angular';
-import { Subject } from 'rxjs';
+import { ReplaySubject } from 'rxjs';
 
 export enum AccountValue {
     id = 'id',
@@ -20,7 +20,7 @@ export interface Friend {
 @Injectable()
 export class Account {
     private values: {[key: string]: any} = {};
-    public isReady = new Subject();
+    public isReady = new ReplaySubject();
 
     constructor(private storage: Storage, platform: Platform) {
         platform.ready().then(() => {
@@ -36,8 +36,8 @@ export class Account {
         for (const key of Object.values(AccountValue)) {
             await this.storage.get(key).then(v => this.values[key] = v);
         }
-        this.isReady.next(true);
         console.log('Loading complete!');
+        this.isReady.next(true);
     }
 
     /**

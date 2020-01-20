@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Account, Friend, AccountValue } from '../provider/account.provider';
+import { Component } from '@angular/core';
+import { Account, Friend } from '../provider/account.provider';
 
 @Component({
   selector: 'app-main',
