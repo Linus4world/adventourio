@@ -29,6 +29,7 @@ export class GamePage implements AfterViewInit, OnDestroy {
 
   ngAfterViewInit(): void {
     this.openlayersProvider.createMap();
+    this.getPosition();
   }
 
   ngOnDestroy(): void {
