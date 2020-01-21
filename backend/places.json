@@ -20,7 +20,22 @@
         {
           "stage": 2,
           "description": "exploring the culture",
-          "places": []
+          "places": [
+            {
+              "id": 1,
+              "title": "Bierstube",
+              "description": null,
+              "challenge": "Challenge any person in the bar to play table football with you. Can you win against them?",
+              "last": true
+            },
+            {
+              "id": null,
+              "title": "Hans im Gluck",
+              "description": null,
+              "challenge": "Hans is a very old, common German name. Can you name the most common German surname?",
+              "last": true
+            }
+          ]
         },
         {
           "stage": 3,
@@ -31,6 +46,14 @@
               "title": "TU Film",
               "description": null,
               "challenge": "Each Christmas, there is a tradition of showing a certain old movie three times here. Find out which movie it is!",
+              "last": true
+            },
+            {
+              "id": 2,
+              "title": "Schelling-salon",
+              "description": null,
+              "challenge": "Which known German historical figure was banned from visiting this establishment for not paying their bills?",
+              "answer": "Hitler",
               "last": true
             }
           ]
@@ -48,13 +71,6 @@
             },
             {
               "id": null,
-              "title": "Bierstube",
-              "description": null,
-              "challenge": null,
-              "last": "true"
-            },
-            {
-              "id": null,
               "title": "Neuraum club",
               "description": null,
               "challenge": null,
@@ -62,21 +78,7 @@
             },
             {
               "id": null,
-              "title": "Hans im Gluck",
-              "description": null,
-              "challenge": null,
-              "last": true
-            },
-            {
-              "id": null,
               "title": "Barschwein",
-              "description": null,
-              "challenge": null,
-              "last": true
-            },
-            {
-              "id": 4,
-              "title": "Schellingsalon",
               "description": null,
               "challenge": null,
               "last": true
@@ -150,7 +152,7 @@
             },
             {
               "id": 2,
-              "title": "Hochbruck - Quantum",
+              "title": "TU Film",
               "description": null,
               "challenge": "Each Christmas, there is a tradition of showing a certain old movie three times here. Find out which movie it is!"
             }
@@ -185,10 +187,19 @@
               "challenge": "There are three different Pinakoheken. Find out, how they are all called and write it in"
             },
             {
-              "id": null,
-              "title": null,
+              "id": 2,
+              "title": "Schloss Nymphenburg",
               "description": null,
-              "challenge": null
+              "challenge": "Walk around the maginificent castle and it's surrounding. There are some beautiful, not often seen in a city animals around here. Can you find them and tell me what they are? Trust me, you will know once you see them!",
+              "last": false
+            },
+            {
+              "id": 3,
+              "title": "Frauenkirche",
+              "description": null,
+              "challenge": "Frauenkirche is what everyone calls this church. But suprisingly, that is not the official name. Can you find out, what is?",
+              "answer": "Münchner Dom",
+              "last": false
             }
           ]
         },
@@ -204,11 +215,11 @@
               "last": true
             },
             {
-              "id": null,
-              "title": null,
+              "id": 2,
+              "title": "BMW Museum ",
               "description": null,
-              "challenge": null,
-              "last": null
+              "challenge": "There are certain things that every local knows. Find one, and ask them to tell you what the abbreviation BMW stays for",
+              "last": false
             }
           ]
         },
@@ -229,6 +240,14 @@
               "description": null,
               "challenge": "A very sad, and important story, but an important one to know. Please, inform yourself about the siblings’ story, and to prove it, write in the title of the organization they belonged to.",
               "last": false
+            },
+            {
+              "id": 3,
+              "title": "Deutsches Museum",
+              "description": null,
+              "challenge": "Not a very known fact, but this museum used to host pop and rock concerts. Can you say, which one of those famous bands performed here?",
+              "answer": "Jimi Hendrix",
+              "last": false
             }
           ]
         },
@@ -245,35 +264,7 @@
             },
             {
               "id": null,
-              "title": "Deutsches Museum",
-              "description": null,
-              "challenge": null,
-              "last": false
-            },
-            {
-              "id": null,
               "title": "Olympiastadium",
-              "description": null,
-              "challenge": null,
-              "last": false
-            },
-            {
-              "id": null,
-              "title": "Schloss Nymphenburg",
-              "description": null,
-              "challenge": null,
-              "last": false
-            },
-            {
-              "id": null,
-              "title": "Frauenkirche",
-              "description": null,
-              "challenge": null,
-              "last": false
-            },
-            {
-              "id": null,
-              "title": "BMW Museum ",
               "description": null,
               "challenge": null,
               "last": false
