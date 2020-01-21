@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 /**
  * This service is a wrapper for the angular http provider to simplify the communication with the backend (configured in envirnment.ts)
@@ -9,7 +10,7 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class HTTP {
     private headers = {
-        'content-type': 'text/plain'
+        'content-type': 'application/json'
     };
     private options = {headers: undefined};
     constructor(private http: HttpClient) {
@@ -17,11 +18,12 @@ export class HTTP {
     }
 
     /**
-     * Performs a GET request to the REST API of the backend
+     * Performs a GET request to the REST API of the backend. Make sure to subscribe to the observable!
      * @param url sub URL on the backend (does not start with /)
      * @param timeout Number of milliseconds before the request will timeout
      */
     public GET(url: string, timeout?: number): Observable<any> {
+        console.log('GET', environment.serverURL + url);
         if (timeout) {
             const headers = new HttpHeaders(this.headers);
             headers.append('timeout', '' + timeout);
@@ -35,8 +37,9 @@ export class HTTP {
      * @param url sub URL on the backend (does not start with /)
      * @param body payload of the request
      */
-    public POST(url: string, body: string): Observable<any> {
-        return this.http.post(environment.serverURL + url, body, this.options);
+    public POST(url: string, body: string): void {
+        console.log('POST', environment.serverURL + url, body);
+        this.http.post(environment.serverURL + url, body, this.options).subscribe(_ => undefined, error => console.log(error));
     }
 
     /**
@@ -44,7 +47,7 @@ export class HTTP {
      * @param url sub URL on the backend (does not start with /)
      * @param body payload of the request
      */
-    public PATCH(url: string, body: string): Observable<any> {
-        return this.http.post(environment.serverURL + url, body, this.options);
+    public PATCH(url: string, body: string): void {
+        this.http.post(environment.serverURL + url, body, this.options).subscribe(_ => undefined, error => console.log(error));
     }
 }

@@ -15,14 +15,16 @@ def hello_world():
     return {'hello': 'Hello, World!'}
 
 
-@app.route('/questionnaire', methods=['GET', 'POTS'])
+@app.route('/questionnaire', methods=['GET', 'POST'])
 def givingquestionnaire():
     if request.method == 'GET':
         with open("questionnaire.json") as questionnaire:
             return json.load(questionnaire)
     elif request.method == 'POST':
         answers = request.get_json()
-        return characters.character_assignment(answers)
+        print('received answers: ', answers)
+        # return characters.character_assignment(answers)
+        return json.dumps({'success':True}), 200, {'ContentType':'application/json'} 
 
 
 @app.route('/places')

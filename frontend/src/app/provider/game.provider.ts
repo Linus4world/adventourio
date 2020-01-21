@@ -15,9 +15,13 @@ export interface Questionnaire {
         {
             id: number,
             question: string,
-            answers: string[]
+            answers: string
         }
     ];
+}
+
+export interface QuestionnaireAnswers {
+        [questionId: number]: string;
 }
 
 /**
@@ -44,5 +48,13 @@ export class GameProvider {
 
     public loadQuestionnaire(): Observable<Questionnaire> {
         return this.http.GET('questionnaire');
+    }
+
+    /**
+     * Sends the answers of the questionnaire back to server
+     * @param answers Array of answers on string format
+     */
+    public sendQestionnaireAnswers(answers: QuestionnaireAnswers) {
+        return this.http.POST('questionnaire', JSON.stringify(answers));
     }
 }

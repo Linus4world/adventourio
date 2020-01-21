@@ -21,7 +21,7 @@
         </div>
       </ion-slide>
 
-      <ion-slide *ngFor="let question of questions">
+      <ion-slide *ngFor="let question of questionnaire.questions">
         <div>
           <h1>{{question.question}}</h1>
           <ion-radio-group [(ngModel)]="answers[question.id]">

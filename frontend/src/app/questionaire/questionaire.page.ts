@@ -1,6 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { IonSlides, NavController } from '@ionic/angular';
-import { GameProvider } from '../provider/game.provider';
+import { GameProvider, Questionnaire, QuestionnaireAnswers } from '../provider/game.provider';
 
 @Component({
   selector: 'app-questionaire-page',
@@ -15,13 +15,13 @@ export class QuestionairePage {
     speed: 400
   };
 
-  questions: [{ id: number, question: string, answers: string[] }];
-  answers = {};
+  questionnaire: Questionnaire = {questions: undefined};
+  answers: QuestionnaireAnswers = {};
 
   constructor(private navCtrl: NavController, private game: GameProvider) {
     this.game.loadQuestionnaire().subscribe(q => {
-      this.questions = q.questions;
-      for (const question of this.questions) {
+      this.questionnaire = q;
+      for (const question of this.questionnaire.questions) {
         this.answers[question.id] = question.answers[0];
       }
     });
@@ -40,7 +40,7 @@ export class QuestionairePage {
   }
 
   start() {
-    console.warn(this.answers);
+    this.game.sendQestionnaireAnswers(this.answers);
     this.navCtrl.navigateRoot('/main');
   }
 
