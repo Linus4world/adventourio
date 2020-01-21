@@ -34,6 +34,37 @@
         "Fantasy",
         "crime"
       ]
+    },
+    {
+      "id": 5,
+      "question": "Why did you decide to do an exchange semester?",
+      "answers": [
+        "To experience other cultures",
+        "Because it’s fun",
+        "To get away from where I normally live",
+        "To get some more academic experience"
+      ]
+    },
+    {
+      "id": 6,
+      "question": "Which one of those places in Munich have you already visited? (if you've seen more than one of the options, pick the one you like most)",
+      "answers": [
+        "Deutsches Museum",
+        "Oktoberfest",
+        "any restaurant with typical German cuisine",
+        "none of the above"
+      ]
+    },
+    {
+      "id": 7,
+      "question": "Who did you hang out with in Munich up till now?",
+      "answers": [
+        "mostly friends from the university",
+        "lots of people from Germany",
+        "friends who came here with me",
+        "no one in particular, people I've met here and there"
+      ]
     }
   ]
 }
+
