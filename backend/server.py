@@ -8,6 +8,8 @@ app = Flask(__name__)
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
+SUCCESS = json.dumps({'success':True}), 200, {'ContentType':'application/json'}
+
 
 @app.route('/')
 @cross_origin()
@@ -23,13 +25,27 @@ def givingquestionnaire():
     elif request.method == 'POST':
         answers = request.get_json()
         # character_assignment(answers)
-        return json.dumps({'success':True}), 200, {'ContentType':'application/json'} 
+        return SUCCESS
 
 
 @app.route('/places')
 def places():
     with open("places.json") as place:
         return json.load(place)
+
+@app.route('/join/<id>')
+def join(id):
+   return SUCCESS
+
+@app.route('/quest/<id>')
+def next_quest(id):
+   return json.dumps({
+       "story": ['One', 'Two'],
+       "goalLocation": {
+           "lat": 48.2427456,
+           "long": 11.6597312
+       }
+   })
 
 
 if __name__ == '__main__':
