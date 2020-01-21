@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="start"></ion-back-button>
+      <ion-back-button></ion-back-button>
     </ion-buttons>
     <ion-title>
       Questionaire
@@ -30,7 +30,7 @@
             </ion-list-header>
 
             <ion-item *ngFor="let option of question.answers">
-              <ion-label>{{option}}</ion-label>
+              <ion-label class="word-wrap">{{option}}</ion-label>
               <ion-radio slot="start" [value]="option"></ion-radio>
             </ion-item>
           </ion-radio-group>

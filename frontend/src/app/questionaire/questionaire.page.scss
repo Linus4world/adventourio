@@ -1,6 +1,10 @@
 ion-slide {
     padding: 2em;
     align-items: start;
+
+    div {
+        overflow: hidden;
+    }
 }
 
 .full-height{
@@ -26,4 +30,8 @@ img {
     ion-button {
         z-index: 1;
     }
+}
+
+.word-wrap{
+    white-space: initial;
 }
