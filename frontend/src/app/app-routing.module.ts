@@ -4,29 +4,21 @@ import { LoadingGuard } from './provider/loading-guard.provider';
 
 const routes: Routes = [
   {
+    path: 'start', loadChildren: './start/start.module#StartPageModule'
+  },
+  {
+    path: 'q', loadChildren: './questionaire/questionaire.module#QuestionairePageModule'
+  },
+  {
+    path: 'main', loadChildren: './main/main.module#MainPageModule', canLoad: [LoadingGuard]
+  },
+  {
+    path: 'game', loadChildren: './game/game.module#GamePageModule', canLoad: [LoadingGuard]
+  },
+  {
     path: '',
-    children: [
-      {
-        path: 'start', loadChildren: './start/start.module#StartPageModule'
-      },
-      {
-        path: 'q', loadChildren: './questionaire/questionaire.module#QuestionaireModule'
-      },
-      {
-        path: 'tab1', loadChildren: './tab1/tab1.module#Tab1PageModule', canLoad: [LoadingGuard]
-      },
-      {
-        path: 'tab2', loadChildren: './tab2/tab2.module#Tab2PageModule', canLoad: [LoadingGuard]
-      },
-      {
-        path: 'tab3', loadChildren: './tab3/tab3.module#Tab3PageModule'
-      },
-      {
-        path: '',
-        redirectTo: '/tab1',
-        pathMatch: 'full'
-      }
-    ]
+    redirectTo: '/main',
+    pathMatch: 'full'
   }
 ];
 @NgModule({
@@ -35,4 +27,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

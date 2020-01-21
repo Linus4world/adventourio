@@ -1,0 +1,72 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Main</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div>
+    <img id=avatar src='../../assets/avatar-male.png'>
+    <h2 id=name>{{'NAME' | accountLoader}}</h2>
+  </div>
+
+  <div class="text-start ion-padding">
+    <ion-label>
+      Game
+    </ion-label>
+    <ion-card>
+      <ion-card-content>
+        <ion-button fill="clear" [routerLink]="['/q']" routerDirection="backward">
+          <div>
+            <ion-icon slot="start" name="undo"></ion-icon><br>
+            Retake Questionnaire
+          </div>
+        </ion-button>
+        <ion-button fill="clear" [routerLink]="['/game']" routerDirection="forward">
+          <div>
+            <ion-icon slot="icon-only" name="play"></ion-icon><br>
+            Play
+          </div>
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <div class="text-start ion-padding">
+    <ion-label>
+      PERFORMANCE
+    </ion-label>
+    <ion-card>
+      <ion-card-content>
+        <div class="flex-item">
+          <div class="numberCircle">15</div>
+          Games played
+        </div>
+        <div class="flex-item">
+          <div class="numberCircle">80%</div>
+          Wins
+        </div>
+        <div class="flex-item">
+          <div class="numberCircle">7.4</div>
+          Correct answers per round
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <div class="text-start ion-padding">
+    <ion-label>
+      FRIENDS
+    </ion-label>
+    <ion-card>
+      <ion-card-content>
+        <div *ngFor="let friend of friends; let i = index" class="flex-item">
+          <img *ngIf="i%2" src='../../assets/avatar-male.png'>
+          <img *ngIf="!(i%2)" src='../../assets/avatar-female.png'>
+          {{friend.name}}
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+</ion-content>

@@ -41,7 +41,7 @@ export class QuestionairePage {
 
   start() {
     console.warn(this.answers);
-    this.navCtrl.navigateRoot('/tab2');
+    this.navCtrl.navigateRoot('/main');
   }
 
 }

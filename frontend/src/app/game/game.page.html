@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="main"></ion-back-button>
+    </ion-buttons>
+    <ion-title> Game </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<div id="map" class="map"></div>
+<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab-button fill="clear" (click)="getPosition()">
+    <ion-icon name="locate"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
