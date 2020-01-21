@@ -11,7 +11,7 @@
               "random_word": "True"
             }
           },
-          "user_inputs": { // This includes both questions to the user and challenges
+          "user_inputs": {
             "I1": {
               "name": "question name example"
             },
@@ -26,11 +26,11 @@
             }
           },
           "scenario_1": [
-            "Hello, how are you doing in this ~B1 day? ~I1.", // B1 will be replaced by a word, I1 will store the user input
-            "Oh I am very ~B2 that you are doing ~A1", // A1 will be replaced by the input given stored in I1
+            "Hello, how are you doing in this ~B1 day? ~I1.",
+            "Oh I am very ~B2 that you are doing ~A1",
             "Would you like to do A or B? ~I2",
             "Some more text ...",
-            "C1" // Challenge 1 will be displayed
+            "C1"
           ] ,
           "scenario_2": [""]
           },

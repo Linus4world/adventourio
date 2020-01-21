@@ -130,7 +130,7 @@ def character_assignment(answers):
     wizard = Wizard('0')
     detective = Detective('0')
 
-    answers = json.loads(answers)
+    # answers = json.loads(answers)
     points_id = [dict(), dict(), dict(), dict()]
 
     for i in range(0, 4):
@@ -377,7 +377,7 @@ def maxWizard(all_adventurer_points, all_alien_points, all_wizard_points, all_de
             count = count+1
     # in case of there being more than one people with the same amount of highest points, random assignment
     else:
-        n = random.randint(1, len(numpy.where(all_wizard_points == numpy.amax(all_wizards_points))[0]))
+        n = random.randint(1, len(numpy.where(all_wizard_points == numpy.amax(all_wizard_points))[0]))
         if numpy.amax(all_adventurer_points) == 0 and len(numpy.where(all_adventurer_points == numpy.amax(all_adventurer_points))[0]) == 4:
             n = 1
         a = 0
