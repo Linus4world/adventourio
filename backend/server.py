@@ -1,7 +1,8 @@
 from flask import Flask
 from flask_cors import CORS, cross_origin
-from flask import jsonify
+from flask import request
 import json
+import characters
 
 app = Flask(__name__)
 cors = CORS(app)
@@ -14,10 +15,14 @@ def hello_world():
     return {'hello': 'Hello, World!'}
 
 
-@app.route('/questionnaire')
-def questions():
-    with open("questionnaire.json") as questionnaire:
-        return json.load(questionnaire)
+@app.route('/questionnaire', methods=['GET', 'POTS'])
+def givingquestionnaire():
+    if request.method == 'GET':
+        with open("questionnaire.json") as questionnaire:
+            return json.load(questionnaire)
+    elif request.method == 'POST':
+        answers = request.get_json()
+        return characters.character_assignment(answers)
 
 
 @app.route('/places')
