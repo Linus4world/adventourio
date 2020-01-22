@@ -79,7 +79,7 @@ export class OpenlayerProvider {
                 }),
                 new VectorLayer({
                     source: new VectorSource({
-                        features: [this.marker]
+                        features: [this.marker, this.target]
                     })
                 })
             ],
@@ -115,8 +115,12 @@ export class OpenlayerProvider {
      * @param lat latitude in EPSG:4326 format
      * @param long latitude in EPSG:4326 format
      */
-    public setCurrentTarget(lat: number, long: number) {
-        this.marker.setGeometry(new Point(fromLonLat([long, lat])));
+    public setCurrentTarget(lat: number, long: number, unset?: boolean) {
+        if (unset) {
+            this.target.setGeometry(undefined);
+        } else {
+        this.target.setGeometry(new Point(fromLonLat([long, lat])));
+        }
     }
 
 }

@@ -24,6 +24,14 @@ export interface QuestionnaireAnswers {
         [questionId: number]: string;
 }
 
+export interface  Quest {
+    story: string[];
+    goalLocation: {
+        lat: number,
+        long: number
+    };
+}
+
 /**
  * This service takes care of all high-level game mechanics.
  */
@@ -46,6 +54,9 @@ export class GameProvider {
         }));
     }
 
+    /**
+     * Retrieves the questionnaire from the server
+     */
     public loadQuestionnaire(): Observable<Questionnaire> {
         return this.http.GET('questionnaire');
     }
@@ -54,7 +65,14 @@ export class GameProvider {
      * Sends the answers of the questionnaire back to server
      * @param answers Array of answers on string format
      */
-    public sendQestionnaireAnswers(answers: QuestionnaireAnswers) {
+    public sendQuestionnaireAnswers(answers: QuestionnaireAnswers) {
         return this.http.POST('questionnaire', JSON.stringify(answers));
+    }
+
+    /**
+     * Signals the server that the current quest was finished and asks for the next quest.
+     */
+    public getNextQuest(): Observable<Quest> {
+        return this.http.GET('quest/' + this.account.getID());
     }
 }
