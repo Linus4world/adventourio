@@ -38,7 +38,7 @@ def join(id):
    return SUCCESS
 
 @app.route('/quest/<id>')
-def next_quest(id):
+def next_sub_stage(id):
    return json.dumps({
        "story": ['One', 'Two'],
        "goalLocation": {
