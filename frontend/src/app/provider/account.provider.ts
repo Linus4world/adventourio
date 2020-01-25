@@ -9,11 +9,6 @@ export enum AccountValue {
     friends = 'friends'
 }
 
-export interface Friend {
-    id: string;
-    name: string;
-}
-
 /**
  * Stores all user information
  */
@@ -57,8 +52,9 @@ export class Account {
     /**
      * Returns the friend list of the user
      */
-    public getFriends(): Friend[] {
-        return this.values[AccountValue.friends];
+    public getFriends(): string[] {
+        const friends = this.values[AccountValue.friends];
+        return friends ? friends : [];
     }
 
     public async store(key: AccountValue, value: any): Promise<void> {

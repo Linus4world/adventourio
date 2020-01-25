@@ -1,64 +1,19 @@
 import { Injectable } from '@angular/core';
 import { HTTP } from './http.provider';
 import { Observable } from 'rxjs';
-import { Account } from './account.provider';
-import { HttpResponse } from '@angular/common/http';
+import { Account, AccountValue } from './account.provider';
 import { map } from 'rxjs/operators';
-
-export interface Session {
-    id: string;
-    players: string[];
-}
-
-export interface Questionnaire {
-    questions: [
-        {
-            id: number,
-            question: string,
-            answers: string
-        }
-    ];
-}
-
-export interface QuestionnaireAnswers {
-    name: string;
-    answers: string[];
-}
-
-export interface  Quest {
-    story: string[];
-    goalLocation: number[];
-    challenge: Challenge;
-}
-
-export interface Challenge {
-    challenge: string;
-    challenge_type: number;
-    answers?: string[];
-    right_answer: string | number[];
-}
+import { Questionnaire, QuestionnaireAnswers, Stage, ChallengeOutcome } from './models';
+import { GeolocationProvider } from './geolocation.provider';
 
 /**
  * This service takes care of all high-level game mechanics.
  */
 @Injectable()
 export class GameProvider {
+    private MAX_TIMEOUT = 60000;
 
-    private session: Session;
-
-    constructor(private http: HTTP, private account: Account) {}
-
-    /**
-     * Sends a request to server to join a Session. The server will wait until enough players joined the session.
-     * Then it sends back the session information. If not enough players joined the lobby within the timeout, the Observable will respond
-     * with an undefined
-     */
-    public lookingForPlayers(): Observable<Session> {
-        return this.http.GET('join/' + this.account.getID(), 60000).pipe(map((response: HttpResponse<any>) => {
-            this.session = response.body;
-            return this.session;
-        }));
-    }
+    constructor(private http: HTTP, private account: Account, private geolocationProvider: GeolocationProvider) { }
 
     /**
      * Retrieves the questionnaire from the server
@@ -71,14 +26,33 @@ export class GameProvider {
      * Sends the answers of the questionnaire back to server
      * @param answers Array of answers on string format
      */
-    public sendQuestionnaireAnswers(answers: QuestionnaireAnswers) {
-        return this.http.POST('questionnaire', JSON.stringify(answers));
+    public sendQuestionnaireAnswers(answers: QuestionnaireAnswers): Observable<void> {
+        return this.http.POST('join/' + this.account.getID(), JSON.stringify(answers), this.MAX_TIMEOUT).pipe(
+            map((response: { playerNames: string[] }) => {
+                console.log('Players in session: ', response.playerNames);
+                const friends = this.account.getFriends();
+                for (const friend of response.playerNames) {
+                    if (friend !== this.account.getName() && friends.indexOf(friend) < 0) {
+                        friends.push(friend);
+                    }
+                }
+                this.account.store(AccountValue.friends, friends);
+            })
+        );
     }
 
     /**
      * Signals the server that the current quest was finished and asks for the next quest.
      */
-    public getNextQuest(): Observable<Quest> {
-        return this.http.GET('quest/' + this.account.getID());
+    public getNextQuest(challengeOutcome?: boolean, playerLocation?: number[]): Observable<Stage> {
+        const data: ChallengeOutcome = {
+            challengeOutcome,
+            playerLocation
+        };
+        return this.http.POST('stage/' + this.account.getID(), JSON.stringify(data));
+    }
+
+    public unlockChallenge() {
+        return this.http.GET('here/<id>' + this.account.getID(), this.MAX_TIMEOUT);
     }
 }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Account, Friend } from '../provider/account.provider';
+import { Account } from '../provider/account.provider';
 
 @Component({
   selector: 'app-main',
@@ -7,11 +7,12 @@ import { Account, Friend } from '../provider/account.provider';
   styleUrls: ['./main.page.scss'],
 })
 export class MainPage {
-  friends: Friend[] = [];
+  friends: string[] = [];
 
-  constructor(account: Account) {
-    // account.store(AccountValue.friends, [{id: '1', name: 'Daniela'}, {id: '2', name: 'Kim'}, {id: '3', name: 'Rudolf'}]);
-    account.isReady.subscribe(_ => this.friends = account.getFriends());
-   }
+  constructor(private account: Account) { }
+
+   ionViewWillEnter() {
+     this.account.isReady.subscribe(_ => this.friends = this.account.getFriends());
+  }
 
 }

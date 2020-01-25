@@ -1,8 +1,11 @@
-import { Component, AfterViewInit, OnDestroy } from '@angular/core';
+import { Component, AfterViewInit, NgZone } from '@angular/core';
 import { GeolocationProvider } from '../provider/geolocation.provider';
 import { OpenlayerProvider } from '../provider/openlayer.provider';
-import { GameProvider, Quest } from '../provider/game.provider';
+import { GameProvider } from '../provider/game.provider';
 import { Geoposition } from '@ionic-native/geolocation/ngx';
+import { Stage } from '../provider/models';
+import { Platform, ModalController, NavController } from '@ionic/angular';
+import { ChallengePage } from '../challenge/challenge.page';
 
 @Component({
   selector: 'app-game',
@@ -11,13 +14,18 @@ import { Geoposition } from '@ionic-native/geolocation/ngx';
 })
 export class GamePage implements AfterViewInit {
 
-  quest: Quest;
+  stage: Stage;
+  storyPointer = 0;
 
   constructor(
     private geolocationProvider: GeolocationProvider,
     private openlayersProvider: OpenlayerProvider,
-    private gameProvider: GameProvider) {
-    this.gameProvider.getNextQuest().subscribe((quest: Quest) => this.receivedNewQuest(quest));
+    private gameProvider: GameProvider,
+    private zone: NgZone,
+    private platform: Platform,
+    private navCtrl: NavController,
+    public modalController: ModalController) {
+    this.getNewQuest();
   }
 
   getPosition() {
@@ -35,21 +43,57 @@ export class GamePage implements AfterViewInit {
   }
 
   private positionChanged(data: Geoposition) {
-    this.openlayersProvider.setCenter(data.coords.latitude, data.coords.longitude);
+    this.openlayersProvider.setPlayer(data.coords.latitude, data.coords.longitude);
     if (this.openlayersProvider.hasReachedGoal()) {
-      // TODO
+      this.gameProvider.unlockChallenge().subscribe(_ => {
+        this.presentChallengePage();
+      });
     }
   }
 
-  receivedNewQuest(quest: Quest) {
-    this.quest = quest;
-    console.log('new quest:', quest);
-    this.openlayersProvider.setCurrentTarget(quest.goalLocation[0], quest.goalLocation[1]);
+  private async getNewQuest(challengeOutcome?: boolean) {
+    const coords = (await this.geolocationProvider.getPosition()).coords;
+    this.gameProvider.getNextQuest(challengeOutcome, [coords.latitude, coords.longitude]).subscribe(stage => {
+      console.log('new stage:', stage);
+      this.zone.run(() => {
+        this.stage = stage;
+      });
+
+      if (stage.challenge) {
+        this.openlayersProvider.setCurrentTarget(stage.destinationCoords[0], stage.destinationCoords[1]);
+      }
+    });
+  }
+
+  showNextStoryPart() {
+    this.storyPointer++;
+    if (this.storyPointer >= this.stage.story.length && !this.stage.challenge) {
+      this.navCtrl.navigateRoot('main');
+    }
+  }
+
+  jumpToTarget() {
+    this.gameProvider.unlockChallenge().subscribe(_ => {
+      this.presentChallengePage();
+    });
+  }
+
+  async presentChallengePage() {
+    const modal = await this.modalController.create({
+      component: ChallengePage,
+      componentProps: {
+        challenge: this.stage.challenge,
+      }
+    });
+    modal.onDidDismiss().then(o => this.getNewQuest(o.data));
+    return await modal.present();
   }
 
   ngAfterViewInit(): void {
-    this.openlayersProvider.createMap();
-    this.getPosition();
+    this.platform.ready().then(() => {
+      this.openlayersProvider.createMap();
+      this.getPosition();
+    });
   }
 
   viewDidDisappear(): void {

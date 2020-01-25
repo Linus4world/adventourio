@@ -63,7 +63,7 @@
         <div *ngFor="let friend of friends; let i = index" class="flex-item">
           <img *ngIf="i%2" src='../../assets/avatar-male.png'>
           <img *ngIf="!(i%2)" src='../../assets/avatar-female.png'>
-          {{friend.name}}
+          {{friend}}
         </div>
       </ion-card-content>
     </ion-card>

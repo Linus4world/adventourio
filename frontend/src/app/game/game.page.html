@@ -8,15 +8,21 @@
 </ion-header>
 
 <div id="map" class="map"></div>
+
 <ion-fab vertical="bottom" horizontal="end" slot="fixed">
   <ion-fab-button fill="clear" (click)="getPosition()">
     <ion-icon name="locate"></ion-icon>
   </ion-fab-button>
 </ion-fab>
 
-<div class="task">
-  <div class="task-content ion-padding">
-    <p class="ion-no-margin">Go to TUM Stammgelände!</p>
+<ion-fab vertical="bottom" horizontal="start" slot="fixed">
+  <ion-fab-button fill="clear" (click)="jumpToTarget()">
+    <ion-icon name="fastforward"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
 
+<div *ngIf="stage" class="task">
+  <div class="task-content ion-padding">
+    <p class="ion-no-margin">Go to {{stage.destinationName}}!</p>
   </div>
 </div>

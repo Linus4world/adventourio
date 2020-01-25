@@ -17,6 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { GeolocationProvider } from './provider/geolocation.provider';
 import { OpenlayerProvider } from './provider/openlayer.provider';
 import { GameProvider } from './provider/game.provider';
+import { ChallengePageModule } from './challenge/challenge.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -26,7 +27,8 @@ import { GameProvider } from './provider/game.provider';
     HttpClientModule,
     IonicModule.forRoot(),
     IonicStorageModule.forRoot(),
-    AppRoutingModule],
+    AppRoutingModule,
+    ChallengePageModule],
   providers: [
     StatusBar,
     SplashScreen,
