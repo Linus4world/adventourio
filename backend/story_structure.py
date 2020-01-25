@@ -276,10 +276,17 @@ class Scenario: #substage
         return prob_array;
 
     def generate_random_word():
-        adventurer_item =
-        alien_item =
-        magician_item =
-        detective_weapon =
+        adventurer_treasure = ["Crystal Skull", "Monkey Statue", "Stuffed Wolpertinger", "Ancient Porn Magazine", "Long-Lost Martian Technology", "Hoard of Gold", "Creepy Medieval Painting", "Golden Globe", "Holy Grail", "Perpetuum Mobile"];
+        adventurer_map = ["Legendary Map", "Ancient Scroll", "Mysterious Hieroglyphs", "Wise GPS System", "Ominous Road Sign", "Misleading Pictogram Panel", "Tacky Compass", "Sarcastic Recommendation", "Letter Of A Lost Lover", "Battered Postcard"]
+        sci_fi_thing = ["Sonic Screwdriver", "Flux Capacitative Transcriber", "Bionic Sewing Needle", "Alpha ray excavator", "Chromospheric Sensation Cord", "Cepheid Variability Oscillator", "Ceolostatic Clockwork", "Cybernetic Bottleneck", "Diurnal Dynamite Mug", "Homunculoid Electrowaiver"];
+        magic_thing = ["Ring", "Amulet", "Toe ring", "Nose ring", "Earring", "Necklace", "Book", "Staff", "Wand", "Cloak"];
+        detective_weapon = ["Shotgun", "Plasma rifle", "Trusty Fists", "Unbreakable Katana Sword", "Machete", "Dagger", "Revolver", "Legendary Broadsword", "Pistol", "Scythe"];
+
+        treasure = random.choice(adventurer_treasure);
+        map = random.choice(adventurer_map);
+        alien_item = random.choice(sci_fi_thing);
+        weapon = random.choice(detective_weapon);
+
 
     def run_scenario(self):
         for txt in self.plot:
