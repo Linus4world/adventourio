@@ -1,7 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonSlides, NavController, LoadingController } from '@ionic/angular';
-import { GameProvider, Questionnaire, QuestionnaireAnswers, Session } from '../provider/game.provider';
+import { GameProvider } from '../provider/game.provider';
 import { Account } from '../provider/account.provider';
+import { Questionnaire, QuestionnaireAnswers } from '../provider/models';
 
 @Component({
   selector: 'app-questionaire-page',
@@ -29,7 +30,7 @@ export class QuestionairePage {
     this.game.loadQuestionnaire().subscribe(q => {
       this.questionnaire = q;
       for (let i = 0; i < this.questionnaire.questions.length; i++) {
-        this.answers.answers[i] = this.questionnaire.questions[i].answers[0];
+        this.answers.answers[i] = this.questionnaire.questions[i].options[0];
       }
     });
   }
@@ -47,7 +48,6 @@ export class QuestionairePage {
   }
 
   async start() {
-    this.game.sendQuestionnaireAnswers(this.answers);
     const loading = await this.loadingController.create({
       message: 'Waiting for other players...',
       spinner: 'crescent',
@@ -62,16 +62,15 @@ export class QuestionairePage {
       }
     });
 
-    this.game.lookingForPlayers().subscribe(
-      (session: Session) => {
-        console.log(session);
-        this.navCtrl.navigateRoot('game');
-        loading.dismiss();
-      },
-      error => {
-        this.navCtrl.navigateRoot('main');
-        loading.dismiss();
-      });
+    this.game.sendQuestionnaireAnswers(this.answers).subscribe(() => {
+      this.navCtrl.navigateRoot('game');
+      loading.dismiss();
+    },
+    error => {
+      console.error(error);
+      this.navCtrl.navigateRoot('main');
+      loading.dismiss();
+    });
   }
 
 }

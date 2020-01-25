@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { NavParams } from '@ionic/angular';
-import { Quest, Challenge } from '../provider/game.provider';
+import { Component, Input } from '@angular/core';
+import { Challenge } from '../provider/models';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-challenge',
@@ -8,7 +8,7 @@ import { Quest, Challenge } from '../provider/game.provider';
   styleUrls: ['./challenge.page.scss'],
 })
 export class ChallengePage {
-  challenge: Challenge = {
+  @Input() challenge: Challenge = {
     challenge: 'Was ist ein Wolpertinger?',
     challenge_type: 1,
     answers: [
@@ -21,14 +21,11 @@ export class ChallengePage {
   };
   answer: string = undefined;
 
-  constructor() {
-    // if (navParams.data) {
-    //   this.challenge = this.navParams.data.challenge;
-    // }
+  constructor(private modalCtrl: ModalController) {
   }
 
   submit() {
-    console.log(this.answer, this.answer === this.challenge.right_answer);
+    this.modalCtrl.dismiss(this.answer === this.challenge.right_answer);
   }
 
 }

@@ -15,6 +15,7 @@ import { RouterModule } from '@angular/router';
     IonicModule,
     RouterModule.forChild([{ path: '', component: ChallengePage }])
   ],
-  declarations: [ChallengePage]
+  declarations: [ChallengePage],
+  entryComponents: [ChallengePage]
 })
 export class ChallengePageModule {}

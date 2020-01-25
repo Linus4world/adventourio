@@ -9,6 +9,7 @@ import { Feature } from 'ol';
 import Point from 'ol/geom/Point';
 import VectorSource from 'ol/source/Vector';
 import {Style, Fill, Stroke, Circle} from 'ol/style';
+import MultiPoint from 'ol/geom/MultiPoint';
 
 @Injectable()
 export class OpenlayerProvider {
@@ -100,7 +101,7 @@ export class OpenlayerProvider {
         if (zoom !== undefined) {
             this.view.setZoom(zoom);
         }
-        this.setMarker(lat, long);
+        this.setPlayer(lat, long);
     }
 
     /**
@@ -108,7 +109,7 @@ export class OpenlayerProvider {
      * @param lat latitude in EPSG:4326 format
      * @param long latitude in EPSG:4326 format
      */
-    private setMarker(lat: number, long: number) {
+    public setPlayer(lat: number, long: number) {
         this.marker.setGeometry(new Point(fromLonLat([long, lat])));
         this.playerPos.lat = lat;
         this.playerPos.long = long;
@@ -126,6 +127,8 @@ export class OpenlayerProvider {
             this.target.setGeometry(new Point(fromLonLat([long, lat])));
             this.targetPos.lat = lat;
             this.targetPos.long = long;
+            this.view.fit(new MultiPoint([(this.marker.getGeometry() as Point).getCoordinates(),
+                (this.target.getGeometry() as Point).getCoordinates()]), {padding: [100, 100, 100, 100]});
         }
     }
 

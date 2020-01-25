@@ -37,9 +37,14 @@ export class HTTP {
      * @param url sub URL on the backend (does not start with /)
      * @param body payload of the request
      */
-    public POST(url: string, body: string): void {
+    public POST(url: string, body: string, timeout?: number): Observable<any> {
         console.log('POST', environment.serverURL + url, body);
-        this.http.post(environment.serverURL + url, body, this.options).subscribe(_ => undefined, error => console.log(error));
+        if (timeout) {
+            const headers = new HttpHeaders(this.headers);
+            headers.append('timeout', '' + timeout);
+            return this.http.post(environment.serverURL + url, body, {headers});
+        }
+        return this.http.post(environment.serverURL + url, body, this.options);
     }
 
     /**
