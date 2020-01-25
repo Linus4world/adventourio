@@ -53,6 +53,9 @@ answers2 = """
             "answers": [
                 "a",
                 "a",
+                "a",
+                "a",
+                "a",
                 "d",
                 "d"
             ]
@@ -60,6 +63,9 @@ answers2 = """
         {
             "id": "2",
             "answers": [
+                "a",
+                "a",
+                "a",
                 "a",
                 "b",
                 "b",
@@ -70,6 +76,9 @@ answers2 = """
             "id": "3",
             "answers": [
                 "a",
+                "a",
+                "a",
+                "a",
                 "b",
                 "b",
                 "c"
@@ -78,6 +87,9 @@ answers2 = """
         {
             "id": "4",
             "answers": [
+                "a",
+                "a",
+                "a",
                 "b",
                 "c",
                 "b",
@@ -143,37 +155,37 @@ def character_assignment(answers):
     # calculating the answers into points for specific characters for every person
     a = 0
     for answer in answers['answers1']:
-        if answer['answers'][0] == 'a':
-            points_id[a]['points_adventurer'] = points_id[a]['points_adventurer'] + 1
-        elif answer['answers'][0] == 'b':
-            points_id[a]['points_alien'] = points_id[a]['points_alien'] + 1
-        elif answer['answers'][0] == 'c':
-            points_id[a]['points_wizard'] = points_id[a]['points_wizard'] + 1
-        elif answer['answers'][0] == 'd':
-            points_id[a]['points_detective'] = points_id[a]['points_detective'] + 1
-        if answer['answers'][1] == 'a':
-            points_id[a]['points_wizard'] = points_id[a]['points_wizard'] + 1
-        elif answer['answers'][1] == 'b':
-            points_id[a]['points_adventurer'] = points_id[a]['points_adventurer'] + 1
-        elif answer['answers'][1] == 'c':
-            points_id[a]['points_detective'] = points_id[a]['points_detective'] + 1
-        elif answer['answers'][1] == 'd':
-            points_id[a]['points_alien'] = points_id[a]['points_alien'] + 1
-        if answer['answers'][2] == 'a':
-            points_id[a]['points_alien'] = points_id[a]['points_alien'] + 1
-        elif answer['answers'][2] == 'b':
-            points_id[a]['points_adventurer'] = points_id[a]['points_adventurer'] + 1
-        elif answer['answers'][2] == 'c':
-            points_id[a]['points_wizard'] = points_id[a]['points_wizard'] + 1
-        elif answer['answers'][2] == 'd':
-            points_id[a]['points_detective'] = points_id[a]['points_detective'] + 1
         if answer['answers'][3] == 'a':
-            points_id[a]['points_alien'] = points_id[a]['points_alien'] + 1
-        elif answer['answers'][3] == 'b':
-            points_id[a]['points_detective'] = points_id[a]['points_detective'] + 1
-        elif answer['answers'][3] == 'c':
             points_id[a]['points_adventurer'] = points_id[a]['points_adventurer'] + 1
+        elif answer['answers'][3] == 'b':
+            points_id[a]['points_alien'] = points_id[a]['points_alien'] + 1
+        elif answer['answers'][3] == 'c':
+            points_id[a]['points_wizard'] = points_id[a]['points_wizard'] + 1
         elif answer['answers'][3] == 'd':
+            points_id[a]['points_detective'] = points_id[a]['points_detective'] + 1
+        if answer['answers'][4] == 'a':
+            points_id[a]['points_wizard'] = points_id[a]['points_wizard'] + 1
+        elif answer['answers'][4] == 'b':
+            points_id[a]['points_adventurer'] = points_id[a]['points_adventurer'] + 1
+        elif answer['answers'][4] == 'c':
+            points_id[a]['points_detective'] = points_id[a]['points_detective'] + 1
+        elif answer['answers'][4] == 'd':
+            points_id[a]['points_alien'] = points_id[a]['points_alien'] + 1
+        if answer['answers'][5] == 'a':
+            points_id[a]['points_alien'] = points_id[a]['points_alien'] + 1
+        elif answer['answers'][5] == 'b':
+            points_id[a]['points_adventurer'] = points_id[a]['points_adventurer'] + 1
+        elif answer['answers'][5] == 'c':
+            points_id[a]['points_wizard'] = points_id[a]['points_wizard'] + 1
+        elif answer['answers'][5] == 'd':
+            points_id[a]['points_detective'] = points_id[a]['points_detective'] + 1
+        if answer['answers'][6] == 'a':
+            points_id[a]['points_alien'] = points_id[a]['points_alien'] + 1
+        elif answer['answers'][6] == 'b':
+            points_id[a]['points_detective'] = points_id[a]['points_detective'] + 1
+        elif answer['answers'][6] == 'c':
+            points_id[a]['points_adventurer'] = points_id[a]['points_adventurer'] + 1
+        elif answer['answers'][6] == 'd':
             points_id[a]['points_wizard'] = points_id[a]['points_wizard'] + 1
         a = a + 1
 
