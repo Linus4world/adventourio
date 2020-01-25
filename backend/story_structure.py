@@ -6,46 +6,94 @@ import random
 # 1. A blank is filled in with a word from a list
 # 2. A blank is filled with a random word
 class Blank:
-    def __init__(self, words=None, w_type='', random_word=False):
+    def __init__(self, words=None, w_type='', random_word=False, keep_initial_word=True):
         self.words = words
         self.w_type = w_type
         self.random_word = random_word
+        self.keep_initial_word = keep_initial_word
+
+    def fill_in_the_blank(self):
+        return 'dummy word'
 
     def fill_in_the_blank_with_random_word(self):
-        pass
+        return 'random word'
+
+    def pick_a_word_from_list(self):
+        return random.choice(self.words)
 
 
 class Challenge:
-    pass
+    def __init__(self, challenge_text='', options=None, location=''):
+        self.challenge_text = challenge_text
+        self.options = options
+        self.location = location
+
+    def run_challenge(self):
+        print("CHALLENGE RUNNING!")
+#
+# class UserInput:
+#     def __init__(self, name='', q_type='', scenario_mapping=None, weight=0, answer=''):
+#         self.name = name
+#         self.q_type = q_type
+#         # Maps the user input to a scenario.name dict(option_A='scenario1',option_B='scenario2')
+#         self.scenario_mapping = scenario_mapping
+#         self.weight = weight
+#         self.answer = answer
 
 
-class UserInput:
-    def __init__(self, name='', q_type='', scenario_mapping=None, weight=0, answer=''):
-        self.name = name
-        self.q_type = q_type
-        # Maps the user input to a scenario.name dict(option_A='scenario1',option_B='scenario2')
-        self.scenario_mapping = scenario_mapping
-        self.weight = weight
-        self.answer = answer
+class Stage:
+    def __init__(self):
+        self.end = False
+        self.beginning = False
+        self.sub_stages = []
+        self.sub_stage_probabilities = []
+
+    def add_sub_stage(self, plot, location):
+        # Split the strings in plot using '~' as a separator
+        splitted_plot = []
+        for txt in plot:
+            splitted_plot += txt.split('~')
+        sub_stage = SubStage(splitted_plot, location)
+        self.sub_stages.append(sub_stage)
+
+    def pick_a_sub_stage(self):
+        # Dummy functionality:
+        return random.choice(self.sub_stages)
+
+
+class SubStage:
+    def __init__(self, plot, location):
+        self.plot = plot  # array of stings!
+        self.location = location
 
 
 class Story:
     def __init__(self):
         self.story_name = ''
         self.stages = []
-        self.challenges = []
+        self.challenges = {}
         self.blanks = {}
         self.questions = []  # Nice to have
 
-    # def run_story(self):
-    #     user_inputs = None
-    #     for stage in self.stages:
-    #         scenario = stage.get_next_scenario(user_inputs)
-    #         scenario.run_scenario()
-    #         user_inputs = scenario.user_inputs
+    def run_story(self):
+        pass
 
     def dummy_run_story(self):
-        pass
+        for stage in self.stages:
+            sub_stage = stage.pick_a_sub_stage()
+            for txt in sub_stage.plot:
+                if len(txt) == 3:
+                    # Challenge
+                    if txt[0] == 'C':
+                        if txt in self.challenges.keys():
+                            self.challenges[txt].run_challenge()
+                    # Blank
+                    elif txt[0] == 'B':
+                        if txt in self.blanks.keys():
+                            word = self.blanks[txt].fill_in_the_blank()
+                            print(word, end='')
+                else:
+                    print(txt, end='')
 
     # Load a story from a json file. It's a nice to have
     def load_story(self):
@@ -55,25 +103,25 @@ class Story:
     def add_question(self, question_key, question_text):
         pass
 
-    def add_blank(self, blank_key, words):
-        self.blanks[blank_key] = Blank(words=words)
+    def add_blank(self, blank_key, words, keep_initial_word=True):
+        self.blanks['B' + blank_key] = Blank(words=words, keep_initial_word=keep_initial_word)
 
-    def add_blank_random(self, blank_key, w_type):
-        self.blanks[blank_key] = Blank(w_type=w_type, random_word=True)
+    def add_blank_random(self, blank_key, w_type, keep_initial_word=True):
+        self.blanks['B' + blank_key] = Blank(w_type=w_type, random_word=True, keep_initial_word=keep_initial_word)
 
     def add_challenge_multiple_choice(self, challenge_key, challenge_text, options):
-        pass
+        self.challenges['C' + challenge_key] = Challenge(challenge_text=challenge_text, options=options)
 
     def add_challenge_location_based(self, challenge_key, challenge_text, location):
-        pass
+        self.challenges['C' + challenge_key] = Challenge(challenge_text=challenge_text, location=location)
 
     def add_challenge_text_input(self, challenge_key, challenge_text):
-        pass
+        self.challenges['C' + challenge_key] = Challenge(challenge_text=challenge_text)
 
     def add_stage(self, stage):
         self.stages.append(stage)
 
-    def set_up(self):
+    def setup(self):
         self.add_blank('00', ['interesting', 'wise'])
         self.add_blank_random('01', 'adjective')
 
@@ -83,128 +131,14 @@ class Story:
 
         intro = Stage()
         intro.add_sub_stage([
-            'Hello',
-            'Welcome to this story',
-            '~challenge:00~',
-            'What a ~blank:00~ answer!',
-            'I feel very ~blank:01~ today',
-        ])
+            'Hello \n',
+            'Welcome to this story \n',
+            'C00',
+            'What a ~B00~ answer! \n',
+            'I feel very ~B01~ today \n',
+        ], 'location one')
 
-
-
-    # @staticmethod
-    # def setup():
-    #     # Creating the intro
-    #     intro = SubStage()
-    #
-    #     intro.add_blank(blank_key='B1', words=['beautiful', 'ugly'])
-    #     intro.add_blank(blank_key='B2', w_type='adjective', random_word=True)
-    #
-    #     intro.add_user_input(input_key='I1', name='Question name')
-    #     intro.add_user_input(input_key='I2', q_type='multiple choice', scenario_mapping=dict(A='scenario1', B='scenario2'),
-    #                          weight=1)
-    #
-    #     intro.plot = ['Hello, how are you doing in this ',
-    #                   'B1',
-    #                   ' day?',
-    #                   'I1',
-    #                   'Oh I am very ',
-    #                   'B2',
-    #                   ' that you are doing ',
-    #                   'A1',
-    #                   '\nWould you like to do A or B?',
-    #                   'I2',
-    #                   'Some more text\n']
-    #
-    #     story.chapters.append(Stage([intro]))
-    #
-    #     # Creating two more scenarios
-    #
-    #     scenario1 = SubStage()
-    #     scenario1.plot = ['PLOT A']
-    #     scenario1.name = 'scenario1'
-    #     scenario2 = SubStage()
-    #     scenario2.plot = ['PLOT B']
-    #     scenario2.name = 'scenario2'
-    #
-    #     story.chapters.append(Stage([scenario1, scenario2]))
-
-class Stage:
-    def __init__(self):
-        self.end = False
-        self.beginning = False
-        self.sub_stages = []
-        self.sub_stage_probabilities = []
-
-    def add_sub_stage(self, plot):
-        self.sub_stages.append(plot)
-
-    # def get_next_scenario(self, user_inputs):
-    #     next_scenario = SubStage()
-    #     if user_inputs is not None:
-    #         for user_input in user_inputs.values():
-    #             # Multiple Choice
-    #             if user_input.q_type == 'multiple choice':
-    #                 for c, scenario in enumerate(self.scenarios):
-    #                     scenario_picked_by_user = user_input.scenario_mapping[user_input.answer]
-    #                     if scenario_picked_by_user == scenario.name:
-    #                         self.scenario_probabilities[c] += user_input.weight
-    #
-    #         next_scenario = self.scenarios[np.argmax(self.scenario_probabilities)]
-    #
-    #     else:
-    #         next_scenario = random.choice(self.scenarios)
-    #     return next_scenario
-
-
-class SubStage:
-    def __init__(self, sub_stage_name, plot, location):
-        self.sub_stage_name = sub_stage_name
-        self.plot = plot  # array of stings!
-        self.location = location
-
-    # # This function can later used to add blanks from a dictionary or Wikipedia!
-    # def add_blank(self, blank_key, name='', w_type='', words=None, random_word=False):
-    #     self.blanks[blank_key] = Blank(name=name, words=words, w_type=w_type, random_word=random_word)
-    #
-    # def add_user_input(self, input_key='', name='', q_type='', scenario_mapping=None, weight=0, answer=''):
-    #     self.user_inputs[input_key] = UserInput(name=name, q_type=q_type, scenario_mapping=scenario_mapping, weight=weight,
-    #                                             answer=answer)
-    #
-    # def store_user_answer(self, input_key, answer):
-    #     self.user_inputs[input_key].answer = answer
-    #
-    # # Replace all blank.name for a word from the blank.words list in the plot
-    # def fill_in_the_blank(self, blank_key):
-    #     word = ''
-    #     if blank_key in self.blanks.keys():
-    #         if self.blanks[blank_key].random_word:
-    #             word = get_random_word(self.blanks[blank_key].w_type)
-    #         else:
-    #             word = random.choice(self.blanks[blank_key].words)
-    #     return word
-    #
-    # def run_scenario(self):
-    #
-    #     for txt in self.plot:
-    #         if len(txt) == 2:
-    #             # Input
-    #             if txt[0] == 'I' and txt[1].isnumeric():
-    #                 input_key = txt
-    #                 answer = input("\n> ")
-    #                 self.store_user_answer(input_key=input_key, answer=answer)
-    #             # Blank
-    #             elif txt[0] == 'B' and txt[1].isnumeric():
-    #                 blank_key = txt
-    #                 blank = self.fill_in_the_blank(blank_key)
-    #                 print(blank, end='')
-    #             # Answer: Gives back a user input in the text
-    #             elif txt[0] == 'A' and txt[1].isnumeric():
-    #                 input_key = 'I' + txt[1]
-    #                 user_answer = self.user_inputs[input_key].answer
-    #                 print(user_answer, end='')
-    #         else:
-    #             print(txt, end='')
+        self.add_stage(intro)
 
 
 if __name__ == "__main__":
