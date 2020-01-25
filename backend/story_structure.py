@@ -76,7 +76,7 @@ class Story:
         story.chapters.append(Chapter([scenario1, scenario2]))
 
 
-class Chapter:
+class Chapter: #stage
     def __init__(self, scenarios):
         self.end = False
         self.beginning = False
@@ -101,7 +101,7 @@ class Chapter:
         return next_scenario
 
 
-class Scenario:
+class Scenario: #substage
     def __init__(self):
         self.name = ''
         self.location = ''
@@ -129,6 +129,9 @@ class Scenario:
             else:
                 word = random.choice(self.blanks[blank_key].words)
         return word
+
+    def determine_substage3(challenge_outcome):
+        
 
     def run_scenario(self):
 
