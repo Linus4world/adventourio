@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonSlides, NavController, LoadingController } from '@ionic/angular';
 import { GameProvider, Questionnaire, QuestionnaireAnswers, Session } from '../provider/game.provider';
+import { Account } from '../provider/account.provider';
 
 @Component({
   selector: 'app-questionaire-page',
@@ -16,13 +17,19 @@ export class QuestionairePage {
   };
 
   questionnaire: Questionnaire = { questions: undefined };
-  answers: QuestionnaireAnswers = {};
+  answers: QuestionnaireAnswers = {name: undefined, answers: []};
 
-  constructor(private navCtrl: NavController, private game: GameProvider, private loadingController: LoadingController) {
+  constructor(
+    private navCtrl: NavController,
+    private game: GameProvider,
+    private loadingController: LoadingController,
+    private account: Account) {
+    this.account.isReady.subscribe(() => this.answers.name = this.account.getName());
+
     this.game.loadQuestionnaire().subscribe(q => {
       this.questionnaire = q;
-      for (const question of this.questionnaire.questions) {
-        this.answers[question.id] = question.answers[0];
+      for (let i = 0; i < this.questionnaire.questions.length; i++) {
+        this.answers.answers[i] = this.questionnaire.questions[i].answers[0];
       }
     });
   }
