@@ -3,7 +3,7 @@
     {
       "id": 1,
       "question": "What places do you want to visit today?",
-      "answers": [
+      "options": [
         "Entertainment",
         "University",
         "Sightseeing"
@@ -12,7 +12,7 @@
     {
       "id": 2,
       "question": "Do you speak German?",
-      "answers": [
+      "options": [
         "yes",
         "no"
       ]
@@ -20,7 +20,7 @@
     {
       "id": 3,
       "question": "Do you mind drinking alcohol today?",
-      "answers": [
+      "options": [
         "yes",
         "no"
       ]
@@ -28,7 +28,7 @@
     {
       "id": 4,
       "question": "What is your favourite movie genre?",
-      "answers": [
+      "options": [
         "Adventure/action",
         "Science-fiction",
         "Fantasy",
@@ -38,7 +38,7 @@
     {
       "id": 5,
       "question": "Why did you decide to do an exchange semester?",
-      "answers": [
+      "options": [
         "To experience other cultures",
         "Because it’s fun",
         "To get away from where I normally live",
@@ -48,7 +48,7 @@
     {
       "id": 6,
       "question": "Which one of those places in Munich have you already visited? (if you've seen more than one of the options, pick the one you like most)",
-      "answers": [
+      "options": [
         "Deutsches Museum",
         "Oktoberfest",
         "any restaurant with typical German cuisine",
@@ -58,7 +58,7 @@
     {
       "id": 7,
       "question": "Who did you hang out with in Munich up till now?",
-      "answers": [
+      "options": [
         "mostly friends from the university",
         "lots of people from Germany",
         "friends who came here with me",

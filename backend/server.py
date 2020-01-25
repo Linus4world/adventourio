@@ -17,32 +17,42 @@ def hello_world():
     return {'hello': 'Hello, World!'}
 
 
-@app.route('/questionnaire', methods=['GET', 'POST'])
+@app.route('/questionnaire', methods=['GET'])
 def givingquestionnaire():
-    if request.method == 'GET':
-        with open("questionnaire.json", 'r', encoding='utf-8') as questionnaire:
-            return json.load(questionnaire)
-    elif request.method == 'POST':
-        answers = request.get_json()
-        # character_assignment(answers)
-        return SUCCESS
+    with open("questionnaire.json", 'r', encoding='utf-8') as questionnaire:
+        return json.load(questionnaire)
 
-
-@app.route('/places')
-def places():
-    with open("places.json") as place:
-        return json.load(place)
-
-@app.route('/join/<id>')
+@app.route('/join/<id>', methods = ['POST'])
 def join(id):
-   return SUCCESS
+    answers = request.get_json()
+        # character_assignment(answers)
+    return json.dumps({
+        "playerNames": ["Elise", "Thomas", "Berta", "Linus"]
+    })
 
-@app.route('/quest/<id>')
+@app.route('/stage/<id>', methods = ['POST'])
 def next_sub_stage(id):
-   return json.dumps({
-       "story": ['One', 'Two'],
-       "goalLocation": [48.149116,11.567532]
+    challengeOutcome = request.get_json()
+    return json.dumps({
+        "story": ['One', 'Two'],
+        "destinationCoords": [48.149116,11.567532],
+        "destinationName": "TUM Stammgelände",
+        "challenge": {
+            "challenge": 'Was ist ein Wolpertinger?',
+            "challenge_type": 1,
+            "answers": [
+                'Ein Wolf',
+                'Ein Hase',
+                'Ein Vogel',
+                'Ein Fabelwesen'
+                ],
+                "right_answer": 'Ein Fabelwesen'
+        }
    })
+
+@app.route('/here/<id>')
+def here(id):
+   return SUCCESS
 
 
 if __name__ == '__main__':
