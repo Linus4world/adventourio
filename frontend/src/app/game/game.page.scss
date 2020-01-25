@@ -3,3 +3,19 @@
     width: 100%;
     height: 100%;
 }
+
+.task{
+    position: absolute;
+    top: 50px;
+    width: 70%;
+    left: 50%;
+    
+    .task-content {
+        position: relative;
+        left: -50%;
+        // border-radius: 25px;
+        border: 2px solid black;
+        background-color: burlywood;
+    }
+}
+

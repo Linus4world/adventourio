@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Challenge Time!</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-margin ion-padding">
+  <div id="challenge" class="ion-padding">
+    <h1 class="ion-no-margin">{{challenge.challenge}}</h1>
+  </div>
+  <ion-radio-group *ngIf="challenge.challenge_type === 1" [(ngModel)]="answer">
+    <ion-list-header>
+      <ion-label>Please coose one</ion-label>
+    </ion-list-header>
+
+    <ion-item *ngFor="let option of challenge.answers">
+      <ion-label class="word-wrap">{{option}}</ion-label>
+      <ion-radio slot="start" [value]="option"></ion-radio>
+    </ion-item>
+  </ion-radio-group>
+
+  <div class="absolute">
+    <ion-button expand="block" [disabled]="!answer" (click)="submit()">
+      Submit
+    </ion-button>
+  </div>
+
+</ion-content>

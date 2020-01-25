@@ -21,15 +21,21 @@ export interface Questionnaire {
 }
 
 export interface QuestionnaireAnswers {
-        [questionId: number]: string;
+    name: string;
+    answers: string[];
 }
 
 export interface  Quest {
     story: string[];
-    goalLocation: {
-        lat: number,
-        long: number
-    };
+    goalLocation: number[];
+    challenge: Challenge;
+}
+
+export interface Challenge {
+    challenge: string;
+    challenge_type: number;
+    answers?: string[];
+    right_answer: string | number[];
 }
 
 /**
