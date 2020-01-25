@@ -41,10 +41,7 @@ def join(id):
 def next_quest(id):
    return json.dumps({
        "story": ['One', 'Two'],
-       "goalLocation": {
-           "lat": 48.2427456,
-           "long": 11.6597312
-       }
+       "goalLocation": [48.149116,11.567532]
    })
 
 

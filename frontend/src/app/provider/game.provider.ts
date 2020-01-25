@@ -28,6 +28,14 @@ export interface QuestionnaireAnswers {
 export interface  Quest {
     story: string[];
     goalLocation: number[];
+    challenge: Challenge;
+}
+
+export interface Challenge {
+    challenge: string;
+    challenge_type: number;
+    answers?: string[];
+    right_answer: string | number[];
 }
 
 /**
