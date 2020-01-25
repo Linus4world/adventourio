@@ -130,8 +130,25 @@ class Scenario: #substage
                 word = random.choice(self.blanks[blank_key].words)
         return word
 
-    def determine_substage3(challenge_outcome):
-        
+#option choice is dependent on: random number, if players succeeded in LAST task, with what probability the outcomes of the previous stages were selected
+#option choice returns a PROBABILITY to select a good/bad outcome in substage3
+    def determine_substage3(challenge_outcome, prob_array): #challenge outcome is 0 for "failed task" and 1 for "achieved task"
+    #prob_array is a list of tuples like [(0.82, "good"), (0.63, "bad")]
+        total_val = 0;
+        rand_num = round(random.uniform(-1, 1),2);
+        good_probability = max(min(challenge_outcome + rand_num, 1), 0); #all calculations performed for probability to get good event
+        for el in prob_array:
+          if el[1] == "bad":
+              val = -1 * el[0];
+          else:
+              val = el[0];
+          total_val = total_val + val;
+        good_probability = max(min(good_probability + total_val, 1), 0);
+        if (good_probability >= 0.5):
+            prob_array.append((good_probability, "good"));
+        else:
+            prob_array.append((1-good_probability, "bad")); #gets probability for bad event
+        return prob_array;
 
     def run_scenario(self):
 
