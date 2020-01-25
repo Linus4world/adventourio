@@ -150,8 +150,13 @@ class Scenario: #substage
             prob:array.append((1-good_probability, "bad")); #gets probability for bad event
         return prob_array;
 
-    def run_scenario(self):
+    def generate_random_word():
+        adventurer_item =
+        alien_item =
+        magician_item =
+        detective_weapon =
 
+    def run_scenario(self):
         for txt in self.plot:
             if len(txt) == 2:
                 # Input
