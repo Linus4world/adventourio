@@ -147,7 +147,7 @@ class Scenario: #substage
         if (good_probability >= 0.5):
             prob_array.append((good_probability, "good"));
         else:
-            prob_array.append((1-good_probability, "bad")); #gets probability for bad event
+            prob:array.append((1-good_probability, "bad")); #gets probability for bad event
         return prob_array;
 
     def run_scenario(self):
