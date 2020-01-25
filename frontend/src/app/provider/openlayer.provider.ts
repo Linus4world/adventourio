@@ -24,10 +24,12 @@ export class OpenlayerProvider {
      * A marker indicating the user's current position
      */
     private marker: Feature;
+    private playerPos: {lat: number, long: number} = {lat: undefined, long: undefined};
     /**
      * A marker indicating the user's current target
      */
     private target: Feature;
+    private targetPos: {lat: number, long: number} = {lat: undefined, long: undefined};
 
     constructor() { }
 
@@ -108,6 +110,8 @@ export class OpenlayerProvider {
      */
     private setMarker(lat: number, long: number) {
         this.marker.setGeometry(new Point(fromLonLat([long, lat])));
+        this.playerPos.lat = lat;
+        this.playerPos.long = long;
     }
 
     /**
@@ -119,8 +123,17 @@ export class OpenlayerProvider {
         if (unset) {
             this.target.setGeometry(undefined);
         } else {
-        this.target.setGeometry(new Point(fromLonLat([long, lat])));
+            this.target.setGeometry(new Point(fromLonLat([long, lat])));
+            this.targetPos.lat = lat;
+            this.targetPos.long = long;
         }
+    }
+
+    public hasReachedGoal(): boolean {
+        return Math.sqrt(
+            Math.pow(this.playerPos.lat - this.targetPos.lat, 2) +
+            Math.pow(this.playerPos.long - this.targetPos.long, 2))
+            < 0.0004;
     }
 
 }
