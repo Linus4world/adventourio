@@ -1,13 +1,16 @@
-from flask import Flask
+from flask import Flask, jsonify
 from flask_cors import CORS, cross_origin
 from flask import request
 import json
+from session import Session
 from characters import character_assignment
 
 app = Flask(__name__)
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
+# TODO change the param to 4 for real scenario!
+session = Session(2)
 SUCCESS = json.dumps({'success':True}), 200, {'ContentType':'application/json'}
 
 
@@ -25,10 +28,24 @@ def givingquestionnaire():
 @app.route('/join/<id>', methods = ['POST'])
 def join(id):
     answers = request.get_json()
-        # character_assignment(answers)
-    return json.dumps({
-        "playerNames": ["Elise", "Thomas", "Berta", "Linus"]
-    })
+
+    global session
+    if session.isFull():
+        return abort('Session is full!')
+    session.addPlayer(id, answers["name"], answers["answers"])
+    if session.wait_for_full_session():
+        # TODO @Agata prepare all_answers object
+        # 
+        # all_answers = ...
+        # character_assignment(all_answers)
+        # return json.dumps({
+        #     "playerNames": session.playerNames
+        # })
+
+        return json.dumps({
+            "playerNames": ["Elise", "Thomas", "Berta", "Linus"]
+        })
+    return abort('No other players found :(')
 
 @app.route('/stage/<id>', methods = ['POST'])
 def next_sub_stage(id):
@@ -54,6 +71,13 @@ def next_sub_stage(id):
 def here(id):
    return SUCCESS
 
+def abort(message: str):
+    """
+    returns an error response with the given message
+    """
+    response = jsonify({'message': message})
+    response.status_code = 400
+    return response
 
 if __name__ == '__main__':
     app.run()
