@@ -1,10 +1,9 @@
-from flask import Flask
+from flask import Flask, jsonify
 from flask_cors import CORS, cross_origin
 from flask import request
 import json
 from session import Session
 from characters import character_assignment
-from werkzeug.exceptions import abort
 
 app = Flask(__name__)
 cors = CORS(app)
@@ -32,7 +31,7 @@ def join(id):
 
     global session
     if session.isFull():
-        abort(400, 'Session is full!')
+        return abort('Session is full!')
     session.addPlayer(id, answers["name"], answers["answers"])
     if session.wait_for_full_session():
         # TODO @Agata prepare all_answers object
@@ -46,8 +45,7 @@ def join(id):
         return json.dumps({
             "playerNames": ["Elise", "Thomas", "Berta", "Linus"]
         })
-
-    abort(400, 'No other players found :(')
+    return abort('No other players found :(')
 
 @app.route('/stage/<id>', methods = ['POST'])
 def next_sub_stage(id):
@@ -73,6 +71,13 @@ def next_sub_stage(id):
 def here(id):
    return SUCCESS
 
+def abort(message: str):
+    """
+    returns an error response with the given message
+    """
+    response = jsonify({'message': message})
+    response.status_code = 400
+    return response
 
 if __name__ == '__main__':
     app.run()
