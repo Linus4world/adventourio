@@ -1,7 +1,7 @@
 from time import sleep
 
 class Session:
-    MAX_WAIT = 60000
+    MAX_WAIT = 50000
     playerIds = []
     playerNames = []
     playerAnswers = []
