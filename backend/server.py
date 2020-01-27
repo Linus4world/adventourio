@@ -33,18 +33,16 @@ def join(id):
     if session.isFull():
         return abort('Session is full!')
     session.addPlayer(id, answers["name"], answers["answers"])
+    doCharacterAssignment = session.isFull()
     if session.wait_for_full_session():
-        # TODO @Agata prepare all_answers object
-        # 
-        # all_answers = ...
-        # character_assignment(all_answers)
-        # return json.dumps({
-        #     "playerNames": session.playerNames
-        # })
+        if doCharacterAssignment:
+            pass
+            # TODO @Agata prepare all_answers object
+            # 
+            # all_answers = ...
+            # character_assignment(all_answers)
 
-        return json.dumps({
-            "playerNames": ["Elise", "Thomas", "Berta", "Linus"]
-        })
+        return json.dumps({"playerNames": session.playerNames})
     return abort('No other players found :(')
 
 @app.route('/stage/<id>', methods = ['POST'])
