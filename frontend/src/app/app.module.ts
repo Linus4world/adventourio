@@ -17,7 +17,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { GeolocationProvider } from './provider/geolocation.provider';
 import { OpenlayerProvider } from './provider/openlayer.provider';
 import { GameProvider } from './provider/game.provider';
-import { ChallengePageModule } from './challenge/challenge.module';
+import { ChallengePageModule } from './modals/challenge/challenge.module';
+import { StoryPageModule } from './modals/story/story.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -28,7 +29,9 @@ import { ChallengePageModule } from './challenge/challenge.module';
     IonicModule.forRoot(),
     IonicStorageModule.forRoot(),
     AppRoutingModule,
-    ChallengePageModule],
+    ChallengePageModule,
+    StoryPageModule
+  ],
   providers: [
     StatusBar,
     SplashScreen,

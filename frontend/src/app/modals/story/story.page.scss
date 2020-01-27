@@ -1,0 +1,26 @@
+ion-content {
+    --background: #ffffff url('../../../assets/parchment.jpg') no-repeat center center / cover;
+    text-align: center;
+}
+
+ion-header {
+    --background: #ffffff url('../../../assets/parchment.jpg') no-repeat center center / cover;
+    position: absolute;
+    top: 0;
+}
+
+ion-slide {
+    padding: 2em;
+    // align-items: start;
+    overflow: scroll;
+    flex-direction: column;
+    text-align: center;
+}
+
+.full-height{
+    height: 100%;
+}
+
+ion-button {
+    width: 80%;
+}

@@ -1,0 +1,20 @@
+ion-content {
+    text-align: center;
+}
+
+#challenge {
+    background-color: turquoise;
+    border-radius: 25px;
+    border: 1px solid black
+}
+
+.absolute {
+    position: absolute;
+    bottom: 20px;
+    width: 80%;
+    left: 50%;
+    ion-button {
+        position: relative;
+        left: -50%;
+    }
+}

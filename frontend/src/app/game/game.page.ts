@@ -5,7 +5,8 @@ import { GameProvider } from '../provider/game.provider';
 import { Geoposition } from '@ionic-native/geolocation/ngx';
 import { Stage } from '../provider/models';
 import { Platform, ModalController, NavController } from '@ionic/angular';
-import { ChallengePage } from '../challenge/challenge.page';
+import { ChallengePage } from '../modals/challenge/challenge.page';
+import { StoryPage } from '../modals/story/story.page';
 
 @Component({
   selector: 'app-game',
@@ -15,7 +16,6 @@ import { ChallengePage } from '../challenge/challenge.page';
 export class GamePage implements AfterViewInit {
 
   stage: Stage;
-  storyPointer = 0;
 
   constructor(
     private geolocationProvider: GeolocationProvider,
@@ -57,19 +57,13 @@ export class GamePage implements AfterViewInit {
       console.log('new stage:', stage);
       this.zone.run(() => {
         this.stage = stage;
+        this.presentStoryPage();
       });
 
       if (stage.challenge) {
         this.openlayersProvider.setCurrentTarget(stage.destinationCoords[0], stage.destinationCoords[1]);
       }
     });
-  }
-
-  showNextStoryPart() {
-    this.storyPointer++;
-    if (this.storyPointer >= this.stage.story.length && !this.stage.challenge) {
-      this.navCtrl.navigateRoot('main');
-    }
   }
 
   jumpToTarget() {
@@ -86,6 +80,21 @@ export class GamePage implements AfterViewInit {
       }
     });
     modal.onDidDismiss().then(o => this.getNewQuest(o.data));
+    return await modal.present();
+  }
+
+  async presentStoryPage() {
+    const modal = await this.modalController.create({
+      component: StoryPage,
+      componentProps: {
+        story: this.stage.story,
+      }
+    });
+    modal.onDidDismiss().then(() => {
+      if (!this.stage.challenge) {
+        this.navCtrl.navigateRoot('main');
+      }
+    });
     return await modal.present();
   }
 

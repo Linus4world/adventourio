@@ -16,13 +16,17 @@ const routes: Routes = [
     path: 'game', loadChildren: './game/game.module#GamePageModule', canLoad: [LoadingGuard]
   },
   {
-    path: 'challenge', loadChildren: './challenge/challenge.module#ChallengePageModule', canLoad: [LoadingGuard]
+    path: 'challenge', loadChildren: './modals/challenge/challenge.module#ChallengePageModule', canLoad: [LoadingGuard]
+  },
+  {
+    path: 'story', loadChildren: './modals/story/story.module#StoryPageModule', canLoad: [LoadingGuard]
   },
   {
     path: '',
     redirectTo: '/main',
     pathMatch: 'full'
-  }
+  },
+
 ];
 @NgModule({
   imports: [

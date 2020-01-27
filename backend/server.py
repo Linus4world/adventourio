@@ -49,7 +49,10 @@ def join(id):
 def next_sub_stage(id):
     challengeOutcome = request.get_json()
     return json.dumps({
-        "story": ['One', 'Two'],
+        "story": [
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas scelerisque urna dolor, ac pellentesque neque mollis vel. Etiam nec semper nulla. In hac habitasse platea dictumst. Proin fermentum quis urna sit amet porta. Nunc sed feugiat orci. Quisque leo magna, scelerisque et ipsum vitae, volutpat egestas sapien. Quisque metus enim, vestibulum nec viverra gravida, elementum ut dolor.',
+            'Etiam efficitur arcu vitae enim tristique fermentum. Donec sit amet cursus ligula. Mauris facilisis sollicitudin cursus. Aenean eu lacus tortor. Ut dapibus, leo a molestie blandit, sapien eros vestibulum metus, sit amet suscipit felis nunc in augue. Aenean a rhoncus magna. Nullam elementum quam orci, nec mattis mauris dignissim non. Cras pellentesque eget tellus quis mattis. Nullam at leo a enim imperdiet bibendum. Donec volutpat dolor vel lectus molestie, ac tristique arcu varius. Vestibulum blandit maximus massa, eget blandit enim. Cras id ligula dolor. Cras eget sem sed est convallis vulputate. Curabitur consectetur nunc quam, vitae pharetra ipsum venenatis vel.'
+            ],
         "destinationCoords": [48.149116,11.567532],
         "destinationName": "TUM Stammgelände",
         "challenge": {

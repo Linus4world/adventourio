@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Challenge } from '../provider/models';
+import { Challenge } from '../../provider/models';
 import { ModalController } from '@ionic/angular';
 
 @Component({
