@@ -11,9 +11,16 @@
             {
               "id": 1,
               "title": "StudentenStadt - rotes Haus bistro",
-              "description": null,
               "challenge": "There is a bell, hanging somewhere in the Bistro. You need to find out what happens, if you ring it, but be careful! If you do it yourself, you have to deal with the consequences on your own...",
-              "last": true
+              "last": true,
+              "coordinates": [48.183376, 11.609854],
+              "challenge_type": 1,
+              "options": [
+                "you have to ex a beer",
+                "You have to buy everyone a shot",
+                "you have to buy everyone a beer"
+              ],
+              "right_answer": "You have to buy everyone a shot"
             }
           ]
         },
@@ -24,16 +31,21 @@
             {
               "id": 1,
               "title": "Bierstube",
-              "description": null,
               "challenge": "Challenge any person in the bar to play table football with you. Can you win against them?",
-              "last": true
+              "last": true,
+              "coordinates": [48.180125, 11.553167],
+              "challenge_type": 1,
+              "options": ["I won!", "Unfortunately, I lost..."],
+              "right_answer": "I won!"
             },
             {
               "id": null,
-              "title": "Hans im Gluck",
-              "description": null,
+              "title": "HANS IM GLÜCK",
               "challenge": "Hans is a very old, common German name. Can you name the most common German surname?",
-              "last": true
+              "last": true,
+              "coordinates": [48.182634, 11.586313],
+              "challenge_type": 2,
+              "right_answer": ["Mueller", "Müller", "Muller"]
             }
           ]
         },
@@ -44,17 +56,21 @@
             {
               "id": 6,
               "title": "TU Film",
-              "description": null,
               "challenge": "Each Christmas, there is a tradition of showing a certain old movie three times here. Find out which movie it is!",
-              "last": true
+              "last": true,
+              "coordinates": [48.148261, 11.568440],
+              "challenge_type": 1,
+              "options": ["drei haselnüsse für aschenbrödel", "Feuerzangenbowle", "Weihnachten bei Hoppenstedts"],
+              "right_answer": "Feuerzangenbowle"
             },
             {
               "id": 2,
               "title": "Schelling-salon",
-              "description": null,
               "challenge": "Which known German historical figure was banned from visiting this establishment for not paying their bills?",
-              "answer": "Hitler",
-              "last": true
+              "last": true,
+              "challenge_type": 1,
+              "options": ["Adolf Hitler", "Ludwig van Beethoven", "Friedrich Nietzsche"],
+              "right_answer": "Adolf Hitler"
             }
           ]
         },
@@ -65,29 +81,29 @@
             {
               "id": null,
               "title": "StudentenStadt - Manhattan",
-              "description": null,
               "challenge": null,
+              "coordinates": [48.183922, 11.611094],
               "last": true
             },
             {
               "id": null,
               "title": "Neuraum club",
-              "description": null,
               "challenge": null,
+              "coordinates": [48.142432, 11.551213],
               "last": true
             },
             {
               "id": null,
               "title": "Barschwein",
-              "description": null,
               "challenge": null,
+              "coordinates": [48.160956, 11.587559],
               "last": true
             },
             {
               "id": 5,
               "title": "Englischer Garten",
-              "description": null,
               "challenge": null,
+              "coordinates": [48.149837, 11.586065],
               "last": true
             }
           ]
@@ -105,20 +121,29 @@
             {
               "id": 1,
               "title": "StudentenStadt",
-              "description": null,
-              "challenge": "If you stand at the main square, and look around, there are four buildings around you. Find out, what is each common title!"
+              "challenge": "If you stand at the main square, and look around, there are four buildings around you. Find out, what is each common title!",
+              "last": true,
+              "coordinates": [48.183223, 11.611956],
+              "challenge_type": 1,
+              "options": ["Twins, Small house, big house", "Eastern, western, northern and southern house", "red house, blue house, orange house, HSH"],
+              "right_answer": "red house, blue house, orange house, HSH"
             },
             {
               "id": 2,
               "title": "StudiTUM",
-              "description": null,
-              "challenge": "you may not neccesairly be able to come in by yourself. Find out a way to do it!"
+              "challenge": "you may not necessarily be able to come in by yourself. Find out a way to do it!",
+              "last": false,
+              "coordinates": [48.266932, 11.670564],
+              "challenge_type": 3
             },
             {
               "id": 3,
               "title": "Mensa Innenstadt",
-              "description": null,
-              "challenge": "There is a nice cafe somewehere in here, with a kind of crazy title. Can you find it?"
+              "challenge": "There is a nice cafe somewhere in here, with a kind of crazy title. Can you find it?",
+              "last": false,
+              "coordinates": [48.147373, 11.567841],
+              "challenge_type": 2,
+              "right_answer": "crazy beans"
             }
           ]
         },
@@ -129,14 +154,14 @@
             {
               "id": 1,
               "title": "Georg-Kühne-Zeichensaal (5505.01.550)",
-              "description": null,
-              "challenge": "Do you see those groups of people with drawings of mechanical parts? Go to them, and find out which subject they are trying to pass – the hardest and longest...subject in the Machine Course. Careful! You need to write the full title, no typos allowed!"
+              "challenge": "Do you see those groups of people with drawings of mechanical parts? Go to them, and find out which subject they are trying to pass – the hardest and longest subject in the Machine Course. Careful! You need to write the full title, no typos allowed!",
+              "coordinates": [48.265293,11.668696]
             },
             {
               "id": 2,
               "title": "Physik Bibliothek",
-              "description": null,
-              "challenge": "Well then, physics library, huh? Not many people know about it, since it’s so hidden! Congratulation for finding it! Now, find a physic student of your choice, that does not mind being bothered, and tell him to solve this simple physics exrcise!"
+              "challenge": "Well then, physics library, huh? Not many people know about it, since it’s so hidden! Congratulation for finding it! Now, find a physic student of your choice, that does not mind being bothered, and tell him to solve this simple physics exercise!",
+              "coordinates": [48.267220,11.675893]
             }
           ]
         },
@@ -147,14 +172,19 @@
             {
               "id": 1,
               "title": "Mensa Garching",
-              "description": null,
-              "challenge": "Well, nice for you, you found the new, shiny mensa. But did you know there is also a more obscure, old one, that all locals know? Find it! It’s not that far away!"
+              "challenge": "Well, nice for you, you found the new, shiny mensa. But did you know there is also a more obscure, old one, that all locals know? Find it! It’s not that far away!",
+              "coordinates": [48.268255, 11.673076],
+              "challenge_type": 3,
+              "right_answer": [48.267203, 11.671550]
             },
             {
               "id": 2,
               "title": "TU Film",
-              "description": null,
-              "challenge": "Each Christmas, there is a tradition of showing a certain old movie three times here. Find out which movie it is!"
+              "challenge": "Each Christmas, there is a tradition of showing a certain old movie three times here. Find out which movie it is!",
+              "coordinates": [48.148261, 11.568440],
+              "challenge_type": 1,
+              "options": ["drei haselnüsse für aschenbrödel", "Feuerzangenbowle", "Weihnachten bei Hoppenstedts"],
+              "right_answer": "Feuerzangenbowle"
             }
           ]
         },
@@ -165,8 +195,8 @@
             {
               "id": 4,
               "title": "Hochbruck - Quantum",
-              "description": null,
-              "challenge": null
+              "challenge": null,
+              "coordinates": [48.249829, 11.63535]
             }
           ]
         }
@@ -183,23 +213,29 @@
             {
               "id": 1,
               "title": "Pinakotheken Wiese",
-              "description": null,
-              "challenge": "There are three different Pinakoheken. Find out, how they are all called and write it in"
+              "challenge": "There are three different Pinakoheken. Find out, how they are all called and write it in",
+              "coordinates": [48.149011, 11.570271],
+              "challenge_type": 1,
+              "options": ["neue, alte, moderne", "german, european and worldwide art", "the first, second, and third one"],
+              "right_answer": "neue, alte, moderne"
             },
             {
               "id": 2,
               "title": "Schloss Nymphenburg",
-              "description": null,
               "challenge": "Walk around the maginificent castle and it's surrounding. There are some beautiful, not often seen in a city animals around here. Can you find them and tell me what they are? Trust me, you will know once you see them!",
-              "last": false
+              "coordinates": [48.158361, 11.503840],
+              "last": false,
+              "challenge_type": 2,
+              "right_answer": ["swan", "swans"]
             },
             {
               "id": 3,
               "title": "Frauenkirche",
-              "description": null,
               "challenge": "Frauenkirche is what everyone calls this church. But suprisingly, that is not the official name. Can you find out, what is?",
-              "answer": "Münchner Dom",
-              "last": false
+              "coordinates": [48.138867, 11.57400],
+              "last": false,
+              "challenge_type": 2,
+              "right_answer": ["Münchner Dom", "Munchner Dom", "Muenchner Dom"]
             }
           ]
         },
@@ -210,16 +246,18 @@
             {
               "id": 1,
               "title": "Englischer Garten",
-              "description": null,
               "challenge": "Many locals here, enjoying their time in the nature. Without using English (each one of you is only allowed to speak in your native language!) ask one of them, how old they are and let them write it in the app",
+              "coordinates": [48.149837, 11.586065],
               "last": true
             },
             {
               "id": 2,
               "title": "BMW Museum ",
-              "description": null,
-              "challenge": "There are certain things that every local knows. Find one, and ask them to tell you what the abbreviation BMW stays for",
-              "last": false
+              "challenge": "There are certain things that every local knows. Find one, and ask them to tell you what the abbreviation BMW stays for. Careful for typos!",
+              "coordinates": [48.176966, 11.560007],
+              "last": false,
+              "challenge_type": 2,
+              "right_answer": "Bayerische Motoren Werke"
             }
           ]
         },
@@ -230,24 +268,30 @@
             {
               "id": 1,
               "title": "Odeonsplatz",
-              "description": null,
               "challenge": "Stay here for a while, and appreciate this magnificent places with such a ich history. The Odeonsplatz takes its title from the Odeon building, which currently serves as the building of the Bavarian ministry of the Interior. But it’s original role was different. Can you find out, what was it?",
-              "last": true
+              "coordinates": [48.142086, 11.578067],
+              "last": true,
+              "challenge_type": 1,
+              "options": ["theater", "house of the Bavarian king","concert hall"]
             },
             {
               "id": 2,
               "title": "Geschwister Scholl platz",
-              "description": null,
               "challenge": "A very sad, and important story, but an important one to know. Please, inform yourself about the siblings’ story, and to prove it, write in the title of the organization they belonged to.",
-              "last": false
+              "coordinates": [48.150925, 11.580656],
+              "last": false,
+              "challenge_type": 2,
+              "answer": ["Weiße Rose", "die Weiße Rose", "weisse rose", "die weisse rose", "white rose"]
             },
             {
               "id": 3,
               "title": "Deutsches Museum",
               "description": null,
               "challenge": "Not a very known fact, but this museum used to host pop and rock concerts. Can you say, which one of those famous bands performed here?",
-              "answer": "Jimi Hendrix",
-              "last": false
+              "last": false,
+              "challenge_type": 1,
+              "options": ["Metallica","Jimi Hendrix", "Helen Fischer"],
+              "right_answer": "Jimi Hendrix"
             }
           ]
         },
@@ -258,15 +302,15 @@
             {
               "id": null,
               "title": "Marienplatz",
-              "description": null,
               "challenge": null,
+              "coordinates": [48.137577, 11.575716],
               "last": true
             },
             {
               "id": null,
               "title": "Olympiastadium",
-              "description": null,
               "challenge": null,
+              "coordinates": [48.173629, 11.544555],
               "last": false
             }
           ]
