@@ -4,7 +4,7 @@ This file is for small stand alone functions
 from random_word import RandomWords
 
 
-def get_random_word(part_of_speech):
+def get_random_word_from_the_internet(part_of_speech):
     rw = RandomWords()
     return rw.get_random_word(hasDictionaryDef="true",
                               # includePartOfSpeech='adjective',
