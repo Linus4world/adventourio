@@ -123,8 +123,8 @@ class Game:
 
         # TODO: AGATA / SARAH ?
         # ----- YOUR CODE GOES HERE: -----
-        page_variation = random.choice(
-            page.page_variations)  # This is a dummy functionality to return the next page variation!
+        # This is a dummy functionality to return the next page variation!
+        page_variation = random.choice(page.page_variations)
         # --------------------------------
 
         # Filling in the blanks
