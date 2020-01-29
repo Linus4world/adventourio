@@ -12,7 +12,7 @@ import { GeolocationProvider } from './geolocation.provider';
 @Injectable()
 export class GameProvider {
     private MAX_TIMEOUT = 60000;
-    private character: string = 'adventurer';
+    private character = 'Adventurer';
 
     constructor(private http: HTTP, private account: Account, private geolocationProvider: GeolocationProvider) { }
 
