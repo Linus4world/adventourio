@@ -2,15 +2,24 @@
   <div class="center ion-no-margin">
     <img src="../../assets/logo.png">
     <h1>Welcome to Adventour.io!</h1>
-    <p>Before you can get started, we require some personal information about you to offer you the best possible user experience.</p>
+    <br>
+    <p>Make new friends on a personalized narrative-driven city quest!</p>
   </div>
-  <ion-card>
-    <ion-card-content>
-      <ion-label position="floating">How should we call you?</ion-label>
-      <ion-input minlength=1 [(ngModel)]="name" required></ion-input>
-    </ion-card-content>
-  </ion-card>
-</ion-content>
-<ion-button id="submit" expand="full" class="ion-no-margin" (click)="submit()">
-  Next
-</ion-button>
+  <form class="ion-padding">
+    <ion-list lines="full" class="ion-no-margin ion-no-padding">
+      <ion-item>
+        <ion-input type="text" minlength=1 placeholder="Username" required (input)="handleUserNameValue($event.target.value)">
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Country</ion-label>
+        <ion-select placeholder="Select" (ionChange)="handleCountryValue($event.target.value)">
+          <ion-select-option *ngFor="let country of countries" [value]="country">{{country}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+    <br><br>
+    <ion-button type="submit" id="submit" expand="block" [disabled]="name.length===0 || country.length===0" (click)="submit()">
+      Sign up
+    </ion-button>
+  </form>

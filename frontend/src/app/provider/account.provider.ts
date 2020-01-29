@@ -6,7 +6,8 @@ import { ReplaySubject } from 'rxjs';
 export enum AccountValue {
     id = 'id',
     name = 'name',
-    friends = 'friends'
+    friends = 'friends',
+    country = 'country'
 }
 
 /**
@@ -50,11 +51,22 @@ export class Account {
     }
 
     /**
+     * Returns the country of the user
+     */
+    public getCountry(): string {
+        return this.values[AccountValue.country];
+    }
+
+    /**
      * Returns the friend list of the user
      */
     public getFriends(): string[] {
         const friends = this.values[AccountValue.friends];
         return friends ? friends : [];
+    }
+
+    public get(key: string): any {
+        return this.values[key];
     }
 
     public async store(key: AccountValue, value: any): Promise<void> {

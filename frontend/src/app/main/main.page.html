@@ -1,13 +1,8 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Main</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
   <div>
     <img id=avatar src='../../assets/avatar-male.png'>
-    <h2 id=name>{{'NAME' | accountLoader}}</h2>
+    <h2 id=name>{{'name' | accountLoader}}</h2>
+    <h4>{{'country' |accountLoader}}</h4>
   </div>
 
   <div class="text-start ion-padding">
@@ -59,6 +54,7 @@
           <img *ngIf="!(i%2)" src='../../assets/avatar-female.png'>
           {{friend}}
         </div>
+        <div *ngIf="friends.length === 0">You have not made any friends yet.</div>
       </ion-card-content>
     </ion-card>
   </div>
