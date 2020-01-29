@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { Storage } from '@ionic/storage';
+import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { Account, AccountValue } from '../provider/account.provider';
 const uuidv1 = require('uuid/v1');
@@ -13,19 +12,35 @@ const uuidv1 = require('uuid/v1');
   styleUrls: ['./start.page.scss'],
 })
 export class StartPage {
-  name = 'Mr. NoName';
+  name = '';
   id: string;
+  country = '';
+  countries = [];
 
   constructor(
     private navCtrl: NavController,
-    private account: Account) { }
+    private account: Account) {
+      fetch('assets/data/countries.json').then(async res => res.json().then((data) => {
+        for (const country of data.countries) {
+          this.countries.push(country.name);
+        }
+      }));
+    }
+
+  handleUserNameValue(username: string) {
+    this.name = username;
+  }
+
+  handleCountryValue(country: string) {
+    this.country = country;
+  }
 
   async submit() {
-    await this.account.store(AccountValue.name, this.name);
     this.id = uuidv1();
-    console.log(this.id);
-    console.log(this.name);
     await this.account.store(AccountValue.id, this.id);
+    await this.account.store(AccountValue.name, this.name);
+    await this.account.store(AccountValue.country, this.country);
+    console.log(this.id, this.name, this.country);
     this.navCtrl.navigateForward('/main');
   }
 

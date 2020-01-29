@@ -128,7 +128,7 @@ export class OpenlayerProvider {
             this.targetPos.lat = lat;
             this.targetPos.long = long;
             this.view.fit(new MultiPoint([(this.marker.getGeometry() as Point).getCoordinates(),
-                (this.target.getGeometry() as Point).getCoordinates()]), {padding: [100, 100, 100, 100]});
+                (this.target.getGeometry() as Point).getCoordinates()]), {padding: [100, 50, 100, 50]});
         }
     }
 
