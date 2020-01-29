@@ -16,6 +16,7 @@ import { StoryPage } from '../modals/story/story.page';
 export class GamePage implements AfterViewInit {
 
   stage: Stage;
+  character: string;
 
   constructor(
     private geolocationProvider: GeolocationProvider,
@@ -26,6 +27,7 @@ export class GamePage implements AfterViewInit {
     private navCtrl: NavController,
     public modalController: ModalController) {
     this.getNewQuest();
+    this.character = gameProvider.getCharacter();
   }
 
   getPosition() {

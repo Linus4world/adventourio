@@ -42,7 +42,7 @@ def join(id):
             # all_answers = ...
             # character_assignment(all_answers)
 
-        return json.dumps({"playerNames": session.playerNames})
+        return json.dumps({"playerNames": session.playerNames, "character": "alien"})
     return abort('No other players found :(')
 
 @app.route('/stage/<id>', methods = ['POST'])
