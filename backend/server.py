@@ -4,6 +4,8 @@ from flask import request
 import json
 from session import Session
 from characters import character_assignment
+from all_answers_fcn import all_answers_function
+#from destination_challenge_assingment import new_place
 
 app = Flask(__name__)
 cors = CORS(app)
@@ -36,18 +38,19 @@ def join(id):
     doCharacterAssignment = session.isFull()
     if session.wait_for_full_session():
         if doCharacterAssignment:
-            pass
             # TODO @Agata prepare all_answers object
-            # 
-            # all_answers = ...
-            # character_assignment(all_answers)
 
-        return json.dumps({"playerNames": session.playerNames, "character": "alien"})
-    return abort('No other players found :(')
+            all_answers = all_answers_function(session)
+            result_frontend = character_assignment(all_answers)
+
+            # return json.dumps({"playerNames": session.playerNames})
+            return result_frontend
+        return abort('No other players found :(')
 
 @app.route('/stage/<id>', methods = ['POST'])
 def next_sub_stage(id):
     challengeOutcome = request.get_json()
+
     return json.dumps({
         "story": [
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas scelerisque urna dolor, ac pellentesque neque mollis vel. Etiam nec semper nulla. In hac habitasse platea dictumst. Proin fermentum quis urna sit amet porta. Nunc sed feugiat orci. Quisque leo magna, scelerisque et ipsum vitae, volutpat egestas sapien. Quisque metus enim, vestibulum nec viverra gravida, elementum ut dolor.',
@@ -68,9 +71,11 @@ def next_sub_stage(id):
         }
    })
 
+
 @app.route('/here/<id>')
 def here(id):
    return SUCCESS
+
 
 def abort(message: str):
     """
@@ -79,6 +84,7 @@ def abort(message: str):
     response = jsonify({'message': message})
     response.status_code = 400
     return response
+
 
 if __name__ == '__main__':
     app.run()
