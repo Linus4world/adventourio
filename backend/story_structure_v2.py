@@ -115,22 +115,23 @@ class Game:
         Returns:
             PageVariation:
         """
+        story = self.story
         player = self.get_player(player_id)
         story_location = player.get_story_location()
         row = story_location[0]
         column = story_location[1]
         page = self.story.get_page_raw(row, column + 1)  # Get the next page
 
-        # TODO: AGATA / SARAH ?
+        # TODO: AGATA / SARAH ? [BE-07]
         # ----- YOUR CODE GOES HERE: -----
-        # This is a dummy functionality to return the next page variation!
-        page_variation = random.choice(page.page_variations)
+        page_variation = story.select_page_variation(page.page_variations, player_id, player_input)
         # --------------------------------
 
         # Filling in the blanks
-        page_variation.txt = self.story.fill_in_the_blanks(page_variation)
+        page_variation.txt = story.fill_in_the_blanks(page_variation)
 
-        player.set_story_location([row, column + 1])  # Set the new location
+        # Set the new location
+        player.set_story_location([row, column + 1])
         return page_variation
 
 
@@ -231,6 +232,10 @@ class Story:
                     txt = txt.replace(txt[idx_of_blank:idx_of_blank + 5], word)
             ret_txt.append(txt)
         return ret_txt
+
+    # TODO SARAH / AGATA [BE-07]
+    def select_page_variation(self, page_variations, player_id, player_input):
+        return random.choice(page_variations)  # DUMMY FUNCTION!
 
     def get_page_raw(self, row, column):
         return self.pages[row][column]
