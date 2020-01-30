@@ -17,8 +17,8 @@ class Player:
         self.player_id = ''
         self.character = ''
         self.story_location = [-1, -1]  # row, column
-        self.geo_location = ''
-        self.geo_destination = ''
+        self.geo_location = [0.0, 0.0]  # [latt, long]
+        self.geo_destination = [0.0, 0.0]  # [latt, long]
         self.answer = None
         self.game_finished = False
 
