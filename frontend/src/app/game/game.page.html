@@ -23,6 +23,12 @@
 
 <div *ngIf="stage" class="task">
   <div class="task-content ion-padding">
+    <div>
+      <img *ngIf="character === 'Alien'" src="../../assets/alien.png">
+      <img *ngIf="character === 'Adventurer'" src="../../assets/adventurer.png">
+      <img *ngIf="character === 'Detective'" src="../../assets/detektiv.png">
+      <img *ngIf="character === 'Wizard'" src="../../assets/wizard.png">
+    </div>
     <p class="ion-no-margin">Go to {{stage.destinationName}}!</p>
   </div>
 </div>

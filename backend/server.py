@@ -12,7 +12,7 @@ cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
 # TODO change the param to 4 for real scenario!
-session = Session(2)
+session = Session(4)
 SUCCESS = json.dumps({'success':True}), 200, {'ContentType':'application/json'}
 
 
@@ -35,18 +35,14 @@ def join(id):
     if session.isFull():
         return abort('Session is full!')
     session.addPlayer(id, answers["name"], answers["answers"])
-    doCharacterAssignment = session.isFull()
+    if session.isFull():
+        all_answers = all_answers_function(session)
+        # TODO
+        # session.setCharacters(character_assignment(all_answers))
+        session.setCharacters(None)
     if session.wait_for_full_session():
-        if doCharacterAssignment:
-            # TODO @Agata prepare all_answers object
-
-            all_answers = all_answers_function(session)
-            result_frontend = character_assignment(all_answers)
-
-            # return json.dumps({"playerNames": session.playerNames})
-            return result_frontend
-        return abort('No other players found :(')
-
+        return json.dumps({"playerNames": session.playerNames, "character": session.getCharacter(id)})
+    return abort('No other players found :(')
 
 @app.route('/stage/<id>', methods = ['POST'])
 def next_sub_stage(id):

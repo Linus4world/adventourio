@@ -131,7 +131,7 @@ class Story:
                     # Blank
                     elif txt[0] == 'B':
                         if txt in self.blanks.keys():
-                            word = self.blanks[txt].fill_in_the_blank()
+                            word = self.blanks[txt].get_the_word_for_the_blank()
                             print(word, end='')
                 else:
                     print(txt, end='')

@@ -321,13 +321,14 @@ def character_assignment(answers):
                              points_id, detective, chosen)
             chosen_characters[3] = 0
 
-    wizard1 = {'playerNames': wizard.name, 'Character': 'Wizard'}
-    detective1 = {'playerNames': detective.name, 'Character': 'Detective'}
-    alien1 ={'playerNames': alien.name, 'Character': 'Alien'}
-    adventurer1 = {'playerNames': adventurer.name, 'Character': 'Adventurer'}
-    character_assignment = {'character_assignment': [wizard1, detective1, alien1, adventurer1]}
-
-    return json.dumps(character_assignment)
+    
+    character_assignment = {
+        alien.id: 'Alien',
+        adventurer.id: 'Adventurer',
+        detective.id: 'Detective',
+        wizard.id: 'Wizard'
+    }
+    return character_assignment
 
 
 def maxAdventurer(all_adventurer_points, all_alien_points, all_wizard_points, all_detective_points, points_id,
