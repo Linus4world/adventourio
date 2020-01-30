@@ -55,10 +55,10 @@ answers2 = """
                 "a",
                 "a",
                 "a",
-                "a",
-                "a",
                 "d",
-                "d"
+                "c",
+                "d",
+                "b"
             ]
         },
         {
@@ -68,10 +68,10 @@ answers2 = """
                 "a",
                 "a",
                 "a",
-                "a",
-                "b",
-                "b",
-                "c"
+                "d",
+                "c",
+                "d",
+                "b"
             ]
         },
         {
@@ -103,7 +103,64 @@ answers2 = """
     ]
 }
 """
-
+answers3 = """
+{
+    "all_answers": [
+        {
+            "id": "1",
+            "name": "ja",
+            "answers": [
+                "a",
+                "a",
+                "a",
+                "a",
+                "b",
+                "c",
+                "d"
+            ]
+        },
+        {
+            "id": "2",
+            "name": "ja2",
+            "answers": [
+                "a",
+                "a",
+                "a",
+                "a",
+                "b",
+                "c",
+                "d"
+            ]
+        },
+        {
+            "id": "3",
+            "name": "ja3",
+            "answers": [
+                "a",
+                "a",
+                "a",
+                "c",
+                "a",
+                "c",
+                "d"
+            ]
+        },
+        {
+            "id": "4",
+            "name": "ja4",
+            "answers": [
+                "a",
+                "a",
+                "a",
+                "d",
+                "b",
+                "b",
+                "c"
+            ]
+        }          
+    ]
+}
+"""
 class Character:
     def __init__(self, id_player, name):
         self.id_player = id_player
@@ -200,7 +257,7 @@ def character_assignment(answers):
     all_wizard_points = [0, 0, 0, 0]
     all_detective_points = [0, 0, 0, 0]
 
-    chosen = [1, 1, 1, 1]
+    chosen = numpy.array([1, 1, 1, 1])
     chosen_characters = [1, 1, 1, 1]  # adventurer, alien, wizard, detective
     for i in range(0, 4):
         all_adventurer_points[i] = points_id[i]['points_adventurer']
@@ -294,7 +351,7 @@ def maxAdventurer(all_adventurer_points, all_alien_points, all_wizard_points, al
         n = random.randint(1, len(numpy.where(all_adventurer_points == numpy.amax(all_adventurer_points))[0]))
         if numpy.amax(all_adventurer_points) == 0 and len(
                 numpy.where(all_adventurer_points == numpy.amax(all_adventurer_points))[0]) == 4:
-            n = 1
+            n = len(numpy.where(1 == chosen)[0])
         a = 0
         for points in points_id:
             if points['points_adventurer'] == numpy.amax(all_adventurer_points):
@@ -329,10 +386,11 @@ def maxDetective(all_adventurer_points, all_alien_points, all_wizard_points, all
             count = count + 1
     # in case of there being more than one people with the same amount of highest points, random assignment
     else:
-        n = random.randint(1, len(numpy.amax(all_detective_points == numpy.amax(all_detective_points))[0]))
+        a = numpy.amax(all_detective_points)
+        n = random.randint(1, len(numpy.where(all_detective_points == numpy.amax(all_detective_points))[0]))
         if numpy.amax(all_detective_points) == 0 and len(
                 numpy.where(all_detective_points == numpy.amax(all_detective_points))[0]) == 4:
-            n = 1
+            n = len(numpy.where(1 == chosen)[0])
         a = 0
         for points in points_id:
             if points['points_detective'] == numpy.amax(all_detective_points):
@@ -373,7 +431,7 @@ def maxAlien(all_adventurer_points, all_alien_points, all_wizard_points, all_det
         # if all people have zero points
         if numpy.amax(all_alien_points) == 0 and len(
                 numpy.where(all_alien_points == numpy.amax(all_alien_points))[0]) == 4:
-            n = 1
+            n = len(numpy.where(1 == chosen)[0])
         a = 0
         for points in points_id:
             if points['points_alien'] == numpy.amax(all_alien_points):
@@ -413,7 +471,7 @@ def maxWizard(all_adventurer_points, all_alien_points, all_wizard_points, all_de
         n = random.randint(1, len(numpy.where(all_wizard_points == numpy.amax(all_wizard_points))[0]))
         if numpy.amax(all_adventurer_points) == 0 and len(
                 numpy.where(all_adventurer_points == numpy.amax(all_adventurer_points))[0]) == 4:
-            n = 1
+            n = len(numpy.where(1 == chosen)[0])
         a = 0
         for points in points_id:
             if points['points_wizard'] == numpy.amax(all_wizard_points):
@@ -433,5 +491,5 @@ def maxWizard(all_adventurer_points, all_alien_points, all_wizard_points, all_de
     return all_adventurer_points, all_alien_points, all_wizard_points, all_detective_points, wizard, chosen
 
 #some primitive debugging
-#ch = character_assignment(answers2)
-#print(ch)
+ch = character_assignment(answers2)
+print(ch)
