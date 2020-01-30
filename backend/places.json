@@ -21,6 +21,15 @@
                 "you have to buy everyone a beer"
               ],
               "right_answer": "You have to buy everyone a shot"
+            },
+            {
+              "id": null,
+              "title": "Neuraum club",
+              "challenge": "It's one of the more popular clubs in Munich - remember it, they often have free entrance for students! But there is also other imporant place nearby, a bus station. You will probably use it if you want (which you should) travel somewhere while you in Munich. Can you find it?",
+              "challenge_type": 3,
+              "coordinates": [48.142432, 11.551213],
+              "right_answer": [48.142479, 11.550020],
+              "last": true
             }
           ]
         },
@@ -67,6 +76,7 @@
               "id": 2,
               "title": "Schelling-salon",
               "challenge": "Which known German historical figure was banned from visiting this establishment for not paying their bills?",
+              "coordinates": [48.151381, 11.573621],
               "last": true,
               "challenge_type": 1,
               "options": ["Adolf Hitler", "Ludwig van Beethoven", "Friedrich Nietzsche"],
@@ -83,13 +93,6 @@
               "title": "StudentenStadt - Manhattan",
               "challenge": null,
               "coordinates": [48.183922, 11.611094],
-              "last": true
-            },
-            {
-              "id": null,
-              "title": "Neuraum club",
-              "challenge": null,
-              "coordinates": [48.142432, 11.551213],
               "last": true
             },
             {
