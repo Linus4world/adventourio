@@ -207,6 +207,8 @@ class Story:
         # Random word from the internet!
         if blank['random_word']:
             part_of_speech = blank['part_of_speech']
+            # TODO: RANIA/AGATA/SARAH: Improve the get_random_word_from_the_internet
+            #  function to get more meaningful words!
             word = get_random_word_from_the_internet(part_of_speech)
         # Random word from the list of words provided
         else:
