@@ -22,7 +22,7 @@ class Player:
         self.answer = None
         self.game_finished = False
 
-    # TODO: AGATA
+    # TODO: AGATA / SARAH
     # This function assigns the player a character from the available_characters list
     def assign_character(self):
         # ----- YOUR CODE GOES HERE: -----
@@ -158,7 +158,7 @@ class Story:
         self.blanks = {}
 
     def add_challenge(self, challenge_key):
-        # TODO: AGATA
+        # TODO: AGATA / SARAH
         # ----- YOUR CODE GOES HERE: -----
         challenge = dict()
         # --------------------------------
