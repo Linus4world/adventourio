@@ -133,11 +133,16 @@ class Game:
         # If there is only one page variation, return that one
         if len(page.page_variations) == 1:
             page_variation = page.page_variations[0]
+        # If the page is a challenge page:
         elif page.page_type == 'challenges':
+            # TODO: Replace this with AGATA'S CHALLENGE SELECTING FUNCTION
             page_variation = story.select_page_variation_dummy(page.page_variations, player)
+        # If the page is an outcome page:
         elif page.page_type == 'outcome':
             page_variation = story.select_good_or_bad_outcome(page.page_variations, player)
-            # page_variation = story.select_page_variation_dummy(page.page_variations, player)
+        # IF IT IS NOT SPECIFIED WHAT TYPE OF PAGE THIS IS, A RANDOM PAGE VARIATION WILL BE SELECTED!
+        else:
+            page_variation = random.choice(page.page_variations)
 
         # Filling in the blanks
         page_variation.txt = story.fill_in_the_blanks(page_variation)
