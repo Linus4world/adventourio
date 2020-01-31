@@ -62,7 +62,21 @@ class Game:
         self.story = Story([number_of_players, number_of_pages])
         self.max_players = number_of_players
         self.players = []
-        self.characters = []
+
+    # --------------- SET UP: ---------------
+
+    def start_game(self):
+        """
+        This function does all the set up, before the game gets started:
+            - Assign characters
+
+        Parameters: None
+        Returns: None
+        """
+        pass
+        # Assign the characters
+
+    # --------------- X: ---------------
 
     def add_player(self, player_id, name, answer):
         player = Player()
@@ -70,13 +84,6 @@ class Game:
         player.player_id = player_id
         player.answer = answer
         self.players.append(player)
-
-    def add_character(self, character):
-        character.story_row = len(self.characters)
-        self.characters.append(character)
-
-    def get_character_story_row(self, character):
-        pass
 
     def is_full(self):
         return len(self.players) >= self.max_players
@@ -96,6 +103,8 @@ class Game:
             if player.player_id == player_id:
                 return player
 
+    # --------------- X: ---------------
+
     def wait_for_full_session(self):
         counter = 0
         while counter < self.MAX_WAIT:
@@ -104,22 +113,6 @@ class Game:
             time.sleep(2)
             counter += 1
         return False
-
-    def start_game(self):
-        """
-        This function does all the set up, before the game gets started:
-            - Assign characters
-
-        Parameters: None
-        Returns: None
-        """
-        # Add the characters
-        self.add_character(Character(name='adventurer', description='drunk'))
-        self.add_character(Character(name='alien', description='academic'))
-        self.add_character(Character(name='wizard', description='foreign cultures'))
-        self.add_character(Character(name='detective', description='break free'))
-
-        # Assign the characters
 
     def get_next_page_variation(self, player_id, player_input):
         # TODO, ADD DOCUMENTATION ABOUT THE player_input
@@ -169,9 +162,11 @@ class Game:
         player.set_story_location([row, column + 1])
         return page_variation
 
+
 if __name__ == "__main__":
     game = Game(number_of_players=4, number_of_pages=6)
     story = game.story
+    story.setup_story()
     players = game.players
 
     # Add blanks to the story:
@@ -182,7 +177,7 @@ if __name__ == "__main__":
     # Add challenges to the story:
     story.load_all_challenges('challenges_v2.json')
 
-    # Add content of the story:
+    # # Add content of the story:
     story.get_page(character_name='alien', chapter=0, page=0).add_page_variation(
         txt=['Hello',
              'The word: ~B00~ has been randomly selected from a list',
@@ -209,10 +204,8 @@ if __name__ == "__main__":
         txt=['Bad outcome']
     )
 
-    game.add_player('0', 'Carlos III', '')
-    game.get_player('0').set_character('alien')
-
-    # print(game.get_player(0).get_story_location())
+    game.add_player(player_id='0', name='Carlos III', answer='')
+    game.get_player(player_id='0').set_character(story.get_character('alien'))
 
     # The next few lines simulate what we would get from the front end
     pv = game.get_next_page_variation(player_id='0', player_input=True)
@@ -223,5 +216,3 @@ if __name__ == "__main__":
 
     pv = game.get_next_page_variation(player_id='0', player_input=True)
     print(pv.txt)
-
-    print(story.challenges)

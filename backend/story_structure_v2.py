@@ -35,8 +35,42 @@ class Story:
         self.challenges = {}
         self.blanks = {}
 
+        self.characters = []
+
+    # --------------- SET UP: ---------------
+
     def setup_story(self):
-        pass
+        self.add_character(Character(name='adventurer', description='drunk'))
+        self.add_character(Character(name='alien', description='academic'))
+        self.add_character(Character(name='wizard', description='foreign cultures'))
+        self.add_character(Character(name='detective', description='break free'))
+
+    # --------------- CHARACTERS: ---------------
+
+    def add_character(self, character):
+        character.story_row = len(self.characters)
+        self.characters.append(character)
+
+    def get_character(self, character_name):
+        for character in self.characters:
+            if character.name == character_name:
+                return character
+
+    def get_character_story_row(self, character_name):
+        """
+        pages is a matrix.
+        Each character has a row in the pages matrix assigned
+
+        Parameters:
+            character_name (str):
+        Returns:
+            idx (int): his function returns the row that corresponds to the character
+        """
+        for idx, character in enumerate(self.characters):
+            if character.name == character_name:
+                return idx
+
+    # --------------- CHALLENGES: ---------------
 
     def load_all_challenges(self, challenges_json):
         with open(challenges_json) as json_file:
@@ -48,6 +82,8 @@ class Story:
 
     def get_challenge(self, challenge_id):
         return self.challenges[challenge_id]
+
+    # --------------- BLANKS: ---------------
 
     def add_blank(self, blank_id, list_of_words, changes_every_time=False):
         """
@@ -75,7 +111,7 @@ class Story:
             part_of_speech=part_of_speech,
             keep_initial_word=changes_every_time
         )
-        self.blanks['B' + blank_key] = blank
+        self.blanks[blank_key] = blank
 
     def get_the_word_for_the_blank(self, blank_key):
         """
@@ -116,6 +152,8 @@ class Story:
                     txt = txt.replace(txt[idx_of_blank:idx_of_blank + 5], word)
             ret_txt.append(txt)
         return ret_txt
+
+    # --------------- PAGE VARIATION SELECTION: ---------------
 
     # TODO: AGATA and ESTEBAN [BE-05]
     @staticmethod
@@ -170,6 +208,8 @@ class Story:
 
         return ret_page_variation
 
+    # --------------- PAGE ADDRESSING: ---------------
+
     def get_page_raw(self, row, column):
         return self.pages[row][column]
 
@@ -183,9 +223,9 @@ class Story:
             The page at specified location
         """
         assert 0 <= page <= 2, 'page can only be {0, 1, 2}'
-        row = available_characters.index(character_name)
-        # row = available_characters.index(character_name)
+        row = self.get_character_story_row(character_name)
         column = chapter * 3 + page
+
         return self.pages[row][column]
 
 
