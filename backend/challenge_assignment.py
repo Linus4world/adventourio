@@ -9,6 +9,9 @@ class Player:
         self.stage = stage
 
 
+def select_a_challenge(page_variations, player):
+    pass
+
 def new_place(player1, player2, places_in):
     destination1 = player1.geo_location
     destination2 = player2.geo_location
