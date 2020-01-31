@@ -3,7 +3,7 @@ import time
 import random
 import json
 from utils import *
-from challenge_assignment import select_a_challenge
+from characters_and_challenges import *
 
 
 class Character:
@@ -158,7 +158,7 @@ class Story:
     # TODO: AGATA and ESTEBAN [BE-05]
     @staticmethod
     def select_a_challenge(page_variations, player):
-        return challenge_assignment.select_a_challenge(page_variations, player)
+        return select_a_challenge(page_variations, player)
 
     # option choice is dependent on: random number,
     # if players succeeded in LAST task, with what probability the outcomes of the previous stages were selected
