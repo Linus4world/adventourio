@@ -1,5 +1,5 @@
 from story_structure_v2 import *
-
+from characters_and_challenges import *
 
 
 class PlayerError(Exception):
@@ -13,21 +13,12 @@ class Player:
         self.player_id = ''
         self.player_inputs = []
         self.prob_array = [(0, "good")]
-        self.character = ''
+        self.character = None
         self.story_location = [-1, -1]  # row, column
         self.geo_location = [0.0, 0.0]  # [latt, long]
         self.geo_destination = [0.0, 0.0]  # [latt, long]
         self.answer = None
         self.game_finished = False
-
-    # TODO: AGATA / SARAH
-    # This function assigns the player a character from the available_characters list
-    def assign_characters(self):
-        # ----- YOUR CODE GOES HERE: -----
-        character = random.choice(available_characters)
-        # --------------------------------
-
-        self.set_character(character)
 
     def set_character(self, character):
         """
@@ -35,11 +26,11 @@ class Player:
         The story_location[row] is the index of the character in the available_characters list.
 
         Parameters:
-            character (str): This string has to be on the available_characters list! Otherwise an exception
+            character (Character):
                 will be raised
         """
         self.character = character
-        self.story_location[0] = character.story_row
+        self.story_location[0] = story.get_character_story_row(character_name=character.name)
 
     def set_story_location(self, story_location):
         """
@@ -61,7 +52,7 @@ class Game:
     def __init__(self, number_of_players, number_of_pages):
         self.story = Story([number_of_players, number_of_pages])
         self.max_players = number_of_players
-        self.players = []
+        self.players = {}
 
     # --------------- SET UP: ---------------
 
@@ -73,17 +64,27 @@ class Game:
         Parameters: None
         Returns: None
         """
-        pass
+        assert self.is_full(), 'Can\'t start the game if it is not full!'
+
         # Assign the characters
+        character_assignments = assign_characters_dummy(self.players)
+        for char_assign in character_assignments:
+            player_id = char_assign[0]
+            player = self.get_player(player_id)
 
-    # --------------- X: ---------------
+            character_name = char_assign[1]
+            character = self.story.get_character(character_name)
 
-    def add_player(self, player_id, name, answer):
-        player = Player()
-        player.name = name
-        player.player_id = player_id
-        player.answer = answer
-        self.players.append(player)
+            player.set_character(character)
+
+    # --------------- MANAGING PLAYERS: ---------------
+
+    def add_player(self, player_id, name, answers):
+        new_player = Player()
+        new_player.name = name
+        new_player.player_id = player_id
+        new_player.answers = answers
+        self.players[player_id] = new_player
 
     def is_full(self):
         return len(self.players) >= self.max_players
@@ -92,16 +93,7 @@ class Game:
     #     return self.playerIds.index(player_id)
 
     def get_player(self, player_id):
-        """
-        Parameters:
-            player_id (str):
-
-        Returns:
-            Player: Instance of the Player class which has player_id as player id
-        """
-        for player in self.players:
-            if player.player_id == player_id:
-                return player
+        return self.players[player_id]
 
     # --------------- X: ---------------
 
@@ -146,8 +138,7 @@ class Game:
         # If the page is a challenge page:
         elif page.page_type == 'challenges':
             # TODO: Replace this with AGATA'S CHALLENGE SELECTING FUNCTION
-            # page_variation = story.select_a_challenge(page.page_variations, player)
-            page_variation = random.choice(page.page_variations)
+            page_variation = select_a_challenge_dummy(page.page_variations, self.players)
         # If the page is an outcome page:
         elif page.page_type == 'outcome':
             page_variation = story.select_good_or_bad_outcome(page.page_variations, player)
@@ -165,9 +156,20 @@ class Game:
 
 if __name__ == "__main__":
     game = Game(number_of_players=4, number_of_pages=6)
+
     story = game.story
     story.setup_story()
+
+    game.add_player(player_id='01', name='Carlos I', answers='')
+    game.add_player(player_id='02', name='Carlos I', answers='')
+    game.add_player(player_id='03', name='Carlos III', answers='')
+    game.add_player(player_id='04', name='Carlos IV', answers='')
+
+    game.start_game()
     players = game.players
+
+    for player in players.values():
+        print(player.character.name)
 
     # Add blanks to the story:
     story.add_blank('B00', ['apples', 'bananas', 'tomatoes'])
@@ -204,15 +206,13 @@ if __name__ == "__main__":
         txt=['Bad outcome']
     )
 
-    game.add_player(player_id='0', name='Carlos III', answer='')
-    game.get_player(player_id='0').set_character(story.get_character('alien'))
 
     # The next few lines simulate what we would get from the front end
-    pv = game.get_next_page_variation(player_id='0', player_input=True)
+    pv = game.get_next_page_variation(player_id='01', player_input=True)
     print(pv.txt)
 
-    pv = game.get_next_page_variation(player_id='0', player_input=True)
+    pv = game.get_next_page_variation(player_id='01', player_input=True)
     print(pv.txt)
 
-    pv = game.get_next_page_variation(player_id='0', player_input=True)
+    pv = game.get_next_page_variation(player_id='01', player_input=True)
     print(pv.txt)
