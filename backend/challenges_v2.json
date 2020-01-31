@@ -1,0 +1,47 @@
+{
+  "C00":{
+    "id": "C00",
+    "stage": 1,
+    "description": "exploring the place",
+
+    "title": "StudentenStadt - rotes Haus bistro",
+    "challenge": "There is a bell, hanging somewhere in the Bistro. You need to find out what happens, if you ring it, but be careful! If you do it yourself, you have to deal with the consequences on your own...",
+    "last": true,
+    "coordinates": [48.183376, 11.609854],
+    "challenge_type": 1,
+    "options": [
+      "you have to ex a beer",
+      "You have to buy everyone a shot",
+      "you have to buy everyone a beer"
+    ],
+    "right_answer": "You have to buy everyone a shot"
+  },
+
+  "C01":{
+    "id": "C01",
+    "stage": 1,
+    "description": "exploring the place",
+
+    "title": "Neuraum club",
+    "challenge": "It's one of the more popular clubs in Munich - remember it, they often have free entrance for students! But there is also other imporant place nearby, a bus station. You will probably use it if you want (which you should) travel somewhere while you in Munich. Can you find it?",
+    "challenge_type": 3,
+    "coordinates": [48.142432, 11.551213],
+    "right_answer": [48.142479, 11.550020],
+    "last": true
+  },
+
+  "C02":{
+    "id": "C02",
+    "stage": 2,
+    "description": "exploring the culture",
+
+    "title": "Bierstube",
+    "challenge": "Challenge any person in the bar to play table football with you. Can you win against them?",
+    "last": true,
+    "coordinates": [48.180125, 11.553167],
+    "challenge_type": 1,
+    "options": ["I won!", "Unfortunately, I lost..."],
+    "right_answer": "I won!"
+  }
+
+}
