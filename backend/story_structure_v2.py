@@ -1,155 +1,16 @@
 import numpy as np
 import time
 import random
+import json
 from utils import *
-
-available_characters = ['alien', 'zombie', 'wizard', 'teacher']
-
-
-class PlayerError(Exception):
-    pass
+from characters_and_challenges import *
 
 
-class Player:
-
-    def __init__(self):
-        self.name = ''
-        self.player_id = ''
-        self.player_inputs = []
-        self.prob_array = [(0, "good")]
-        self.character = ''
-        self.story_location = [-1, -1]  # row, column
-        self.geo_location = [0.0, 0.0]  # [latt, long]
-        self.geo_destination = [0.0, 0.0]  # [latt, long]
-        self.answer = None
-        self.game_finished = False
-
-    # TODO: AGATA / SARAH
-    # This function assigns the player a character from the available_characters list
-    def assign_character(self):
-        # ----- YOUR CODE GOES HERE: -----
-        character = random.choice(available_characters)
-        # --------------------------------
-
-        self.set_character(character)
-
-    def set_character(self, character):
-        """
-        Sets the player's character and the story_location.
-        The story_location[row] is the index of the character in the available_characters list.
-
-        Parameters:
-            character (str): This string has to be on the available_characters list! Otherwise an exception
-                will be raised
-        """
-        if character in available_characters:
-            self.character = character
-            self.story_location[0] = available_characters.index(character)
-        else:
-            raise PlayerError('The character ' + character + ' does not exist!')
-
-    def set_story_location(self, story_location):
-        """
-        Sets player's location
-
-        Parameters:
-            story_location (list of 2 ints):
-        """
-        assert len(story_location) == 2, 'Wrong story location format!'
-        self.story_location = story_location
-
-    def get_story_location(self):
-        return self.story_location
-
-
-class Game:
-    MAX_WAIT = 50000
-
-    def __init__(self, number_of_players, number_of_pages):
-        self.story = Story([number_of_players, number_of_pages])
-        self.max_players = number_of_players
-        self.players = []
-
-    def add_player(self, player_id, name, answer):
-        player = Player()
-        player.name = name
-        player.player_id = player_id
-        player.answer = answer
-        self.players.append(player)
-
-    def is_full(self):
-        return len(self.players) >= self.max_players
-
-    # def get_player_index(self, player_id):
-    #     return self.playerIds.index(player_id)
-
-    def get_player(self, player_id):
-        """
-        Parameters:
-            player_id (str):
-
-        Returns:
-            Player: Instance of the Player class which has player_id as player id
-        """
-        for player in self.players:
-            if player.player_id == player_id:
-                return player
-
-    def wait_for_full_session(self):
-        counter = 0
-        while counter < self.MAX_WAIT:
-            if self.is_full():
-                return True
-            time.sleep(2)
-            counter += 1
-        return False
-
-    def get_next_page_variation(self, player_id, player_input):
-        # TODO, ADD DOCUMENTATION ABOUT THE player_input
-        """
-        This function will be constantly called by the frontend to get the next page variation
-        Depending on the player, the player.story_location and player_input, the next page variation can be selected
-
-        Parameters:
-            player_id (str):
-            player_input ():
-
-        Returns:
-            PageVariation:
-        """
-        story = self.story
-        player = self.get_player(player_id)
-
-        # Story player input
-        player.player_inputs.append(player_input)
-
-        # Get the next page
-        story_location = player.get_story_location()
-        row = story_location[0]
-        column = story_location[1]
-        page = self.story.get_page_raw(row, column + 1)
-
-        page_variation = PageVariation()
-        # If there is only one page variation, return that one
-        if len(page.page_variations) == 1:
-            page_variation = page.page_variations[0]
-        # If the page is a challenge page:
-        elif page.page_type == 'challenges':
-            # TODO: Replace this with AGATA'S CHALLENGE SELECTING FUNCTION
-            page_variation = story.select_page_variation_dummy(page.page_variations, player)
-        # If the page is an outcome page:
-        elif page.page_type == 'outcome':
-            page_variation = story.select_good_or_bad_outcome(page.page_variations, player)
-        # IF IT IS NOT SPECIFIED WHAT TYPE OF PAGE THIS IS, A RANDOM PAGE VARIATION WILL BE SELECTED!
-        else:
-            page_variation = random.choice(page.page_variations)
-
-        # Filling in the blanks
-        page_variation.txt = story.fill_in_the_blanks(page_variation)
-
-        # Set the new location
-        player.set_story_location([row, column + 1])
-        return page_variation
+class Character:
+    def __init__(self, name, description):
+        self.name = name
+        self.description = description
+        self.story_row = -1
 
 
 class Story:
@@ -174,21 +35,60 @@ class Story:
         self.challenges = {}
         self.blanks = {}
 
+        self.characters = []
+
+    # --------------- SET UP: ---------------
+
     def setup_story(self):
-        pass
+        self.add_character(Character(name='adventurer', description='drunk'))
+        self.add_character(Character(name='alien', description='academic'))
+        self.add_character(Character(name='wizard', description='foreign cultures'))
+        self.add_character(Character(name='detective', description='break free'))
 
-    def add_challenge(self, challenge_key):
-        # TODO: AGATA
-        # ----- YOUR CODE GOES HERE: -----
-        challenge = dict()
-        # --------------------------------
+    # --------------- CHARACTERS: ---------------
 
-        self.blanks['C' + challenge_key] = challenge
+    def add_character(self, character):
+        character.story_row = len(self.characters)
+        self.characters.append(character)
 
-    def add_blank(self, blank_key, list_of_words, changes_every_time=False):
+    def get_character(self, character_name):
+        for character in self.characters:
+            if character.name == character_name:
+                return character
+
+    def get_character_story_row(self, character_name):
+        """
+        pages is a matrix.
+        Each character has a row in the pages matrix assigned
+
+        Parameters:
+            character_name (str):
+        Returns:
+            idx (int): his function returns the row that corresponds to the character
+        """
+        for idx, character in enumerate(self.characters):
+            if character.name == character_name:
+                return idx
+
+    # --------------- CHALLENGES: ---------------
+
+    def load_all_challenges(self, challenges_json):
+        with open(challenges_json) as json_file:
+            challenges = json.load(json_file)
+        self.challenges.update(challenges)
+
+    def add_challenge(self, challenge_id, challenge):
+        self.blanks[challenge_id] = challenge
+
+    def get_challenge(self, challenge_id):
+        return self.challenges[challenge_id]
+
+    # --------------- BLANKS: ---------------
+
+    def add_blank(self, blank_id, list_of_words, changes_every_time=False):
         """
         Parameters:
-            blank_key (str):
+            blank_id (str):
             list_of_words (list of str): possible words to fill in the blank with
             changes_every_time (bool): if the blank should be filled in with a (potentially) different word every time
         """
@@ -197,7 +97,7 @@ class Story:
             list_of_words=list_of_words,
             keep_initial_word=changes_every_time
         )
-        self.blanks['B' + blank_key] = blank
+        self.blanks[blank_id] = blank
 
     def add_blank_random(self, blank_key, part_of_speech, changes_every_time=False):
         """
@@ -211,7 +111,7 @@ class Story:
             part_of_speech=part_of_speech,
             keep_initial_word=changes_every_time
         )
-        self.blanks['B' + blank_key] = blank
+        self.blanks[blank_key] = blank
 
     def get_the_word_for_the_blank(self, blank_key):
         """
@@ -253,9 +153,12 @@ class Story:
             ret_txt.append(txt)
         return ret_txt
 
+    # --------------- PAGE VARIATION SELECTION: ---------------
+
+    # TODO: AGATA and ESTEBAN [BE-05]
     @staticmethod
-    def select_page_variation_dummy(page_variations, player):
-        return random.choice(page_variations)  # DUMMY FUNCTION!
+    def select_a_challenge(page_variations, player):
+        return select_a_challenge(page_variations, player)
 
     # option choice is dependent on: random number,
     # if players succeeded in LAST task, with what probability the outcomes of the previous stages were selected
@@ -305,21 +208,24 @@ class Story:
 
         return ret_page_variation
 
+    # --------------- PAGE ADDRESSING: ---------------
+
     def get_page_raw(self, row, column):
         return self.pages[row][column]
 
-    def get_page(self, character, chapter, page):
+    def get_page(self, character_name, chapter, page):
         """
         Parameters:
-            character (str):
+            character_name (str):
             chapter (int): A chapter consists of 3 pages
             page (int): Can only be {0, 1, 2}
         Returns:
             The page at specified location
         """
         assert 0 <= page <= 2, 'page can only be {0, 1, 2}'
-        row = available_characters.index(character)
+        row = self.get_character_story_row(character_name)
         column = chapter * 3 + page
+
         return self.pages[row][column]
 
 
@@ -353,53 +259,3 @@ class PageVariation:
         self.story_location = [0, 0, 0]
         self.end_of_story = False
 
-
-if __name__ == "__main__":
-    game = Game(number_of_players=4, number_of_pages=6)
-    story = game.story
-    players = game.players
-
-    story.add_blank('00', ['apples', 'bananas', 'tomatoes'])
-    story.add_blank_random('01', 'noun')
-    story.add_blank_random('02', 'verb')
-
-    story.get_page(character='alien', chapter=0, page=0).add_page_variation(
-        txt=['Hello',
-             'The word: ~B00~ has been randomly selected from a list',
-             'And this word: ~B01~ has been randomly selected from the internet',
-             'And this one as well: ~B02~',
-             ]
-    )
-
-    # Adding Page 2
-    # story.get_page(character='alien', chapter=0, page=1).set_page_type('challenge')
-    story.get_page(character='alien', chapter=0, page=1).add_page_variation(
-        txt=['CHALLENGE 1']
-    )
-    story.get_page(character='alien', chapter=0, page=1).add_page_variation(
-        txt=['CHALLENGE 2']
-    )
-
-    # Adding Page 3
-    story.get_page(character='alien', chapter=0, page=2).set_page_type('outcome')
-    story.get_page(character='alien', chapter=0, page=2).add_page_variation(
-        txt=['Good outcome']
-    )
-    story.get_page(character='alien', chapter=0, page=2).add_page_variation(
-        txt=['Bad outcome']
-    )
-
-    game.add_player('0', 'Carlos III', '')
-    game.get_player('0').set_character('alien')
-
-    # print(game.get_player(0).get_story_location())
-
-    # The next few lines simulate what we would get from the front end
-    pv = game.get_next_page_variation('0', player_input=True)
-    print(pv.txt)
-
-    pv = game.get_next_page_variation('0', player_input=True)
-    print(pv.txt)
-
-    pv = game.get_next_page_variation('0', player_input=True)
-    print(pv.txt)
