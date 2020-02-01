@@ -6,6 +6,7 @@ from session import Session
 from characters import character_assignment
 from all_answers_fcn import all_answers_function
 #from destination_challenge_assingment import new_place
+from all_answers_fcn import placesCategory
 
 app = Flask(__name__)
 cors = CORS(app)
@@ -27,6 +28,7 @@ def givingquestionnaire():
     with open("questionnaire.json", 'r', encoding='utf-8') as questionnaire:
         return json.load(questionnaire)
 
+
 @app.route('/join/<id>', methods = ['POST'])
 def join(id):
     answers = request.get_json()
@@ -37,6 +39,9 @@ def join(id):
     session.addPlayer(id, answers["name"], answers["answers"])
     if session.isFull():
         all_answers = all_answers_function(session)
+        with open("places.json") as file:
+            places = file.read()
+        session.setPlacesCategory(placesCategory(all_answers, places))
         # TODO
         # session.setCharacters(character_assignment(all_answers))
         session.setCharacters(None)
@@ -44,9 +49,16 @@ def join(id):
         return json.dumps({"playerNames": session.playerNames, "character": session.getCharacter(id)})
     return abort('No other players found :(')
 
+
 @app.route('/stage/<id>', methods = ['POST'])
 def next_sub_stage(id):
-    challengeOutcome = request.get_json()
+    challengeOutcomeLoc = request.get_json()
+    challengeOutcomeLoc_dict = json.load(challengeOutcomeLoc)
+    # TODO Esteban Sarah here your function :)
+    # story = getStageStory(id, challengeOutcomeLoc_dict['challengeOutcome']
+    # TODO Esteban Sarah, please tell me how can I get information which two people are paired!
+    # place, challenge = new_place(player1, player2, places_in)
+    #
 
     return json.dumps({
         "story": [
