@@ -9,10 +9,12 @@
           "description": "exploring the place",
           "places": [
             {
-              "id": 1,
               "title": "StudentenStadt - rotes Haus bistro",
               "challenge": "There is a bell, hanging somewhere in the Bistro. You need to find out what happens, if you ring it, but be careful! If you do it yourself, you have to deal with the consequences on your own...",
-              "coordinates": [48.183376, 11.609854],
+              "coordinates": [
+                48.183376,
+                11.609854
+              ],
               "challenge_type": 1,
               "options": [
                 "you have to ex a beer",
@@ -22,12 +24,32 @@
               "right_answer": "You have to buy everyone a shot"
             },
             {
-              "id": null,
               "title": "Neuraum club",
               "challenge": "It's one of the more popular clubs in Munich - remember it, they often have free entrance for students! But there is also other imporant place nearby, a bus station. You will probably use it if you want (which you should) travel somewhere while you in Munich. Can you find it?",
               "challenge_type": 3,
-              "coordinates": [48.142432, 11.551213],
-              "right_answer": [48.142479, 11.550020]
+              "coordinates": [
+                48.142432,
+                11.551213
+              ],
+              "right_answer": [
+                48.142479,
+                11.550020
+              ]
+            },
+            {
+              "title": "Englischer Garten",
+              "challenge": "Although it's called an English garden, there is a tower somewhere here that is inspired by some other culture. Find it, and guess from which country does its style come from!",
+              "challenge_type": 1,
+              "options": [
+                "Japan",
+                "France",
+                "China"
+              ],
+              "right_answer": "China",
+              "coordinates": [
+                48.149837,
+                11.586065
+              ]
             }
           ]
         },
@@ -36,21 +58,42 @@
           "description": "exploring the culture",
           "places": [
             {
-              "id": 1,
               "title": "Bierstube",
               "challenge": "Challenge any person in the bar to play table football with you. Can you win against them?",
-              "coordinates": [48.180125, 11.553167],
+              "coordinates": [
+                48.180125,
+                11.553167
+              ],
               "challenge_type": 1,
-              "options": ["I won!", "Unfortunately, I lost..."],
+              "options": [
+                "I won!",
+                "Unfortunately, I lost..."
+              ],
               "right_answer": "I won!"
             },
             {
-              "id": null,
               "title": "HANS IM GLÜCK",
               "challenge": "Hans is a very old, common German name. Can you name the most common German surname?",
-              "coordinates": [48.182634, 11.586313],
+              "coordinates": [
+                48.182634,
+                11.586313
+              ],
               "challenge_type": 2,
-              "right_answer": ["Mueller", "Müller", "Muller"]
+              "right_answer": [
+                "Mueller",
+                "Müller",
+                "Muller"
+              ]
+            },
+            {
+              "title": "StudentenStadt - Manhattan",
+              "challenge": "Have you managed it all the way to the top? This is the highest place of such kind in Munich! People from Bayern have a special name for bars where you can drink beer outside. Do you know it?",
+              "coordinates": [
+                48.183922,
+                11.611094
+              ],
+              "challenge_type": 2,
+              "right_answer": "Biergarten"
             }
           ]
         },
@@ -59,46 +102,49 @@
           "description": "exploring the history",
           "places": [
             {
-              "id": 6,
               "title": "TU Film",
               "challenge": "Each Christmas, there is a tradition of showing a certain old movie three times here. Find out which movie it is!",
-              "coordinates": [48.148261, 11.568440],
+              "coordinates": [
+                48.148261,
+                11.568440
+              ],
               "challenge_type": 1,
-              "options": ["drei haselnüsse für aschenbrödel", "Feuerzangenbowle", "Weihnachten bei Hoppenstedts"],
+              "options": [
+                "drei haselnüsse für aschenbrödel",
+                "Feuerzangenbowle",
+                "Weihnachten bei Hoppenstedts"
+              ],
               "right_answer": "Feuerzangenbowle"
             },
             {
-              "id": 2,
               "title": "Schelling-salon",
               "challenge": "Which known German historical figure was banned from visiting this establishment for not paying their bills?",
-              "coordinates": [48.151381, 11.573621],
+              "coordinates": [
+                48.151381,
+                11.573621
+              ],
               "challenge_type": 1,
-              "options": ["Adolf Hitler", "Ludwig van Beethoven", "Friedrich Nietzsche"],
+              "options": [
+                "Adolf Hitler",
+                "Ludwig van Beethoven",
+                "Friedrich Nietzsche"
+              ],
               "right_answer": "Adolf Hitler"
-            }
-          ]
-        },
-        {
-          "stage": 0,
-          "description": "no challenge",
-          "places": [
-            {
-              "id": null,
-              "title": "StudentenStadt - Manhattan",
-              "challenge": null,
-              "coordinates": [48.183922, 11.611094]
             },
             {
-              "id": null,
-              "title": "Barschwein",
-              "challenge": null,
-              "coordinates": [48.160956, 11.587559]
-            },
-            {
-              "id": 5,
-              "title": "Englischer Garten",
-              "challenge": null,
-              "coordinates": [48.149837, 11.586065]
+              "title": "Hofbräuhaus am Platzl",
+              "challenge": "This was the last building rebuilt after the second world war. Only one room survived the conflict. Go in, ask around, and find out which!",
+              "challenge_type": 1,
+              "options": [
+                "the kitchen",
+                "the beer hall",
+                "the entrance hall"
+              ],
+              "right_answer": "the beer hall",
+              "coordinates": [
+                48.137674,
+                11.580116
+              ]
             }
           ]
         },
@@ -107,25 +153,32 @@
           "description": "quiz",
           "places": [
             {
-              "id": null,
-              "title": "Mathe Info Gebauede",
-              "challenge": null,
-              "coordinates": null,
-              "right_answer": null
+              "title": "Barschwein",
+              "challenge": "There are a 100 light bulbs inside the room. Each bulb has its own switch and is currently switched off. There a 100 aliens  outside the door. Each bulb is numbered consecutively from 1 to 100. Alien number 1 enters the room, switch on every bulb and exists. Alien number 2 enters and flips the switch on every second bulb (2, 4, 6..). Alien number 3 enters and flips the switch on every third bulb (3,6,9..). This continues until all aliens have passed through the rooms. What is the final state of bulb number 64? Illuminated or dark? ",
+              "challenge_type": 2,
+              "right_answer": "illuminated",
+              "coordinates": [
+                48.160956,
+                11.587559
+              ]
             },
             {
-              "id": null,
               "title": "Marienplatz",
-              "challenge": null,
-              "coordinates": [48.137577, 11.575716],
-              "right_answer": null
+              "challenge": "There are a 100 light bulbs inside the room. Each bulb has its own switch and is currently switched off. There a 100 aliens  outside the door. Each bulb is numbered consecutively from 1 to 100. Alien number 1 enters the room, switch on every bulb and exists. Alien number 2 enters and flips the switch on every second bulb (2, 4, 6..). Alien number 3 enters and flips the switch on every third bulb (3,6,9..). This continues until all aliens have passed through the rooms. How many of the bulbs are illuminated at the end? ",
+              "challenge_type": 2,
+              "right_answer": ["10", "ten"],
+              "coordinates": [
+                48.137577,
+                11.575716
+              ]
             },
             {
-              "id": 5,
-              "title": null,
-              "challenge": null,
-              "coordinates": null,
-              "right_answer": null
+              "title": "Augustiner-Keller",
+              "challenge": "How many degrees (if any) are there in the angle between the hour and minute hands of a clock when the time is a quarter past three?",
+              "coordinates": [48.144493, 11.554192],
+              "challenge_type": 1,
+              "options": ["8,5", "7,5", "17,5"],
+              "right_answer": "7,5"
             }
           ]
         }
@@ -140,26 +193,36 @@
           "description": "exploring the place",
           "places": [
             {
-              "id": 1,
               "title": "StudentenStadt",
               "challenge": "If you stand at the main square, and look around, there are four buildings around you. Find out, what is each common title!",
-              "coordinates": [48.183223, 11.611956],
+              "coordinates": [
+                48.183223,
+                11.611956
+              ],
               "challenge_type": 1,
-              "options": ["Twins, Small house, big house", "Eastern, western, northern and southern house", "red house, blue house, orange house, HSH"],
+              "options": [
+                "Twins, Small house, big house",
+                "Eastern, western, northern and southern house",
+                "red house, blue house, orange house, HSH"
+              ],
               "right_answer": "red house, blue house, orange house, HSH"
             },
             {
-              "id": 2,
               "title": "StudiTUM",
               "challenge": "you may not necessarily be able to come in by yourself. Find out a way to do it!",
-              "coordinates": [48.266932, 11.670564],
+              "coordinates": [
+                48.266932,
+                11.670564
+              ],
               "challenge_type": 3
             },
             {
-              "id": 3,
               "title": "Mensa Innenstadt",
               "challenge": "There is a nice cafe somewhere in here, with a kind of crazy title. Can you find it?",
-              "coordinates": [48.147373, 11.567841],
+              "coordinates": [
+                48.147373,
+                11.567841
+              ],
               "challenge_type": 2,
               "right_answer": "crazy beans"
             }
@@ -170,16 +233,40 @@
           "description": "exploring the culture",
           "places": [
             {
-              "id": 1,
               "title": "Georg-Kühne-Zeichensaal (5505.01.550)",
-              "challenge": "Do you see those groups of people with drawings of mechanical parts? Go to them, and find out which subject they are trying to pass – the hardest and longest subject in the Machine Course. Careful! You need to write the full title, no typos allowed!",
-              "coordinates": [48.265293,11.668696]
+              "challenge": "Do you see those groups of people with drawings of mechanical parts? Go to them, and find out which subject they are trying to pass – the hardest and longest subject in the Machine Course.",
+              "challenge_type": 1,
+              "options": ["CAD und Maschinenzeichnen 1", "CAD und Maschinenzeichnen 2", "Maschinenelemente "],
+              "right_answer": "CAD und Maschinenzeichnen 2",
+              "coordinates": [
+                48.265293,
+                11.668696
+              ]
             },
             {
-              "id": 2,
               "title": "Physik Bibliothek",
-              "challenge": "Well then, physics library, huh? Not many people know about it, since it’s so hidden! Congratulation for finding it! Now, find a physic student of your choice, that does not mind being bothered, and tell him to solve this simple physics exercise!",
-              "coordinates": [48.267220,11.675893]
+              "challenge": "Well then, physics library, huh? Not many people know about it, since it’s so hidden! Congratulation for finding it! Now, find a physic student of your choice, that does not mind being bothered, and tell him to solve this simple math exercise: Take a stick and break it randomly into three pieces. What is the probability  you can form a triangle from the pieces?",
+              "coordinates": [
+                48.267220,
+                11.675893
+              ],
+              "challenge_type": 1,
+              "options": [
+                "1/4",
+                "1/8",
+                "1/2"
+              ],
+              "right_answer": "1/4"
+            },
+            {
+              "title": "Hochbrück - Quantum",
+              "challenge": "Here is the place where some small TUM Fachschaft has its place. It's called MSE, but it's only an abbreviation. Don't be shy, come in, and ask students inside to tell you what it stands for!",
+              "challenge_type": 2,
+              "right_answer": "Munich school of Engineering",
+              "coordinates": [
+                48.249829,
+                11.63535
+              ]
             }
           ]
         },
@@ -188,33 +275,68 @@
           "description": "exploring the history",
           "place": [
             {
-              "id": 1,
               "title": "Mensa Garching",
               "challenge": "Well, nice for you, you found the new, shiny mensa. But did you know there is also a more obscure, old one, that all locals know? Find it! It’s not that far away!",
-              "coordinates": [48.268255, 11.673076],
+              "coordinates": [
+                48.268255,
+                11.673076
+              ],
               "challenge_type": 3,
-              "right_answer": [48.267203, 11.671550]
+              "right_answer": [
+                48.267203,
+                11.671550
+              ]
             },
             {
-              "id": 2,
               "title": "TU Film",
               "challenge": "Each Christmas, there is a tradition of showing a certain old movie three times here. Find out which movie it is!",
-              "coordinates": [48.148261, 11.568440],
+              "coordinates": [
+                48.148261,
+                11.568440
+              ],
               "challenge_type": 1,
-              "options": ["drei haselnüsse für aschenbrödel", "Feuerzangenbowle", "Weihnachten bei Hoppenstedts"],
+              "options": [
+                "drei haselnüsse für aschenbrödel",
+                "Feuerzangenbowle",
+                "Weihnachten bei Hoppenstedts"
+              ],
               "right_answer": "Feuerzangenbowle"
             }
           ]
         },
         {
-          "stage": 0,
-          "description": "no challenge",
+          "stage": 4,
+          "description": "quiz",
           "places": [
             {
-              "id": 4,
-              "title": "Hochbruck - Quantum",
-              "challenge": null,
-              "coordinates": [48.249829, 11.63535]
+              "title": "Mathe Info Gebauede",
+              "challenge": "Take your time, slide down the famous TUM slide, and once you are ready, sit at one of the tables you see and crack this code : fqjhmlqjsx jfw fjwnjx sn frxjy",
+              "coordinates": [
+                48.183922,
+                11.611094
+              ],
+              "challenge_type": 2,
+              "right_answer": "challenges are easier in teams"
+            },
+            {
+              "title": "TUM Sportplatz",
+              "challenge": "An FBI Agent who is few days away from cracking an oil smuggling ring has suddenly gone missing. While inspecting his last-known location, officers find a note: 710 57735 34 5508 51 7718. Currently there are 3 suspects:  Bill, John and Todd. Can you find the criminal? If you need the pause, take time and maybe play some volleyball. You can lend the balls in the MW Fachschaft in MW building for free!",
+              "right_answer": "Bill",
+              "challenge_type": 2,
+              "coordinates": [
+                48.263398,
+                11.668311
+              ]
+            },
+            {
+              "title": "StuCafé Audimax",
+              "challenge": "Walk on the living, they don't even mumble. Walk on the dead, they mutter and grumble. What are they?",
+              "challenge_type": 2,
+              "right_answer": "leaves",
+              "coordinates": [
+                48.149509,
+                11.567433
+              ]
             }
           ]
         }
@@ -229,29 +351,46 @@
           "description": "exploring the place",
           "places": [
             {
-              "id": 1,
               "title": "Pinakotheken Wiese",
               "challenge": "There are three different Pinakoheken. Find out, how they are all called and write it in",
-              "coordinates": [48.149011, 11.570271],
+              "coordinates": [
+                48.149011,
+                11.570271
+              ],
               "challenge_type": 1,
-              "options": ["neue, alte, moderne", "german, european and worldwide art", "the first, second, and third one"],
+              "options": [
+                "neue, alte, moderne",
+                "german, european and worldwide art",
+                "the first, second, and third one"
+              ],
               "right_answer": "neue, alte, moderne"
             },
             {
-              "id": 2,
               "title": "Schloss Nymphenburg",
               "challenge": "Walk around the maginificent castle and it's surrounding. There are some beautiful, not often seen in a city animals around here. Can you find them and tell me what they are? Trust me, you will know once you see them!",
-              "coordinates": [48.158361, 11.503840],
+              "coordinates": [
+                48.158361,
+                11.503840
+              ],
               "challenge_type": 2,
-              "right_answer": ["swan", "swans"]
+              "right_answer": [
+                "swan",
+                "swans"
+              ]
             },
             {
-              "id": 3,
               "title": "Frauenkirche",
               "challenge": "Frauenkirche is what everyone calls this church. But suprisingly, that is not the official name. Can you find out, what is?",
-              "coordinates": [48.138867, 11.57400],
+              "coordinates": [
+                48.138867,
+                11.57400
+              ],
               "challenge_type": 2,
-              "right_answer": ["Münchner Dom", "Munchner Dom", "Muenchner Dom"]
+              "right_answer": [
+                "Münchner Dom",
+                "Munchner Dom",
+                "Muenchner Dom"
+              ]
             }
           ]
         },
@@ -260,18 +399,32 @@
           "description": "exploring the culture",
           "places": [
             {
-              "id": 1,
               "title": "Englischer Garten",
               "challenge": "Many locals here, enjoying their time in the nature. Without using English (each one of you is only allowed to speak in your native language!) ask one of them, how old they are and let them write it in the app",
-              "coordinates": [48.149837, 11.586065]
+              "coordinates": [
+                48.149837,
+                11.586065
+              ]
             },
             {
-              "id": 2,
               "title": "BMW Museum ",
               "challenge": "There are certain things that every local knows. Find one, and ask them to tell you what the abbreviation BMW stays for. Careful for typos!",
-              "coordinates": [48.176966, 11.560007],
+              "coordinates": [
+                48.176966,
+                11.560007
+              ],
               "challenge_type": 2,
               "right_answer": "Bayerische Motoren Werke"
+            },
+            {
+              "title": "Theresienwiese",
+              "challenge": "Ah, yes, here takes place the famous Oktoberfest. But the locals don't always call it that way. Do you know, how?",
+              "challenge_type": 2,
+              "coordinates": [
+                48.131588,
+                11.550667
+              ],
+              "right_answer": ["Wiesn", "d'Wiesn"]
             }
           ]
         },
@@ -280,46 +433,46 @@
           "description": "exploring the history",
           "places": [
             {
-              "id": 1,
               "title": "Odeonsplatz",
               "challenge": "Stay here for a while, and appreciate this magnificent places with such a ich history. The Odeonsplatz takes its title from the Odeon building, which currently serves as the building of the Bavarian ministry of the Interior. But it’s original role was different. Can you find out, what was it?",
-              "coordinates": [48.142086, 11.578067],
+              "coordinates": [
+                48.142086,
+                11.578067
+              ],
               "challenge_type": 1,
-              "options": ["theater", "house of the Bavarian king","concert hall"]
+              "options": [
+                "theater",
+                "house of the Bavarian king",
+                "concert hall"
+              ],
+              "right_answer": "concert hall"
             },
             {
-              "id": 2,
               "title": "Geschwister Scholl platz",
               "challenge": "A very sad, and important story, but an important one to know. Please, inform yourself about the siblings’ story, and to prove it, write in the title of the organization they belonged to.",
-              "coordinates": [48.150925, 11.580656],
+              "coordinates": [
+                48.150925,
+                11.580656
+              ],
               "challenge_type": 2,
-              "answer": ["Weiße Rose", "die Weiße Rose", "weisse rose", "die weisse rose", "white rose"]
+              "right_answer": [
+                "Weiße Rose",
+                "die Weiße Rose",
+                "weisse rose",
+                "die weisse rose",
+                "white rose"
+              ]
             },
             {
-              "id": 3,
               "title": "Deutsches Museum",
               "challenge": "Not a very known fact, but this museum used to host pop and rock concerts. Can you say, which one of those famous bands performed here?",
               "challenge_type": 1,
-              "options": ["Metallica","Jimi Hendrix", "Helene Fischer"],
+              "options": [
+                "Metallica",
+                "Jimi Hendrix",
+                "Helene Fischer"
+              ],
               "right_answer": "Jimi Hendrix"
-            }
-          ]
-        },
-        {
-          "stage": 0,
-          "description": "no challenge",
-          "places": [
-            {
-              "id": null,
-              "title": "Marienplatz",
-              "challenge": null,
-              "coordinates": [48.137577, 11.575716]
-            },
-            {
-              "id": null,
-              "title": "Olympiastadium",
-              "challenge": null,
-              "coordinates": [48.173629, 11.544555]
             }
           ]
         },
@@ -327,23 +480,35 @@
           "stage": 4,
           "description": "quiz",
           "places": [
-            {
-              "id": null,
-              "title": "Mathe Info Gebauede",
-              "challenge": null,
-              "coordinates": [48.183922, 11.611094]
+             {
+              "title": "Hofbräuhaus am Platzl",
+              "challenge_type": 1,
+               "challenge": "The most famous beer house in Munich! I hope you are enjoying the food in this place..Here’s a riddle. What  can a human never eat for breakfast? ",
+              "right_answer": ["lunch", "dinner"],
+              "coordinates": [
+                48.137674,
+                11.580116
+              ]
             },
             {
-              "id": null,
-              "title": "",
-              "challenge": null,
-              "coordinates": [48.160956, 11.587559]
+              "title": "Viktualienmarkt",
+              "challenge": "An italian Lady gave birth to 7 baby girls: Donatella, Rebecca, Mila, Fabianna, Sofia and Lamitta. What is the name of the 7th one? Giorgia, Camilla, Tianna or Laritta?",
+              "challenge_type": 1,
+              "right_answer": "Tianna",
+              "coordinates": [
+                48.135265,
+                11.576952
+              ]
             },
             {
-              "id": 5,
-              "title": "Englischer Garten",
-              "challenge": null,
-              "coordinates": [48.149837, 11.586065]
+              "title": "Marienplatz",
+              "challenge": "The Evil Genius has servants with six, seven, or eight legs. The servants with seven legs always lie, but the servants with either six or eight legs always say the truth. One day, 4 servants met: The blue one says: “Altogether we have 28 legs”; the green one says: “Altogether we have 27 legs”; the yellow one says: “Altogether we have 26 legs”; the red one says: “Altogether we have 25 legs”. What is the colour of the servant that says the truth?",
+              "challenge_type": 1,
+              "right_answer": "green",
+              "coordinates": [
+                48.137577,
+                11.575716
+              ]
             }
           ]
         }
