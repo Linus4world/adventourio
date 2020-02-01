@@ -31,7 +31,7 @@ def new_place(player1, player2, places_in):
     challenge_type = 0
     options = []
     right_answer = []
-    for stages in places_in['places']:
+    for stages in places_in['stages']:
         if stages['stage'] == (player1.stage + 1) and stages['stage'] == (player2.stage + 1):
             for place in stages['place']:
                 r1 = math.pow(place['coordinates'][0] - new_latt, 2)
