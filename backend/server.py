@@ -44,7 +44,7 @@ def join(id):
         session.setPlacesCategory(placesCategory(all_answers, places))
         # TODO
         session.setCharacters(character_assignment(all_answers))
-        session.setCharacters(None)
+        #session.setCharacters(None)
     if session.wait_for_full_session():
         return json.dumps({"playerNames": session.playerNames, "character": session.getCharacter(id)})
     return abort('No other players found :(')
