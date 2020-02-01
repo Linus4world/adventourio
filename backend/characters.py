@@ -323,10 +323,10 @@ def character_assignment(answers):
 
     
     character_assignment = {
-        alien.id: 'Alien',
-        adventurer.id: 'Adventurer',
-        detective.id: 'Detective',
-        wizard.id: 'Wizard'
+        alien.id_player: 'Alien',
+        adventurer.id_player: 'Adventurer',
+        detective.id_player: 'Detective',
+        wizard.id_player: 'Wizard'
     }
     return character_assignment
 
