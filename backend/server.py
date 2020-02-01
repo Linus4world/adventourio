@@ -3,7 +3,7 @@ from flask_cors import CORS, cross_origin
 from flask import request
 import json
 from session import Session
-from characters import character_assignment
+from assign_characters import character_assignment
 from all_answers_fcn import all_answers_function
 #from destination_challenge_assingment import new_place
 from all_answers_fcn import placesCategory
