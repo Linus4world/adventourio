@@ -6,6 +6,8 @@ class Session:
     playerNames = []
     playerAnswers = []
     readyToPlay = False
+    placesCategory = dict()
+    playerCharacters = dict()
 
     def __init__(self, maxPlayers = 4):
         self.maxPlayers = maxPlayers
@@ -29,6 +31,12 @@ class Session:
         if self.playerCharacters:
             return self.playerCharacters[id]
         return 'Adventurer'
+
+    def setPlacesCategory(self, places):
+        self.placesCategory = places
+
+    def getPlacesCategory(self):
+        return self.placesCategory
 
     def wait_for_full_session(self):
         counter = 0
