@@ -2,170 +2,16 @@ import numpy
 import json
 import random
 
-# mock json
-answers1 = """
-{
-    "all_answers": [
-        {
-            "id": "1",
-            "answers": [
-                "a",
-                "a",
-                "d",
-                "d"
-            ]
-        },
-        {
-            "id": "2",
-            "answers": [
-                "a",
-                "b",
-                "b",
-                "c"
-            ]
-        },
-        {
-            "id": "3",
-            "answers": [
-                "b",
-                "c",
-                "a",
-                "a"
-            ]
-        },
-        {
-            "id": "4",
-            "answers": [
-                "b",
-                "c",
-                "b",
-                "b"
-            ]
-        }          
-    ]
-}
-"""
-answers2 = """
-{
-    "all_answers": [
-        {
-            "id": "1",
-            "name": "ja",
-            "answers": [
-                "a",
-                "a",
-                "a",
-                "d",
-                "c",
-                "d",
-                "b"
-            ]
-        },
-        {
-            "id": "2",
-            "name": "ja2",
-            "answers": [
-                "a",
-                "a",
-                "a",
-                "d",
-                "c",
-                "d",
-                "b"
-            ]
-        },
-        {
-            "id": "3",
-            "name": "ja3",
-            "answers": [
-                "a",
-                "a",
-                "a",
-                "a",
-                "b",
-                "b",
-                "c"
-            ]
-        },
-        {
-            "id": "4",
-            "name": "ja4",
-            "answers": [
-                "a",
-                "a",
-                "a",
-                "b",
-                "c",
-                "b",
-                "b"
-            ]
-        }          
-    ]
-}
-"""
-answers3 = """
-{
-    "all_answers": [
-        {
-            "id": "1",
-            "name": "ja",
-            "answers": [
-                "a",
-                "a",
-                "a",
-                "a",
-                "b",
-                "c",
-                "d"
-            ]
-        },
-        {
-            "id": "2",
-            "name": "ja2",
-            "answers": [
-                "a",
-                "a",
-                "a",
-                "a",
-                "b",
-                "c",
-                "d"
-            ]
-        },
-        {
-            "id": "3",
-            "name": "ja3",
-            "answers": [
-                "a",
-                "a",
-                "a",
-                "c",
-                "a",
-                "c",
-                "d"
-            ]
-        },
-        {
-            "id": "4",
-            "name": "ja4",
-            "answers": [
-                "a",
-                "a",
-                "a",
-                "d",
-                "b",
-                "b",
-                "c"
-            ]
-        }          
-    ]
-}
-"""
+
+def assign_characters(all_player_questionaire_answers, available_characters):
+    pass
+
+########################################################################################################################
+
 class Character:
     def __init__(self, id_player, name):
         self.id_player = id_player
         self.name = name
-
 
 class Adventurer(Character):
     description = "drunk"
@@ -181,7 +27,6 @@ class Wizard(Character):
 
 class Detective(Character):
     description = "break-free"
-
 
 def character_assignment(answers):
     adventurer = Adventurer('0', 'player')
@@ -321,7 +166,6 @@ def character_assignment(answers):
                              points_id, detective, chosen)
             chosen_characters[3] = 0
 
-    
     character_assignment = {
         alien.id_player: 'Alien',
         adventurer.id_player: 'Adventurer',
@@ -492,5 +336,5 @@ def maxWizard(all_adventurer_points, all_alien_points, all_wizard_points, all_de
     return all_adventurer_points, all_alien_points, all_wizard_points, all_detective_points, wizard, chosen
 
 #some primitive debugging
-ch = character_assignment(answers2)
-print(ch)
+#ch = character_assignment(answers2)
+#print(ch)
