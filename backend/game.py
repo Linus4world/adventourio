@@ -191,10 +191,10 @@ if __name__ == "__main__":
     # Adding Page 2
     # story.get_page(character='alien', chapter=0, page=1).set_page_type('challenge')
     story.get_page(character_name='alien', chapter=0, page=1).add_page_variation(
-        txt=['CHALLENGE 1']
+        txt=['CHALLENGE 1'], challenge=story.get_challenge('00')
     )
     story.get_page(character_name='alien', chapter=0, page=1).add_page_variation(
-        txt=['CHALLENGE 2']
+        txt=['CHALLENGE 2'], challenge=story.get_challenge('01')
     )
 
     # Adding Page 3
