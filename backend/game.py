@@ -87,6 +87,12 @@ class Game:
 
             player.set_character(character)
 
+    def setPlacesCategory(self, places):
+        self.placesCategory = places
+
+    def getPlacesCategory(self):
+        return self.placesCategory
+
     # --------------- MANAGING PLAYERS: ---------------
 
     def add_player(self, player_id, name, answers):
