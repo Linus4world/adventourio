@@ -38,3 +38,11 @@ ion-content {
 ion-input {
     text-align: start;
 }
+
+.wrong.item-radio-checked {
+    --background: red;
+}
+
+.correct {
+    --background: green;
+}

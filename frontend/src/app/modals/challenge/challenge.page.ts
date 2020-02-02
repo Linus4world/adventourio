@@ -24,6 +24,7 @@ export class ChallengePage {
   answer: string = undefined;
   character: string;
   characterText = 'All right, let\'s find this place! It has to be somewhere close...';
+  submitted = false;
 
   constructor(
     private modalCtrl: ModalController,
@@ -55,6 +56,10 @@ export class ChallengePage {
   }
 
   submit() {
+    this.submitted = true;
+  }
+
+  continue() {
     switch (this.challenge.challenge_type) {
       case 1:
         this.modalCtrl.dismiss(this.answer === this.challenge.right_answer);

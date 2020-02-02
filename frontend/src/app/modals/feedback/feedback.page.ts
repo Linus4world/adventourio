@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-feedback',
@@ -14,7 +15,7 @@ export class FeedbackPage implements OnInit {
 
   rating = [0, 0, 0];
 
-  constructor() { }
+  constructor(private modalCtrl: ModalController) { }
 
   ngOnInit() {
   }
@@ -28,7 +29,7 @@ export class FeedbackPage implements OnInit {
   }
 
   submit() {
-    // TODO
+    this.modalCtrl.dismiss();
   }
 
 }

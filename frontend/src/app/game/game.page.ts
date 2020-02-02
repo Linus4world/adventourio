@@ -7,6 +7,7 @@ import { Stage } from '../provider/models';
 import { Platform, ModalController, NavController } from '@ionic/angular';
 import { ChallengePage } from '../modals/challenge/challenge.page';
 import { StoryPage } from '../modals/story/story.page';
+import { FeedbackPage } from '../modals/feedback/feedback.page';
 
 @Component({
   selector: 'app-game',
@@ -85,7 +86,7 @@ export class GamePage implements AfterViewInit {
     return await modal.present();
   }
 
-  async presentStoryPage() {
+  private async presentStoryPage() {
     const modal = await this.modalController.create({
       component: StoryPage,
       componentProps: {
@@ -94,8 +95,18 @@ export class GamePage implements AfterViewInit {
     });
     modal.onDidDismiss().then(() => {
       if (!this.stage.challenge) {
-        this.navCtrl.navigateRoot('main');
+        this.presentFeedbackPage();
       }
+    });
+    return await modal.present();
+  }
+
+  private async presentFeedbackPage() {
+    const modal = await this.modalController.create({
+      component: FeedbackPage
+    });
+    modal.onDidDismiss().then(() => {
+      this.navCtrl.navigateRoot('main');
     });
     return await modal.present();
   }

@@ -13,9 +13,10 @@
       <ion-label>Please coose one</ion-label>
     </ion-list-header>
 
-    <ion-item *ngFor="let option of challenge.options">
+    <ion-item *ngFor="let option of challenge.options" 
+    [ngClass]="{'wrong': submitted && challenge.right_answer !== option, 'correct': submitted && challenge.right_answer === option}">
       <ion-label class="word-wrap">{{option}}</ion-label>
-      <ion-radio slot="start" [value]="option"></ion-radio>
+      <ion-radio slot="start" [value]="option" [disabled]="submitted"></ion-radio>
     </ion-item>
   </ion-radio-group>
   <div *ngIf="challenge.challenge_type === 2" class="ion-margin ion-padding">
@@ -39,6 +40,12 @@
   <div class="absolute">
     <ion-button expand="block" [disabled]="!answer && challenge.challenge_type !== 3" (click)="submit()">
       Submit
+    </ion-button>
+  </div>
+
+  <div *ngIf="submitted" class="absolute">
+    <ion-button expand="block" (click)="continue()">
+      Continue
     </ion-button>
   </div>
 
