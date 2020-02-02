@@ -1,0 +1,19 @@
+.feedbacks {
+    display: flex;
+    justify-content: space-between;
+    font-size: large;
+}
+.stars {
+    font-size: xx-large;
+}
+
+.absolute {
+    position: absolute;
+    bottom: 20px;
+    width: 80%;
+    left: 50%;
+    ion-button {
+        position: relative;
+        left: -50%;
+    }
+}

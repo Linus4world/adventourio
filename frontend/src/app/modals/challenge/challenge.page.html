@@ -13,15 +13,39 @@
       <ion-label>Please coose one</ion-label>
     </ion-list-header>
 
-    <ion-item *ngFor="let option of challenge.answers">
+    <ion-item *ngFor="let option of challenge.options" 
+    [ngClass]="{'wrong': submitted && challenge.right_answer !== option, 'correct': submitted && challenge.right_answer === option}">
       <ion-label class="word-wrap">{{option}}</ion-label>
-      <ion-radio slot="start" [value]="option"></ion-radio>
+      <ion-radio slot="start" [value]="option" [disabled]="submitted"></ion-radio>
     </ion-item>
   </ion-radio-group>
+  <div *ngIf="challenge.challenge_type === 2" class="ion-margin ion-padding">
+    <ion-list lines="full" class="ion-no-margin ion-no-padding">
+      <ion-item>
+        <ion-input type="text" minlength=1 placeholder="Your Answer" required
+          (input)="handleUserAnswer($event.target.value)">
+        </ion-input>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <div *ngIf="challenge.challenge_type === 3" class="character">
+    <p>{{characterText}}</p>
+    <img *ngIf="character === 'Alien'" src="../../../assets/alien.png">
+    <img *ngIf="character === 'Adventurer'" src="../../../assets/adventurer.png">
+    <img *ngIf="character === 'Detective'" src="../../../assets/detektiv.png">
+    <img *ngIf="character === 'Wizard'" src="../../../assets/wizard.png">
+  </div>
 
   <div class="absolute">
-    <ion-button expand="block" [disabled]="!answer" (click)="submit()">
+    <ion-button expand="block" [disabled]="!answer && challenge.challenge_type !== 3" (click)="submit()">
       Submit
+    </ion-button>
+  </div>
+
+  <div *ngIf="submitted" class="absolute">
+    <ion-button expand="block" (click)="continue()">
+      Continue
     </ion-button>
   </div>
 
