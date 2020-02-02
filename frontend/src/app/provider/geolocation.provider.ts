@@ -1,14 +1,15 @@
 import { Geolocation, Geoposition } from '@ionic-native/geolocation/ngx';
 import { Injectable } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { filter } from 'rxjs/operators';
+import { Subscription, Observable } from 'rxjs';
+import { filter, tap } from 'rxjs/operators';
 
 /**
  * This service handles user postion tracking.
  */
 @Injectable()
 export class GeolocationProvider {
-    private watch: Subscription;
+    private watchPosition: Observable<Geoposition>;
+    private subscriptions: Subscription[] = [];
 
     constructor(private geolocation: Geolocation) { }
 
@@ -27,21 +28,25 @@ export class GeolocationProvider {
      * Make sure to call the stopTracking() function when you are finished to track the user.
      */
     public trackPosition(callback: (data: Geoposition) => any) {
+        if ( this.watchPosition === undefined) {
+            this.watchPosition = this.geolocation.watchPosition().pipe(
+                filter((p) => p.coords !== undefined),
+                tap((data) => console.log('[Geolocation Tracking]:', data)));
+        }
         console.log('Start Tracking!');
-        this.watch = this.geolocation.watchPosition().pipe(filter((p) => p.coords !== undefined)).subscribe((data) => {
-            console.log('[Geolocation Tracking]:', data);
+        this.subscriptions.push(this.watchPosition.subscribe((data) => {
             callback(data);
-        });
+        }));
     }
 
     /**
      * Stops the user location tracking by unsubscribing from the Observable.
      */
     public stopTracking() {
-        if (this.watch) {
-            this.watch.unsubscribe();
-            this.watch = undefined;
-            console.log('Tracking was stopped!');
+        for (const sub of this.subscriptions) {
+            sub.unsubscribe();
         }
+        this.watchPosition = undefined;
+        console.log('Tracking was stopped!');
     }
 }
