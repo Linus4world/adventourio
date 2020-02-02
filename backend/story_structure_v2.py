@@ -2,6 +2,7 @@ import numpy as np
 import time
 import random
 import json
+import re
 from utils import *
 from characters_and_challenges import *
 
@@ -187,20 +188,30 @@ class Story:
         """
         Fills in all the blanks in a page_variation
         """
-        ret_txt = []  # Text to return
-        for txt in page_variation.txt:
-            idx_of_blank = txt.find('~')
-            if idx_of_blank != -1:
-                # Get the blank key
-                blank_key = txt[idx_of_blank + 1:idx_of_blank + 4]
-                # Blank found!
-                if blank_key in self.blanks.keys():
-                    # Get the word that will be inserted in the blank
-                    word = self.get_the_word_for_the_blank(blank_key)  # get the word t
-                    # Replace the blank '~BXX~' for the word
-                    txt = txt.replace(txt[idx_of_blank:idx_of_blank + 5], word)
-            ret_txt.append(txt)
-        return ret_txt
+
+        keys = re.findall('(\~(\w+)\~)', page_variation.txt)
+        for blank_key in keys:
+            if blank_key in self.blanks.keys():
+                word = self.get_the_word_for_the_blank(blank_key[1])  # get the word t
+                txt = txt.replace(blank_key[0], word)
+        return txt 
+
+
+
+        # ret_txt = []  # Text to return
+        # for txt in page_variation.txt:
+        #     idx_of_blank = txt.find('~')
+        #     if idx_of_blank != -1:
+        #         # Get the blank key
+        #         blank_key = txt[idx_of_blank + 1:idx_of_blank + 4]
+        #         # Blank found!
+        #         if blank_key in self.blanks.keys():
+        #             # Get the word that will be inserted in the blank
+        #             word = self.get_the_word_for_the_blank(blank_key)  # get the word t
+        #             # Replace the blank '~BXX~' for the word
+        #             txt = txt.replace(txt[idx_of_blank:idx_of_blank + 5], word)
+        #     ret_txt.append(txt)
+        # return ret_txt
 
     # --------------- PAGE VARIATION SELECTION: ---------------
 
