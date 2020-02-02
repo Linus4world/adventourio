@@ -188,7 +188,7 @@ if __name__ == "__main__":
         print(player.character.name)
 
     # Add blanks to the story:
-    story.add_blank('B00', ['apples', 'bananas', 'tomatoes'])
+    story.add_blank('B00', ['apples', 'bananas', 'tomatoes'], changes_every_time=True)
     story.add_blank_random('B01', 'noun')
     story.add_blank_random('B02', 'verb')
 

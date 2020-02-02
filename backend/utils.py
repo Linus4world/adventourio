@@ -1,7 +1,13 @@
 """
 This file is for small stand alone functions
 """
-from random_word import RandomWords
+import urllib.request, random, pycorpora
+
+rw = RandomWords()
+word_site = "https://svnweb.freebsd.org/csrg/share/dict/words?view=co&content-type=text/plain"
+response = urllib.request.urlopen(word_site)
+long_txt = response.read().decode()
+words = long_txt.splitlines()
 
 
 # TODO: Improve this function to get more meaningful words!
@@ -9,8 +15,8 @@ from random_word import RandomWords
 # this is very very very very very very very important so
 # that the story is entertaining and most importantly CREATIVE
 # This function is used in get_the_word_for_the_blank
+
 def get_random_word_from_the_internet(part_of_speech):
-    rw = RandomWords()
     return rw.get_random_word(hasDictionaryDef="true",
                               # includePartOfSpeech='adjective',
                               includePartOfSpeech=part_of_speech,
@@ -19,6 +25,13 @@ def get_random_word_from_the_internet(part_of_speech):
                               maxDictionaryCount=50,
                               minLength=5,
                               maxLength=10)
+
+def get_random_name():
+    first_name = rw.random_nick(gender='m')
+    upper_words = [word for word in words if word[0].isupper()]
+    name_words  = [word for word in upper_words if not word.isupper()]
+    name = ' '.join([name_words[random.randint(0,len(name_words))] for i in range(2)])
+    return name
 
 
 # Mock json for testing the character assignment
@@ -60,7 +73,7 @@ answers1 = """
                 "b",
                 "b"
             ]
-        }          
+        }
     ]
 }
 """
@@ -118,7 +131,7 @@ answers2 = """
                 "b",
                 "b"
             ]
-        }          
+        }
     ]
 }
 """
@@ -176,7 +189,7 @@ answers3 = """
                 "b",
                 "c"
             ]
-        }          
+        }
     ]
 }
 """
