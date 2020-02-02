@@ -20,6 +20,7 @@ import { GameProvider } from './provider/game.provider';
 import { ChallengePageModule } from './modals/challenge/challenge.module';
 import { StoryPageModule } from './modals/story/story.module';
 import { FeedbackPageModule } from './modals/feedback/feedback.module';
+import { CharacterPageModule } from './modals/character/character.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -32,7 +33,8 @@ import { FeedbackPageModule } from './modals/feedback/feedback.module';
     AppRoutingModule,
     ChallengePageModule,
     StoryPageModule,
-    FeedbackPageModule
+    FeedbackPageModule,
+    CharacterPageModule
   ],
   providers: [
     StatusBar,

@@ -4,10 +4,11 @@ import { OpenlayerProvider } from '../provider/openlayer.provider';
 import { GameProvider } from '../provider/game.provider';
 import { Geoposition } from '@ionic-native/geolocation/ngx';
 import { Stage } from '../provider/models';
-import { Platform, ModalController, NavController } from '@ionic/angular';
+import { Platform, ModalController, NavController, LoadingController } from '@ionic/angular';
 import { ChallengePage } from '../modals/challenge/challenge.page';
 import { StoryPage } from '../modals/story/story.page';
 import { FeedbackPage } from '../modals/feedback/feedback.page';
+import { CharacterPage } from '../modals/character/character.page';
 
 @Component({
   selector: 'app-game',
@@ -26,9 +27,10 @@ export class GamePage implements AfterViewInit {
     private zone: NgZone,
     private platform: Platform,
     private navCtrl: NavController,
-    public modalController: ModalController) {
-    this.getNewQuest();
+    public modalController: ModalController,
+    private loadingController: LoadingController) {
     this.character = gameProvider.getCharacter();
+    this.presentCharacterPage();
   }
 
   getPosition() {
@@ -56,7 +58,17 @@ export class GamePage implements AfterViewInit {
 
   private async getNewQuest(challengeOutcome?: boolean) {
     const coords = (await this.geolocationProvider.getPosition()).coords;
+
+    const loading = await this.loadingController.create({
+      message: 'Waiting for other players...',
+      spinner: 'crescent',
+      backdropDismiss: false
+    });
+
+    await loading.present();
+
     this.gameProvider.getNextQuest(challengeOutcome, [coords.latitude, coords.longitude]).subscribe(stage => {
+      loading.dismiss();
       console.log('new stage:', stage);
       this.zone.run(() => {
         this.stage = stage;
@@ -75,7 +87,18 @@ export class GamePage implements AfterViewInit {
     });
   }
 
-  async presentChallengePage() {
+  private async presentCharacterPage() {
+    const modal = await this.modalController.create({
+      component: CharacterPage,
+      componentProps: {
+        character: this.character,
+      }
+    });
+    modal.onDidDismiss().then(() => this.getNewQuest());
+    return await modal.present();
+  }
+
+  private async presentChallengePage() {
     const modal = await this.modalController.create({
       component: ChallengePage,
       componentProps: {
