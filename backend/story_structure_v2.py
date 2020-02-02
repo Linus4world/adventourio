@@ -95,7 +95,7 @@ class Story:
         blank = dict(
             random_word=False,
             list_of_words=list_of_words,
-            keep_initial_word=changes_every_time
+            changes_every_time=changes_every_time
         )
         self.blanks[blank_id] = blank
 
@@ -109,7 +109,7 @@ class Story:
         blank = dict(
             random_word=True,
             part_of_speech=part_of_speech,
-            keep_initial_word=changes_every_time
+            changes_every_time=changes_every_time
         )
         self.blanks[blank_key] = blank
 

@@ -15,6 +15,7 @@ class Player:
         self.prob_array = [(0, "good")]
         self.character = None
         self.story_location = [-1, -1]  # row, column
+        self.chapter = -1
         self.geo_location = [0.0, 0.0]  # [latt, long]
         self.geo_destination = [0.0, 0.0]  # [latt, long]
         self.answer = None
@@ -44,6 +45,15 @@ class Player:
 
     def get_story_location(self):
         return self.story_location
+
+    def get_geo_location(self):
+        return self.geo_location
+
+    def get_geo_destination(self):
+        return self.geo_destination
+
+    def get_chapter_number(self):
+        return (self.story_location[0] - 1)/3
 
 
 class Game:
