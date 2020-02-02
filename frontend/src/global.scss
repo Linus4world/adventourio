@@ -24,3 +24,34 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+.Adventurer {
+    ion-content {
+        --color: white;
+        text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+        --background: #ffffff url('./assets/adventurer-background.jpg') no-repeat center center / cover;
+    }
+}
+
+.Detective {
+    ion-content {
+        --color:white;
+        text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+        --background: #ffffff url('./assets/detective-background.jpg') no-repeat center center / cover;
+    }
+}
+
+.Alien {
+    ion-content {
+        --color:white;
+        --background: #ffffff url('./assets/alien-background.png') no-repeat center center / cover;
+    }
+}
+
+.Wizard {
+    ion-content {
+        --color:white;
+        text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+        --background: #ffffff url('./assets/wizard-background.jpg') no-repeat center center / cover;
+    }
+}
