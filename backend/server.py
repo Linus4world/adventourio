@@ -29,7 +29,7 @@ def hello_world():
 
 
 @app.route('/questionnaire', methods=['GET'])
-def givingquestionnaire():
+def send_questionnaire():
     with open("questionnaire.json", 'r', encoding='utf-8') as questionnaire:
         return json.load(questionnaire)
 
