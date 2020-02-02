@@ -39,7 +39,7 @@ def join(id):
     session.addPlayer(id, answers["name"], answers["answers"])
     if session.isFull():
         all_answers = all_answers_function(session)
-        with open("places.json") as file:
+        with open("challenges.json", 'r', encoding='utf-8') as file:
             places = file.read()
         session.setPlacesCategory(placesCategory(all_answers, places))
         # TODO
@@ -52,8 +52,7 @@ def join(id):
 
 @app.route('/stage/<id>', methods = ['POST'])
 def next_sub_stage(id):
-    challengeOutcomeLoc = request.get_json()
-    challengeOutcomeLoc_dict = json.load(challengeOutcomeLoc)
+    challengeOutcomeLoc_dict = request.get_json()
     # TODO Esteban Sarah here your function :)
     # story = getStageStory(id, challengeOutcomeLoc_dict['challengeOutcome']
     # TODO Esteban Sarah, please tell me how can I get information which two people are paired!
