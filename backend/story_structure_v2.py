@@ -3,7 +3,7 @@ import time
 import random
 import json
 from utils import *
-from characters_and_challenges import *
+from story_telling import *
 
 
 class Character:
@@ -30,24 +30,24 @@ class Story:
         for row in range(n):
             for column in range(m):
                 pages[row, column] = Page()
+
+        self.story_size = story_size
+
         self.pages = pages
-
-        self.challenges = {}
         self.blanks = {}
-
         self.characters = []
 
     # --------------- SET UP: ---------------
 
     def setup_story(self):
-        self.add_character(Character(name='adventurer', description='drunk'))
-        self.add_character(Character(name='alien', description='academic'))
-        self.add_character(Character(name='wizard', description='foreign cultures'))
-        self.add_character(Character(name='detective', description='break free'))
+
+        # Add content of the story
+        set_example_story(self)
 
     # --------------- CHARACTERS: ---------------
 
-    def add_character(self, character):
+    def add_character(self, name, description):
+        character = Character(name, description)
         character.story_row = len(self.characters)
         self.characters.append(character)
 
@@ -160,12 +160,6 @@ class Story:
     def select_a_challenge(page_variations, player):
         return select_a_challenge(page_variations, player)
 
-    # option choice is dependent on: random number,
-    # if players succeeded in LAST task, with what probability the outcomes of the previous stages were selected
-    # option choice returns a PROBABILITY to select a good/bad outcome in substage3
-    # challenge outcome is 0 for "failed task" and 1 for "achieved task"
-    # def select_good_or_bad_outcome(self, challenge_outcome, prob_array):
-    # TODO: Sarah and Esteban [BE-07]
     @staticmethod
     def select_good_or_bad_outcome(page_variations, player):
         """
@@ -218,12 +212,17 @@ class Story:
         Parameters:
             character_name (str):
             chapter (int): A chapter consists of 3 pages
-            page (int): Can only be {0, 1, 2}
+            page (str): Can only be {0, 1, 2}
         Returns:
             The page at specified location
         """
-        assert 0 <= page <= 2, 'page can only be {0, 1, 2}'
         row = self.get_character_story_row(character_name)
+        if page == 'intro':
+            page = 0
+        elif page == 'outro':
+            page = 2
+        else:
+            raise Exception('outro', 'page can only be \'intro\' or \'outro\'')
         column = chapter * 3 + page
 
         return self.pages[row][column]

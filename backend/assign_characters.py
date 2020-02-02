@@ -1,7 +1,7 @@
 import numpy
 import json
 import random
-
+from utils import *
 
 def assign_characters(all_player_questionaire_answers, available_characters):
     pass
@@ -28,7 +28,8 @@ class Wizard(Character):
 class Detective(Character):
     description = "break-free"
 
-def character_assignment(answers):
+
+def get_character_assignment(answers):
     adventurer = Adventurer('0', 'player')
     alien = Alien('0', 'player')
     wizard = Wizard('0', 'player')
@@ -167,10 +168,10 @@ def character_assignment(answers):
             chosen_characters[3] = 0
 
     character_assignment = {
-        alien.id_player: 'Alien',
-        adventurer.id_player: 'Adventurer',
-        detective.id_player: 'Detective',
-        wizard.id_player: 'Wizard'
+        alien.id_player: 'alien',
+        adventurer.id_player: 'adventurer',
+        detective.id_player: 'detective',
+        wizard.id_player: 'wizard'
     }
     return character_assignment
 
@@ -335,6 +336,7 @@ def maxWizard(all_adventurer_points, all_alien_points, all_wizard_points, all_de
 
     return all_adventurer_points, all_alien_points, all_wizard_points, all_detective_points, wizard, chosen
 
-#some primitive debugging
-#ch = character_assignment(answers2)
-#print(ch)
+
+# if __name__ == '__main__':
+#     ch = get_character_assignment(answers2)
+#     print(ch)

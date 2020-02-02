@@ -3,6 +3,17 @@ import numpy
 import random
 
 
+# SAME FUNCTION AS all_answers_function, but adapted
+def store_all_player_answers_in_one_file(players):
+    all_answers = [dict(), dict(), dict(), dict()]
+    for i, player_id in enumerate(players.keys()):
+        all_answers[i]['id'] = player_id
+        all_answers[i]['name'] = players[player_id].name
+        all_answers[i]['answers'] = players[player_id].answers
+    all_answers = {'all_answers': all_answers}
+    return json.dumps(all_answers)
+
+
 def all_answers_function(session):
     all_answers = [dict(), dict(), dict(), dict()]
     for i in range(0, 4):
