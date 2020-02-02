@@ -5,6 +5,7 @@ import json
 import re
 from utils import *
 from characters_and_challenges import *
+import pycorpora
 
 #Here be global variables
 adventurer_treasure = ["Crystal Skull", "Monkey Statue", "Stuffed Wolpertinger", "Ancient Porn Magazine",
@@ -153,6 +154,21 @@ class Story:
             In this case we replace the word with something from pycorpora
             Check word types
             """
+            if blank_id == "spells":
+                return random.choice(pycorpora.words.spells['spells'])['incantation']
+            elif blank_id == "adverbs":
+                return random.choice(pycorpora.words.adverbs['adverbs'])
+            elif blank_id == "nouns":
+                return random.choice(pycorpora.words.nouns['nouns'])
+            elif blank_id == "strange_words":
+                return random.choice(pycorpora.words.strange_words['words'])
+            elif blank_id == "lovecraft_words":
+                return random.choice(pycorpora.words.literature.lovecraft_words['words'])
+            elif blank_id == "shakespeare_words":
+                return random.choice(pycorpora.words.literature.shakespeare_words['words'])
+            else
+                return "you messed up, buddy"
+
         #    part_of_speech = blank['part_of_speech']
         #    word = get_random_word_from_the_internet(part_of_speech)
         # Random word from the list of words provided
@@ -194,7 +210,7 @@ class Story:
             if blank_key in self.blanks.keys():
                 word = self.get_the_word_for_the_blank(blank_key[1])  # get the word t
                 txt = txt.replace(blank_key[0], word)
-        return txt 
+        return txt
 
 
 
