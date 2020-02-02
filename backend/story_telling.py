@@ -20,6 +20,9 @@ def set_example_story(story):
     )
 
     # Adding Page 3
+
+    # BE FUCKING CAREFUL: THE ORDER IN WHICH YOU STORE THE OUTCOME MATTERS!
+    # FIRST GOOD OUTCOME, THEN BAD OUTCOME
     story.get_page(character_name='alien', chapter=0, page='outro').add_page_variation(
         txt=['Good outcome']
     )

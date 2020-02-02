@@ -176,8 +176,8 @@ class Story:
         player_inputs = player.player_inputs
         challenge_outcome = player_inputs[-1]  # Outcome of last challenge
         prob_array = player.prob_array
-        good_outcome = page_variations[0]  # BE FUCKING CAREFUL: THE ORDER IN WHICH YOU STORE THE OUTCOME MATTERS!
-        bad_outcome = page_variations[1]  # BE FUCKING CAREFUL: THE ORDER IN WHICH YOU STORE THE OUTCOME MATTERS!
+        good_outcome = page_variations[0]
+        bad_outcome = page_variations[1]
 
         # prob_array is a list of tuples like [(0.82, "good"), (0.63, "bad")]
         total_val = 0.0
