@@ -22,9 +22,16 @@ const routes: Routes = [
     path: 'story', loadChildren: './modals/story/story.module#StoryPageModule', canLoad: [LoadingGuard]
   },
   {
+    path: 'feedback', loadChildren: './modals/feedback/feedback.module#FeedbackPageModule'
+  },
+  {
     path: '',
     redirectTo: '/main',
     pathMatch: 'full'
+  },
+  {
+    path: 'feedback',
+    loadChildren: () => import('./modals/feedback/feedback.module').then( m => m.FeedbackPageModule)
   },
 
 ];
