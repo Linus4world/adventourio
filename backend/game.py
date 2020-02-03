@@ -66,6 +66,8 @@ class Game:
 
     def __init__(self, number_of_players, number_of_pages):
         self.story = Story([number_of_players, number_of_pages])
+        self.fixed_character_assignment = False
+
         self.number_of_players = number_of_players
         self.players_waiting = 0
         self.players = {}
@@ -91,7 +93,7 @@ class Game:
         """
         # Assign the characters
         character_assignment = assign_characters_dummy(self.players)  # TODO: REPLACE WITH AGATA'S FUNCTION
-        # character_assignment = get_character_assignment(all_answers)
+        # character_assignment = get_character_assignment(all_answers)  # UNCOMMENT THIS TO TEST THE GAME!
 
         for player_id in character_assignment.keys():
             # Set character for each player
@@ -197,7 +199,7 @@ class Game:
             # Create a page_variation on the fly:
             page_variation = PageVariation()
             challenge = get_a_challenge_dummy(self.players)  # TODO: REPLACE WITH AGATA'S FUNCTION
-            # challenge = new_place(self)
+            # challenge = new_place(self) # UNCOMMENT THIS TO TEST THE GAME!
             page_variation.challenge = challenge
         # If the page is an outcome page:
         elif page.page_type == 'outcome':

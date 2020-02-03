@@ -123,8 +123,8 @@ if __name__ == '__main__':
     join('03', answers)
 
     # Printing character assignment
-    # for player_id in game.players.keys():
-    #     print(player_id, game.players[player_id].character.name)
+    for player_id in game.players.keys():
+        print(player_id, game.players[player_id].character.name)
 
     # ---------- Getting the next story section: ----------
 
