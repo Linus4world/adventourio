@@ -1,0 +1,40 @@
+<ion-content class="ion-padding">
+  <div *ngIf="character === 'Alien'">
+    <h4>
+      One thing's for sure, you're quite extraordinary! As an alien, you have knowledge of the big wide universe and see
+      your surroundings with different eyes. This will make all the difference!
+    </h4>
+    <br>
+    <img src="../../assets/alien.png">
+  </div>
+  <div *ngIf="character === 'Adventurer'">
+    <h4>
+      You're a real adventurer. Just like Indiana Jones, you will lead the group to the goal with your courage and
+      your thirst for discovery!
+    </h4>
+    <br>
+    <img src="../../assets/adventurer.png">
+  </div>
+  <div *ngIf="character === 'Detective'">
+    <h4>
+      Has anyone ever compared you to Sherlock Holmes? Because as a detective, not one detail escapes your watchful eye.
+      Use your powers of deduction to help the team on the right track!
+    </h4>
+    <br>
+    <img src="../../assets/detektiv.png">
+  </div>
+  <div *ngIf="character === 'Wizard'">
+    <h4>
+      You're a wizard {{'name' | accountLoader}}! You can use the forces of the cosmos to bypass the laws of physics and
+      acomplish incredible things. Use your power wisely for the community to triumph in the end!
+    </h4>
+    <br>
+    <img src="../../assets/wizard.png">
+  </div>
+
+</ion-content>
+<div class="absolute">
+  <ion-button expand="block" (click)="continue()">
+    Continue
+  </ion-button>
+</div>

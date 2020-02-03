@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Feedback</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <h3>
+    You have sucessfully completed your Story. Now we are interested in your personal experience! Please rate us in terms of...
+  </h3>
+  <br><br>
+  <ion-list lines="full" class="ion-no-margin ion-no-padding">
+    <div class="feedbacks" *ngFor="let feedback of feedbacks; let i = index">
+      {{feedback}}:
+      <div class="stars">
+        <ion-icon *ngFor="let x of getArray(rating[i]); let j = index" name="star" (click)="rate(i,j+1)"></ion-icon>
+        <ion-icon *ngFor="let x of getArray(5-rating[i]), let j = index" name="star-outline"
+          (click)="rate(i,rating[i]+j+1)"></ion-icon>
+      </div>
+    </div>
+  </ion-list>
+</ion-content>
+<div class="absolute">
+  <ion-button expand="block" (click)="submit()">
+    Submit
+  </ion-button>
+</div>

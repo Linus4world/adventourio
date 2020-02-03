@@ -42,6 +42,8 @@ def join(id):
         with open("challenges.json", 'r', encoding='utf-8') as file:
             places = file.read()
         session.setPlacesCategory(placesCategory(all_answers, places))
+        # TODO Esteban rauskommentieren
+        # game.setPlacesCategory(placesCategory(all_answers, places))
         session.setCharacters(character_assignment(all_answers))
     if session.wait_for_session_ready():
         return json.dumps({"playerNames": session.playerNames, "character": session.getCharacter(id)})

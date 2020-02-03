@@ -5,7 +5,11 @@ ion-content {
 #challenge {
     background-color: turquoise;
     border-radius: 25px;
-    border: 1px solid black
+    border: 1px solid black;
+    max-height: 50vh;
+    h1 {
+        font-size: 5vw;
+    }
 }
 
 .absolute {
@@ -17,4 +21,28 @@ ion-content {
         position: relative;
         left: -50%;
     }
+}
+
+.character {
+    position: absolute;
+    bottom: 0;
+    max-height: 80%;
+    display: flex;
+    justify-content: flex-end;
+
+    img {
+        max-width: 60%;
+    }
+}
+
+ion-input {
+    text-align: start;
+}
+
+.wrong.item-radio-checked {
+    --background: red;
+}
+
+.correct {
+    --background: green;
 }

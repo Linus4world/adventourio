@@ -2,8 +2,26 @@ import numpy as np
 import time
 import random
 import json
+import re
 from utils import *
 from characters_and_challenges import *
+import pycorpora
+
+#Here be global variables
+adventurer_treasure = ["Crystal Skull", "Monkey Statue", "Stuffed Wolpertinger", "Ancient Porn Magazine",
+                       "Long-Lost Martian Technology", "Hoard of Gold", "Creepy Medieval Painting", "Golden Globe",
+                       "Holy Grail", "Perpetuum Mobile"];
+adventurer_map = ["Legendary Map", "Ancient Scroll", "Mysterious Hieroglyphs", "Wise GPS System",
+                  "Ominous Road Sign", "Misleading Pictogram Panel", "Tacky Compass", "Sarcastic Recommendation",
+                  "Letter Of A Lost Lover", "Battered Postcard"]
+sci_fi_thing = ["Sonic Screwdriver", "Flux Capacitative Transcriber", "Bionic Sewing Needle", "Alpha ray excavator",
+                "Chromospheric Sensation Cord", "Cepheid Variability Oscillator", "Ceolostatic Clockwork",
+                "Cybernetic Bottleneck", "Diurnal Dynamite Mug", "Homunculoid Electrowaiver"];
+magic_thing = ["Ring", "Amulet", "Toe ring", "Nose ring", "Earring", "Necklace", "Book", "Staff", "Wand", "Cloak"];
+detective_weapon = ["Shotgun", "Plasma rifle", "Trusty Fists", "Unbreakable Katana Sword", "Machete", "Dagger",
+                    "Revolver", "Legendary Broadsword", "Pistol", "Scythe"];
+
+assigned_keywords = {} #dictionary with keyword:value
 
 
 class Character:
@@ -85,73 +103,131 @@ class Story:
 
     # --------------- BLANKS: ---------------
 
-    def add_blank(self, blank_id, list_of_words, changes_every_time=False):
+    def add_blank(self, blank_id, word_type, changes_every_time):
         """
         Parameters:
             blank_id (str):
-            list_of_words (list of str): possible words to fill in the blank with
+            (list_of_words (list of str): possible words to fill in the blank with)
+            word_type(str): what category of word is this (flower, spell, etc), has to fit with json file names in pycorpora
             changes_every_time (bool): if the blank should be filled in with a (potentially) different word every time
         """
         blank = dict(
-            random_word=False,
-            list_of_words=list_of_words,
-            changes_every_time=changes_every_time
+        #    random_word= False,
+        #    list_of_words=list_of_words,
+            changes_every_time= changes_every_time,
+            word_type = word_type
         )
         self.blanks[blank_id] = blank
 
-    def add_blank_random(self, blank_key, part_of_speech, changes_every_time=False):
-        """
-        Parameters:
-            blank_key (str):
-            part_of_speech (str): noun, adjective, etc.
-            changes_every_time (bool): if the blank should be filled in with a (potentially) different word every time
-        """
-        blank = dict(
-            random_word=True,
-            part_of_speech=part_of_speech,
-            changes_every_time=changes_every_time
-        )
-        self.blanks[blank_key] = blank
+#    def add_blank_random(self, blank_key, part_of_speech, changes_every_time=False):
+#        """
+#        Parameters:
+#            blank_key (str):
+#            part_of_speech (str): noun, adjective, etc.
+#            changes_every_time (bool): if the blank should be filled in with a (potentially) different word every time
+#        """
+#        blank = dict(
+#            random_word=True,
+#            part_of_speech=part_of_speech,
+#            changes_every_time=changes_every_time
+#        )
+#        self.blanks[blank_key] = blank
 
-    def get_the_word_for_the_blank(self, blank_key):
+    def get_the_word_for_the_blank(self, blank_id):
         """
         Description: It uses the blank to find a word to fill it with
 
         Parameters:
-             blank_key:
+             blank_id:
 
         Returns:
             A word with which the blank will be filled
         """
-        blank = self.blanks[blank_key]
+        """
+        Keyword blanks have to be called: treasure, map, tech, magic, weapon
+        """
+
+        blank = self.blanks[blank_id]
         # Random word from the internet!
-        if blank['random_word']:
-            part_of_speech = blank['part_of_speech']
-            word = get_random_word_from_the_internet(part_of_speech)
+        if blank['changes_every_time']:
+            """
+            In this case we replace the word with something from pycorpora
+            Check word types
+            """
+            if blank_id == "spells":
+                return random.choice(pycorpora.words.spells['spells'])['incantation']
+            elif blank_id == "adverbs":
+                return random.choice(pycorpora.words.adverbs['adverbs'])
+            elif blank_id == "nouns":
+                return random.choice(pycorpora.words.nouns['nouns'])
+            elif blank_id == "strange_words":
+                return random.choice(pycorpora.words.strange_words['words'])
+            elif blank_id == "lovecraft_words":
+                return random.choice(pycorpora.words.literature.lovecraft_words['words'])
+            elif blank_id == "shakespeare_words":
+                return random.choice(pycorpora.words.literature.shakespeare_words['words'])
+            else
+                return "you messed up, buddy"
+
+        #    part_of_speech = blank['part_of_speech']
+        #    word = get_random_word_from_the_internet(part_of_speech)
         # Random word from the list of words provided
         else:
-            list_of_words = self.blanks[blank_key]['list_of_words']
-            word = random.choice(list_of_words)
-        return word
+        #    list_of_words = self.blanks[blank_key]['list_of_words']
+        #    word = random.choice(list_of_words)
+            if blank_id not in assigned_keywords:
+                if blank_id == "treasure":
+                    treasure = random.choice(adventurer_treasure)
+                    assigned_keywords["treasure"] = treasure
+                    return treasure
+                elif blank_id == "map":
+                    map = random.choice(adventurer_map)
+                    assigned_keywords["map"] = map
+                    return map
+                elif blank_id == "tech":
+                    tech = random.choice(sci_fi_thing)
+                    assigned_keywords["tech"] = tech
+                    return tech
+                elif blank_id == "magic":
+                    magic = random.choice(magic_thing)
+                    assigned_keywords["magic"] = magic
+                    return magic
+                elif blank_id == "weapon":
+                    weapon = random.choice(detective_weapon)
+                    assigned_keywords["weapon"] = weapon
+                    return weapon
+            else:
+                return assigned_keywords[blank_id]
+
 
     def fill_in_the_blanks(self, page_variation):
         """
         Fills in all the blanks in a page_variation
         """
-        ret_txt = []  # Text to return
-        for txt in page_variation.txt:
-            idx_of_blank = txt.find('~')
-            if idx_of_blank != -1:
-                # Get the blank key
-                blank_key = txt[idx_of_blank + 1:idx_of_blank + 4]
-                # Blank found!
-                if blank_key in self.blanks.keys():
-                    # Get the word that will be inserted in the blank
-                    word = self.get_the_word_for_the_blank(blank_key)  # get the word t
-                    # Replace the blank '~BXX~' for the word
-                    txt = txt.replace(txt[idx_of_blank:idx_of_blank + 5], word)
-            ret_txt.append(txt)
-        return ret_txt
+
+        keys = re.findall('(\~(\w+)\~)', page_variation.txt)
+        for blank_key in keys:
+            if blank_key in self.blanks.keys():
+                word = self.get_the_word_for_the_blank(blank_key[1])  # get the word t
+                txt = txt.replace(blank_key[0], word)
+        return txt
+
+
+
+        # ret_txt = []  # Text to return
+        # for txt in page_variation.txt:
+        #     idx_of_blank = txt.find('~')
+        #     if idx_of_blank != -1:
+        #         # Get the blank key
+        #         blank_key = txt[idx_of_blank + 1:idx_of_blank + 4]
+        #         # Blank found!
+        #         if blank_key in self.blanks.keys():
+        #             # Get the word that will be inserted in the blank
+        #             word = self.get_the_word_for_the_blank(blank_key)  # get the word t
+        #             # Replace the blank '~BXX~' for the word
+        #             txt = txt.replace(txt[idx_of_blank:idx_of_blank + 5], word)
+        #     ret_txt.append(txt)
+        # return ret_txt
 
     # --------------- PAGE VARIATION SELECTION: ---------------
 
@@ -258,4 +334,3 @@ class PageVariation:
         self.challenge = {}
         self.story_location = [0, 0, 0]
         self.end_of_story = False
-

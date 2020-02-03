@@ -139,4 +139,21 @@ export class OpenlayerProvider {
             < 0.0004;
     }
 
+    public getDistance(): number {
+        const distance = Math.sqrt(
+            Math.pow(this.playerPos.lat - this.targetPos.lat, 2) +
+            Math.pow(this.playerPos.long - this.targetPos.long, 2));
+        switch (true) {
+            case distance < 0.0004:
+                return 0;
+            case distance < 0.0006:
+                return 1;
+            case distance < 0.0008:
+                return 2;
+            case distance < 0.001:
+                return 3;
+        }
+        return 4;
+    }
+
 }
