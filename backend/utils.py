@@ -8,16 +8,19 @@ import pycorpora
 #Here be global variables
 adventurer_treasure = ["Crystal Skull", "Monkey Statue", "Stuffed Wolpertinger", "Ancient Porn Magazine",
                        "Long-Lost Martian Technology", "Hoard of Gold", "Creepy Medieval Painting", "Golden Globe",
-                       "Holy Grail", "Perpetuum Mobile"];
+                       "Holy Grail", "Perpetuum Mobile"]
+
 adventurer_map = ["Legendary Map", "Ancient Scroll", "Mysterious Hieroglyphs", "Wise GPS System",
                   "Ominous Road Sign", "Misleading Pictogram Panel", "Tacky Compass", "Sarcastic Recommendation",
                   "Letter Of A Lost Lover", "Battered Postcard"]
+
 sci_fi_thing = ["Sonic Screwdriver", "Flux Capacitative Transcriber", "Bionic Sewing Needle", "Alpha ray excavator",
                 "Chromospheric Sensation Cord", "Cepheid Variability Oscillator", "Ceolostatic Clockwork",
-                "Cybernetic Bottleneck", "Diurnal Dynamite Mug", "Homunculoid Electrowaiver"];
-magic_thing = ["Ring", "Amulet", "Toe ring", "Nose ring", "Earring", "Necklace", "Book", "Staff", "Wand", "Cloak"];
+                "Cybernetic Bottleneck", "Diurnal Dynamite Mug", "Homunculoid Electrowaiver"]
+magic_thing = ["Ring", "Amulet", "Toe ring", "Nose ring", "Earring", "Necklace", "Book", "Staff", "Wand", "Cloak"]
+
 detective_weapon = ["Shotgun", "Plasma rifle", "Trusty Fists", "Unbreakable Katana Sword", "Machete", "Dagger",
-                    "Revolver", "Legendary Broadsword", "Pistol", "Scythe"];
+                    "Revolver", "Legendary Broadsword", "Pistol", "Scythe"]
 
 assigned_keywords = {} #dictionary with keyword:value
 

@@ -4,7 +4,7 @@ from flask import request
 import json
 from session import Session
 from assign_characters import get_character_assignment
-from all_answers_fcn import store_all_player_answers_in_one_file
+from all_answers_fcn import all_answers_function_v2
 #from destination_challenge_assingment import new_place
 from all_answers_fcn import placesCategory
 from game import *
@@ -51,7 +51,7 @@ def join(player_id, player_input=None):
 
     if game.is_full():
         # Package all the player answers into one object:
-        all_player_answers = store_all_player_answers_in_one_file(game.players)
+        all_player_answers = all_answers_function_v2(game.players)
         with open("challenges.json", 'r', encoding='utf-8') as file:
             challenges = file.read()
         # !!START THE GAME!!

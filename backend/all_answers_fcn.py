@@ -4,7 +4,7 @@ import random
 
 
 # SAME FUNCTION AS all_answers_function, but adapted
-def store_all_player_answers_in_one_file(players):
+def all_answers_function_v2(players):
     all_answers = [dict(), dict(), dict(), dict()]
     for i, player_id in enumerate(players.keys()):
         all_answers[i]['id'] = player_id
