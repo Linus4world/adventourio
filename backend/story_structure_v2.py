@@ -213,13 +213,8 @@ class Story:
             The page at specified location
         """
         row = self.get_character_story_row(character_name)
-        if page == 'intro':
-            page = 0
-        elif page == 'outro':
-            page = 2
-        else:
-            raise Exception('outro', 'page can only be \'intro\' or \'outro\'')
-        column = chapter * 3 + page
+        page_number = {'intro': 0, 'challenge': 1, 'outro': 2}
+        column = chapter * 3 + page_number[page]
 
         return self.pages[row][column]
 
