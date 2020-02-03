@@ -91,7 +91,7 @@ class Story:
 
     # --------------- BLANKS: ---------------
 
-    def add_blank(self, blank_id, word_type, changes_every_time):
+    def add_blank(self, blank_id, word_type, changes_every_time=False):
         """
         Parameters:
             blank_id (str):
