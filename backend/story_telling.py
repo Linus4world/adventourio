@@ -12,7 +12,11 @@ def set_example_story(story):
     story.add_blank_random('B02', 'verb')
 
     # --------------- DEFINING CONTENT STRUCTURE ---------------
-
+    rows = story.story_size[0]
+    columns = story.story_size[1]
+    for row in rows:
+        for i in range(1, columns, 3):
+            story.get_page_raw(row, i).set_page_type('challenge')
 
     # --------------- ADDING CONTENT ---------------
     story.get_page(character_name='alien', chapter=0, page='intro').add_page_variation(
