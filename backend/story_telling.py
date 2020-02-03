@@ -35,3 +35,4 @@ def set_example_story(story):
     story.get_page(character_name='alien', chapter=0, page='outro').add_page_variation(
         txt=['Bad outcome']
     )
+    story.get_page(character_name='alien', chapter=0, page='outro').set_last_page(True)

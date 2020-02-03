@@ -67,6 +67,10 @@ class Story:
         Returns:
             idx (int): his function returns the row that corresponds to the character
         """
+        # for character in self.characters:
+        #     print(character.name, end=' ')
+        # print("")
+
         for idx, character in enumerate(self.characters):
             if character.name == character_name:
                 return idx
@@ -169,8 +173,8 @@ class Story:
             ret_page_variation (PageVariation): One of the page variations from the page_variations array
         """
 
-        player_inputs = player.player_inputs
-        challenge_outcome = player_inputs[-1]  # Outcome of last challenge
+        challenge_outcomes = player.challenge_outcomes
+        challenge_outcome = challenge_outcomes[-1]  # Outcome of last challenge
         prob_array = player.prob_array
         good_outcome = page_variations[0]
         bad_outcome = page_variations[1]
@@ -215,7 +219,6 @@ class Story:
         row = self.get_character_story_row(character_name)
         page_number = {'intro': 0, 'challenge': 1, 'outro': 2}
         column = chapter * 3 + page_number[page]
-
         return self.pages[row][column]
 
 
@@ -224,6 +227,7 @@ class Page:
         self.page_name = ''
         self.page_variations = []
         self.page_type = ''
+        self._last_page = False
 
     def add_page_variation(self, txt=None, challenge=None):
         page_var = PageVariation()
@@ -236,6 +240,12 @@ class Page:
         assert correct_page_type, 'page_type must be equal to \'challenge\' or \'outcome\''
         self.page_type = page_type
 
+    def set_last_page(self, last_page_bool):
+        self._last_page = last_page_bool
+
+    def is_it_the_last_page(self):
+        return self._last_page
+
 
 class PageVariation:
     """
@@ -247,5 +257,4 @@ class PageVariation:
         self.txt = []
         self.challenge = {}
         self.story_location = [0, 0, 0]
-        self.end_of_story = False
 

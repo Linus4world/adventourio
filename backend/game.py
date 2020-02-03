@@ -70,6 +70,7 @@ class Game:
 
         self.ready_queue = 0
         self.ready_to_play = False
+        self.finished_game = False
         self.places_category = dict()
         self.player_characters = dict()
         self.player_challenge_outcome = dict()
@@ -173,6 +174,8 @@ class Game:
         player.set_story_location([row, column + 1])
 
         page = self.story.get_page_raw(row, column + 1)
+        if page.is_it_the_last_page():
+            player.game_finished = True
 
         # If there is only one page variation, return that one
         if len(page.page_variations) == 1:
@@ -204,14 +207,18 @@ class Game:
         challenge = {}
 
         challenge_found = False
-        while not challenge_found:
-            pv = self.get_next_page_variation(player_id, challenge_outcome)
+        game_finished = False
+        while not challenge_found and not game_finished:
+            page_variation = self.get_next_page_variation(player_id, challenge_outcome)
 
-            if pv.txt != '':
-                txt += pv.txt
-            if pv.challenge is not None:
+            # This has to be called AFTER get_next_page_variation
+            game_finished = self.players[player_id].game_finished
+
+            if page_variation.txt != '':
+                txt += page_variation.txt
+            if page_variation.challenge is not None:
                 challenge_found = True
-                challenge = pv.challenge
+                challenge = page_variation.challenge
 
         ret_dict = dict(txt=txt, challenge=challenge)
 
