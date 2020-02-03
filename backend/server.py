@@ -123,8 +123,11 @@ if __name__ == '__main__':
     # ---------- Getting the next story_segment: ----------
 
     # The next few lines simulate what we would get from the front end
-    get_next_story_section(player_id='00', challenge_outcome=True)
-    #
-    get_next_story_section(player_id='00', challenge_outcome=True)
-    #
-    # get_next_story_section(player_id='00', challenge_outcome=True)
+    story_section = get_next_story_section(player_id='00', challenge_outcome=True)
+    print(story_section['txt'], story_section['challenge'])
+
+    story_section = get_next_story_section(player_id='00', challenge_outcome=True)
+    print(story_section['txt'], story_section['challenge'])
+
+    story_section = get_next_story_section(player_id='00', challenge_outcome=True)
+    print(story_section['txt'], story_section['challenge'])

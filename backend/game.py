@@ -170,7 +170,6 @@ class Game:
         column = story_location[1]
 
         # Set the new location
-        print(row, column + 1)
         player.set_story_location([row, column + 1])
 
         page = self.story.get_page_raw(row, column + 1)
@@ -180,18 +179,15 @@ class Game:
         # If there is only one page variation, return that one
         if len(page.page_variations) == 1:
             page_variation = page.page_variations[0]
-            print("ONE THING")
         # If the page is a challenge page:
         elif page.page_type == 'challenge':
             # Create a page_variation on the fly:
-            print("CHALLENGE FOUND")
             page_variation = PageVariation()
             challenge = get_a_challenge_dummy(self.players)  # TODO: REPLACE WITH AGATA'S FUNCTION
             # challenge = new_place(self)
             page_variation.challenge = challenge
         # If the page is an outcome page:
         elif page.page_type == 'outcome':
-            print("OUTCOME")
             page_variation = story.select_good_or_bad_outcome(page.page_variations, player)
         # IF IT IS NOT SPECIFIED WHAT TYPE OF PAGE THIS IS, A RANDOM PAGE VARIATION WILL BE SELECTED!
         else:
@@ -207,7 +203,7 @@ class Game:
         challenge = {}
 
         challenge_found = False
-        game_finished = False
+        game_finished = self.players[player_id].game_finished
         while not challenge_found and not game_finished:
             page_variation = self.get_next_page_variation(player_id, challenge_outcome)
 
@@ -222,4 +218,5 @@ class Game:
 
         ret_dict = dict(txt=txt, challenge=challenge)
 
-        return json.dumps(ret_dict)
+        return ret_dict
+        # return json.dumps(ret_dict)
