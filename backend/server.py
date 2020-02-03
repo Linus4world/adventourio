@@ -17,8 +17,13 @@ cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
 game = Game(number_of_players=4, number_of_pages=6)
-# session = Session(4)
 SUCCESS = json.dumps({'success': True}), 200, {'ContentType': 'application/json'}
+all_story_sections = {}
+
+# ---------- For debugging purposes: ----------
+wait = False  # Default: True
+abortions_legal = False  # Default: True
+# ---------------------------------------------
 
 
 @app.route('/')
@@ -38,9 +43,8 @@ def join(player_id, player_input=None):
 
     if player_input is None:
         player_input = request.get_json()
-
     if game.is_full():
-        return abort('Session is full!')
+        return abort('Game is full!')
 
     # Add Player
     game.add_player(player_id, player_input)
@@ -50,35 +54,37 @@ def join(player_id, player_input=None):
         all_player_answers = store_all_player_answers_in_one_file(game.players)
         with open("challenges.json", 'r', encoding='utf-8') as file:
             challenges = file.read()
-
-        # Set characters and set challenges
+        # !!START THE GAME!!
         game.start_game(all_player_answers, challenges)
-    else:
-        # TODO: LINUS: SEND A MESSAGE SAYING: "WAITING FOR OTHER PLAYERS TO JOIN..."
-        # We cannot wait for each player unless we use threads... I think
-        pass
 
-    # if game.wait_for_session_ready():
-    #     return json.dumps({"playerNames": session.playerNames, "character": session.getCharacter(player_id)})
-    # return abort('No other players found :(')
+    if wait and game.wait_for_game_ready():
+        return json.dumps({"playerNames": game.get_player_names(),
+                           "character": game.players[player_id].get_character_name()})
+    if abortions_legal:
+        return abort('No other players found :(')
 
 
 @app.route('/stage/<id>', methods=['POST'])
 def get_next_story_section(player_id, challenge_outcome=None):
     if challenge_outcome is None:
         challenge_outcome = request.get_json()
-    story_section = game.get_next_story_section(player_id, challenge_outcome)
-    return story_section
 
-    #
-    # # global session
-    # if session.isReady():
-    #     # session.playerNextChapter = ...
-    #     session.readyToPlay = True
-    #
-    # if session.wait_for_session_ready():
-    #     return session.playerNextChapter[id]
-    # return abort('MAX_TIMEOUT')
+    game.ready_queue += 1
+    if game.ready_queue == game.current_amount_of_players_in_game:
+        game.ready_to_play = True
+
+    story_section = game.get_next_story_section(player_id, challenge_outcome)
+    all_story_sections[player_id] = story_section
+
+    if wait and game.wait_for_game_ready():
+        game.ready_to_play = False
+        return story_section
+
+    if not wait:
+        return story_section
+
+    if abortions_legal:
+        return abort('MAX_TIMEOUT')
 
 
 @app.route('/here/<id>')
@@ -120,14 +126,14 @@ if __name__ == '__main__':
     # for player_id in game.players.keys():
     #     print(player_id, game.players[player_id].character.name)
 
-    # ---------- Getting the next story_segment: ----------
+    # ---------- Getting the next story section: ----------
 
     # The next few lines simulate what we would get from the front end
     story_section = get_next_story_section(player_id='00', challenge_outcome=True)
-    print(story_section['txt'], story_section['challenge'])
+    print(story_section['story_text'], story_section['challenge'])
 
     story_section = get_next_story_section(player_id='00', challenge_outcome=True)
-    print(story_section['txt'], story_section['challenge'])
+    print(story_section['story_text'], story_section['challenge'])
 
     story_section = get_next_story_section(player_id='00', challenge_outcome=True)
-    print(story_section['txt'], story_section['challenge'])
+    print(story_section['story_text'], story_section['challenge'])
