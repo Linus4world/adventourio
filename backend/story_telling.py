@@ -20,6 +20,8 @@ def set_example_story(story):
             story.get_page_raw(row, i + 1).set_page_type('outcome')
 
     # --------------- ADDING CONTENT ---------------
+
+    # ALIEN:
     story.get_page(character_name='alien', chapter=0, page='intro').add_page_variation(
         txt=['Hello',
              'The word: ~B00~ has been randomly selected from a list'
@@ -36,3 +38,19 @@ def set_example_story(story):
         txt=['Bad outcome']
     )
     story.get_page(character_name='alien', chapter=0, page='outro').set_last_page(True)
+
+    # ADVENTURER:
+    story.get_page(character_name='adventurer', chapter=0, page='intro').add_page_variation(
+        txt=['Hello',
+             'The word: ~B00~ has been randomly selected from a list'
+             # 'And this word: ~B01~ has been randomly selected from the internet',
+             ]
+    )
+
+    story.get_page(character_name='adventurer', chapter=0, page='outro').add_page_variation(
+        txt=['Good outcome']
+    )
+    story.get_page(character_name='adventurer', chapter=0, page='outro').add_page_variation(
+        txt=['Bad outcome']
+    )
+    story.get_page(character_name='adventurer', chapter=0, page='outro').set_last_page(True)
