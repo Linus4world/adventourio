@@ -1,7 +1,7 @@
 from story_structure_v2 import *
 import time
 from assign_characters import get_character_assignment
-from mock_data import assign_characters_dummy
+from mock_data import *
 
 
 class PlayerError(Exception):

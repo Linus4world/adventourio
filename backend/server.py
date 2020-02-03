@@ -114,8 +114,8 @@ if __name__ == '__main__':
     for character in game.story.characters:
         print(character.name)
 
-    for pv in game.story.get_page_raw(0, 0).page_variations:
-        print(pv.txt)
+    # for pv in game.story.get_page_raw(0, 0).page_variations:
+    #     print(pv.txt)
 
     # # The next few lines simulate what we would get from the front end
     # pv = game.get_next_page_variation(player_id='00', player_input=True)

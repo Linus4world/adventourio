@@ -11,6 +11,10 @@ def assign_characters_dummy(players):
     return character_assignment
 
 
+def select_a_challenge_dummy(page_variations, players):
+    return random.choice(page_variations)
+
+
 # Mock json for testing the character assignment
 answers1 = """
 {
