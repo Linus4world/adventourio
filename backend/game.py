@@ -107,6 +107,12 @@ class Game:
         # Set places category
         self.set_place_category(challenges)
 
+    def setPlacesCategory(self, places):
+        self.placesCategory = places
+
+    def getPlacesCategory(self):
+        return self.placesCategory
+
     # --------------- MANAGING PLAYERS: ---------------
     def add_player(self, player_id, answers):
         if player_id in self.players.keys():

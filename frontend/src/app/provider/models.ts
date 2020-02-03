@@ -22,8 +22,8 @@ export interface Stage {
 export interface Challenge {
     challenge: string;
     challenge_type: number;
-    answers?: string[];
-    right_answer: string | number[];
+    options?: string[];
+    right_answer: string | number[] | string[];
 }
 
 export interface ChallengeOutcome {
