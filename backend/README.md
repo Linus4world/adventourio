@@ -53,4 +53,13 @@ Also note that if you access a given url with your webbrowser, it implicitly per
 
 #### places 
 
-Places are grouped into three categories, Entertainment, University, Sightseeing. Each category further divided into three stages (as for now for, stage 0 is meant as a buffer stage for places I haven't found a challenge for yet. Feel free to change it if you get an idea).
+Places are grouped into three categories, Entertainment, University, Sightseeing. Each category further divides into four stages, each characterized by the type of challenge they have:
+stage 1 - exploring the place
+stage 2 - exploring the culture 
+stage 3 - exploring the history 
+stage 4 - quiz 
+Each challenge further can be of type 1, multiple choice, type 2, open question, type 3, finding a location. 
+
+#### questionnaire 
+
+List of questions each player needs to answer before they start the game. Answers determine the character each person will play and places they visit. Both of those things are determined by answers of all the players combined, not just one person. 
