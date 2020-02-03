@@ -1,4 +1,5 @@
 import random
+import json
 
 
 def assign_characters_dummy(players):
@@ -11,8 +12,11 @@ def assign_characters_dummy(players):
     return character_assignment
 
 
-def select_a_challenge_dummy(page_variations, players):
-    return random.choice(page_variations)
+def get_a_challenge_dummy(players):
+    with open('challenges_v2.json') as json_file:
+        challenges = json.load(json_file)
+    random.seed()
+    return random.choice(challenges.values())
 
 
 # Mock json for testing the character assignment

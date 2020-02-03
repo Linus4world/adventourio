@@ -1,13 +1,15 @@
 {
-  "C00":{
+  "C00": {
     "id": "C00",
     "stage": 1,
     "description": "exploring the place",
-
     "title": "StudentenStadt - rotes Haus bistro",
     "challenge": "There is a bell, hanging somewhere in the Bistro. You need to find out what happens, if you ring it, but be careful! If you do it yourself, you have to deal with the consequences on your own...",
     "last": true,
-    "coordinates": [48.183376, 11.609854],
+    "coordinates": [
+      48.183376,
+      11.609854
+    ],
     "challenge_type": 1,
     "options": [
       "you have to ex a beer",
@@ -16,32 +18,158 @@
     ],
     "right_answer": "You have to buy everyone a shot"
   },
-
-  "C01":{
+  "C01": {
     "id": "C01",
     "stage": 1,
     "description": "exploring the place",
-
     "title": "Neuraum club",
     "challenge": "It's one of the more popular clubs in Munich - remember it, they often have free entrance for students! But there is also other imporant place nearby, a bus station. You will probably use it if you want (which you should) travel somewhere while you in Munich. Can you find it?",
     "challenge_type": 3,
-    "coordinates": [48.142432, 11.551213],
-    "right_answer": [48.142479, 11.550020],
+    "coordinates": [
+      48.142432,
+      11.551213
+    ],
+    "right_answer": [
+      48.142479,
+      11.550020
+    ],
     "last": true
   },
-
-  "C02":{
+  "C02": {
     "id": "C02",
     "stage": 2,
     "description": "exploring the culture",
-
     "title": "Bierstube",
     "challenge": "Challenge any person in the bar to play table football with you. Can you win against them?",
     "last": true,
-    "coordinates": [48.180125, 11.553167],
+    "coordinates": [
+      48.180125,
+      11.553167
+    ],
     "challenge_type": 1,
-    "options": ["I won!", "Unfortunately, I lost..."],
+    "options": [
+      "I won!",
+      "Unfortunately, I lost..."
+    ],
     "right_answer": "I won!"
+  },
+  "C03": {
+    "id": "C03",
+    "stage": 2,
+    "description": "exploring the culture",
+    "title": "Bierstube",
+    "challenge": "Challenge any person in the bar to play table football with you. Can you win against them?",
+    "coordinates": [
+      48.180125,
+      11.553167
+    ],
+    "challenge_type": 1,
+    "options": [
+      "I won!",
+      "Unfortunately, I lost..."
+    ],
+    "right_answer": "I won!"
+  },
+  "C04": {
+    "id": "C04",
+    "stage": 2,
+    "description": "exploring the culture",
+    "title": "HANS IM GLÜCK",
+    "challenge": "Hans is a very old, common German name. Can you name the most common German surname?",
+    "coordinates": [
+      48.182634,
+      11.586313
+    ],
+    "challenge_type": 2,
+    "right_answer": [
+      "Mueller",
+      "Müller",
+      "Muller"
+    ]
+  },
+  "C05": {
+    "id": "C05",
+    "stage": 2,
+    "description": "exploring the culture",
+    "title": "StudentenStadt - Manhattan",
+    "challenge": "Have you managed it all the way to the top? This is the highest place of such kind in Munich! People from Bayern have a special name for bars where you can drink beer outside. Do you know it?",
+    "coordinates": [
+      48.183922,
+      11.611094
+    ],
+    "challenge_type": 2,
+    "right_answer": "Biergarten"
+  },
+  "C06": {
+    "id": "C06",
+    "stage": 3,
+    "description": "exploring the history",
+    "title": "TU Film",
+    "challenge": "Each Christmas, there is a tradition of showing a certain old movie three times here. Find out which movie it is!",
+    "coordinates": [
+      48.148261,
+      11.568440
+    ],
+    "challenge_type": 1,
+    "options": [
+      "drei haselnüsse für aschenbrödel",
+      "Feuerzangenbowle",
+      "Weihnachten bei Hoppenstedts"
+    ],
+    "right_answer": "Feuerzangenbowle"
+  },
+  "C07": {
+    "id": "C07",
+    "stage": 3,
+    "description": "exploring the history",
+    "title": "TU Film",
+    "challenge": "Each Christmas, there is a tradition of showing a certain old movie three times here. Find out which movie it is!",
+    "coordinates": [
+      48.148261,
+      11.568440
+    ],
+    "challenge_type": 1,
+    "options": [
+      "drei haselnüsse für aschenbrödel",
+      "Feuerzangenbowle",
+      "Weihnachten bei Hoppenstedts"
+    ],
+    "right_answer": "Feuerzangenbowle"
+  },
+  "C08": {
+    "id": "C08",
+    "stage": 3,
+    "description": "exploring the history",
+    "title": "Schelling-salon",
+    "challenge": "Which known German historical figure was banned from visiting this establishment for not paying their bills?",
+    "coordinates": [
+      48.151381,
+      11.573621
+    ],
+    "challenge_type": 1,
+    "options": [
+      "Adolf Hitler",
+      "Ludwig van Beethoven",
+      "Friedrich Nietzsche"
+    ],
+    "right_answer": "Adolf Hitler"
+  },
+  "C09": {
+    "id": "C09",
+    "stage": 3,
+    "description": "exploring the history",
+    "title": "Hofbräuhaus am Platzl",
+    "challenge": "This was the last building rebuilt after the second world war. Only one room survived the conflict. Go in, ask around, and find out which!",
+    "challenge_type": 1,
+    "options": [
+      "the kitchen",
+      "the beer hall",
+      "the entrance hall"
+    ],
+    "right_answer": "the beer hall",
+    "coordinates": [
+      48.137674,
+      11.580116
+    ]
   }
-
 }

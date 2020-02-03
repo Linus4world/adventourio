@@ -11,6 +11,9 @@ def set_example_story(story):
     story.add_blank_random('B01', 'noun')
     story.add_blank_random('B02', 'verb')
 
+    # --------------- DEFINING CONTENT STRUCTURE ---------------
+
+
     # --------------- ADDING CONTENT ---------------
     story.get_page(character_name='alien', chapter=0, page='intro').add_page_variation(
         txt=['Hello',

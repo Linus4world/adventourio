@@ -9,7 +9,7 @@ from all_answers_fcn import store_all_player_answers_in_one_file
 from all_answers_fcn import placesCategory
 from game import *
 from utils import *
-from mock_data import *
+from mocks_and_dummies import *
 
 
 app = Flask(__name__)
@@ -18,7 +18,7 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 
 # TODO change the param to 4 for real scenario!
 game = Game(number_of_players=4, number_of_pages=6)
-session = Session(4)
+# session = Session(4)
 SUCCESS = json.dumps({'success': True}), 200, {'ContentType': 'application/json'}
 
 
@@ -65,16 +65,17 @@ def join(player_id, player_input=None):
 
 
 @app.route('/stage/<id>', methods=['POST'])
-def next_sub_stage(id):
-    session.challengeOutcome[id] = request.get_json()
-
-    # global session
-    if session.isReady():
-        # TODO call Esteban function
-        # session.playerNextChapter = ...
-        session.readyToPlay = True
-    if session.wait_for_session_ready():
-        return session.playerNextChapter[id]
+def next_sub_stage(player_id):
+    # session.challengeOutcome[id] = request.get_json()
+    #
+    # # global session
+    # if session.isReady():
+    #     # TODO call Esteban function
+    #     # session.playerNextChapter = ...
+    #     session.readyToPlay = True
+    #
+    # if session.wait_for_session_ready():
+    #     return session.playerNextChapter[id]
     return abort('MAX_TIMEOUT')
 
 
@@ -98,7 +99,9 @@ if __name__ == '__main__':
 
     # app.run()
 
-    # Simulating what is happening in the front end
+    # ---------- Simulating what is happening in the front end ----------
+
+    # ---------- Adding players: ----------
     answers = dict(name='CARLOS I', answers=json.loads(answers2)['all_answers'][0])
     join('00', answers)
 
@@ -111,8 +114,11 @@ if __name__ == '__main__':
     answers = dict(name='CARLOS IV', answers=json.loads(answers2)['all_answers'][0])
     join('03', answers)
 
-    for character in game.story.characters:
-        print(character.name)
+    # Printing character assignment
+    for player_id in game.players.keys():
+        print(game.players[player_id].character.name)
+
+    # ---------- Getting the next story_segment: ----------
 
     # for pv in game.story.get_page_raw(0, 0).page_variations:
     #     print(pv.txt)

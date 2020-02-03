@@ -1,7 +1,8 @@
 from story_structure_v2 import *
 import time
 from assign_characters import get_character_assignment
-from mock_data import *
+from challenge_assignment import new_place
+from mocks_and_dummies import *
 
 
 class PlayerError(Exception):
@@ -86,9 +87,8 @@ class Game:
         Returns: None
         """
         # Assign the characters
-        # TODO: FIX get_character_assignment!
+        character_assignment = assign_characters_dummy(self.players)  # TODO: REPLACE WITH AGATA'S FUNCTION
         # character_assignment = get_character_assignment(all_answers)
-        character_assignment = assign_characters_dummy(self.players)  # QUICK FIX
 
         for player_id in character_assignment.keys():
             player = self.get_player(player_id)
@@ -144,14 +144,13 @@ class Game:
         self.places_category = places_category
 
     def get_next_page_variation(self, player_id, player_input):
-        # TODO, ADD DOCUMENTATION ABOUT THE player_input
         """
         This function will be constantly called by the frontend to get the next page variation
         Depending on the player, the player.story_location and player_input, the next page variation can be selected
 
         Parameters:
             player_id (str):
-            player_input ():
+            player_input (bool):
 
         Returns:
             PageVariation:
@@ -172,9 +171,12 @@ class Game:
         if len(page.page_variations) == 1:
             page_variation = page.page_variations[0]
         # If the page is a challenge page:
-        elif page.page_type == 'challenges':
-            # TODO: Replace this with AGATA'S CHALLENGE SELECTING FUNCTION
-            page_variation = select_a_challenge_dummy(page.page_variations, self.players)
+        elif page.page_type == 'challenge':
+            # Create a page_variation on the fly:
+            page_variation = PageVariation()
+            challenge = get_a_challenge_dummy(self.players)  # TODO: REPLACE WITH AGATA'S FUNCTION
+            # challenge = new_place(self)
+            page_variation.challenge = challenge
         # If the page is an outcome page:
         elif page.page_type == 'outcome':
             page_variation = story.select_good_or_bad_outcome(page.page_variations, player)

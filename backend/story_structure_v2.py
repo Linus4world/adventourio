@@ -36,6 +36,7 @@ class Story:
         self.pages = pages
         self.blanks = {}
         self.characters = []
+        self.challenges = {}
 
     # --------------- SET UP: ---------------
 
@@ -153,12 +154,7 @@ class Story:
             ret_txt.append(txt)
         return ret_txt
 
-    # --------------- PAGE VARIATION SELECTION: ---------------
-
-    # TODO: AGATA and ESTEBAN [BE-05]
-    @staticmethod
-    def select_a_challenge(page_variations, player):
-        return select_a_challenge(page_variations, player)
+    # --------------- OUTCOME SELECTION: ---------------
 
     @staticmethod
     def select_good_or_bad_outcome(page_variations, player):
@@ -198,7 +194,7 @@ class Story:
         else:
             # gets probability for bad event
             prob_array.append((1-good_probability, "bad"))
-            ret_page_variation = bad_outcome # Returned page variation
+            ret_page_variation = bad_outcome  # Returned page variation
 
         return ret_page_variation
 
