@@ -4,6 +4,7 @@ This file is for small stand alone functions
 import urllib.request
 import random
 import pycorpora
+from random_word import RandomWords
 
 #Here be global variables
 adventurer_treasure = ["Crystal Skull", "Monkey Statue", "Stuffed Wolpertinger", "Ancient Porn Magazine",

@@ -91,7 +91,7 @@ class Story:
 
     # --------------- BLANKS: ---------------
 
-    def add_blank(self, blank_id, word_type, changes_every_time):
+    def add_blank(self, blank_id, word_type, changes_every_time=False):
         """
         Parameters:
             blank_id (str):
@@ -192,7 +192,7 @@ class Story:
         Fills in all the blanks in a page_variation
         """
 
-        keys = re.findall('(\~(\w+)\~)', page_variation.txt)
+        keys = re.findall('(~(w+)~)', page_variation.txt)
         for blank_key in keys:
             if blank_key in self.blanks.keys():
                 word = self.get_the_word_for_the_blank(blank_key[1])  # get the word t

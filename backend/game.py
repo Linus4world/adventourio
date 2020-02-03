@@ -92,8 +92,8 @@ class Game:
         Returns: None
         """
         # Assign the characters
-        character_assignment = assign_characters_dummy(self.players)  # TODO: REPLACE WITH AGATA'S FUNCTION
-        # character_assignment = get_character_assignment(all_answers)  # UNCOMMENT THIS TO TEST THE GAME!
+        # character_assignment = assign_characters_dummy(self.players)  # TODO: REPLACE WITH AGATA'S FUNCTION
+        character_assignment = get_character_assignment(all_answers)  # UNCOMMENT THIS TO TEST THE GAME!
 
         for player_id in character_assignment.keys():
             # Set character for each player
