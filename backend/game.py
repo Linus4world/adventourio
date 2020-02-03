@@ -14,7 +14,7 @@ class Player:
     def __init__(self):
         self.name = ''
         self.player_id = ''
-        self.player_inputs = []
+        self.challenge_outcomes = []
         self.prob_array = [(0, "good")]
         self.character = None
         self.story_location = [-1, -1]  # row, column
@@ -143,14 +143,14 @@ class Game:
     def set_place_category(self, places_category):
         self.places_category = places_category
 
-    def get_next_page_variation(self, player_id, player_input):
+    def get_next_page_variation(self, player_id, challenge_outcome):
         """
         This function will be constantly called by the frontend to get the next page variation
         Depending on the player, the player.story_location and player_input, the next page variation can be selected
 
         Parameters:
             player_id (str):
-            player_input (bool):
+            challenge_outcome (bool):
 
         Returns:
             PageVariation:
@@ -159,7 +159,7 @@ class Game:
         player = self.get_player(player_id)
 
         # Story player input
-        player.player_inputs.append(player_input)
+        player.player_inputs.append(challenge_outcome)
 
         # Get the next page
         story_location = player.get_story_location()
@@ -190,3 +190,22 @@ class Game:
         # Set the new location
         player.set_story_location([row, column + 1])
         return page_variation
+
+    def get_next_story_section(self, player_id, challenge_outcome):
+        txt = []
+        challenge = {}
+
+        challenge_found = False
+        while not challenge_found:
+            pv = self.get_next_page_variation(player_id, challenge_outcome)
+
+            if pv.txt != '':
+                txt += pv.txt
+
+            if pv.challenge is not None:
+                challenge_found = True
+                challenge = pv.challenge
+
+        ret_dict = dict(txt=txt, challenge=challenge)
+
+        return json.dump(ret_dict)

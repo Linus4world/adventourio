@@ -16,7 +16,6 @@ app = Flask(__name__)
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
-# TODO change the param to 4 for real scenario!
 game = Game(number_of_players=4, number_of_pages=6)
 # session = Session(4)
 SUCCESS = json.dumps({'success': True}), 200, {'ContentType': 'application/json'}
@@ -65,18 +64,21 @@ def join(player_id, player_input=None):
 
 
 @app.route('/stage/<id>', methods=['POST'])
-def next_sub_stage(player_id):
-    # session.challengeOutcome[id] = request.get_json()
+def get_next_story_section(player_id):
+
+    challenge_outcome = request.get_json()
+    story_section = game.get_next_story_section(player_id, challenge_outcome)
+    return story_section
+
     #
     # # global session
     # if session.isReady():
-    #     # TODO call Esteban function
     #     # session.playerNextChapter = ...
     #     session.readyToPlay = True
     #
     # if session.wait_for_session_ready():
     #     return session.playerNextChapter[id]
-    return abort('MAX_TIMEOUT')
+    # return abort('MAX_TIMEOUT')
 
 
 @app.route('/here/<id>')
@@ -120,15 +122,15 @@ if __name__ == '__main__':
 
     # ---------- Getting the next story_segment: ----------
 
-    # for pv in game.story.get_page_raw(0, 0).page_variations:
-    #     print(pv.txt)
+    for pv in game.story.get_page_raw(0, 0).page_variations:
+        print(pv.txt)
 
-    # # The next few lines simulate what we would get from the front end
-    # pv = game.get_next_page_variation(player_id='00', player_input=True)
-    # print(pv.txt)
-    #
-    # pv = game.get_next_page_variation(player_id='00', player_input=True)
-    # print(pv.txt)
-    #
-    # pv = game.get_next_page_variation(player_id='00', player_input=True)
-    # print(pv.txt)
+    # The next few lines simulate what we would get from the front end
+    pv = game.get_next_page_variation(player_id='00', challenge_outcome=True)
+    print(pv.txt)
+
+    pv = game.get_next_page_variation(player_id='00', challenge_outcome=True)
+    print(pv.txt)
+
+    pv = game.get_next_page_variation(player_id='00', challenge_outcome=True)
+    print(pv.txt)
