@@ -100,8 +100,8 @@ class Story:
             changes_every_time (bool): if the blank should be filled in with a (potentially) different word every time
         """
         blank = dict(
-        # random_word= False,
-        # list_of_words=list_of_words,
+            # random_word= False,
+            # list_of_words=list_of_words,
             changes_every_time= changes_every_time,
             word_type = word_type
         )
@@ -186,7 +186,6 @@ class Story:
                     return weapon
             else:
                 return assigned_keywords[blank_id]
-
 
     def fill_in_the_blanks(self, page_variation):
         """

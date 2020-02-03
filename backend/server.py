@@ -2,13 +2,8 @@ from flask import Flask, jsonify
 from flask_cors import CORS, cross_origin
 from flask import request
 import json
-from session import Session
-from assign_characters import get_character_assignment
-from all_answers_fcn import all_answers_function_v2
-#from destination_challenge_assingment import new_place
-from all_answers_fcn import placesCategory
+from all_answers_fcn import *
 from game import *
-from utils import *
 from mocks_and_dummies import *
 
 

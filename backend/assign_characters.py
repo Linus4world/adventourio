@@ -3,11 +3,6 @@ import json
 import random
 from utils import *
 
-def assign_characters(all_player_questionaire_answers, available_characters):
-    pass
-
-########################################################################################################################
-
 class Character:
     def __init__(self, id_player, name):
         self.id_player = id_player
