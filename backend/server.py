@@ -21,8 +21,8 @@ SUCCESS = json.dumps({'success': True}), 200, {'ContentType': 'application/json'
 all_story_sections = {}
 
 # ---------- For debugging purposes: ----------
-wait = False  # Default: True
-abortions_legal = False  # Default: True
+wait = True  # Default: True
+abortions_legal = True  # Default: True
 # ---------------------------------------------
 
 
@@ -105,35 +105,35 @@ if __name__ == '__main__':
     story = game.story
     story.setup_story()
 
-    # app.run()
+    app.run()
 
     # ---------- Simulating what is happening in the front end ----------
 
     # ---------- Adding players: ----------
-    answers = dict(name='CARLOS I', answers=json.loads(answers2)['all_answers'][0])
-    join('00', answers)
-
-    answers = dict(name='CARLOS II', answers=json.loads(answers2)['all_answers'][0])
-    join('01', answers)
-
-    answers = dict(name='CARLOS II', answers=json.loads(answers2)['all_answers'][0])
-    join('02', answers)
-
-    answers = dict(name='CARLOS IV', answers=json.loads(answers2)['all_answers'][0])
-    join('03', answers)
-
-    # Printing character assignment
-    for player_id in game.players.keys():
-        print(player_id, game.players[player_id].character.name)
-
-    # ---------- Getting the next story section: ----------
-
-    # The next few lines simulate what we would get from the front end
-    story_section = get_next_story_section(player_id='00', challenge_outcome=True)
-    print(story_section['story_text'], story_section['challenge'])
-
-    story_section = get_next_story_section(player_id='00', challenge_outcome=True)
-    print(story_section['story_text'], story_section['challenge'])
-
-    story_section = get_next_story_section(player_id='00', challenge_outcome=True)
-    print(story_section['story_text'], story_section['challenge'])
+    # answers = dict(name='CARLOS I', answers=json.loads(answers2)['all_answers'][0])
+    # join('00', answers)
+    #
+    # answers = dict(name='CARLOS II', answers=json.loads(answers2)['all_answers'][0])
+    # join('01', answers)
+    #
+    # answers = dict(name='CARLOS II', answers=json.loads(answers2)['all_answers'][0])
+    # join('02', answers)
+    #
+    # answers = dict(name='CARLOS IV', answers=json.loads(answers2)['all_answers'][0])
+    # join('03', answers)
+    #
+    # # Printing character assignment
+    # for player_id in game.players.keys():
+    #     print(player_id, game.players[player_id].character.name)
+    #
+    # # ---------- Getting the next story section: ----------
+    #
+    # # The next few lines simulate what we would get from the front end
+    # story_section = get_next_story_section(player_id='00', challenge_outcome=True)
+    # print(story_section['story_text'], story_section['challenge'])
+    #
+    # story_section = get_next_story_section(player_id='00', challenge_outcome=True)
+    # print(story_section['story_text'], story_section['challenge'])
+    #
+    # story_section = get_next_story_section(player_id='00', challenge_outcome=True)
+    # print(story_section['story_text'], story_section['challenge'])
