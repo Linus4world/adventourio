@@ -35,6 +35,9 @@ class Player:
         """
         self.character = character
 
+    def get_character_name(self):
+        return self.character.name
+
     def set_story_location(self, story_location):
         """
         Sets player's location
@@ -112,12 +115,22 @@ class Game:
         new_player.player_id = player_id
         new_player.answers = answers['answers']
         self.players[player_id] = new_player
+        self.ready_queue += 1
 
     def is_full(self):
         return len(self.players) >= self.number_of_players
 
+    def is_game_ready(self):
+        pass
+
     def get_player_count(self):
         return len(self.players)
+
+    def get_player_names(self):
+        player_names = []
+        for player in self.players.values():
+            player_names.append(player.name)
+        return [player_names]
 
     # def get_player_index(self, player_id):
     #     return self.playerIds.index(player_id)
@@ -125,21 +138,21 @@ class Game:
     def get_player(self, player_id):
         return self.players[player_id]
 
-    def wait_for_session_ready(self):
-        self.players_waiting += 1
+    def wait_for_game_ready(self):
+        self.ready_queue += 1
         counter = 0
         while counter < self.MAX_WAIT:
             if self.ready_to_play:
-                # self.leave()
+                self.leave_game()
                 return True
             time.sleep(2)
             counter += 1
         return False
 
-    # def leave(self):
-    #     self.readyQueue -= 1
-    #     if self.readyQueue == 0:
-    #         self.ready_to_play = False
+    def leave_game(self):
+        self.ready_queue -= 1
+        if self.ready_queue == 0:
+            self.ready_to_play = False
 
     # --------------- X: ---------------
 
@@ -199,7 +212,7 @@ class Game:
         return page_variation
 
     def get_next_story_section(self, player_id, challenge_outcome):
-        txt = []
+        story_text = []
         challenge = {}
 
         challenge_found = False
@@ -211,12 +224,12 @@ class Game:
             game_finished = self.players[player_id].game_finished
 
             if page_variation.txt != '':
-                txt += page_variation.txt
+                story_text += page_variation.txt
             if page_variation.challenge is not None:
                 challenge_found = True
                 challenge = page_variation.challenge
 
-        ret_dict = dict(txt=txt, challenge=challenge)
+        ret_dict = dict(story_text=story_text, challenge=challenge, game_finished=game_finished)
 
         return ret_dict
         # return json.dumps(ret_dict)
