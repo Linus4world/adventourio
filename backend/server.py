@@ -64,9 +64,9 @@ def join(player_id, player_input=None):
 
 
 @app.route('/stage/<id>', methods=['POST'])
-def get_next_story_section(player_id):
-
-    challenge_outcome = request.get_json()
+def get_next_story_section(player_id, challenge_outcome=None):
+    if challenge_outcome is None:
+        challenge_outcome = request.get_json()
     story_section = game.get_next_story_section(player_id, challenge_outcome)
     return story_section
 
@@ -118,19 +118,13 @@ if __name__ == '__main__':
 
     # Printing character assignment
     for player_id in game.players.keys():
-        print(game.players[player_id].character.name)
+        print(player_id, game.players[player_id].character.name)
 
     # ---------- Getting the next story_segment: ----------
 
-    for pv in game.story.get_page_raw(0, 0).page_variations:
-        print(pv.txt)
-
     # The next few lines simulate what we would get from the front end
-    pv = game.get_next_page_variation(player_id='00', challenge_outcome=True)
-    print(pv.txt)
-
-    pv = game.get_next_page_variation(player_id='00', challenge_outcome=True)
-    print(pv.txt)
-
-    pv = game.get_next_page_variation(player_id='00', challenge_outcome=True)
-    print(pv.txt)
+    get_next_story_section(player_id='00', challenge_outcome=True)
+    #
+    get_next_story_section(player_id='00', challenge_outcome=True)
+    #
+    # get_next_story_section(player_id='00', challenge_outcome=True)
