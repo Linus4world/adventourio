@@ -34,7 +34,6 @@ class Player:
                 will be raised
         """
         self.character = character
-        # self.story_location[0] = self.get_character_story_row(character_name=character.name)
 
     def set_story_location(self, story_location):
         """
@@ -91,10 +90,13 @@ class Game:
         # character_assignment = get_character_assignment(all_answers)
 
         for player_id in character_assignment.keys():
+            # Set character for each player
             player = self.get_player(player_id)
             character_name = character_assignment[player_id]
             character = self.story.get_character(character_name=character_name)
             player.set_character(character)
+            # Set player's story location (row)
+            player.story_location[0] = self.story.get_character_story_row(character_name=character_name)
 
         # Set places category
         self.set_place_category(challenges)
@@ -159,26 +161,34 @@ class Game:
         player = self.get_player(player_id)
 
         # Story player input
-        player.player_inputs.append(challenge_outcome)
+        player.challenge_outcomes.append(challenge_outcome)
 
         # Get the next page
         story_location = player.get_story_location()
         row = story_location[0]
         column = story_location[1]
+
+        # Set the new location
+        print(row, column + 1)
+        player.set_story_location([row, column + 1])
+
         page = self.story.get_page_raw(row, column + 1)
 
         # If there is only one page variation, return that one
         if len(page.page_variations) == 1:
             page_variation = page.page_variations[0]
+            print("ONE THING")
         # If the page is a challenge page:
         elif page.page_type == 'challenge':
             # Create a page_variation on the fly:
+            print("CHALLENGE FOUND")
             page_variation = PageVariation()
             challenge = get_a_challenge_dummy(self.players)  # TODO: REPLACE WITH AGATA'S FUNCTION
             # challenge = new_place(self)
             page_variation.challenge = challenge
         # If the page is an outcome page:
         elif page.page_type == 'outcome':
+            print("OUTCOME")
             page_variation = story.select_good_or_bad_outcome(page.page_variations, player)
         # IF IT IS NOT SPECIFIED WHAT TYPE OF PAGE THIS IS, A RANDOM PAGE VARIATION WILL BE SELECTED!
         else:
@@ -187,8 +197,6 @@ class Game:
         # Filling in the blanks
         page_variation.txt = story.fill_in_the_blanks(page_variation)
 
-        # Set the new location
-        player.set_story_location([row, column + 1])
         return page_variation
 
     def get_next_story_section(self, player_id, challenge_outcome):
@@ -201,11 +209,10 @@ class Game:
 
             if pv.txt != '':
                 txt += pv.txt
-
             if pv.challenge is not None:
                 challenge_found = True
                 challenge = pv.challenge
 
         ret_dict = dict(txt=txt, challenge=challenge)
 
-        return json.dump(ret_dict)
+        return json.dumps(ret_dict)
