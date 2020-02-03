@@ -6,7 +6,7 @@ def assign_characters_dummy(players):
     character_assignment = {}
     random.seed()
     possible_characters = ['alien', 'adventurer', 'wizard', 'detective']
-    random.shuffle(possible_characters)  # Randomly shuffle the order of the array
+    # random.shuffle(possible_characters)  # Randomly shuffle the order of the array
     for player_id, character_name in zip(players.keys(), possible_characters):
         character_assignment[player_id] = character_name
     return character_assignment
@@ -16,7 +16,8 @@ def get_a_challenge_dummy(players):
     with open('challenges_v2.json') as json_file:
         challenges = json.load(json_file)
     random.seed()
-    return random.choice(challenges.values())
+    challenges = list(challenges.values())
+    return random.choice(challenges)
 
 
 # Mock json for testing the character assignment
