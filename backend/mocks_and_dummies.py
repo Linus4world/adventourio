@@ -20,6 +20,13 @@ def get_a_challenge_dummy(players):
     return random.choice(challenges)
 
 
+mock_input = [
+    {"id": "00", "name": "CARLOS I", "answers": ["a", "a", "a", "d", "c", "d", "b"]},
+    {"id": "01", "name": "CARLOS II", "answers": ["a", "a", "a", "d", "c", "d", "b"]},
+    {"id": "02", "name": "CARLOS III", "answers": ["a", "a", "a", "a", "b", "b", "c"]},
+    {"id": "03", "name": "CARLOS IV", "answers": ["a", "a", "a", "b", "c", "b", "b"]},
+]
+
 # Mock json for testing the character assignment
 answers1 = """
 {

@@ -333,6 +333,6 @@ def maxWizard(all_adventurer_points, all_alien_points, all_wizard_points, all_de
     return all_adventurer_points, all_alien_points, all_wizard_points, all_detective_points, wizard, chosen
 
 
-# if __name__ == '__main__':
-#     ch = get_character_assignment(answers2)
-#     print(ch)
+if __name__ == '__main__':
+    ch = get_character_assignment(answers2)
+    print(ch)

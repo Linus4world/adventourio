@@ -83,7 +83,7 @@ class Game:
 
     # --------------- SET UP: ---------------
 
-    def start_game(self, all_answers, challenges):
+    def start_game(self, all_player_answers, challenges):
         """
         This function does all the set up, before the game gets started:
             - Assign characters
@@ -92,7 +92,7 @@ class Game:
         Returns: None
         """
         # Assign the characters
-        character_assignment = get_character_assignment(all_answers)
+        character_assignment = get_character_assignment(all_player_answers)
 
         for player_id in character_assignment.keys():
             # Set character for each player
@@ -115,14 +115,14 @@ class Game:
         return self.placesCategory
 
     # --------------- MANAGING PLAYERS: ---------------
-    def add_player(self, player_id, answers):
+    def add_player(self, player_id, player_input):
         if player_id in self.players.keys():
             raise PlayerError('This player id is already reserved!')
 
         new_player = Player()
-        new_player.name = answers['name']
+        new_player.name = player_input['name']
         new_player.player_id = player_id
-        new_player.answers = answers['answers']
+        new_player.answers = player_input['answers']
         self.players[player_id] = new_player
 
     def is_full(self):
@@ -240,4 +240,4 @@ class Game:
         ret_dict = dict(story=story_text, challenge=challenge, game_finished=game_finished)
 
         # return ret_dict
-        return json.dumps(ret_dict) 
+        return json.dumps(ret_dict)

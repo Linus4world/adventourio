@@ -16,8 +16,9 @@ SUCCESS = json.dumps({'success': True}), 200, {'ContentType': 'application/json'
 all_story_sections = {}
 
 # ---------- For debugging purposes: ----------
-wait = True  # Default: True
-abortions_legal = True  # Default: True
+debug_mode = False  # Default: False
+inputs_db = {}
+challenge_outcome_db = True
 # ---------------------------------------------
 
 
@@ -35,7 +36,11 @@ def send_questionnaire():
 
 @app.route('/join/<player_id>', methods=['POST'])
 def join(player_id):
-    player_input = request.get_json()
+    if not debug_mode:
+        player_input = request.get_json()
+    else:
+        player_input = inputs_db
+
     if game.is_full():
         return abort('Game is full!')
 
@@ -47,19 +52,23 @@ def join(player_id):
         all_player_answers = all_answers_function_v2(game.players)
         with open("challenges.json", 'r', encoding='utf-8') as file:
             challenges = file.read()
+
         # !!START THE GAME!!
         game.start_game(all_player_answers, challenges)
 
-    if game.wait_for_game_ready():
+    if not debug_mode and game.wait_for_game_ready():
         return json.dumps({"playerNames": game.get_player_names(),
                            "character": game.players[player_id].get_character_name()})
-    if abortions_legal:
+    if not debug_mode:
         return abort('No other players found :(')
 
 
 @app.route('/stage/<player_id>', methods=['POST'])
 def get_next_story_section(player_id):
-    challenge_outcome = request.get_json()
+    if not debug_mode:
+        challenge_outcome = request.get_json()
+    else:
+        challenge_outcome = challenge_outcome_db
 
     game.ready_queue += 1
     if game.ready_queue == game.current_amount_of_players_in_game:
@@ -68,14 +77,14 @@ def get_next_story_section(player_id):
     story_section = game.get_next_story_section(player_id, challenge_outcome)
     all_story_sections[player_id] = story_section
 
-    if wait and game.wait_for_game_ready():
+    if not debug_mode and game.wait_for_game_ready():
         game.ready_to_play = False
         return story_section
 
-    if not wait:
+    if not debug_mode:
         return story_section
 
-    if abortions_legal:
+    if not debug_mode:
         return abort('MAX_TIMEOUT')
 
 
@@ -97,35 +106,36 @@ if __name__ == '__main__':
     story = game.story
     story.setup_story()
 
-    app.run()
+    if not debug_mode:
+        app.run()
+    else:
+        # ---------- Simulating what is happening in the front end ----------
 
-    # ---------- Simulating what is happening in the front end ----------
+        # ---------- Adding players: ----------
+        inputs_db = mock_input[0]
+        join('00')
 
-    # ---------- Adding players: ----------
-    # answers = dict(name='CARLOS I', answers=json.loads(answers2)['all_answers'][0])
-    # join('00', answers)
-    #
-    # answers = dict(name='CARLOS II', answers=json.loads(answers2)['all_answers'][0])
-    # join('01', answers)
-    #
-    # answers = dict(name='CARLOS II', answers=json.loads(answers2)['all_answers'][0])
-    # join('02', answers)
-    #
-    # answers = dict(name='CARLOS IV', answers=json.loads(answers2)['all_answers'][0])
-    # join('03', answers)
-    #
-    # # Printing character assignment
-    # for player_id in game.players.keys():
-    #     print(player_id, game.players[player_id].character.name)
-    #
-    # # ---------- Getting the next story section: ----------
-    #
-    # # The next few lines simulate what we would get from the front end
-    # story_section = get_next_story_section(player_id='00', challenge_outcome=True)
-    # print(story_section['story_text'], story_section['challenge'])
-    #
-    # story_section = get_next_story_section(player_id='00', challenge_outcome=True)
-    # print(story_section['story_text'], story_section['challenge'])
-    #
-    # story_section = get_next_story_section(player_id='00', challenge_outcome=True)
-    # print(story_section['story_text'], story_section['challenge'])
+        inputs_db = mock_input[1]
+        join('01')
+
+        inputs_db = mock_input[2]
+        join('02')
+
+        inputs_db = mock_input[3]
+        join('03')
+
+        # Printing character assignment
+        for player_id in game.players.keys():
+            print(player_id, game.players[player_id].character.name)
+
+        # ---------- Getting the next story section: ----------
+
+        # The next few lines simulate what we would get from the front end
+        story_section = get_next_story_section(player_id='00')
+        print(story_section['story_text'], story_section['challenge'])
+
+        story_section = get_next_story_section(player_id='00')
+        print(story_section['story_text'], story_section['challenge'])
+
+        story_section = get_next_story_section(player_id='00')
+        print(story_section['story_text'], story_section['challenge'])
