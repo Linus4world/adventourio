@@ -11,7 +11,7 @@ app = Flask(__name__)
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
-game = Game(number_of_players=4, number_of_pages=3*5)
+game = Game(number_of_players=1, number_of_pages=3*5, number_of_dummy_players=3)
 SUCCESS = json.dumps({'success': True}), 200, {'ContentType': 'application/json'}
 challenges = {}
 
@@ -68,9 +68,10 @@ def get_next_story_section(player_id):
 
     challenge_outcome = None
     player_location = None
-    if hasattr(player_data, 'challenge_outcome'):
-        challenge_outcome = player_data['challenge_outcome']
-    if hasattr(player_data, 'playerLocation'):
+    print(player_data)
+    if 'challengeOutcome' in player_data:
+        challenge_outcome = player_data['challengeOutcome']
+    if 'playerLocation' in player_data:
         player_location = player_data['playerLocation']
 
     if game.is_game_ready():
@@ -85,6 +86,7 @@ def get_next_story_section(player_id):
     # Wait for other players to finish their challenge
     if not debug_mode and game.wait_for_game_ready():
         story_content = game.get_next_story_section(player_id, challenge_outcome)
+        challenges[player_id].update(story_content)
         return json.dumps(challenges[player_id])
     if not debug_mode:
         return abort('MAX_TIMEOUT')

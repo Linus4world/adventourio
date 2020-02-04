@@ -66,11 +66,12 @@ class Player:
 class Game:
     MAX_WAIT = 50000
 
-    def __init__(self, number_of_players, number_of_pages):
-        self.story = Story([number_of_players, number_of_pages])
+    def __init__(self, number_of_players, number_of_pages, number_of_dummy_players=0):
+        self.story = Story([number_of_players+number_of_dummy_players, number_of_pages])
         self.fixed_character_assignment = False
 
         self.number_of_players = number_of_players
+        self.number_of_dummy_players = number_of_dummy_players
         self.players_waiting = 0
         self.players = {}
         self.current_amount_of_players_in_game = 0
@@ -83,6 +84,20 @@ class Game:
         self.player_characters = dict()
         self.player_challenge_outcome = dict()
         self.player_next_chapter = dict()
+
+        # ------------------ HANDLE MOCK PLAYERS: -------------------
+        # Add Player
+        for i in range(number_of_dummy_players):
+            player_input = {
+                "name": 'Player'+str(i),
+                "answers": [
+                    "Entertainment","yes","yes","Adventure/action","To experience other cultures","Deutsches Museum","mostly friends from the university"
+                    ]
+                }
+            self.add_player(str(i), player_input)
+            player = self.get_player(str(i))
+            player.challenge_outcomes.append(True)
+            print('[MOCK]: added player', player.name)
 
     # --------------- SET UP: ---------------
 
@@ -134,7 +149,7 @@ class Game:
                 return player_id
 
     def is_full(self):
-        return len(self.players) >= self.number_of_players
+        return len(self.players) >= self.number_of_players + self.number_of_dummy_players
 
     def is_game_ready(self):
         return self.ready_queue >= self.number_of_players-1
@@ -198,9 +213,6 @@ class Game:
         story = self.story
         player = self.get_player(player_id)
 
-        # Story player input
-        player.challenge_outcomes.append(challenge_outcome)
-
         # Get the next page
         story_location = player.get_story_location()
         row = story_location[0]
@@ -235,6 +247,10 @@ class Game:
     def get_next_story_section(self, player_id, challenge_outcome):
         story_text = []
 
+        # Story player input
+        player = self.get_player(player_id)
+        player.challenge_outcomes.append(challenge_outcome)
+
         challenge_found = False
         game_finished = self.players[player_id].game_finished
         while not challenge_found and not game_finished:
@@ -254,4 +270,3 @@ class Game:
         )
 
         return ret_dict
-        # return json.dumps(ret_dict)
