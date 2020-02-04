@@ -23,10 +23,19 @@ ion-card-content{
     justify-content: space-evenly;
 }
 
+.friends-container {
+    overflow: scroll;
+}
+
 .flex-item {
     flex: 1 1 0px;
     text-align: center;
     font-size: small;
+}
+.friends {
+    max-width: 10vh;
+    max-height: 10vh;
+    margin: 0 1em
 }
 
 ion-icon {
