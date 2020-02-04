@@ -1,3 +1,7 @@
+from utils import *
+import pycorpora
+
+
 def set_story(story):
     # --------------- ADDING CHARACTERS ---------------
     story.add_character(name='adventurer', description='drunk')
@@ -35,15 +39,12 @@ def set_example_story(story):
             story.get_page_raw(row, i + 1).set_page_type('outcome')
 
     # --------------- ADDING BLANKS ---------------
-    # story.add_blank('B00', ['apples', 'bananas', 'tomatoes'])
-    # story.add_blank_random('B01', 'noun')
-    # story.add_blank_random('B02', 'verb')
-    story.add_blank('treasure')  # in text refer to the keyword as ~treasure~
-    story.add_blank('map')  # ~map~
-    story.add_blank('tech')  # ~tech~
-    story.add_blank('magic')  # ~magic~
-    story.add_blank('weapon')  # ~weapon~
-    story.add_blank('B00', word_type='strange_words', changes_every_time=True)  # ~B00~
+    story.add_blank_v2('treasure', adventurer_treasure)
+    story.add_blank_v2('map', adventurer_map)
+    story.add_blank_v2('tech', sci_fi_thing)
+    story.add_blank_v2('magic', magic_thing)
+    story.add_blank_v2('weapon', detective_weapon)
+    story.add_blank_v2('B00', pycorpora.words.strange_words['words'])
 
     # --------------- ADDING CONTENT ---------------
 
