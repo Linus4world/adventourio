@@ -73,7 +73,6 @@ def get_next_story_section(player_id):
     if hasattr(player_data, 'playerLocation'):
         player_location = player_data['playerLocation']
 
-    # game.player_challenge_outcome[player_id] = challenge_outcome
     if game.is_game_ready():
 
         # Get the challenges:
@@ -100,7 +99,6 @@ def get_next_story_section(player_id):
         return json.dumps(story_section)
     if not debug_mode:
         return abort('MAX_TIMEOUT')
-    # ----------------------------------
 
 
 @app.route('/here/<player_id>')

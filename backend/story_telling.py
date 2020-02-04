@@ -39,11 +39,11 @@ def set_example_story(story):
     # story.add_blank_random('B01', 'noun')
     # story.add_blank_random('B02', 'verb')
     story.add_blank('treasure') # in text refer to the keyword as ~treasure~
-    story.add_blank('map') # ~map~
-    story.add_blank('tech') # ~tech~
-    story.add_blank('magic') # ~magic~
-    story.add_blank('weapon') #~weapon~
-    story.add_blank('B00', word_type = 'strange_words', changes_every_time=True) #~B00~
+    story.add_blank('map')  # ~map~
+    story.add_blank('tech')  # ~tech~
+    story.add_blank('magic')  # ~magic~
+    story.add_blank('weapon')  # ~weapon~
+    story.add_blank('B00', word_type='strange_words', changes_every_time=True) # ~B00~
 
     # --------------- ADDING CONTENT ---------------
 
@@ -101,7 +101,7 @@ def set_example_story(story):
     # ----- Wizard : -----
     story.get_page(character_name='wizard', chapter=0, page='intro').add_page_variation(
         txt=['You are a wizard and you are proud of that!',
-        'After having studied ancient magic for years you are ready to go out into the world and finally use your powers for good.'
+        'After having studied ancient magic for years you are ready to go out into the world and finally use your powers for good.',
         'You are also passionate about exploring foreign cultures and aiding the people you meet on the way.',
         'This is the creed you live by and not a single day passes without you contemplating the wonders of the world.',
         'But one day, you jolt awake violently as a wave of energy crackles through your limbs.',
@@ -186,7 +186,7 @@ def set_example_story(story):
     )
 
     story.get_page(character_name='wizard', chapter=3, page='intro').add_page_variation(
-        txt=['You hear a violent yell and turn just in time to see your new friend, the mysterious researcher, being dragged away by a couple of men in suits.'
+        txt=['You hear a violent yell and turn just in time to see your new friend, the mysterious researcher, being dragged away by a couple of men in suits.',
             'Immediately you rise to your feet, magic energy crackling in your fingertips. Without wasting another thought on the old wizard you just talked to, you run outside in an attempt to track them down but they are already gone.',
             'Cursing under your breath you close your eyes and focus on the despair and fear that the alien scientist emits. Then you begin your pursuit.',
             'But unfortunately, the trail gets weaker as you go on. Your friend must have passed out, because you can’t feel his emotional aura anymore and are left somewhat disoriented.',
@@ -233,7 +233,6 @@ def set_example_story(story):
         'It is barely illuminated and you have no idea where it leads to. You look at the adventurer and she shrugs her shoulders.',
         'Alas, you don’t have any choice but to descend and hope for the best. It takes a long time but when you finally exit the tunnel you are…in a lab?']
     )
-
 
     story.get_page(character_name='wizard', chapter=4, page='intro').add_page_variation(
         txt=['fuck off it is not done yet']
