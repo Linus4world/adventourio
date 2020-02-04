@@ -7,6 +7,7 @@ from utils import *
 from story_telling import *
 import pycorpora
 
+
 class Character:
     def __init__(self, name, description):
         self.name = name
@@ -91,7 +92,7 @@ class Story:
 
     # --------------- BLANKS: ---------------
 
-    def add_blank(self, blank_id, word_type = "None", changes_every_time=False):
+    def add_blank(self, blank_id, word_type="None", changes_every_time=False):
         """
         Parameters:
             blank_id (str):
@@ -201,23 +202,6 @@ class Story:
                     section = section.replace(blank_key[0], word)
             ret.append(section)
         return ret
-
-
-
-        # ret_txt = []  # Text to return
-        # for txt in page_variation.txt:
-        #     idx_of_blank = txt.find('~')
-        #     if idx_of_blank != -1:
-        #         # Get the blank key
-        #         blank_key = txt[idx_of_blank + 1:idx_of_blank + 4]
-        #         # Blank found!
-        #         if blank_key in self.blanks.keys():
-        #             # Get the word that will be inserted in the blank
-        #             word = self.get_the_word_for_the_blank(blank_key)  # get the word t
-        #             # Replace the blank '~BXX~' for the word
-        #             txt = txt.replace(txt[idx_of_blank:idx_of_blank + 5], word)
-        #     ret_txt.append(txt)
-        # return ret_txt
 
     # --------------- OUTCOME SELECTION: ---------------
 
