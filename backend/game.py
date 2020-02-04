@@ -1,6 +1,7 @@
 from story_structure_v2 import *
 import time
 from assign_characters import get_character_assignment
+from assign_characters import placesCategory
 from challenge_assignment import new_place
 from mocks_and_dummies import *
 
@@ -104,14 +105,14 @@ class Game:
             player.story_location[0] = self.story.get_character_story_row(character_name=character_name)
 
         # Set places category
-        self.set_place_category(challenges)
+        self.set_place_category(placesCategory(all_answers, challenges))
         self.ready_to_play = True
 
-    def setPlacesCategory(self, places):
-        self.placesCategory = places
+    #def setPlacesCategory(self, places):
+     #   self.placesCategory = places
 
-    def getPlacesCategory(self):
-        return self.placesCategory
+    #def getPlacesCategory(self):
+      #  return self.placesCategory
 
     # --------------- MANAGING PLAYERS: ---------------
     def add_player(self, player_id, player_input):
@@ -167,6 +168,9 @@ class Game:
     def set_place_category(self, places_category):
         self.places_category = places_category
 
+    def get_place_category(self):
+        return self.places_category
+    
     def get_next_page_variation(self, player_id, challenge_outcome):
         """
         This function will be constantly called by the frontend to get the next page variation

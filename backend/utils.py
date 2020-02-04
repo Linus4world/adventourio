@@ -53,7 +53,7 @@ def get_random_word_from_the_internet(part_of_speech):
 
 
 def get_random_name():
-    first_name = rn.random_nick(gender='m')
+    first_name = rw.random_nick(gender='m')
     upper_words = [word for word in words if word[0].isupper()]
     name_words = [word for word in upper_words if not word.isupper()]
     name = ' '.join([name_words[random.randint(0, len(name_words))] for i in range(2)])

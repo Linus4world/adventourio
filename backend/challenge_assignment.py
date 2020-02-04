@@ -38,7 +38,7 @@ def new_place(game):
     detective_id = getCharacterId("detective", game)
     wizard_id = getCharacterId("wizard", game)
 
-    places_in = game.getPlacesCategory()
+    places_in = game.get_place_category()
     stage = game.get_chapter_number() + 1
 
     if stage == 1:
