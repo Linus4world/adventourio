@@ -16,7 +16,7 @@ SUCCESS = json.dumps({'success': True}), 200, {'ContentType': 'application/json'
 challenges = {}
 
 # ---------- For debugging purposes: ----------
-debug_mode = True  # Default: False
+debug_mode = False  # Default: False
 player_input_mock = {}
 challenge_outcome_db = True
 # ---------------------------------------------
