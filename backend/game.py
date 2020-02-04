@@ -239,5 +239,5 @@ class Game:
 
         ret_dict = dict(story_text=story_text, challenge=challenge, game_finished=game_finished)
 
-        return ret_dict
-        # return json.dumps(ret_dict)
+        # return ret_dict
+        return json.dumps(ret_dict)
