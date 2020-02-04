@@ -62,7 +62,7 @@ export class GamePage implements AfterViewInit {
     const loading = await this.loadingController.create({
       message: 'Waiting for other players...',
       spinner: 'crescent',
-      backdropDismiss: false
+      backdropDismiss: true
     });
 
     await loading.present();
