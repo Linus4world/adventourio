@@ -209,12 +209,18 @@
             },
             {
               "title": "StudiTUM",
-              "challenge": "you may not necessarily be able to come in by yourself. Find out a way to do it!",
+              "challenge": "you may not necessarily be able to come in by yourself. Find out a way to do it! To prove it, what color is the underground corridor?",
               "coordinates": [
                 48.266932,
                 11.670564
               ],
-              "challenge_type": 3
+              "challenge_type": 1,
+              "options": [
+                "for some reason, pink...",
+                "it's very orange",
+                "boring gray"
+              ],
+              "right_answer": "it's very orange"
             },
             {
               "title": "Mensa Innenstadt",
@@ -400,11 +406,18 @@
           "places": [
             {
               "title": "Englischer Garten",
-              "challenge": "Many locals here, enjoying their time in the nature. Without using English (each one of you is only allowed to speak in your native language!) ask one of them, how old they are and let them write it in the app",
+              "challenge": "Although it's called an English garden, there is a tower somewhere here that is inspired by some other culture. Find it, and guess from which country does its style come from!",
               "coordinates": [
                 48.149837,
                 11.586065
-              ]
+              ],
+              "challenge_type": 1,
+              "options": [
+                "Japan",
+                "France",
+                "China"
+              ],
+              "right_answer": "China"
             },
             {
               "title": "BMW Museum ",
