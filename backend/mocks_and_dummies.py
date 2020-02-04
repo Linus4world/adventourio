@@ -5,7 +5,7 @@ import json
 def assign_characters_dummy(players):
     character_assignment = {}
     random.seed()
-    possible_characters = ['alien', 'adventurer', 'wizard', 'detective']
+    possible_characters = ['wizard', 'adventurer', 'alien', 'detective']
     # random.shuffle(possible_characters)  # COMMENT FOR TESTING!
     for player_id, character_name in zip(players.keys(), possible_characters):
         character_assignment[player_id] = character_name
