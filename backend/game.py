@@ -101,7 +101,8 @@ class Game:
             challenges = file.read()
 
         # CHARACTER ASSIGNMENT
-        character_assignment = get_character_assignment(all_player_answers)
+        # character_assignment = get_character_assignment(all_player_answers)
+        character_assignment = assign_characters_dummy(self.players)  # TODO: USE REAL FUNCTION!
 
         for player_id in character_assignment.keys():
             # Set character for each player
@@ -208,30 +209,28 @@ class Game:
 
         # Set the new location
         player.set_story_location([row, column + 1])
+        print(row, column + 1)
 
         page = self.story.get_page_raw(row, column + 1)
         if page.is_it_the_last_page():
             player.game_finished = True
 
-        # If there is only one page variation, return that one
-        if len(page.page_variations) == 1:
-            page_variation = page.page_variations[0]
-        # If the page is a challenge page:
-        elif page.page_type == 'challenge':
-            # Create a page_variation on the fly:
-            page_variation = PageVariation()
-            challenge = get_a_challenge_dummy(self.players)  # TODO: REPLACE WITH AGATA'S FUNCTION
-            # challenge = new_place(self) # UNCOMMENT THIS TO TEST THE GAME!
-            page_variation.challenge = challenge
-        # If the page is an outcome page:
-        elif page.page_type == 'outcome':
-            page_variation = story.select_good_or_bad_outcome(page.page_variations, player)
-        # IF IT IS NOT SPECIFIED WHAT TYPE OF PAGE THIS IS, A RANDOM PAGE VARIATION WILL BE SELECTED!
-        else:
-            page_variation = random.choice(page.page_variations)
+        page_variation = PageVariation()
 
-        # Filling in the blanks
-        page_variation.txt = story.fill_in_the_blanks(page_variation)
+        if page.page_variations:
+            # If the page is a challenge page:
+            if page.page_type == 'challenge':
+                page_variation.challenge = dict()
+            # If the page is an outcome page:
+            elif page.page_type == 'outcome':
+                assert len(page.page_variations) == 2, str(len(page.page_variations))
+                page_variation = story.select_good_or_bad_outcome(page.page_variations, player)
+            # IF IT IS NOT SPECIFIED WHAT TYPE OF PAGE THIS IS, A RANDOM PAGE VARIATION WILL BE SELECTED!
+            else:
+                page_variation = random.choice(page.page_variations)
+
+            # Filling in the blanks
+            page_variation.txt = story.fill_in_the_blanks(page_variation)
 
         return page_variation
 
