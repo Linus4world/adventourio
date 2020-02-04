@@ -7,6 +7,8 @@ from utils import *
 from story_telling import *
 import pycorpora
 
+assigned_blanks = {}
+
 
 class Character:
     def __init__(self, name, description):
@@ -92,7 +94,27 @@ class Story:
 
     # --------------- BLANKS: ---------------
 
-    def add_blank(self, blank_id, word_type="None", changes_every_time=False, list_of_words=None):
+    def add_blank_v2(self, blank_id, list_of_words, changes_every_time=False):
+        blank = dict(
+            changes_every_time=changes_every_time,
+            list_of_words=list_of_words,
+        )
+        self.blanks[blank_id] = blank
+
+    def get_the_word_for_the_blank_v2(self, blank_id):
+        if blank_id in assigned_blanks.keys():
+            ret_word = assigned_blanks[blank_id]
+        else:
+
+            blank = self.blanks[blank_id]
+            random.seed()
+            ret_word = random.choice(blank['list_of_words'])
+
+            if not blank['changes_every_time']:
+                assigned_blanks[blank_id] = ret_word
+        return ret_word
+
+    def add_blank(self, blank_id, word_type='', changes_every_time=False, list_of_words=None):
         """
         Parameters:
             blank_id (str):
@@ -107,23 +129,6 @@ class Story:
             word_type=word_type
         )
         self.blanks[blank_id] = blank
-
-#    def add_blank_internet(self, blank_key, part_of_speech, changes_every_time=False):
-#        """
-#        Parameters:
-#            blank_key (str):
-#            part_of_speech (str): noun, adjective, etc.
-#            changes_every_time (bool): if the blank should be filled in with a (potentially) different word every time
-#        """
-#        blank = dict(
-#            random_word=True,
-#            part_of_speech=part_of_speech,
-#            changes_every_time=changes_every_time
-#        )
-#        self.blanks[blank_key] = blank
-
-    # def get_the_word_for_the_blank(self, blank_id):
-    #     return 'boobs'
 
     def get_the_word_for_the_blank(self, blank_id):
         """
@@ -199,9 +204,9 @@ class Story:
         for txt in page_variation.txt:
             found_keys = re.findall(r'~\w+~', txt)
             for blank_key in found_keys:
-                print(blank_key)
                 if blank_key[1:-1] in self.blanks.keys():
-                    word = self.get_the_word_for_the_blank(blank_key[1:-1])
+                    word = self.get_the_word_for_the_blank_v2(blank_key[1:-1])
+                    # word = self.get_the_word_for_the_blank(blank_key[1:-1])
                     txt = txt.replace(blank_key, word)
             ret_txt.append(txt)
         return ret_txt
