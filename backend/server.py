@@ -84,19 +84,8 @@ def get_next_story_section(player_id):
 
     # Wait for other players to finish their challenge
     if not debug_mode and game.wait_for_game_ready():
-
         story_content = game.get_next_story_section(player_id, challenge_outcome)
-        challenge = challenges[player_id]
-
-        story_section = dict(
-            story=story_content['story'],
-            game_finished=story_content['game_finished'],
-            challenge=challenge['challenge'],
-            destinationCoords=challenge["destinationCoords"],
-            # destinationName=challenge["title"]  # IT SEEMS LIKE 'title' is empty!
-        )
-
-        return json.dumps(story_section)
+        return json.dumps(challenges[player_id])
     if not debug_mode:
         return abort('MAX_TIMEOUT')
 
