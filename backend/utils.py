@@ -5,7 +5,6 @@ import urllib.request
 import random
 import pycorpora
 from random_word import RandomWords
-from random_words import RandomNicknames
 
 #Here be global variables
 adventurer_treasure = ["Crystal Skull", "Monkey Statue", "Stuffed Wolpertinger", "Ancient Porn Magazine",
@@ -28,7 +27,6 @@ assigned_keywords = {} #dictionary with keyword:value
 
 
 rw = RandomWords()
-rn = RandomNicknames()
 word_site = "https://svnweb.freebsd.org/csrg/share/dict/words?view=co&content-type=text/plain"
 response = urllib.request.urlopen(word_site)
 long_txt = response.read().decode()
@@ -52,7 +50,7 @@ def get_random_word_from_the_internet(part_of_speech):
                               maxLength=10)
 
 def get_random_name():
-    first_name = rn.random_nick(gender='m')
+    first_name = rw.random_nick(gender='m')
     upper_words = [word for word in words if word[0].isupper()]
     name_words  = [word for word in upper_words if not word.isupper()]
     name = ' '.join([name_words[random.randint(0,len(name_words))] for i in range(2)])
