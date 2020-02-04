@@ -54,10 +54,6 @@ export class GameProvider {
         return this.http.POST('stage/' + this.account.getID(), JSON.stringify(data));
     }
 
-    public unlockChallenge() {
-        return this.http.GET('here/<id>' + this.account.getID(), this.MAX_TIMEOUT);
-    }
-
     public getCharacter(): string {
         return this.character;
     }

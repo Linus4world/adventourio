@@ -50,9 +50,7 @@ export class GamePage implements AfterViewInit {
   private positionChanged(data: Geoposition) {
     this.openlayersProvider.setPlayer(data.coords.latitude, data.coords.longitude);
     if (this.openlayersProvider.hasReachedGoal()) {
-      this.gameProvider.unlockChallenge().subscribe(_ => {
-        this.presentChallengePage();
-      });
+      this.presentChallengePage();
     }
   }
 
@@ -82,9 +80,7 @@ export class GamePage implements AfterViewInit {
   }
 
   jumpToTarget() {
-    this.gameProvider.unlockChallenge().subscribe(_ => {
-      this.presentChallengePage();
-    });
+    this.presentChallengePage();
   }
 
   private async presentCharacterPage() {
@@ -117,7 +113,7 @@ export class GamePage implements AfterViewInit {
       }
     });
     modal.onDidDismiss().then(() => {
-      if (!this.stage.challenge) {
+      if (this.stage.game_finished) {
         this.presentFeedbackPage();
       }
     });
