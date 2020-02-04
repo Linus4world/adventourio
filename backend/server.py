@@ -13,9 +13,10 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 
 game = Game(number_of_players=4, number_of_pages=6)
 SUCCESS = json.dumps({'success': True}), 200, {'ContentType': 'application/json'}
+challenges = {}
 
 # ---------- For debugging purposes: ----------
-debug_mode = False  # Default: False
+debug_mode = True  # Default: False
 player_input_mock = {}
 challenge_outcome_db = True
 # ---------------------------------------------
@@ -45,22 +46,18 @@ def join(player_id):
 
     # Add Player
     game.add_player(player_id, player_input)
+    game.ready_queue += 1  # !!!!! FOR TESTING !!!!! DELETE LATER !!!!!
 
     if game.is_full():
-        # Package all the player answers into one object:
-        all_player_answers = all_answers_function_v2(game.players)
-        with open("challenges.json", 'r', encoding='utf-8') as file:
-            challenges = file.read()
 
         # !!START THE GAME!!
-        game.start_game(all_player_answers, challenges)
+        game.start_game()
 
     if not debug_mode and game.wait_for_game_ready():
         return json.dumps({"playerNames": game.get_player_names(),
                            "character": game.players[player_id].get_character_name()})
     if not debug_mode:
         return abort('No other players found :(')
-
 
 @app.route('/stage/<player_id>', methods=['POST'])
 def get_next_story_section(player_id):
@@ -76,28 +73,34 @@ def get_next_story_section(player_id):
     if hasattr(player_data, 'playerLocation'):
         player_location = player_data['playerLocation']
 
-    game.player_challenge_outcome[player_id] = challenge_outcome
+    # game.player_challenge_outcome[player_id] = challenge_outcome
     if game.is_game_ready():
-        # TODO call Agatas function with all player outcomes
 
         # Get the challenges:
-        
+        global challenges
+        challenges = new_place(game)
 
-        # At this point all player outcomes are stored in game.player_challenge_outcome
-        # This will be only called once for the last player!
         game.ready_to_play = True
+        game.current_chapter += 1
 
     # Wait for other players to finish their challenge
-    if game.wait_for_game_ready():
-        # TODO Here the next story section for each player should be stored in game.player_next_chapter
-        # We can simply do:
-        #
-        # return game.player_next_chapter[player_id]
-        story_section = game.get_next_story_section(player_id, challenge_outcome)
-        return story_section
+    if not debug_mode and game.wait_for_game_ready():
 
+        story_content = game.get_next_story_section(player_id, challenge_outcome)
+        challenge = challenges[player_id]
+
+        story_section = dict(
+            story=story_content['story'],
+            game_finished=story_content['game_finished'],
+            challenge=challenge['challenge'],
+            destinationCoords=challenge["destinationCoords"],
+            # destinationName=challenge["title"]  # IT SEEMS LIKE 'title' is empty!
+        )
+
+        return json.dumps(story_section)
     if not debug_mode:
         return abort('MAX_TIMEOUT')
+    # ----------------------------------
 
 
 @app.route('/here/<player_id>')
@@ -136,9 +139,9 @@ if __name__ == '__main__':
         player_input_mock = mock_input[3]
         join('03')
 
-        # Printing character assignment
-        for player_id in game.players.keys():
-            print(player_id, game.players[player_id].character.name)
+        # # Printing character assignment
+        # for player_id in game.players.keys():
+        #     print(player_id, game.players[player_id].character.name)
 
         # ---------- Getting the next story section: ----------
 

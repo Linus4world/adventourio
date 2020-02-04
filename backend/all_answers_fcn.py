@@ -89,7 +89,7 @@ def placesCategory(all_answers, places):
 
     all_answers = json.loads(all_answers)
     places = json.loads(places)
-    results = numpy.array([0,0,0]) # entertainment, uni, sightseeing
+    results = numpy.array([0, 0, 0])  # entertainment, uni, sightseeing
     max_res = 'null'
     places_result = dict()
 

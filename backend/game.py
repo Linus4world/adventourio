@@ -1,9 +1,10 @@
 from story_structure_v2 import *
 import time
 from assign_characters import get_character_assignment
-from assign_characters import placesCategory
+from all_answers_fcn import placesCategory
 from challenge_assignment import new_place
 from mocks_and_dummies import *
+from all_answers_fcn import *
 
 
 class PlayerError(Exception):
@@ -73,6 +74,7 @@ class Game:
         self.players_waiting = 0
         self.players = {}
         self.current_amount_of_players_in_game = 0
+        self.current_chapter = 0
 
         self.ready_queue = 0
         self.ready_to_play = False
@@ -84,7 +86,7 @@ class Game:
 
     # --------------- SET UP: ---------------
 
-    def start_game(self, all_player_answers, challenges):
+    def start_game(self):
         """
         This function does all the set up, before the game gets started:
             - Assign characters
@@ -92,7 +94,13 @@ class Game:
         Parameters: None
         Returns: None
         """
-        # Assign the characters
+
+        # Package all the player answers into one object:
+        all_player_answers = all_answers_function_v2(self.players)
+        with open("challenges.json", 'r', encoding='utf-8') as file:
+            challenges = file.read()
+
+        # CHARACTER ASSIGNMENT
         character_assignment = get_character_assignment(all_player_answers)
 
         for player_id in character_assignment.keys():
@@ -105,14 +113,8 @@ class Game:
             player.story_location[0] = self.story.get_character_story_row(character_name=character_name)
 
         # Set places category
-        self.set_place_category(placesCategory(all_answers, challenges))
+        self.set_place_category(placesCategory(answers2, challenges))
         self.ready_to_play = True
-
-    #def setPlacesCategory(self, places):
-     #   self.placesCategory = places
-
-    #def getPlacesCategory(self):
-      #  return self.placesCategory
 
     # --------------- MANAGING PLAYERS: ---------------
     def add_player(self, player_id, player_input):
@@ -124,6 +126,11 @@ class Game:
         new_player.player_id = player_id
         new_player.answers = player_input['answers']
         self.players[player_id] = new_player
+
+    def get_player_id_with_character_name(self, character_name):
+        for player_id in self.players.keys():
+            if self.players[player_id].character.name == character_name:
+                return player_id
 
     def is_full(self):
         return len(self.players) >= self.number_of_players
@@ -170,7 +177,12 @@ class Game:
 
     def get_place_category(self):
         return self.places_category
-    
+
+    def get_current_chapter(self):
+        return self.current_chapter
+
+    # --------------- STORY LOGIC: ---------------
+
     def get_next_page_variation(self, player_id, challenge_outcome):
         """
         This function will be constantly called by the frontend to get the next page variation
@@ -225,7 +237,6 @@ class Game:
 
     def get_next_story_section(self, player_id, challenge_outcome):
         story_text = []
-        challenge = {}
 
         challenge_found = False
         game_finished = self.players[player_id].game_finished
@@ -239,24 +250,28 @@ class Game:
                 story_text.extend(page_variation.txt)
             if page_variation.challenge is not None:
                 challenge_found = True
-                challenge = page_variation.challenge
 
-        # TODO change this when using Agatas function instead of dummy function
-        print('challenge', challenge)
+        # print('challenge', challenge)
 
-        real_challenge = {
-            "challenge": challenge["challenge"],
-            "options": challenge["options"],
-            "challenge_type": challenge["challenge_type"],
-            "right_answer": challenge["right_answer"]
-        }
+        # real_challenge = {
+        #     "challenge": challenge["challenge"],
+        #     "options": challenge["options"],
+        #     "challenge_type": challenge["challenge_type"],
+        #     "right_answer": challenge["right_answer"]
+        # }
+
+        # ret_dict = dict(
+        #     story=story_text,
+        #     challenge=real_challenge,
+        #     game_finished=game_finished,
+        #     destinationCoords=challenge["coordinates"],
+        #     destinationName=challenge["title"]
+        # )
+
         ret_dict = dict(
             story=story_text,
-            challenge=real_challenge,
             game_finished=game_finished,
-            destinationCoords=challenge["coordinates"],
-            destinationName=challenge["title"]
         )
 
-        # return ret_dict
-        return json.dumps(ret_dict)
+        return ret_dict
+        # return json.dumps(ret_dict)

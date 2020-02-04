@@ -33,17 +33,31 @@ def new_place(game):
     wizard = ['Detective', 'Alien', 'Adventurer']
     """
 
-    alien_id = getCharacterId("alien", game)
-    adventurer_id = getCharacterId("adventurer", game)
-    detective_id = getCharacterId("detective", game)
-    wizard_id = getCharacterId("wizard", game)
+    # ORIGINAL CODE (agata)
+    # alien_id = getCharacterId("alien", game)
+    # adventurer_id = getCharacterId("adventurer", game)
+    # detective_id = getCharacterId("detective", game)
+    # wizard_id = getCharacterId("wizard", game)
+
+    # NEW CODE (ESTEBAN)
+    alien_id = game.get_player_id_with_character_name('alien')
+    adventurer_id = game.get_player_id_with_character_name('adventurer')
+    detective_id = game.get_player_id_with_character_name('detective')
+    wizard_id = game.get_player_id_with_character_name('wizard')
 
     places_in = game.get_place_category()
-    stage = game.get_chapter_number() + 1
+    stage = game.get_current_chapter() + 1
 
     if stage == 1:
-        destination1 = game["characters"][alien_id].geo_location
-        destination2 = game["characters"][adventurer_id].geo_location
+
+        # OLD
+        # destination1 = game["characters"][alien_id].geo_location
+        # destination2 = game["characters"][adventurer_id].geo_location
+
+        # NEW
+        destination1 = game.players[alien_id].geo_location
+        destination2 = game.players[adventurer_id].geo_location
+
         # calculate middle point between two players
         if destination1[0] >= destination2[0]:
             new_latt = destination1[0] - (destination1[0] - destination2[0]) / 2
@@ -64,7 +78,7 @@ def new_place(game):
         right_answer = []
         for stages in places_in['stages']:
             if stages['stage'] == stage:
-                for place in stages['place']:
+                for place in stages['places']:
                     r1 = math.pow(place['coordinates'][0] - new_latt, 2)
                     r2 = math.pow(place['coordinates'][1] - new_long, 2)
                     r = math.sqrt(r1 + r2)
@@ -79,8 +93,14 @@ def new_place(game):
                         right_answer = place['right_answer']
                         r_old = r
 
-        destination1 = game["characters"][wizard_id].geo_location
-        destination2 = game["characters"][alien_id].geo_location
+        # OLD:
+        # destination1 = game["characters"][wizard_id].geo_location
+        # destination2 = game["characters"][alien_id].geo_location
+
+        # NEW:
+        destination1 = game.players[wizard_id].geo_location
+        destination2 = game.players[alien_id].geo_location
+
         # calculate middle point between two players
         if destination1[0] >= destination2[0]:
             new_latt = destination1[0] - (destination1[0] - destination2[0]) / 2
@@ -101,7 +121,7 @@ def new_place(game):
         right_answer1 = []
         for stages in places_in['stages']:
             if stages['stage'] == stage:
-                for place in stages['place']:
+                for place in stages['places']:
                     r1 = math.pow(place['coordinates'][0] - new_latt, 2)
                     r2 = math.pow(place['coordinates'][1] - new_long, 2)
                     r = math.sqrt(r1 + r2)
@@ -117,7 +137,7 @@ def new_place(game):
                         r_old = r
 
         if challenge_type == 1:
-            one_json = {alien_id: {'destinationName': destinationName, 'destinationCoords': destinationCoords,
+            one_json = {detective_id: {'destinationName': destinationName, 'destinationCoords': destinationCoords,
                                      'challenge': {'challenge': challenge, 'challenge_type': challenge_type,
                                                    'right_answer': right_answer, 'options': options}},
                         adventurer_id: {'destinationName': destinationName, 'destinationCoords': destinationCoords,
@@ -130,7 +150,7 @@ def new_place(game):
                                      'challenge': {'challenge': challenge1, 'challenge_type': challenge_type1,
                                                    'right_answer': right_answer1, 'options': options1}}}
         else:
-            one_json = {alien_id: {'destinationName': destinationName, 'destinationCoords': destinationCoords,
+            one_json = {detective_id: {'destinationName': destinationName, 'destinationCoords': destinationCoords,
                                      'challenge': {'challenge': challenge, 'challenge_type': challenge_type,
                                                    'right_answer': right_answer}},
                         adventurer_id: {'destinationName': destinationName, 'destinationCoords': destinationCoords,
@@ -145,8 +165,10 @@ def new_place(game):
         return one_json
 
     elif stage == 2:
-        destination1 = game["characters"][detective_id].geo_location
-        destination2 = game["characters"][adventurer_id].geo_location
+        # destination1 = game["characters"][detective_id].geo_location
+        # destination2 = game["characters"][adventurer_id].geo_location
+        destination1 = game.players[detective_id].geo_location
+        destination2 = game.players[adventurer_id].geo_location
         # calculate middle point between two players
         if destination1[0] >= destination2[0]:
             new_latt = destination1[0] - (destination1[0] - destination2[0]) / 2
@@ -167,7 +189,7 @@ def new_place(game):
         right_answer = []
         for stages in places_in['stages']:
             if stages['stage'] == stage:
-                for place in stages['place']:
+                for place in stages['places']:
                     r1 = math.pow(place['coordinates'][0] - new_latt, 2)
                     r2 = math.pow(place['coordinates'][1] - new_long, 2)
                     r = math.sqrt(r1 + r2)
@@ -182,8 +204,10 @@ def new_place(game):
                         right_answer = place['right_answer']
                         r_old = r
 
-        destination1 = game["characters"][wizard_id].geo_location
-        destination2 = game["characters"][detective_id].geo_location
+        # destination1 = game["characters"][wizard_id].geo_location
+        # destination2 = game["characters"][detective_id].geo_location
+        destination1 = game.players[wizard_id].geo_location
+        destination2 = game.players[detective_id].geo_location
         # calculate middle point between two players
         if destination1[0] >= destination2[0]:
             new_latt = destination1[0] - (destination1[0] - destination2[0]) / 2
@@ -204,7 +228,7 @@ def new_place(game):
         right_answer1 = []
         for stages in places_in['stages']:
             if stages['stage'] == stage:
-                for place in stages['place']:
+                for place in stages['places']:
                     r1 = math.pow(place['coordinates'][0] - new_latt, 2)
                     r2 = math.pow(place['coordinates'][1] - new_long, 2)
                     r = math.sqrt(r1 + r2)
@@ -250,8 +274,11 @@ def new_place(game):
 
     elif stage == 3:
 
-        destination1 = game["characters"][detective_id].geo_location
-        destination2 = game["characters"][alien_id].geo_location
+        # destination1 = game["characters"][detective_id].geo_location
+        # destination2 = game["characters"][alien_id].geo_location
+        destination1 = game.players[detective_id].geo_location
+        destination2 = game.players[alien_id].geo_location
+
         # calculate middle point between two players
         if destination1[0] >= destination2[0]:
             new_latt = destination1[0] - (destination1[0] - destination2[0]) / 2
@@ -272,7 +299,7 @@ def new_place(game):
         right_answer = []
         for stages in places_in['stages']:
             if stages['stage'] == stage:
-                for place in stages['place']:
+                for place in stages['places']:
                     r1 = math.pow(place['coordinates'][0] - new_latt, 2)
                     r2 = math.pow(place['coordinates'][1] - new_long, 2)
                     r = math.sqrt(r1 + r2)
@@ -287,8 +314,10 @@ def new_place(game):
                         right_answer = place['right_answer']
                         r_old = r
 
-        destination1 = game["characters"][wizard_id].geo_location
-        destination2 = game["characters"][adventurer_id].geo_location
+        # destination1 = game["characters"][wizard_id].geo_location
+        # destination2 = game["characters"][adventurer_id].geo_location
+        destination1 = game.players[wizard_id].geo_location
+        destination2 = game.players[adventurer_id].geo_location
         # calculate middle point between two players
 
         if destination1[0] >= destination2[0]:
@@ -310,7 +339,7 @@ def new_place(game):
         right_answer1 = []
         for stages in places_in['stages']:
             if stages['stage'] == stage:
-                for place in stages['place']:
+                for place in stages['places']:
                     r1 = math.pow(place['coordinates'][0] - new_latt, 2)
                     r2 = math.pow(place['coordinates'][1] - new_long, 2)
                     r = math.sqrt(r1 + r2)
@@ -356,6 +385,8 @@ def new_place(game):
     elif stage == 4:
         destination1 = game["characters"][wizard_id].geo_location
         destination2 = game["characters"][detective_id].geo_location
+        destination1 = game.players[wizard_id].geo_location
+        destination2 = game.players[detective_id].geo_location
 
         if destination1[0] >= destination2[0]:
             new_latt = destination1[0] - (destination1[0] - destination2[0]) / 2
@@ -376,7 +407,7 @@ def new_place(game):
         right_answer = []
         for stages in places_in['stages']:
             if stages['stage'] == stage:
-                for place in stages['place']:
+                for place in stages['places']:
                     r1 = math.pow(place['coordinates'][0] - new_latt, 2)
                     r2 = math.pow(place['coordinates'][1] - new_long, 2)
                     r = math.sqrt(r1 + r2)
