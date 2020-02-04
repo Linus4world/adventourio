@@ -7,6 +7,9 @@ from utils import *
 from story_telling import *
 import pycorpora
 
+assigned_blanks = {}
+
+
 class Character:
     def __init__(self, name, description):
         self.name = name
@@ -91,35 +94,41 @@ class Story:
 
     # --------------- BLANKS: ---------------
 
-    def add_blank(self, blank_id, word_type = "None", changes_every_time=False):
+    def add_blank_v2(self, blank_id, list_of_words, changes_every_time=False):
+        blank = dict(
+            changes_every_time=changes_every_time,
+            list_of_words=list_of_words,
+        )
+        self.blanks[blank_id] = blank
+
+    def get_the_word_for_the_blank_v2(self, blank_id):
+        if blank_id in assigned_blanks.keys():
+            ret_word = assigned_blanks[blank_id]
+        else:
+
+            blank = self.blanks[blank_id]
+            random.seed()
+            ret_word = random.choice(blank['list_of_words'])
+
+            if not blank['changes_every_time']:
+                assigned_blanks[blank_id] = ret_word
+        return ret_word
+
+    def add_blank(self, blank_id, word_type='', changes_every_time=False, list_of_words=None):
         """
         Parameters:
             blank_id (str):
             (list_of_words (list of str): possible words to fill in the blank with)
             word_type(str): what category of word is this (flower, spell, etc), has to fit with json file names in pycorpora
             changes_every_time (bool): if the blank should be filled in with a (potentially) different word every time
+            list_of_words
         """
         blank = dict(
-            # random_word= False,
-            # list_of_words=list_of_words,
             changes_every_time=changes_every_time,
+            list_of_words=list_of_words,
             word_type=word_type
         )
         self.blanks[blank_id] = blank
-
-#    def add_blank_random(self, blank_key, part_of_speech, changes_every_time=False):
-#        """
-#        Parameters:
-#            blank_key (str):
-#            part_of_speech (str): noun, adjective, etc.
-#            changes_every_time (bool): if the blank should be filled in with a (potentially) different word every time
-#        """
-#        blank = dict(
-#            random_word=True,
-#            part_of_speech=part_of_speech,
-#            changes_every_time=changes_every_time
-#        )
-#        self.blanks[blank_key] = blank
 
     def get_the_word_for_the_blank(self, blank_id):
         """
@@ -191,33 +200,16 @@ class Story:
         """
         Fills in all the blanks in a page_variation
         """
-        ret = []
-        for section in page_variation.txt:
-        #    print(section)
-            keys = re.findall(r'\~\w+\~', section)
-            for blank_key in keys:
-                if blank_key in self.blanks.keys():
-                    word = self.get_the_word_for_the_blank(blank_key[1])  # get the word t
-                    section = section.replace(blank_key[0], word)
-            ret.append(section)
-        return ret
-
-
-
-        # ret_txt = []  # Text to return
-        # for txt in page_variation.txt:
-        #     idx_of_blank = txt.find('~')
-        #     if idx_of_blank != -1:
-        #         # Get the blank key
-        #         blank_key = txt[idx_of_blank + 1:idx_of_blank + 4]
-        #         # Blank found!
-        #         if blank_key in self.blanks.keys():
-        #             # Get the word that will be inserted in the blank
-        #             word = self.get_the_word_for_the_blank(blank_key)  # get the word t
-        #             # Replace the blank '~BXX~' for the word
-        #             txt = txt.replace(txt[idx_of_blank:idx_of_blank + 5], word)
-        #     ret_txt.append(txt)
-        # return ret_txt
+        ret_txt = []
+        for txt in page_variation.txt:
+            found_keys = re.findall(r'~\w+~', txt)
+            for blank_key in found_keys:
+                if blank_key[1:-1] in self.blanks.keys():
+                    word = self.get_the_word_for_the_blank_v2(blank_key[1:-1])
+                    # word = self.get_the_word_for_the_blank(blank_key[1:-1])
+                    txt = txt.replace(blank_key, word)
+            ret_txt.append(txt)
+        return ret_txt
 
     # --------------- OUTCOME SELECTION: ---------------
 

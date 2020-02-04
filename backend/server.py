@@ -11,7 +11,7 @@ app = Flask(__name__)
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
-game = Game(number_of_players=4, number_of_pages=6)
+game = Game(number_of_players=4, number_of_pages=3*5)
 SUCCESS = json.dumps({'success': True}), 200, {'ContentType': 'application/json'}
 challenges = {}
 
@@ -73,7 +73,6 @@ def get_next_story_section(player_id):
     if hasattr(player_data, 'playerLocation'):
         player_location = player_data['playerLocation']
 
-    # game.player_challenge_outcome[player_id] = challenge_outcome
     if game.is_game_ready():
 
         # Get the challenges:
@@ -100,7 +99,6 @@ def get_next_story_section(player_id):
         return json.dumps(story_section)
     if not debug_mode:
         return abort('MAX_TIMEOUT')
-    # ----------------------------------
 
 
 @app.route('/here/<player_id>')
@@ -145,9 +143,17 @@ if __name__ == '__main__':
 
         # ---------- Getting the next story section: ----------
 
+        print(game.get_next_story_section('02', True)['story'])
+        print(game.get_next_story_section('02', True)['story'])
+        # print(game.get_next_story_section('02', True)['story'])
+        # print(game.get_next_story_section('02', True)['story'])
+        # print(game.get_next_story_section('02', True)['story'])
+        # print(game.get_next_story_section('02', True)['story'])
+        # print(game.get_next_story_section('02', True)['story'])
+
         # The next few lines simulate what we would get from the front end
-        story_section = get_next_story_section(player_id='00')
-        print(story_section)
+        # story_section = get_next_story_section(player_id='00')
+        # print(story_section)
 
         # story_section = get_next_story_section(player_id='00')
         # print(story_section)

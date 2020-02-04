@@ -1,3 +1,7 @@
+from utils import *
+import pycorpora
+
+
 def set_story(story):
     # --------------- ADDING CHARACTERS ---------------
     story.add_character(name='adventurer', description='drunk')
@@ -35,15 +39,12 @@ def set_example_story(story):
             story.get_page_raw(row, i + 1).set_page_type('outcome')
 
     # --------------- ADDING BLANKS ---------------
-    # story.add_blank('B00', ['apples', 'bananas', 'tomatoes'])
-    # story.add_blank_random('B01', 'noun')
-    # story.add_blank_random('B02', 'verb')
-    story.add_blank('treasure') # in text refer to the keyword as ~treasure~
-    story.add_blank('map') # ~map~
-    story.add_blank('tech') # ~tech~
-    story.add_blank('magic') # ~magic~
-    story.add_blank('weapon') #~weapon~
-    story.add_blank('B00', word_type = 'strange_words', changes_every_time=True) #~B00~
+    story.add_blank_v2('treasure', adventurer_treasure)
+    story.add_blank_v2('map', adventurer_map)
+    story.add_blank_v2('tech', sci_fi_thing)
+    story.add_blank_v2('magic', magic_thing)
+    story.add_blank_v2('weapon', detective_weapon)
+    story.add_blank_v2('B00', pycorpora.words.strange_words['words'])
 
     # --------------- ADDING CONTENT ---------------
 
@@ -409,7 +410,7 @@ def set_example_story(story):
     # ----- Wizard : -----
     story.get_page(character_name='wizard', chapter=0, page='intro').add_page_variation(
         txt=['You are a wizard and you are proud of that!',
-        'After having studied ancient magic for years you are ready to go out into the world and finally use your powers for good.'
+        'After having studied ancient magic for years you are ready to go out into the world and finally use your powers for good.',
         'You are also passionate about exploring foreign cultures and aiding the people you meet on the way.',
         'This is the creed you live by and not a single day passes without you contemplating the wonders of the world.',
         'But one day, you jolt awake violently as a wave of energy crackles through your limbs.',
@@ -494,7 +495,7 @@ def set_example_story(story):
     )
 
     story.get_page(character_name='wizard', chapter=3, page='intro').add_page_variation(
-        txt=['You hear a violent yell and turn just in time to see your new friend, the mysterious researcher, being dragged away by a couple of men in suits.'
+        txt=['You hear a violent yell and turn just in time to see your new friend, the mysterious researcher, being dragged away by a couple of men in suits.',
             'Immediately you rise to your feet, magic energy crackling in your fingertips. Without wasting another thought on the old wizard you just talked to, you run outside in an attempt to track them down but they are already gone.',
             'Cursing under your breath you close your eyes and focus on the despair and fear that the alien scientist emits. Then you begin your pursuit.',
             'But unfortunately, the trail gets weaker as you go on. Your friend must have passed out, because you can’t feel his emotional aura anymore and are left somewhat disoriented.',
@@ -516,17 +517,19 @@ def set_example_story(story):
     )
 
     story.get_page(character_name='wizard', chapter=3, page='outro').add_page_variation(
-        txt=['You find out that there is no curse, neither on the city, nor on the adventurer. There is no illness that might befall the people.',
-        'Instead, you learn about an ancient ritual meant to summon an Eldritch God and awaken him from his century-long slumber.',
-        'Special artefacts would need to be combined correctly at the right time in the right place and what would follow is nothing short of the end of the world.',
-        'You find out that the ~magic~ is one of these artefacts. What is left You also find out that the treasure the adventurer lost is one of those key items as well and it makes your stomach turn.',
-        'Someone is trying to perform the ritual… and that person needs to be stopped.',
-        'You still have an eye on the translator. Its technology seems to be highly advanced and you wonder who the original owner might have been. You have a gut feeling but...it would be so unlikely.',
-        'However, the more you concentrate on it, the more you receive…some kind of signal. A low energetic pulse emitted by it. It’s… pulsing.',
-        'Just like your ~magic~ did. If it lead you to the source of the energy burst… and that was caused by the adventurer’s treasure…',
-        'Could it be that if you followed its signal...it will would lead you to the other artefacts? You quickly grab the device and follow the path it shows you.',
-        'The adventurer is taken aback but she quickly follows and together you run, as it turns out, to a local research facility.',
-        'Both of you manage to sneak in through an open window and then you finally find the right room…']
+        txt=[
+            'You find out that there is no curse, neither on the city, nor on the adventurer. There is no illness that might befall the people.',
+            'Instead, you learn about an ancient ritual meant to summon an Eldritch God and awaken him from his century-long slumber.',
+            'Special artefacts would need to be combined correctly at the right time in the right place and what would follow is nothing short of the end of the world.',
+            'You find out that the ~magic~ is one of these artefacts. What is left You also find out that the treasure the adventurer lost is one of those key items as well and it makes your stomach turn.',
+            'Someone is trying to perform the ritual… and that person needs to be stopped.',
+            'You still have an eye on the translator. Its technology seems to be highly advanced and you wonder who the original owner might have been. You have a gut feeling but...it would be so unlikely.',
+            'However, the more you concentrate on it, the more you receive…some kind of signal. A low energetic pulse emitted by it. It’s… pulsing.',
+            'Just like your ~magic~ did. If it lead you to the source of the energy burst… and that was caused by the adventurer’s treasure…',
+            'Could it be that if you followed its signal...it will would lead you to the other artefacts? You quickly grab the device and follow the path it shows you.',
+            'The adventurer is taken aback but she quickly follows and together you run, as it turns out, to a local research facility.',
+            'Both of you manage to sneak in through an open window and then you finally find the right room…'
+        ]
     )
 
     story.get_page(character_name='wizard', chapter=3, page='outro').add_page_variation(
@@ -535,13 +538,14 @@ def set_example_story(story):
         'Special artefacts would need to be combined correctly at the right time in the right place and what would follow is nothing short of the end of the world.',
         'You find out that the ~magic~ is one of these artefacts. What is left You also find out that the treasure the adventurer lost is one of those key items as well and it makes your stomach turn.',
         'Someone is trying to perform the ritual… and that person needs to be stopped.',
-        'Suddenly the walls start shaking and rumbling. Both of you are panicking, as suddenly debris is falling from the ceiling. Boulders are raining down and you duck and cover.'
+        'Suddenly the walls start shaking and rumbling. Both of you are panicking, as suddenly debris is falling from the ceiling. Boulders are raining down and you duck and cover.',
         'After a minute it stops and you open your eyes to almost complete darkness: the entrance is now blocked with rubble. There is no way you’ll be able to get out the way you came in.',
         'But what’s that? A glimmer of light in the far corner? Together with the adventurer you take a closer look and find what appears to be the entrance to a secret tunnel.',
         'It is barely illuminated and you have no idea where it leads to. You look at the adventurer and she shrugs her shoulders.',
         'Alas, you don’t have any choice but to descend and hope for the best. It takes a long time but when you finally exit the tunnel you are…in a lab?']
     )
-
+    assert len(story.get_page(character_name='wizard', chapter=3, page='outro').page_variations) == 2
+    story.get_page(character_name='wizard', chapter=3, page='outro').set_last_page(True)
 
     story.get_page(character_name='wizard', chapter=4, page='intro').add_page_variation(
         txt=['fuck off it is not done yet']
