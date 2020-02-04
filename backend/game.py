@@ -1,6 +1,7 @@
 from story_structure_v2 import *
 import time
 from assign_characters import get_character_assignment
+from assign_characters import placesCategory
 from challenge_assignment import new_place
 from mocks_and_dummies import *
 
@@ -104,7 +105,7 @@ class Game:
             player.story_location[0] = self.story.get_character_story_row(character_name=character_name)
 
         # Set places category
-        self.set_place_category(challenges)
+        self.set_place_category(placesCategory(all_answers, challenges))
         self.ready_to_play = True
 
     def setPlacesCategory(self, places):
