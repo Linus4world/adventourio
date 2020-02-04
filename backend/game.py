@@ -238,14 +238,21 @@ class Game:
                 challenge = page_variation.challenge
 
         # TODO change this when using Agatas function instead of dummy function
+        print('challenge', challenge)
+
         real_challenge = {
             "challenge": challenge["challenge"],
             "options": challenge["options"],
             "challenge_type": challenge["challenge_type"],
             "right_answer": challenge["right_answer"]
         }
-        ret_dict = dict(story=story_text, challenge=real_challenge, game_finished=game_finished,
-         destinationCoords=challenge["coordinates"], destinationName=challenge["title"])
+        ret_dict = dict(
+            story=story_text,
+            challenge=real_challenge,
+            game_finished=game_finished,
+            destinationCoords=challenge["coordinates"],
+            destinationName=challenge["title"]
+        )
 
         # return ret_dict
         return json.dumps(ret_dict)

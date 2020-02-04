@@ -16,7 +16,7 @@ SUCCESS = json.dumps({'success': True}), 200, {'ContentType': 'application/json'
 
 # ---------- For debugging purposes: ----------
 debug_mode = False  # Default: False
-inputs_db = {}
+player_input_mock = {}
 challenge_outcome_db = True
 # ---------------------------------------------
 
@@ -38,7 +38,7 @@ def join(player_id):
     if not debug_mode:
         player_input = request.get_json()
     else:
-        player_input = inputs_db
+        player_input = player_input_mock
 
     if game.is_full():
         return abort('Game is full!')
@@ -64,7 +64,11 @@ def join(player_id):
 
 @app.route('/stage/<player_id>', methods=['POST'])
 def get_next_story_section(player_id):
-    player_data = request.get_json()
+    if not debug_mode:
+        player_data = request.get_json()
+    else:
+        player_data = player_input_mock
+
     challenge_outcome = None
     player_location = None
     if hasattr(player_data, 'challenge_outcome'):
@@ -116,16 +120,16 @@ if __name__ == '__main__':
         # ---------- Simulating what is happening in the front end ----------
 
         # ---------- Adding players: ----------
-        inputs_db = mock_input[0]
+        player_input_mock = mock_input[0]
         join('00')
 
-        inputs_db = mock_input[1]
+        player_input_mock = mock_input[1]
         join('01')
 
-        inputs_db = mock_input[2]
+        player_input_mock = mock_input[2]
         join('02')
 
-        inputs_db = mock_input[3]
+        player_input_mock = mock_input[3]
         join('03')
 
         # Printing character assignment
@@ -136,10 +140,10 @@ if __name__ == '__main__':
 
         # The next few lines simulate what we would get from the front end
         story_section = get_next_story_section(player_id='00')
-        print(story_section['story_text'], story_section['challenge'])
+        print(story_section)
 
-        story_section = get_next_story_section(player_id='00')
-        print(story_section['story_text'], story_section['challenge'])
-
-        story_section = get_next_story_section(player_id='00')
-        print(story_section['story_text'], story_section['challenge'])
+        # story_section = get_next_story_section(player_id='00')
+        # print(story_section)
+        #
+        # story_section = get_next_story_section(player_id='00')
+        # print(story_section)
