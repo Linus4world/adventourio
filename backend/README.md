@@ -16,7 +16,13 @@ The backend project is the server implentation of our application. It uses Flask
     pip -V
     ```
 2. Dependencies
-    You can install all other dependencies by running:
+    First we have to install one dependency by hand:
+    ```sh
+    cd pycorpora-master
+    python setup.py install
+    cd ..
+    ```
+    You can then install all other dependencies by running:
     ```sh
     pip install -r requirements.txt
     ```

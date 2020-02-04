@@ -33,11 +33,9 @@ def send_questionnaire():
         return json.load(questionnaire)
 
 
-@app.route('/join/<id>', methods=['POST'])
-def join(player_id, player_input=None):
-
-    if player_input is None:
-        player_input = request.get_json()
+@app.route('/join/<player_id>', methods=['POST'])
+def join(player_id):
+    player_input = request.get_json()
     if game.is_full():
         return abort('Game is full!')
 
@@ -52,17 +50,16 @@ def join(player_id, player_input=None):
         # !!START THE GAME!!
         game.start_game(all_player_answers, challenges)
 
-    if wait and game.wait_for_game_ready():
+    if game.wait_for_game_ready():
         return json.dumps({"playerNames": game.get_player_names(),
                            "character": game.players[player_id].get_character_name()})
     if abortions_legal:
         return abort('No other players found :(')
 
 
-@app.route('/stage/<id>', methods=['POST'])
-def get_next_story_section(player_id, challenge_outcome=None):
-    if challenge_outcome is None:
-        challenge_outcome = request.get_json()
+@app.route('/stage/<player_id>', methods=['POST'])
+def get_next_story_section(player_id):
+    challenge_outcome = request.get_json()
 
     game.ready_queue += 1
     if game.ready_queue == game.current_amount_of_players_in_game:
@@ -82,7 +79,7 @@ def get_next_story_section(player_id, challenge_outcome=None):
         return abort('MAX_TIMEOUT')
 
 
-@app.route('/here/<id>')
+@app.route('/here/<player_id>')
 def here(player_id):
     return SUCCESS
 

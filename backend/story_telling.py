@@ -35,7 +35,7 @@ def set_example_story(story):
             story.get_page_raw(row, i + 1).set_page_type('outcome')
 
     # --------------- ADDING BLANKS ---------------
-    story.add_blank('B00', ['apples', 'bananas', 'tomatoes'])
+    # story.add_blank('B00', ['apples', 'bananas', 'tomatoes'])
     # story.add_blank_random('B01', 'noun')
     # story.add_blank_random('B02', 'verb')
 
