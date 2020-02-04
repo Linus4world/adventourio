@@ -101,8 +101,8 @@ class Game:
             challenges = file.read()
 
         # CHARACTER ASSIGNMENT
-        # character_assignment = get_character_assignment(all_player_answers)
-        character_assignment = assign_characters_dummy(self.players)
+        character_assignment = get_character_assignment(all_player_answers)
+        # character_assignment = assign_characters_dummy(self.players)
 
         for player_id in character_assignment.keys():
             # Set character for each player
