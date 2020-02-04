@@ -143,13 +143,13 @@ if __name__ == '__main__':
 
         # ---------- Getting the next story section: ----------
 
-        print(game.get_next_story_section('00', True)['story'])
-        print(game.get_next_story_section('00', True)['story'])
-        print(game.get_next_story_section('00', True)['story'])
-        print(game.get_next_story_section('00', True)['story'])
-        print(game.get_next_story_section('00', True)['story'])
-        print(game.get_next_story_section('00', True)['story'])
-        print(game.get_next_story_section('00', True)['story'])
+        print(game.get_next_story_section('02', True)['story'])
+        print(game.get_next_story_section('02', True)['story'])
+        # print(game.get_next_story_section('02', True)['story'])
+        # print(game.get_next_story_section('02', True)['story'])
+        # print(game.get_next_story_section('02', True)['story'])
+        # print(game.get_next_story_section('02', True)['story'])
+        # print(game.get_next_story_section('02', True)['story'])
 
         # The next few lines simulate what we would get from the front end
         # story_section = get_next_story_section(player_id='00')

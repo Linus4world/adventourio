@@ -168,7 +168,6 @@ class Game:
     def leave_game(self):
         self.ready_queue -= 1
         if self.ready_queue <= 0:
-            print('ALL LEFT')
             self.ready_to_play = False
 
     # --------------- X: ---------------
@@ -209,7 +208,6 @@ class Game:
 
         # Set the new location
         player.set_story_location([row, column + 1])
-        print(row, column + 1)
 
         page = self.story.get_page_raw(row, column + 1)
         if page.is_it_the_last_page():
