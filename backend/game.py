@@ -237,7 +237,7 @@ class Game:
                 challenge_found = True
                 challenge = page_variation.challenge
 
-        ret_dict = dict(story_text=story_text, challenge=challenge, game_finished=game_finished)
+        ret_dict = dict(story=story_text, challenge=challenge, game_finished=game_finished)
 
         # return ret_dict
-        return json.dumps(ret_dict)
+        return json.dumps(ret_dict) 
