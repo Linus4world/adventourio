@@ -92,23 +92,23 @@ class Story:
 
     # --------------- BLANKS: ---------------
 
-    def add_blank(self, blank_id, word_type="None", changes_every_time=False):
+    def add_blank(self, blank_id, word_type="None", changes_every_time=False, list_of_words=None):
         """
         Parameters:
             blank_id (str):
             (list_of_words (list of str): possible words to fill in the blank with)
             word_type(str): what category of word is this (flower, spell, etc), has to fit with json file names in pycorpora
             changes_every_time (bool): if the blank should be filled in with a (potentially) different word every time
+            list_of_words
         """
         blank = dict(
-            # random_word= False,
-            # list_of_words=list_of_words,
             changes_every_time=changes_every_time,
+            list_of_words=list_of_words,
             word_type=word_type
         )
         self.blanks[blank_id] = blank
 
-#    def add_blank_random(self, blank_key, part_of_speech, changes_every_time=False):
+#    def add_blank_internet(self, blank_key, part_of_speech, changes_every_time=False):
 #        """
 #        Parameters:
 #            blank_key (str):
@@ -121,6 +121,9 @@ class Story:
 #            changes_every_time=changes_every_time
 #        )
 #        self.blanks[blank_key] = blank
+
+    # def get_the_word_for_the_blank(self, blank_id):
+    #     return 'boobs'
 
     def get_the_word_for_the_blank(self, blank_id):
         """
@@ -192,16 +195,16 @@ class Story:
         """
         Fills in all the blanks in a page_variation
         """
-        ret = []
-        for section in page_variation.txt:
-        #    print(section)
-            keys = re.findall(r'\~\w+\~', section)
-            for blank_key in keys:
-                if blank_key in self.blanks.keys():
-                    word = self.get_the_word_for_the_blank(blank_key[1])  # get the word t
-                    section = section.replace(blank_key[0], word)
-            ret.append(section)
-        return ret
+        ret_txt = []
+        for txt in page_variation.txt:
+            found_keys = re.findall(r'~\w+~', txt)
+            for blank_key in found_keys:
+                print(blank_key)
+                if blank_key[1:-1] in self.blanks.keys():
+                    word = self.get_the_word_for_the_blank(blank_key[1:-1])
+                    txt = txt.replace(blank_key, word)
+            ret_txt.append(txt)
+        return ret_txt
 
     # --------------- OUTCOME SELECTION: ---------------
 
