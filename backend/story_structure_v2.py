@@ -102,8 +102,8 @@ class Story:
         blank = dict(
             # random_word= False,
             # list_of_words=list_of_words,
-            changes_every_time= changes_every_time,
-            word_type = word_type
+            changes_every_time=changes_every_time,
+            word_type=word_type
         )
         self.blanks[blank_id] = blank
 
