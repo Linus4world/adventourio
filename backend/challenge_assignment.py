@@ -135,33 +135,35 @@ def new_place(game):
                             options1 = place['options']
                         right_answer1 = place['right_answer']
                         r_old = r
-
+        one_json = {}
         if challenge_type == 1:
-            one_json = {detective_id: {'destinationName': destinationName, 'destinationCoords': destinationCoords,
+            one_json[alien_id] = {'destinationName': destinationName, 'destinationCoords': destinationCoords,
                                      'challenge': {'challenge': challenge, 'challenge_type': challenge_type,
-                                                   'right_answer': right_answer, 'options': options}},
-                        adventurer_id: {'destinationName': destinationName, 'destinationCoords': destinationCoords,
-                                          'challenge': {'challenge1': challenge, 'challenge_type1': challenge_type,
-                                                        'right_answer': right_answer, 'options': options}},
-                        wizard_id: {'destinationName': destinationName1, 'destinationCoords': destinationCoords1,
-                                      'challenge': {'challenge': challenge1, 'challenge_type': challenge_type1,
-                                                    'right_answer': right_answer1, 'options': options1}},
-                        alien_id: {'destinationName': destinationName1, 'destinationCoords': destinationCoords1,
-                                     'challenge': {'challenge': challenge1, 'challenge_type': challenge_type1,
-                                                   'right_answer': right_answer1, 'options': options1}}}
+                                                   'right_answer': right_answer, 'options': options}}
+            one_json[adventurer_id] = {'destinationName': destinationName, 'destinationCoords': destinationCoords,
+                                          'challenge': {'challenge': challenge, 'challenge_type': challenge_type,
+                                                        'right_answer': right_answer, 'options': options}}
         else:
-            one_json = {detective_id: {'destinationName': destinationName, 'destinationCoords': destinationCoords,
+            one_json[alien_id] = {'destinationName': destinationName, 'destinationCoords': destinationCoords,
                                      'challenge': {'challenge': challenge, 'challenge_type': challenge_type,
-                                                   'right_answer': right_answer}},
-                        adventurer_id: {'destinationName': destinationName, 'destinationCoords': destinationCoords,
-                                          'challenge': {'challenge1': challenge, 'challenge_type1': challenge_type,
-                                                        'right_answer': right_answer}},
-                        wizard_id: {'destinationName': destinationName1, 'destinationCoords': destinationCoords1,
+                                                   'right_answer': right_answer}}
+            one_json[adventurer_id] = {'destinationName': destinationName, 'destinationCoords': destinationCoords,
+                                          'challenge': {'challenge': challenge, 'challenge_type': challenge_type,
+                                                        'right_answer': right_answer}}
+        if challenge_type1 == 1:
+            one_json[wizard_id] = {'destinationName': destinationName1, 'destinationCoords': destinationCoords1,
                                       'challenge': {'challenge': challenge1, 'challenge_type': challenge_type1,
-                                                    'right_answer': right_answer1}},
-                        alien_id: {'destinationName': destinationName1, 'destinationCoords': destinationCoords1,
+                                                    'right_answer': right_answer1, 'options': options1}}
+            one_json[detective_id] = {'destinationName': destinationName1, 'destinationCoords': destinationCoords1,
                                      'challenge': {'challenge': challenge1, 'challenge_type': challenge_type1,
-                                                   'right_answer': right_answer1}}}
+                                                   'right_answer': right_answer1, 'options': options1}}
+        else:
+            one_json[wizard_id] = {'destinationName': destinationName1, 'destinationCoords': destinationCoords1,
+                                      'challenge': {'challenge': challenge1, 'challenge_type': challenge_type1,
+                                                    'right_answer': right_answer1}}
+            one_json[detective_id] = {'destinationName': destinationName1, 'destinationCoords': destinationCoords1,
+                                     'challenge': {'challenge': challenge1, 'challenge_type': challenge_type1,
+                                                   'right_answer': right_answer1}}
         return one_json
 
     elif stage == 2:
@@ -242,34 +244,35 @@ def new_place(game):
                             options1 = place['options']
                         right_answer1 = place['right_answer']
                         r_old = r
-
+        one_json = {}
         if challenge_type == 1:
-            one_json = {detective_id: {'destinationName': destinationName, 'destinationCoords': destinationCoords,
+            one_json[detective_id] = {'destinationName': destinationName, 'destinationCoords': destinationCoords,
                                        'challenge': {'challenge': challenge, 'challenge_type': challenge_type,
-                                                     'right_answer': right_answer, 'options': options}},
-                        adventurer_id: {'destinationName': destinationName, 'destinationCoords': destinationCoords,
-                                        'challenge': {'challenge1': challenge, 'challenge_type1': challenge_type,
-                                                      'right_answer': right_answer, 'options': options}},
-                        wizard_id: {'destinationName': destinationName1, 'destinationCoords': destinationCoords1,
-                                    'challenge': {'challenge': challenge1, 'challenge_type': challenge_type1,
-                                                  'right_answer': right_answer1, 'options': options1}},
-                        alien_id: {'destinationName': destinationName1, 'destinationCoords': destinationCoords1,
-                                   'challenge': {'challenge': challenge1, 'challenge_type': challenge_type1,
-                                                 'right_answer': right_answer1, 'options': options1}}}
+                                                     'right_answer': right_answer, 'options': options}}
+            one_json[adventurer_id] = {'destinationName': destinationName, 'destinationCoords': destinationCoords,
+                                        'challenge': {'challenge': challenge, 'challenge_type': challenge_type,
+                                                      'right_answer': right_answer, 'options': options}}
         else:
-            one_json = {detective_id: {'destinationName': destinationName, 'destinationCoords': destinationCoords,
+            one_json[detective_id] = {'destinationName': destinationName, 'destinationCoords': destinationCoords,
                                        'challenge': {'challenge': challenge, 'challenge_type': challenge_type,
-                                                     'right_answer': right_answer}},
-                        adventurer_id: {'destinationName': destinationName, 'destinationCoords': destinationCoords,
-                                        'challenge': {'challenge1': challenge, 'challenge_type1': challenge_type,
-                                                      'right_answer': right_answer}},
-                        wizard_id: {'destinationName': destinationName1, 'destinationCoords': destinationCoords1,
-                                    'challenge': {'challenge': challenge1, 'challenge_type': challenge_type1,
-                                                  'right_answer': right_answer1}},
-                        alien_id: {'destinationName': destinationName1, 'destinationCoords': destinationCoords1,
-                                   'challenge': {'challenge': challenge1, 'challenge_type': challenge_type1,
-                                                 'right_answer': right_answer1}}}
-
+                                                     'right_answer': right_answer}}
+            one_json[adventurer_id] = {'destinationName': destinationName, 'destinationCoords': destinationCoords,
+                                        'challenge': {'challenge': challenge, 'challenge_type': challenge_type,
+                                                      'right_answer': right_answer}}
+        if challenge_type1 == 1:
+            one_json[wizard_id] = {'destinationName': destinationName1, 'destinationCoords': destinationCoords1,
+                        'challenge': {'challenge': challenge1, 'challenge_type': challenge_type1,
+                                        'right_answer': right_answer1, 'options': options1}}
+            one_json[alien_id] = {'destinationName': destinationName1, 'destinationCoords': destinationCoords1,
+                        'challenge': {'challenge': challenge1, 'challenge_type': challenge_type1,
+                                        'right_answer': right_answer1, 'options': options1}}
+        else:
+            one_json[wizard_id] = {'destinationName': destinationName1, 'destinationCoords': destinationCoords1,
+                        'challenge': {'challenge': challenge1, 'challenge_type': challenge_type1,
+                                        'right_answer': right_answer1}}
+            one_json[alien_id] = {'destinationName': destinationName1, 'destinationCoords': destinationCoords1,
+                        'challenge': {'challenge': challenge1, 'challenge_type': challenge_type1,
+                                        'right_answer': right_answer1}}
         return one_json
 
     elif stage == 3:
@@ -354,32 +357,35 @@ def new_place(game):
                         right_answer1 = place['right_answer']
                         r_old = r
 
+        one_json = {}
         if challenge_type == 1:
-            one_json = {detective_id: {'destinationName': destinationName, 'destinationCoords': destinationCoords,
+            one_json[detective_id] = {'destinationName': destinationName, 'destinationCoords': destinationCoords,
                                        'challenge': {'challenge': challenge, 'challenge_type': challenge_type,
-                                                     'right_answer': right_answer, 'options': options}},
-                        alien_id: {'destinationName': destinationName, 'destinationCoords': destinationCoords,
-                                   'challenge': {'challenge1': challenge, 'challenge_type1': challenge_type,
-                                                 'right_answer': right_answer, 'options': options}},
-                        wizard_id: {'destinationName': destinationName1, 'destinationCoords': destinationCoords1,
-                                    'challenge': {'challenge': challenge1, 'challenge_type': challenge_type1,
-                                                  'right_answer': right_answer1, 'options': options1}},
-                        adventurer_id: {'destinationName': destinationName1, 'destinationCoords': destinationCoords1,
-                                        'challenge': {'challenge': challenge1, 'challenge_type': challenge_type1,
-                                                      'right_answer': right_answer1, 'options': options1}}}
+                                                     'right_answer': right_answer, 'options': options}}
+            one_json[alien_id] = {'destinationName': destinationName, 'destinationCoords': destinationCoords,
+                                   'challenge': {'challenge': challenge, 'challenge_type': challenge_type,
+                                                 'right_answer': right_answer, 'options': options}}
         else:
-            one_json = {detective_id: {'destinationName': destinationName, 'destinationCoords': destinationCoords,
+            one_json[detective_id] = {'destinationName': destinationName, 'destinationCoords': destinationCoords,
                                        'challenge': {'challenge': challenge, 'challenge_type': challenge_type,
-                                                     'right_answer': right_answer}},
-                        alien_id: {'destinationName': destinationName, 'destinationCoords': destinationCoords,
-                                   'challenge': {'challenge1': challenge, 'challenge_type1': challenge_type,
-                                                 'right_answer': right_answer}},
-                        wizard_id: {'destinationName': destinationName1, 'destinationCoords': destinationCoords1,
+                                                     'right_answer': right_answer}}
+            one_json[alien_id] = {'destinationName': destinationName, 'destinationCoords': destinationCoords,
+                                   'challenge': {'challenge': challenge, 'challenge_type': challenge_type,
+                                                 'right_answer': right_answer}}
+        if challenge_type1 == 1:
+            one_json[wizard_id] = {'destinationName': destinationName1, 'destinationCoords': destinationCoords1,
                                     'challenge': {'challenge': challenge1, 'challenge_type': challenge_type1,
-                                                  'right_answer': right_answer1}},
-                        adventurer_id: {'destinationName': destinationName1, 'destinationCoords': destinationCoords1,
+                                                  'right_answer': right_answer1, 'options': options1}}
+            one_json[adventurer_id] = {'destinationName': destinationName1, 'destinationCoords': destinationCoords1,
                                         'challenge': {'challenge': challenge1, 'challenge_type': challenge_type1,
-                                                      'right_answer': right_answer1}}}
+                                                      'right_answer': right_answer1, 'options': options1}}
+        else:
+            one_json[wizard_id] = {'destinationName': destinationName1, 'destinationCoords': destinationCoords1,
+                                    'challenge': {'challenge': challenge1, 'challenge_type': challenge_type1,
+                                                  'right_answer': right_answer1}}
+            one_json[adventurer_id] = {'destinationName': destinationName1, 'destinationCoords': destinationCoords1,
+                                        'challenge': {'challenge': challenge1, 'challenge_type': challenge_type1,
+                                                      'right_answer': right_answer1}}
         return one_json
 
     elif stage == 4:
@@ -427,7 +433,7 @@ def new_place(game):
                                        'challenge': {'challenge': challenge, 'challenge_type': challenge_type,
                                                      'right_answer': right_answer, 'options': options}},
                         alien_id: {'destinationName': destinationName, 'destinationCoords': destinationCoords,
-                                   'challenge': {'challenge1': challenge, 'challenge_type1': challenge_type,
+                                   'challenge': {'challenge': challenge, 'challenge_type': challenge_type,
                                                  'right_answer': right_answer, 'options': options}},
                         wizard_id: {'destinationName': destinationName, 'destinationCoords': destinationCoords,
                                     'challenge': {'challenge': challenge, 'challenge_type': challenge_type,
@@ -440,7 +446,7 @@ def new_place(game):
                                        'challenge': {'challenge': challenge, 'challenge_type': challenge_type,
                                                      'right_answer': right_answer}},
                         alien_id: {'destinationName': destinationName, 'destinationCoords': destinationCoords,
-                                   'challenge': {'challenge1': challenge, 'challenge_type1': challenge_type,
+                                   'challenge': {'challenge': challenge, 'challenge_type': challenge_type,
                                                  'right_answer': right_answer}},
                         wizard_id: {'destinationName': destinationName, 'destinationCoords': destinationCoords,
                                     'challenge': {'challenge': challenge, 'challenge_type': challenge_type,
