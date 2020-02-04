@@ -38,6 +38,12 @@ def set_example_story(story):
     # story.add_blank('B00', ['apples', 'bananas', 'tomatoes'])
     # story.add_blank_random('B01', 'noun')
     # story.add_blank_random('B02', 'verb')
+    story.add_blank('treasure') # in text refer to the keyword as ~treasure~
+    story.add_blank('map') # ~map~
+    story.add_blank('tech') # ~tech~
+    story.add_blank('magic') # ~magic~
+    story.add_blank('weapon') #~weapon~
+    story.add_blank('B00', word_type = 'strange_words', changes_every_time=True) #~B00~
 
     # --------------- ADDING CONTENT ---------------
 

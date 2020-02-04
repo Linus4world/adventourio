@@ -91,7 +91,7 @@ class Story:
 
     # --------------- BLANKS: ---------------
 
-    def add_blank(self, blank_id, word_type, changes_every_time=False):
+    def add_blank(self, blank_id, word_type = "None", changes_every_time=False):
         """
         Parameters:
             blank_id (str):
@@ -193,7 +193,7 @@ class Story:
         """
         ret = []
         for section in page_variation.txt:
-            print(section)
+        #    print(section)
             keys = re.findall(r'\~\w+\~', section)
             for blank_key in keys:
                 if blank_key in self.blanks.keys():
