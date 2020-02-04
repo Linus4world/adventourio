@@ -108,11 +108,11 @@ class Game:
         self.set_place_category(placesCategory(all_answers, challenges))
         self.ready_to_play = True
 
-    def setPlacesCategory(self, places):
-        self.placesCategory = places
+    #def setPlacesCategory(self, places):
+     #   self.placesCategory = places
 
-    def getPlacesCategory(self):
-        return self.placesCategory
+    #def getPlacesCategory(self):
+      #  return self.placesCategory
 
     # --------------- MANAGING PLAYERS: ---------------
     def add_player(self, player_id, answers):
@@ -168,6 +168,9 @@ class Game:
     def set_place_category(self, places_category):
         self.places_category = places_category
 
+    def get_place_category(self):
+        return self.places_category
+    
     def get_next_page_variation(self, player_id, challenge_outcome):
         """
         This function will be constantly called by the frontend to get the next page variation
