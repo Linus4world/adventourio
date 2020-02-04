@@ -21,7 +21,7 @@ def getCharacterId(character, game):
         return 1
     elif game["characters"][2].name == character:
         return 2
-    elif game["characters"][3].cname == character:
+    elif game["characters"][3].name == character:
         return 3
 
 

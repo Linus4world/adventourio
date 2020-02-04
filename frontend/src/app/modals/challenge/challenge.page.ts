@@ -14,12 +14,12 @@ export class ChallengePage {
   @Input() challenge: Challenge = {
     // tslint:disable-next-line:max-line-length
     challenge: 'Hans is a very old, common German name. Can you name the most common German surname?',
-              challenge_type: 2,
-              right_answer: [
-                'Mueller',
-                'Müller',
-                'Muller'
-              ]
+    challenge_type: 2,
+    right_answer: [
+      'Mueller',
+      'Müller',
+      'Muller'
+    ]
   };
   answer: string = undefined;
   character: string;

@@ -191,13 +191,16 @@ class Story:
         """
         Fills in all the blanks in a page_variation
         """
-
-        keys = re.findall(r'[\~[\w+]\~]', page_variation)
-        for blank_key in keys:
-            if blank_key in self.blanks.keys():
-                word = self.get_the_word_for_the_blank(blank_key[1])  # get the word t
-                txt = txt.replace(blank_key[0], word)
-        return txt
+        ret = []
+        for section in page_variation.txt:
+            print(section)
+            keys = re.findall(r'\~\w+\~', section)
+            for blank_key in keys:
+                if blank_key in self.blanks.keys():
+                    word = self.get_the_word_for_the_blank(blank_key[1])  # get the word t
+                    section = section.replace(blank_key[0], word)
+            ret.append(section)
+        return ret
 
 
 

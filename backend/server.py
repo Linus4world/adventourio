@@ -13,7 +13,6 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 
 game = Game(number_of_players=4, number_of_pages=6)
 SUCCESS = json.dumps({'success': True}), 200, {'ContentType': 'application/json'}
-all_story_sections = {}
 
 # ---------- For debugging purposes: ----------
 debug_mode = False  # Default: False
@@ -65,23 +64,28 @@ def join(player_id):
 
 @app.route('/stage/<player_id>', methods=['POST'])
 def get_next_story_section(player_id):
-    if not debug_mode:
-        challenge_outcome = request.get_json()
-    else:
-        challenge_outcome = challenge_outcome_db
+    player_data = request.get_json()
+    challenge_outcome = None
+    player_location = None
+    if hasattr(player_data, 'challenge_outcome'):
+        challenge_outcome = player_data['challenge_outcome']
+    if hasattr(player_data, 'playerLocation'):
+        player_location = player_data['playerLocation']
 
-    game.ready_queue += 1
-    if game.ready_queue == game.current_amount_of_players_in_game:
+    game.player_challenge_outcome[player_id] = challenge_outcome
+    if game.is_game_ready():
+        # At this point all player outcomes are stored in game.player_challenge_outcome
+        # TODO call Agatas function with all player outcomes
+        # This will be only called once for the last player!
         game.ready_to_play = True
 
-    story_section = game.get_next_story_section(player_id, challenge_outcome)
-    all_story_sections[player_id] = story_section
-
-    if not debug_mode and game.wait_for_game_ready():
-        game.ready_to_play = False
-        return story_section
-
-    if not debug_mode:
+    # Wait for other players to finish their challenge
+    if game.wait_for_game_ready():
+        # TODO Here the next story section for each player should be stored in game.player_next_chapter
+        # We can simply do:
+        #
+        # return game.player_next_chapter[player_id]
+        story_section = game.get_next_story_section(player_id, challenge_outcome)
         return story_section
 
     if not debug_mode:

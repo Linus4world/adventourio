@@ -105,7 +105,6 @@ class Game:
 
         # Set places category
         self.set_place_category(challenges)
-        self.ready_queue = self.number_of_players
         self.ready_to_play = True
 
     def setPlacesCategory(self, places):
@@ -129,7 +128,7 @@ class Game:
         return len(self.players) >= self.number_of_players
 
     def is_game_ready(self):
-        pass
+        return self.ready_queue >= self.number_of_players-1
 
     def get_player_count(self):
         return len(self.players)
@@ -159,7 +158,8 @@ class Game:
 
     def leave_game(self):
         self.ready_queue -= 1
-        if self.ready_queue == 0:
+        if self.ready_queue <= 0:
+            print('ALL LEFT')
             self.ready_to_play = False
 
     # --------------- X: ---------------
@@ -232,12 +232,20 @@ class Game:
             game_finished = self.players[player_id].game_finished
 
             if page_variation.txt != '':
-                story_text += page_variation.txt
+                story_text.extend(page_variation.txt)
             if page_variation.challenge is not None:
                 challenge_found = True
                 challenge = page_variation.challenge
 
-        ret_dict = dict(story=story_text, challenge=challenge, game_finished=game_finished)
+        # TODO change this when using Agatas function instead of dummy function
+        real_challenge = {
+            "challenge": challenge["challenge"],
+            "options": challenge["options"],
+            "challenge_type": challenge["challenge_type"],
+            "right_answer": challenge["right_answer"]
+        }
+        ret_dict = dict(story=story_text, challenge=real_challenge, game_finished=game_finished,
+         destinationCoords=challenge["coordinates"], destinationName=challenge["title"])
 
         # return ret_dict
         return json.dumps(ret_dict)

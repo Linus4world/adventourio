@@ -13,7 +13,7 @@ def assign_characters_dummy(players):
 
 
 def get_a_challenge_dummy(players):
-    with open('challenges_v2.json') as json_file:
+    with open('challenges_v2.json', 'r', encoding='utf-8') as json_file:
         challenges = json.load(json_file)
     random.seed()
     challenges = list(challenges.values())
