@@ -192,7 +192,7 @@ class Story:
         Fills in all the blanks in a page_variation
         """
 
-        keys = re.findall('(~(w+)~)', page_variation.txt)
+        keys = re.findall(r'[\~[\w+]\~]', page_variation)
         for blank_key in keys:
             if blank_key in self.blanks.keys():
                 word = self.get_the_word_for_the_blank(blank_key[1])  # get the word t

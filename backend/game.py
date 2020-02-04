@@ -105,6 +105,8 @@ class Game:
 
         # Set places category
         self.set_place_category(challenges)
+        self.ready_queue = self.number_of_players
+        self.ready_to_play = True
 
     def setPlacesCategory(self, places):
         self.placesCategory = places
@@ -122,7 +124,6 @@ class Game:
         new_player.player_id = player_id
         new_player.answers = answers['answers']
         self.players[player_id] = new_player
-        self.ready_queue += 1
 
     def is_full(self):
         return len(self.players) >= self.number_of_players

@@ -45,7 +45,6 @@ def get_character_assignment(answers):
     # calculating the answers into points for specific characters for every person
     a = 0
     for answer in answers['all_answers']:
-        answer = answer['answers']  # FIX ESTEBAN
         if answer['answers'][3] == 'a':
             points_id[a]['points_adventurer'] = points_id[a]['points_adventurer'] + 1
         elif answer['answers'][3] == 'b':
