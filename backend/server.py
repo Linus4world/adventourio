@@ -46,7 +46,7 @@ def join(player_id):
 
     # Add Player
     game.add_player(player_id, player_input)
-    game.ready_queue += 1  # !!!!! FOR TESTING !!!!! DELETE LATER !!!!!
+    # game.ready_queue += 1  # !!!!! FOR TESTING !!!!! DELETE/COMMENT LATER !!!!!
 
     if game.is_full():
 
