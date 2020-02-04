@@ -50,7 +50,8 @@ def set_example_story(story):
     # ----- ALIEN: -----
     story.get_page(character_name='alien', chapter=0, page='intro').add_page_variation(
         txt=['Hello',
-             'The word: ~B00~ has been randomly selected from a list'
+             'The word: ~B00~ has been randomly selected from a list. Testing if ~treasure~ works.',
+             'Also testing if repetions of ~treasure~ work.'
              # 'And this word: ~B01~ has been randomly selected from the internet',
              ]
     )
