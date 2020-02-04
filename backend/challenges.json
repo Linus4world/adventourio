@@ -154,7 +154,7 @@
           "places": [
             {
               "title": "Barschwein",
-              "challenge": "There are a 100 light bulbs inside the room. Each bulb has its own switch and is currently switched off. There a 100 aliens  outside the door. Each bulb is numbered consecutively from 1 to 100. Alien number 1 enters the room, switch on every bulb and exists. Alien number 2 enters and flips the switch on every second bulb (2, 4, 6..). Alien number 3 enters and flips the switch on every third bulb (3,6,9..). This continues until all aliens have passed through the rooms. What is the final state of bulb number 64? Illuminated or dark? ",
+              "challenge": "There are a 100 light bulbs inside the room. Each bulb has its own switch and is currently switched off. There a 100 aliens  outside the door. Each bulb is numbered consecutively from 1 to 100. Alien number 1 enters the room, switch on every bulb and exits. Alien number 2 enters and flips the switch on every second bulb (2, 4, 6..). Alien number 3 enters and flips the switch on every third bulb (3,6,9..). This continues until all aliens have passed through the rooms. What is the final state of bulb number 64? Illuminated or dark? ",
               "challenge_type": 2,
               "right_answer": "illuminated",
               "coordinates": [
@@ -164,7 +164,7 @@
             },
             {
               "title": "Marienplatz",
-              "challenge": "There are a 100 light bulbs inside the room. Each bulb has its own switch and is currently switched off. There a 100 aliens  outside the door. Each bulb is numbered consecutively from 1 to 100. Alien number 1 enters the room, switch on every bulb and exists. Alien number 2 enters and flips the switch on every second bulb (2, 4, 6..). Alien number 3 enters and flips the switch on every third bulb (3,6,9..). This continues until all aliens have passed through the rooms. How many of the bulbs are illuminated at the end? ",
+              "challenge": "There are a 100 light bulbs inside the room. Each bulb has its own switch and is currently switched off. There a 100 aliens  outside the door. Each bulb is numbered consecutively from 1 to 100. Alien number 1 enters the room, switch on every bulb and exits. Alien number 2 enters and flips the switch on every second bulb (2, 4, 6..). Alien number 3 enters and flips the switch on every third bulb (3,6,9..). This continues until all aliens have passed through the rooms. How many of the bulbs are illuminated at the end? ",
               "challenge_type": 2,
               "right_answer": ["10", "ten"],
               "coordinates": [
