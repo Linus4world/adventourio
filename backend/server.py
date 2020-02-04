@@ -78,8 +78,12 @@ def get_next_story_section(player_id):
 
     game.player_challenge_outcome[player_id] = challenge_outcome
     if game.is_game_ready():
-        # At this point all player outcomes are stored in game.player_challenge_outcome
         # TODO call Agatas function with all player outcomes
+
+        # Get the challenges:
+        
+
+        # At this point all player outcomes are stored in game.player_challenge_outcome
         # This will be only called once for the last player!
         game.ready_to_play = True
 
