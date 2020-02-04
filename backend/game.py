@@ -161,7 +161,7 @@ class Game:
         player_names = []
         for player in self.players.values():
             player_names.append(player.name)
-        return [player_names]
+        return player_names
 
     # def get_player_index(self, player_id):
     #     return self.playerIds.index(player_id)
