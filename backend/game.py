@@ -102,7 +102,7 @@ class Game:
 
         # CHARACTER ASSIGNMENT
         # character_assignment = get_character_assignment(all_player_answers)
-        character_assignment = assign_characters_dummy(self.players)  # TODO: USE REAL FUNCTION!
+        character_assignment = assign_characters_dummy(self.players)
 
         for player_id in character_assignment.keys():
             # Set character for each player
@@ -249,23 +249,6 @@ class Game:
                 story_text.extend(page_variation.txt)
             if page_variation.challenge is not None:
                 challenge_found = True
-
-        # print('challenge', challenge)
-
-        # real_challenge = {
-        #     "challenge": challenge["challenge"],
-        #     "options": challenge["options"],
-        #     "challenge_type": challenge["challenge_type"],
-        #     "right_answer": challenge["right_answer"]
-        # }
-
-        # ret_dict = dict(
-        #     story=story_text,
-        #     challenge=real_challenge,
-        #     game_finished=game_finished,
-        #     destinationCoords=challenge["coordinates"],
-        #     destinationName=challenge["title"]
-        # )
 
         ret_dict = dict(
             story=story_text,
