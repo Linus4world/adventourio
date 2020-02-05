@@ -47,6 +47,7 @@ def new_place(game):
 
     places_in = game.get_place_category()
     stage = game.get_current_chapter() + 1
+    one_json = dict()
 
     if stage == 1:
 
@@ -135,7 +136,6 @@ def new_place(game):
                             options1 = place['options']
                         right_answer1 = place['right_answer']
                         r_old = r
-        one_json = {}
         if challenge_type == 1:
             one_json[alien_id] = {'destinationName': destinationName, 'destinationCoords': destinationCoords,
                                      'challenge': {'challenge': challenge, 'challenge_type': challenge_type,
@@ -244,7 +244,6 @@ def new_place(game):
                             options1 = place['options']
                         right_answer1 = place['right_answer']
                         r_old = r
-        one_json = {}
         if challenge_type == 1:
             one_json[detective_id] = {'destinationName': destinationName, 'destinationCoords': destinationCoords,
                                        'challenge': {'challenge': challenge, 'challenge_type': challenge_type,
@@ -357,7 +356,6 @@ def new_place(game):
                         right_answer1 = place['right_answer']
                         r_old = r
 
-        one_json = {}
         if challenge_type == 1:
             one_json[detective_id] = {'destinationName': destinationName, 'destinationCoords': destinationCoords,
                                        'challenge': {'challenge': challenge, 'challenge_type': challenge_type,

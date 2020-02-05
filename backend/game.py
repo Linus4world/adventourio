@@ -184,6 +184,7 @@ class Game:
         self.ready_queue -= 1
         if self.ready_queue <= 0:
             self.ready_to_play = False
+            print('Blocked')
 
     # --------------- X: ---------------
 
