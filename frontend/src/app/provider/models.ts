@@ -17,6 +17,7 @@ export interface Stage {
     destinationCoords?: number[];
     destinationName?: string;
     challenge?: Challenge;
+    game_finished?: boolean;
 }
 
 export interface Challenge {

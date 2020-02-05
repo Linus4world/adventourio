@@ -66,11 +66,12 @@ class Player:
 class Game:
     MAX_WAIT = 50000
 
-    def __init__(self, number_of_players, number_of_pages):
-        self.story = Story([number_of_players, number_of_pages])
+    def __init__(self, number_of_players, number_of_pages, number_of_dummy_players=0):
+        self.story = Story([number_of_players+number_of_dummy_players, number_of_pages])
         self.fixed_character_assignment = False
 
         self.number_of_players = number_of_players
+        self.number_of_dummy_players = number_of_dummy_players
         self.players_waiting = 0
         self.players = {}
         self.current_amount_of_players_in_game = 0
@@ -83,6 +84,20 @@ class Game:
         self.player_characters = dict()
         self.player_challenge_outcome = dict()
         self.player_next_chapter = dict()
+
+        # ------------------ HANDLE MOCK PLAYERS: -------------------
+        # Add Player
+        for i in range(number_of_dummy_players):
+            player_input = {
+                "name": 'Player'+str(i),
+                "answers": [
+                    "Entertainment","yes","yes","Adventure/action","To experience other cultures","Deutsches Museum","mostly friends from the university"
+                    ]
+                }
+            self.add_player(str(i), player_input)
+            player = self.get_player(str(i))
+            player.challenge_outcomes.append(True)
+            print('[MOCK]: added player', player.name)
 
     # --------------- SET UP: ---------------
 
@@ -134,7 +149,7 @@ class Game:
                 return player_id
 
     def is_full(self):
-        return len(self.players) >= self.number_of_players
+        return len(self.players) >= self.number_of_players + self.number_of_dummy_players
 
     def is_game_ready(self):
         return self.ready_queue >= self.number_of_players-1
@@ -146,7 +161,7 @@ class Game:
         player_names = []
         for player in self.players.values():
             player_names.append(player.name)
-        return [player_names]
+        return player_names
 
     # def get_player_index(self, player_id):
     #     return self.playerIds.index(player_id)
@@ -169,6 +184,7 @@ class Game:
         self.ready_queue -= 1
         if self.ready_queue <= 0:
             self.ready_to_play = False
+            print('Blocked')
 
     # --------------- X: ---------------
 
@@ -198,9 +214,6 @@ class Game:
         story = self.story
         player = self.get_player(player_id)
 
-        # Story player input
-        player.challenge_outcomes.append(challenge_outcome)
-
         # Get the next page
         story_location = player.get_story_location()
         row = story_location[0]
@@ -212,15 +225,16 @@ class Game:
         page = self.story.get_page_raw(row, column + 1)
         if page.is_it_the_last_page():
             player.game_finished = True
+            self.finished_game = True
 
         page_variation = PageVariation()
 
+        # If the page is a challenge page:
+        if page.page_type == 'challenge':
+            page_variation.challenge = dict()
         if page.page_variations:
-            # If the page is a challenge page:
-            if page.page_type == 'challenge':
-                page_variation.challenge = dict()
             # If the page is an outcome page:
-            elif page.page_type == 'outcome':
+            if page.page_type == 'outcome':
                 assert len(page.page_variations) == 2, str(len(page.page_variations))
                 page_variation = story.select_good_or_bad_outcome(page.page_variations, player)
             # IF IT IS NOT SPECIFIED WHAT TYPE OF PAGE THIS IS, A RANDOM PAGE VARIATION WILL BE SELECTED!
@@ -235,6 +249,10 @@ class Game:
     def get_next_story_section(self, player_id, challenge_outcome):
         story_text = []
 
+        # Story player input
+        player = self.get_player(player_id)
+        player.challenge_outcomes.append(challenge_outcome)
+
         challenge_found = False
         game_finished = self.players[player_id].game_finished
         while not challenge_found and not game_finished:
@@ -243,8 +261,7 @@ class Game:
             # This has to be called AFTER get_next_page_variation
             game_finished = self.players[player_id].game_finished
 
-            if page_variation.txt != '':
-                story_text.extend(page_variation.txt)
+            story_text.extend(page_variation.txt)
             if page_variation.challenge is not None:
                 challenge_found = True
 
@@ -254,4 +271,3 @@ class Game:
         )
 
         return ret_dict
-        # return json.dumps(ret_dict)
