@@ -84,19 +84,148 @@ def set_example_story(story):
 
     # ----- Detective : -----
     story.get_page(character_name='detective', chapter=0, page='intro').add_page_variation(
-        txt=['Hello',
-             'The word: ~B00~ has been randomly selected from a list'
-             # 'And this word: ~B01~ has been randomly selected from the internet',
-             ]
+        txt=['You are a detective...you guess? You’re not sure, but that’s what the namecard said that you found in your coat pocket.',
+            'You are new in this town and you arrived with nothing but the clothes on your body, a fragmented mind and hands covered in blood.',
+            'You don’t know what exactly happened and you’re not sure if you care to find out. All you remember is waking up on the cold floor and seeing your broth-never mind.',
+            'You don’t want to think about it. You don’t want to think about anything right now, except a nice glass of scotch. Anything to dull your senses and make this cold world a little bit more bearable.',
+            'Sometimes you think that this is a great opportunity: to start your life over as a new person. Leave your regrets and mistakes behind and be a new man.',
+            'But deep down you know that the past will catch up with you. It always does. And it torments you with half-forgotten memories and leaves you behind with a throbbing headache and burning eyes.']
     )
 
-    story.get_page(character_name='detective', chapter=0, page='outro').add_page_variation(
+    story.get_page(character_name='detective', chapter=1, page='intro').add_page_variation(
+        txt=['You can’t sleep at night and during the day you are restless and anxious. So you go out, sit down on a park bench.',
+            'Do the pedestrians know that you’re a murderer when they look at you? Do they know that your ~weapon~ is hidden beneath your coat?',
+            'Can they still see the blood under your fingernails, even though you already scrubbed your hands raw? Your thoughts are suddenly interrupted when a girl approaches you.',
+            'She’s wearing an intricate dress covered with exotic patterns and ornaments and her whole body is decked out with jewelry.',
+            'She looks incredibly out of place but her eyes speak of kindness and compassion. She asks you, if you need help. You try to send her away, you really do, but she’s insistent.',
+            'Eventually, you settle on giving her scraps of the truth.',
+            'You let her know about your amnesia. Your occupation. But instead of telling her that you’d rather leave the past behind, you invent some bullshit about wanting to piece together what really happened.',
+            'There’s no need for her to be bogged down with your issues. You don’t want to hurt even more people. She’s also looking for something, babbles something about curses and energy.',
+            'You start paying attention when she ignites a flame in the palm of her hand. A wizard? A sorceress? Finally you agree to help her. Together you begin to explore the city. She, on a quest to do good, burning with earnest passion.',
+            'You… well. You suppose you could try your luck.']
+    )
+
+    story.get_page(character_name='detective', chapter=1, page='outro').add_page_variation(
+        txt=['By sheer coincidence you find an envelope. It is tucked between the branches of a tree and curiously, it is addressed to… you.',
+            'Upon opening it, two slivers of paper fall out: the first one is a short note. It simply reads: Do You Miss Me? And then, at the bottom, initials.',
+            'They are so familiar to you that it aches. Where have you seen them before? From where do you know this handwriting?',
+            'You feel the beginning of a headache develop behind the back of your eyes. You tell yourself to focus, dig deeper and then… a memory.',
+            'Hatred bubbling up in you, a flash of blue eyes and a sneer. You remember him. He is here. Your...nemesis. It leaves you shaking. Does he know you’re here?',
+            'Is he following you? What does he want? You do not know what is written on the second paper but it must be equally concerning, as the wizard pales at the sight of the letter.',
+            'She attempts to tell you what the problem is, tries to convince you to join her. But you feel numb. Her words pass through you and all you can think about… is him.',
+            'Him, on your tracks like a bloodhound. It is not difficult to imagine what he would do to this young woman, if he found her with you.',
+            'So you tell her that you have to attend to personal matters. It’s better if she doesn’t know. It’s safer this way. And thus, your ways part.']
+    )
+
+    story.get_page(character_name='detective', chapter=1, page='outro').add_page_variation(
+        txt=['By sheer coincidence you find an envelope. It is tucked between the branches of a tree and curiously, it is addressed to… you.',
+            'Upon opening it, two slivers of paper fall out: the first one is a short note. It simply reads: Do You Miss Me? And then, at the bottom, initials.',
+            'They are so familiar to you that it aches. Where have you seen them before? From where do you know this handwriting? You feel the beginning of a headache develop behind the back of your eyes.',
+            'You tell yourself to focus, dig deeper and then… a memory. Hatred bubbling up in you, a flash of blue eyes and a sneer. You remember him. Your...nemesis. But how is it possible?',
+            'You remember… wasn’t he dead? It leaves you shaking. Is he still alive? Is he following you? Another even more terrifiyng thought enters your head.'
+            'The thought of an imposter, trying to lure you into a trap. Someone who wants… what? Revenge, maybe?',
+            'You do not know what is written on the second paper but it must be equally concerning, as the wizard pales at the sight of the letter.',
+            'She attempts to tell you what the problem is, tries to convince you to join her. But you feel numb. Her words pass through you and all you can think about…',
+            'is whoever wrote this letter. They are on your tracks like a bloodhound. And it is not difficult to imagine what they would do to this young woman, if they found her with you.',
+            'So you tell her that you have to attend to personal matters. It’s better if she doesn’t know. It’s safer this way. And thus, your ways part.']
+    )
+
+    story.get_page(character_name='detective', chapter=2, page='intro').add_page_variation(
+        txt=['You need more intel, quickly. If it’s really him, then you can’t wait another second. As long as that man is free, this city is in danger.',
+            'That megalomaniacal genius, he needs to be stopped. Now, generally speaking you don’t have many talents apart from fucking up the lives of your loved ones.',
+            'But gathering information, tracking down people?  That used to be your job and you were damn good at it.',
+            'Empirically, the quickest way to find out what you need is to settle down in the seediest bar in town and get the person opposite of you absolutely plastered.',
+            'Besides, you could do with a stiff drink yourself. The bar you end up in is… alright. Populated by various drunkards and lowlifes, you’ll fit right in.',
+            'You order a glass of scotch, lean against the counter and wait for the right moment to strike. That is when a young woman enters the bar. She’s all loud swagger and devil-may-care grin.',
+            'But behind her sunglasses… is that fear in her eyes? She sits down next to you, orders a beer and tries to strike up a conversation with you.',
+            'Obviously, she thinks you’re a local. You take note of the jittery movements of her hands. Withdrawal symptoms? No, she doesn’t seem like an addict.',
+            'There is dirt beneath her nails, so she works with her hands. Well-worn backpack, she travels light and often but doesn’t have the cash to buy new equipment.',
+            'Some sort of freelancer maybe? She strikes you as the adventorous type. Either way, she’s not from here which makes her useless to you. That is, until she explains why she is here.',
+            'She got a tip from someone and when she names their initials your blood freezes in its veins.',
+            'She says something about a curse, God, what is it with people and magic these days, you wonder, but if she’s working with him, you bet that you’re going to help her with whatever she wants.',
+            'Maybe this way you’ll figure out what is going on. And since she wants to talk to locals about some kind of curse that she has unleashed and since she needs help… why the hell not?']
+    )
+
+    story.get_page(character_name='detective', chapter=2, page='outro').add_page_variation(
+        txt=['You finish listening to the biography of one of the patrons and turn to see the woman talking to an elderly man. He seems oddly familiar and that is enough to make you very suspicious.',
+            'The woman rummages in her backpack and pulls something out that seems to be very old and very precious.',
+            'The headache returns and you flinch again – something about the artefact triggers a feeling in you but for the life of you, you can’t figure out why.',
+            'You see the way the man stares at it and decide to keep an eye on him. Sure enough, as soon as she turns away his quick fingers manage to get a hold of it and the artefact vanishes into his own briefcase.',
+            'It takes everything in you not to get up right then and there to confront that bastard and your fingers are twitching, almost reaching for your ~weapon~. Instead, you wait.',
+            'The woman returns to you and says she got a tip to go eastwards. She’ll be moving on and thanks you for your help. You grimace, say nothing, and wave her goodbye.',
+            'It’s likely that the man is deliberately trying to distract her and that he sent her off to who knows where. But whoever that man is… he was too skilled to be a simple pick-pocket.',
+            'He’s probably affiliated with someone of his likes. And also, you’re going to get that woman her treasure back, damn it. Like hell you’re letting a thief get away with something like this.',
+            'So as soon the man finishes his drink and gets up to leave, you follow from a distance. Eventually, you see him enter a building – it seems like a research facility.',
+            'You don’t have the time for a stake out, so you sneak around the building and break a window on the ground floor. Fuck it, you’ll deal with the consequences once you’re inside.']
+    )
+
+    story.get_page(character_name='detective', chapter=2, page='outro').add_page_variation(
+        txt=['You finish listening to the biography of one of the patrons and turn to see the woman talking to an elderly man. He seems oddly familiar and that is enough to make you very suspicious.',
+            'The woman rummages in her backpack and pulls something out that seems to be very old and very precious.',
+            'The headache returns and you flinch again – something about the artefact triggers a feeling in you but for the life of you, you can’t figure out why.',
+            'You see the way the man stares at it and decide to keep an eye on him. Sure enough, as soon as she turns away his quick fingers manage to get a hold of it and the artefact vanishes into his own briefcase.',
+            'Immediately, you reach for your ~weapon~ and call him out. Everyone in the bar is staring at you. Then the shouting begins.',
+            'Who are you calling a thief, huh? Never seen you around, who the hell are you? The sound of breaking bottles. The woman looks like she’s mildly confused but ready to punch someone.',
+            'Once again you command the man to return his stolen goods. He denies everything. Then everything happens in a flash.',
+            'You yell at the woman to get the hell out of there and before the bartender can take out his shotgun from under the counter you’re fighting your way through the crowd.',
+            'You have been in a fair share of brawls yourself but whoever that woman is, she knows how to stand  her ground and throw a punch or two. Bones crack and blood flows but it doesn’t matter.',
+            'Both of you make it out of the building and then you start running. Without thinking you turn left, see an open window on the ground floor and take a chance.',
+            'It is only once you’re inside, lying flat on the floor and catching your breath that you realize you’ve lost the woman. You hope she’s alright.']
+    )
+
+    story.get_page(character_name='detective', chapter=3, page='intro').add_page_variation(
+        txt=['The room you find yourself in is sparse. There is a large table in the middle and vast array of different medical tools.',
+            'And there, in the corner, there’s a cage with a… human in it? What the fuck. What is this place? He stares at you and seems to be about as confused as you are.',
+            'Then he asks you for help. It’s a strange trilling sound, not like any accent you know. You hesitate for a moment.',
+            'What if he’s some kind of freak of nature or has some deadly illness? And now that you get closer you notice that something is wrong with him after all.',
+            'Looking at him… it causes your eyes to water. His skin is stretched a little bit too tight across his bones and his clothes hang off his frame in an odd way.',
+            'You ask him what he is, because he sure as hell ain’t human. He replies that indeed, he isn’t. He’s a scientist from another planet sent to earth to study humans.',
+            'Unfortunately, he was now captured by government officials who intend to study him. I chuckle at the irony of this but he doesn’t see to think it’s particularly funny.',
+            'Throughout your career you have learned to distinguish the liars from people who speak the truth. Now, you’re not sure if this can be applied to aliens as well, but you don’t think that he’s lying.',
+            'So you use your ~weapon~ to break the lock of the cage and tell him to leave. But to no avail. The alien has decided to return the favor and assist you with… what exactly?',
+            'The alien tells you that while he was locked away, he heard someone talking about secret artefacts. The walls are thin here - the voice must have come from the adjacent room.',
+            'You heart leaps at this suggestion. Could it be that the thief from the bar is involved with this somehow? Together with the alien you sneak out and enter the other room forcefully.',
+            'Luckily nobody is inside. It appears to be a lab, walls covered with dozens of papers and drawings of obscure objects. Details about past events.',
+            'Both of you wander around and attempt to learn as much as possible about the history these papers detail.']
+    )
+
+    story.get_page(character_name='detective', chapter=3, page='outro').add_page_variation(
+        txt=['The alien yelps and points at the desk. He recognizes these, he says, what are the odds? To your surprise, you find the treasure of the woman and some kind of… jewelry?',
+            'Why is that also so familiar to you? And then suddenly all your memories come rushing back. He is there, after all these years of animosity, after all these times you nearly caught him.',
+            'He has your brother, you are there as well, pleading him to let him go. Instead, a shot rings out and the lifeless body of your brother drops to the floor.',
+            'You cry out, seeking revenge but he, your nemesis, he keeps going on and on about the way all the artefacts are supposed to fit together.',
+            'You are familiar with this topc of course, after all you memorized the plan before destroying it. That was why he attempted to blackmail you in the first place.',
+            'With nothing to hold you back now you lunge at him, tackling him to the ground.',
+            'But he quickly escapes your grip and gets a fistful of your hair before he smashes your head into a boulder. Then: darkness.',
+            'You grip your head, now, in the present. You are shaking but you remember everything. And...you are pissed.',
+            'The alien seems to be concerned but doesn’t have much time to dwell on it as the door abruptly swings open.']
+    )
+
+    story.get_page(character_name='detective', chapter=3, page='outro').add_page_variation(
+        txt=['On the desk you find the treasure of the woman and some kind of… jewelry?',
+            'Why is that also so familiar to you? And then suddenly all your memories come rushing back. He is there, after all these years of animosity, after all these times you nearly caught him.',
+            'He has your brother, you are there as well, pleading him to let him go. Instead, a shot rings out and the lifeless body of your brother drops to the floor.',
+            'You cry out, seeking revenge but he, your nemesis, he keeps going on and on about the way all the artefacts are supposed to fit together.',
+            'You are familiar with this topc of course, after all you memorized the plan before destroying it. That was why he attempted to blackmail you in the first place.',
+            'With nothing to hold you back now you lunge at him, tackling him to the ground.',
+            'But he quickly escapes your grip and gets a fistful of your hair before he smashes your head into a boulder. Then: darkness.',
+            'You grip your head, now, in the present. You are shaking but you remember everything. And...you are pissed.',
+            'The alien seems to be concerned but doesn’t have much time to dwell on it as the door abruptly swings open.']
+    )
+
+    story.get_page(character_name='detective', chapter=4, page='intro').add_page_variation(
+        txt=[]
+    )
+
+    story.get_page(character_name='detective', chapter=4, page='outro').add_page_variation(
         txt=['Good outcome']
     )
-    story.get_page(character_name='detective', chapter=0, page='outro').add_page_variation(
+
+    story.get_page(character_name='detective', chapter=4, page='outro').add_page_variation(
         txt=['Bad outcome']
     )
-    story.get_page(character_name='detective', chapter=0, page='outro').set_last_page(True)
+
+    story.get_page(character_name='detective', chapter=4, page='outro').set_last_page(True)
 
     # ----- Wizard : -----
     story.get_page(character_name='wizard', chapter=0, page='intro').add_page_variation(
