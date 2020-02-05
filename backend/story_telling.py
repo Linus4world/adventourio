@@ -541,21 +541,11 @@ def set_example_story(story):
 
             'You by your own choice and your own will, took every step that led you to this place.',
 
-<<<<<<< HEAD
-'And he, like always, is ecstatic that the entire universe conspired to help  him find you.',
-=======
             'And he, like always, is ecstatic that the entire universe conspired to help  him find you.',
->>>>>>> 0b4f87a72411b8b4dd63d97e45f26a3ba4db1156
 
             'He is not your enemy. The only real enemy to have ever existed, is an internal one.',
 
-<<<<<<< HEAD
-'You can’t give in to this. You can’t get sucked in by the darkness.',
-
-'This is exactly what he wants, don’t hand it to him. Don’t pour salt to the open wound. Fight his evil with good, and his darkness with light.',
-=======
             'You can’t give in to this. You can’t get sucked in by the darkness.',
->>>>>>> 0b4f87a72411b8b4dd63d97e45f26a3ba4db1156
 
             'This is exactly what he wants, don’t hand it to him. Don’t pour salt to the open wound. Fight his evil with good, and his darkness with light.',
 
@@ -763,23 +753,13 @@ def set_example_story(story):
 
             'You by your own choice and your own will, took every step that led you to this place.',
 
-<<<<<<< HEAD
-'And he, like always, is ecstatic that the entire universe conspired to help  him find you.',
-=======
             'And he, like always, is ecstatic that the entire universe conspired to help  him find you.',
->>>>>>> 0b4f87a72411b8b4dd63d97e45f26a3ba4db1156
 
             'He is not your enemy. The only real enemy to have ever existed, is an internal one.',
 
             'You can’t give in to this. You can’t get sucked in by the darkness.',
 
-<<<<<<< HEAD
-'You can’t give in to this. You can’t get sucked in by the darkness.',
-
-'This is exactly what he wants, don’t hand it to him. Don’t pour salt to the open wound. Fight his evil with good, and his darkness with light.',
-=======
             'This is exactly what he wants, don’t hand it to him. Don’t pour salt to the open wound. Fight his evil with good, and his darkness with light.',
->>>>>>> 0b4f87a72411b8b4dd63d97e45f26a3ba4db1156
 
             'Can you see it now? Is it getting clearer? Can you see how each and every one of you, despite your differences, helped one another do and be better?',
 
@@ -795,15 +775,9 @@ def set_example_story(story):
 
             'All you touch and all you see is all your lives would ever be. And now, your lives would never be the same, after crossing paths with these exceptional people.'
 
-<<<<<<< HEAD
-'So here’s the best part, distilled for you; you saved yourselves, and in the process saved the world from doom.',
-
-'Congrats my dears. It was a blast accompanying you on this journey.']
-=======
             'So here’s the best part, distilled for you; you saved yourselves, and in the process saved the world from doom.'
 
             'Congrats my dears. It was a blast accompanying you on this journey.']
->>>>>>> 0b4f87a72411b8b4dd63d97e45f26a3ba4db1156
     )
 
     story.get_page(character_name='wizard', chapter=4, page='outro').add_page_variation(
