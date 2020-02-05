@@ -51,7 +51,7 @@ def set_example_story(story):
     # ----- ALIEN: -----
     story.get_page(character_name='alien', chapter=0, page='intro').add_page_variation(
         txt=['Welcome to what your people call Planeta stultorum! Here it’s just called Earth. ',
-             'I know you’re not thrilled to be here,but trust me your 157 day trip from Mars will be worth it. ',
+             'I know you’re not thrilled to be here, but trust me your 157 day trip from Mars will be worth it. ',
              'There is so much to learn and discover here. But also there are so many distractions. ',
              'So you must really stay focused and be careful with hiding your identity. Try to blend in and act like humans. '
              'So basically just eat Sauerkraut and talk about how almond milk changed your life. '
@@ -64,7 +64,7 @@ def set_example_story(story):
     # BE FUCKING CAREFUL: THE ORDER IN WHICH YOU STORE THE OUTCOME MATTERS!
     # FIRST GOOD OUTCOME, THEN BAD OUTCOME
     story.get_page(character_name='alien', chapter=1, page='intro').add_page_variation(
-        txt=['Such a strange place isn’t it? Yet so appealing. Let’s take a look around , discover the area, draw a mental map of the city, observe its people. ',
+        txt=['Such a strange place isn’t it? Yet so appealing. Let’s take a look around, discover the area, draw a mental map of the city, observe its people. ',
              'Do you see that disc shaped thing covered in white mush everyone is eating? That’s a pizza. Now would you look at that guy over there; about to eat pizza with pineapples. ',
              'Quick, stop him! Ah, humans. Not the brightest creatures. You’d invade this place in a heartbeat.The more you discover about the human daftness the easier your alien attack on earth would be.',
              'So keep this human near you and study his behaviour. ',
@@ -81,7 +81,7 @@ def set_example_story(story):
              ]
     )
     story.get_page(character_name='alien', chapter=1, page='outro').add_page_variation(
-        txt=['Oh look, a sealed scroll. Should we take the risk and open it? What’s the worst could happen anyway, let’s just read what’s inside. ',
+        txt=['Oh look, a sealed scroll. Should we take the risk and open it? What’s the worst that could happen anyway, let’s just read what’s inside. ',
              'It reads: Breaking this seal, breaks your destiny. Accept the deal, or follow the mystery. ',
              'Ah, humans and their drama.. ',
              'Wait why are you so frightened? Aren’t you a bit too scientific to be superstitious? ',
@@ -94,7 +94,7 @@ def set_example_story(story):
     story.get_page(character_name='alien', chapter=2, page='intro').add_page_variation(
         txt=['Okay now, all you have to do is find the interplanetary base or at least some human intelligence center. It shouldn’t be that hard, considering the fair amount of technological advances these species have achieved. ',
              'Over the time span of 4 billions years. ',
-             'Well if you look over there you can see a big building that says “Foreigners Registration Office”. Well technically  you are a foreigner, so i say we go in and check out the place. ',
+             'Well if you look over there you can see a big building that says “Foreigners Registration Office”. Well technically you are a foreigner, so I say we go in and check out the place. ',
              'Would you look at that. It’s amazing how many different faces and how many different voices there are. Humans must love how diverse their planet is. ',
              'Now let’s scan this place and try to find the smartest looking person that could help you. ',
              'Hmm, if you look over there you would see someone with a really big hat. Must be because they have a really big head. You know what that means right? They’re a genius! The bigger their head is, the more knowledge it contains. ',
@@ -109,7 +109,7 @@ def set_example_story(story):
              'But don’t take it personally, that’s just how humans react to what’s different. ',
              'A nice lady just approached you and invited you into her office for a chat. If you decline you’d come off suspicious. So just go with it, and if things escalate just use your ~tech~ . ' 
              'Oh no, you seem to have forgotten it with the adventurer. Classic. ',
-             'Oh look at her with her manners, offering you a cup of water. Just drink it, humans drink water. Tastes horrible right? That’s actually the main reason they want to invade your planet. ',
+             'Oh look at her with her manners, offering you a cup of water. Just drink it, humans drink water. Tastes horrible, right? That’s actually the main reason they want to invade your planet. ',
              'Come on now, she’s talking to you, answer her. Why did you suddenly get so dizzy? Are you okay? You seem to be losing your consciousness. ',
              'Oh, so that explains the weird taste in the water. Another classic. Mea culpa, should’ve warned you about it.'
               ]
@@ -170,11 +170,11 @@ def set_example_story(story):
 
     story.get_page(character_name='adventurer', chapter=1, page='intro').add_page_variation(
         txt = [
-                'A beautiful city isn’t it? Let’s take a look around , have a long walk, admire the city, embrace its vibe. ',
+                'A beautiful city, isn’t it? Let’s take a look around, have a long walk, admire the city, embrace its vibe. ',
                 'So many food stands everywhere, and the food smells phenomenal. Getting hungry huh? May I suggest pizza? Oh god no, not the pineapple pizza! ',
                 'C’mon that’s common sense 101. ',
                 'You’re lucky this guy just stopped you. ',
-                'Perfect timing i must say. It’s almost as if he was already here, watching you.. ',
+                'Perfect timing I must say. It’s almost as if he was already here, watching you.. ',
                 'But let’s not jump to conclusions, he is obviously new here and just wants to make friends. ',
                 'Although, he is a weird looking fella.. And what’s that beeping device he’s trying so hard to hide? ',
                 'Just look closely and focus. C’mon you know this one. It’s ~tech~ ! ',
@@ -185,7 +185,7 @@ def set_example_story(story):
     )
 
     story.get_page(character_name='adventurer', chapter=1, page='outro').add_page_variation(
-        txt=['Magnificent, you found it very easily. Too easily actually, now that we think about .. ',
+        txt=['Magnificent, you found it very easily. Too easily actually, now that we think about it .. ',
              'Did the secret messenger send you all the way to Munich just to find this ~treasure~ in one hour? ',
              'This can’t be it. It must be just a misdirection. The real treasure must be hidden somewhere else. ',
              'Wait what’s happening here? Are you sensing this magic wave? Were you just cursed? ',
@@ -195,7 +195,7 @@ def set_example_story(story):
     )
 
     story.get_page(character_name='adventurer', chapter=1, page='outro').add_page_variation(
-        txt=['Oh look, a sealed scroll. Should we take the risk and open it? What’s the worst could happen anyway, let’s just read what’s inside. ',
+        txt=['Oh look, a sealed scroll. Should we take the risk and open it? What’s the worst that could happen anyway, let’s just read what’s inside. ',
              ' “Breaking this seal, breaks your destiny. Accept the deal, or follow the mystery” ',
              'Oh oh, looks like you’ve been cursed. You can’t quit now. ',
              'The destiny of this city lies in your hands, you must go on with this quest and lift the curse. ',
@@ -204,7 +204,7 @@ def set_example_story(story):
     )
 
     story.get_page(character_name='adventurer', chapter=2, page='intro').add_page_variation(
-        txt=['A bar, the perfect place to get intel from drunken locals. Take a look around and  try to find a resourceful target. ',
+        txt=['A bar, the perfect place to get intel from drunken locals. Take a look around and try to find a resourceful target. ',
              'Look over there, someone sitting by themselves sipping on their drink, eavesdropping  on conversations. Nothing better than a nosy local. Let’s approach them and see. ',
              'He’s a bit too secretive for someone who spies on others. Maybe if you mention the tip that sent you here he’ll be more interested in your story. ',
              'He recognizes the initials! What are the chances! ',
@@ -220,7 +220,7 @@ def set_example_story(story):
     )
     story.get_page(character_name='adventurer', chapter=2, page='outro').add_page_variation(
         txt=['Wow, it seems like you came off a bit too invasive. People here get annoyed very quickly. You mix that with alcohol and you get a ticking bomb. ',
-             'Oh great , look at what you’ve done. Now they’re all yelling and throwing chairs at you. ', 
+             'Oh great, look at what you’ve done. Now they’re all yelling and throwing chairs at you. ', 
              'Quick, run! And make sure to split up so they won’t find you. ',
              'And next time try being more subtle with your questions maybe? ',
              'And also maybe not forget the ~treasure~ with the wise man?'
@@ -237,10 +237,10 @@ def set_example_story(story):
              'And once you’re done rambling about how there are no wizards in this place, could you please take the time to notice the hieroglyphs on the walls. ',
              'She seems to recognize some symbols and says it’s linked to some prophecy, but she just can’t pinpoint exactly what it is. ',
              'Maybe it would help  if you show her the ~treasure~ you found in the city center? ',
-             'Oh how classic,you lost it. Why am I not surprised. At least you still have that ~tech~ you got from the Alien. Now make yourself useful by making it useful. ',
+             'Oh how classic, you lost it. Why am I not surprised. At least you still have that ~tech~ you got from the Alien. Now make yourself useful by making it useful. ',
              'Interesting.. It’s actually translating the code. So now you know there is no curse. Good. However there is an ancient ritual for summoning a bloodcurdling creature every 500 years. Bad. Very Bad. ',
              'Calm down now, listen to what your partner has to say. '
-             'She says she knows what items are necessary for this ritual, and she knows for a fact that all the formal prerequisites have already  been fulfilled. Very very bad.'
+             'She says she knows what items are necessary for this ritual, and she knows for a fact that all the formal prerequisites have already been fulfilled. Very, very bad.'
              ]
     )
 
@@ -251,7 +251,7 @@ def set_example_story(story):
     )
     story.get_page(character_name='adventurer', chapter=3, page='outro').add_page_variation(
         txt=['Hmm.. What is that tiny writing in the corner of the wall? Another hint Maybe? Why don’t you read it. ',
-             'Oups,mea culpa. This one is on me, so I’ll get you out of it. ',
+             'Oups, mea culpa. This one is on me, so I’ll get you out of it. ',
              'After scanning the area, there seems to be a Jabuticaba. Such an unusual location for a Brazillian grape tree. Just go over there and check if there is something behind it. ',
              'Et voilà! There you have your secret tunnel. Oh what would you two do without me. ',
              'Now you must go through the tunnel, it’s the only way out. ',
