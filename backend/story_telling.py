@@ -117,7 +117,7 @@ def set_example_story(story):
     )
     story.get_page(character_name='alien', chapter=2, page='outro').add_page_variation(
         txt=['Is it just me or is everyone intensively staring at you? Are they on to you or is it just Germans playing with the boundaries of normal social conduct? ',
-             'Oh no, everyone is pointing their finger at you. ' ,
+             'Oh no, everyone is pointing their finger at you. ',
              'A big black van stops near you and three big built humans step out and approach you. Oh boy, this never ends well. Calm down now, they could be here for the wizard. ',
              'It’s okay let them take him. You guys weren’t that close anyways, and long distance friendships aren’t even a thing. ',
              'Hmm.. I spoke too soon. The three humans grab you and try to shove you inside the van. The poor wizard is trying so hard to help you escape, but he’s left behind. ',
@@ -160,12 +160,12 @@ def set_example_story(story):
              'Remember what? What’s coming back? What in the Milky Way is happening here. '
               ]
     )
-        story.get_page(character_name='alien', chapter=4, page='intro').add_page_variation(
+    story.get_page(character_name='alien', chapter=4, page='intro').add_page_variation(
         txt=['The door slams wide open and you all are overwhelmed by someone. Someone you can’t see, but you can feel.',
         ' You can sense him with your entity, moving through your body and into your soul.',
-        'Messing with your head, reaching your heart and pulling it strings. The feeling is so intense you wish he would just rip it out already. '.
+        'Messing with your head, reaching your heart and pulling it strings. The feeling is so intense you wish he would just rip it out already. ',
         'Yes it’s him. He is real and he is here. The greatest trick he ever pulled was convincing the world he didn’t exist.',
-       'You must be wondering why he went through all this trouble to gather you all here. What are the chances that four beings,',
+        'You must be wondering why he went through all this trouble to gather you all here. What are the chances that four beings,',
         'with such contrasting backgrounds and traits, ending up here. At this exact place, this exact time.'
 
         ]
@@ -196,37 +196,37 @@ def set_example_story(story):
 
 'The more you look, the clearer you see, the faster the peace and serenity take over.',
 
-'All you touch and all you see is all your lives would ever be. And now, your lives would never be the same, after crossing paths with these exceptional people.'
+'All you touch and all you see is all your lives would ever be. And now, your lives would never be the same, after crossing paths with these exceptional people.',
 
-'So here’s the best part, distilled for you; you saved yourselves, and in the process saved the world from doom.'
+'So here’s the best part, distilled for you; you saved yourselves, and in the process saved the world from doom.',
 
-'Congrats my dears. It was a blast accompanying you on this journey.
-']
+'Congrats my dears. It was a blast accompanying you on this journey.']
     )
 
     story.get_page(character_name='alien', chapter=4, page='outro').add_page_variation(
         txt=['How did he plan all this? Let me help you my dears by telling you that he didn’t.',
-'You by your own choice and your own will, took every step that led you to this place.',
-'And he, like always, is ecstatic that the entire universe conspired to help  him find you.',
-'He is not your enemy. The only real enemy to have ever existed, is an internal one.',
-'You the adventurer, are your own enemy. Fleeing from place to place all your life, trying to fill the void inside.',
- 'But in reality you are fleeing yourself. Fleeing the dissatisfaction, seeking glorification and validation, as if your values increases by the count of the places you explore.',
-'You the detective, are your own enemy. Spending your entire time solving people’s issues so you wouldn’t have to face your own.',
- 'Helping people is merely an overcorrection for the fact that you were responsible for your own brother’s death.',
-'You the Wizard, are your own enemy. You spent your entire life isolated,  hating humans before they hate you.',
- 'Convincing yourself that you are better than them, more powerful, and that your magic is something they envy you for.',
-  'When really you are the one envying them for a life so simple and sweet. All you ever wanted was to flee and live a normal life.',
-   'To live like a human.',
-'You the Alien, are your own enemy. You must’ve really hated your own kind for you to travel all the way from Mars.',
- 'You were always the underdog of aliens, they all thought you weren’t good enough and you knew it.',
-'You want us to believe you got on a spaceship all alone for 157 just for research? Who are you kidding ? You were never good enough for your people, they underestimated you.',
- 'The only time they ever looked up to you was because you let them down. And now you come here to this planet, thinking you’re superior, plotting to take over the world.',
-'You all, look at yourselves now. Look at where the devil in you got you.',
-'The more you look, the deeper you see, the faster the darkness takes over.',
-'All you touch and all you see is all your lives would ever be.',
-'But now all there is, is darkness. You and everything surrounding you vanish into nothingness.',
-'So long my friends, i am pained to have lost this way.']
-    story.get_page(character_name='alien', chapter=4, page='outro').set_last_page(True)
+            'You by your own choice and your own will, took every step that led you to this place.',
+            'And he, like always, is ecstatic that the entire universe conspired to help  him find you.',
+            'He is not your enemy. The only real enemy to have ever existed, is an internal one.',
+            'You the adventurer, are your own enemy. Fleeing from place to place all your life, trying to fill the void inside.',
+            'But in reality you are fleeing yourself. Fleeing the dissatisfaction, seeking glorification and validation, as if your values increases by the count of the places you explore.',
+            'You the detective, are your own enemy. Spending your entire time solving people’s issues so you wouldn’t have to face your own.',
+            'Helping people is merely an overcorrection for the fact that you were responsible for your own brother’s death.',
+            'You the Wizard, are your own enemy. You spent your entire life isolated,  hating humans before they hate you.',
+            'Convincing yourself that you are better than them, more powerful, and that your magic is something they envy you for.',
+            'When really you are the one envying them for a life so simple and sweet. All you ever wanted was to flee and live a normal life.',
+            'To live like a human.',
+            'You the Alien, are your own enemy. You must’ve really hated your own kind for you to travel all the way from Mars.',
+            'You were always the underdog of aliens, they all thought you weren’t good enough and you knew it.',
+            'You want us to believe you got on a spaceship all alone for 157 just for research? Who are you kidding ? You were never good enough for your people, they underestimated you.',
+            'The only time they ever looked up to you was because you let them down. And now you come here to this planet, thinking you’re superior, plotting to take over the world.',
+            'You all, look at yourselves now. Look at where the devil in you got you.',
+            'The more you look, the deeper you see, the faster the darkness takes over.',
+            'All you touch and all you see is all your lives would ever be.',
+            'But now all there is, is darkness. You and everything surrounding you vanish into nothingness.',
+            'So long my friends, i am pained to have lost this way.'])
+    story.get_page(character_name='alien', chapter=4,
+                   page='outro').set_last_page(True)
 
     # ----- ADVENTURER: -----
     story.get_page(character_name='adventurer', chapter=0, page='intro').add_page_variation(
@@ -236,7 +236,7 @@ def set_example_story(story):
     )
 
     story.get_page(character_name='adventurer', chapter=1, page='intro').add_page_variation(
-        txt = [
+        txt=[
                 'A beautiful city, isn’t it? Let’s take a look around, have a long walk, admire the city, embrace its vibe. ',
                 'So many food stands everywhere, and the food smells phenomenal. Getting hungry huh? May I suggest pizza? Oh god no, not the pineapple pizza! ',
                 'C’mon that’s common sense 101. ',
@@ -327,11 +327,11 @@ def set_example_story(story):
     )
     story.get_page(character_name='adventurer', chapter=4, page='intro').add_page_variation(
         txt=['The door slams wide open and you all are overwhelmed by someone. Someone you can’t see, but you can feel.',
-        ' You can sense him with your entity, moving through your body and into your soul.',
-        'Messing with your head, reaching your heart and pulling it strings. The feeling is so intense you wish he would just rip it out already. '.
-        'Yes it’s him. He is real and he is here. The greatest trick he ever pulled was convincing the world he didn’t exist.',
-       'You must be wondering why he went through all this trouble to gather you all here. What are the chances that four beings,',
-        'with such contrasting backgrounds and traits, ending up here. At this exact place, this exact time.'
+            ' You can sense him with your entity, moving through your body and into your soul.',
+            'Messing with your head, reaching your heart and pulling it strings. The feeling is so intense you wish he would just rip it out already. ',
+            "Yes it’s him. He is real and he is here. The greatest trick he ever pulled was convincing the world he didn't exist.",
+            'You must be wondering why he went through all this trouble to gather you all here. What are the chances that four beings,',
+            'with such contrasting backgrounds and traits, ending up here. At this exact place, this exact time.'
 
         ]
     )
@@ -339,58 +339,59 @@ def set_example_story(story):
     story.get_page(character_name='adventurer', chapter=4, page='outro').add_page_variation(
         txt=['How did he plan all this? Let me help you my dears by telling you that he didn’t.',
 
-'You by your own choice and your own will, took every step that led you to this place.',
+            'You by your own choice and your own will, took every step that led you to this place.',
 
-'And he, like always, is ecstatic that the entire universe conspired to help  him find you.',
+            'And he, like always, is ecstatic that the entire universe conspired to help  him find you.',
 
-'He is not your enemy. The only real enemy to have ever existed, is an internal one.',
+            'He is not your enemy. The only real enemy to have ever existed, is an internal one.',
 
-'You can’t give in to this. You can’t get sucked in by the darkness.',
+            'You can’t give in to this. You can’t get sucked in by the darkness.',
 
-'This is exactly what he wants, don’t hand it to him. Don’t pour salt to the open wound. Fight his evil with good, and his darkness with light.',
+            'This is exactly what he wants, don’t hand it to him. Don’t pour salt to the open wound. Fight his evil with good, and his darkness with light.',
 
-'Can you see it now? Is it getting clearer? Can you see how each and every one of you, despite your differences, helped one another do and be better?',
+            'Can you see it now? Is it getting clearer? Can you see how each and every one of you, despite your differences, helped one another do and be better?',
 
-'You came to this city all alone, you crossed paths with a hundred other people. But you chose these three standing in front of you.',
+            'You came to this city all alone, you crossed paths with a hundred other people. But you chose these three standing in front of you.',
 
-'You didn’t fall into this maze. You  walked into it, with your eyes wide open, choosing to take every step along the way.',
- 'Maybe there is no fate or destiny, but I believe you are only fated to do the things that you’d choose anyway.'
-'And you’d choose each other; in a hundred lifetimes, in a hundred worlds, in any version of reality, you’d find one another and you’d choose one another.',
+            'You didn’t fall into this maze. You  walked into it, with your eyes wide open, choosing to take every step along the way.',
+            'Maybe there is no fate or destiny, but I believe you are only fated to do the things that you’d choose anyway.'
+            'And you’d choose each other; in a hundred lifetimes, in a hundred worlds, in any version of reality, you’d find one another and you’d choose one another.',
 
-'You all, remember where you were when this journey first started, and look at yourselves now.',
+            'You all, remember where you were when this journey first started, and look at yourselves now.',
 
-'The more you look, the clearer you see, the faster the peace and serenity take over.',
+            'The more you look, the clearer you see, the faster the peace and serenity take over.',
 
-'All you touch and all you see is all your lives would ever be. And now, your lives would never be the same, after crossing paths with these exceptional people.'
+            'All you touch and all you see is all your lives would ever be. And now, your lives would never be the same, after crossing paths with these exceptional people.'
 
-'So here’s the best part, distilled for you; you saved yourselves, and in the process saved the world from doom.',
+            'So here’s the best part, distilled for you; you saved yourselves, and in the process saved the world from doom.'
 
-'Congrats my dears. It was a blast accompanying you on this journey.']
+            'Congrats my dears. It was a blast accompanying you on this journey.']
     )
 
     story.get_page(character_name='adventurer', chapter=4, page='outro').add_page_variation(
         txt=['How did he plan all this? Let me help you my dears by telling you that he didn’t.',
-'You by your own choice and your own will, took every step that led you to this place.',
-'And he, like always, is ecstatic that the entire universe conspired to help  him find you.',
-'He is not your enemy. The only real enemy to have ever existed, is an internal one.',
-'You the adventurer, are your own enemy. Fleeing from place to place all your life, trying to fill the void inside.',
- 'But in reality you are fleeing yourself. Fleeing the dissatisfaction, seeking glorification and validation, as if your values increases by the count of the places you explore.',
-'You the detective, are your own enemy. Spending your entire time solving people’s issues so you wouldn’t have to face your own.',
- 'Helping people is merely an overcorrection for the fact that you were responsible for your own brother’s death.',
-'You the Wizard, are your own enemy. You spent your entire life isolated,  hating humans before they hate you.',
- 'Convincing yourself that you are better than them, more powerful, and that your magic is something they envy you for.',
-  'When really you are the one envying them for a life so simple and sweet. All you ever wanted was to flee and live a normal life.',
-   'To live like a human.',
-'You the Alien, are your own enemy. You must’ve really hated your own kind for you to travel all the way from Mars.',
- 'You were always the underdog of aliens, they all thought you weren’t good enough and you knew it.',
-'You want us to believe you got on a spaceship all alone for 157 just for research? Who are you kidding ? You were never good enough for your people, they underestimated you.',
- 'The only time they ever looked up to you was because you let them down. And now you come here to this planet, thinking you’re superior, plotting to take over the world.',
-'You all, look at yourselves now. Look at where the devil in you got you.',
-'The more you look, the deeper you see, the faster the darkness takes over.',
-'All you touch and all you see is all your lives would ever be.',
-'But now all there is, is darkness. You and everything surrounding you vanish into nothingness.',
-'So long my friends, i am pained to have lost this way.']
-    story.get_page(character_name='adventurer', chapter=4, page='outro').set_last_page(True)
+            'You by your own choice and your own will, took every step that led you to this place.',
+            'And he, like always, is ecstatic that the entire universe conspired to help  him find you.',
+            'He is not your enemy. The only real enemy to have ever existed, is an internal one.',
+            'You the adventurer, are your own enemy. Fleeing from place to place all your life, trying to fill the void inside.',
+            'But in reality you are fleeing yourself. Fleeing the dissatisfaction, seeking glorification and validation, as if your values increases by the count of the places you explore.',
+            'You the detective, are your own enemy. Spending your entire time solving people’s issues so you wouldn’t have to face your own.',
+            'Helping people is merely an overcorrection for the fact that you were responsible for your own brother’s death.',
+            'You the Wizard, are your own enemy. You spent your entire life isolated,  hating humans before they hate you.',
+            'Convincing yourself that you are better than them, more powerful, and that your magic is something they envy you for.',
+            'When really you are the one envying them for a life so simple and sweet. All you ever wanted was to flee and live a normal life.',
+            'To live like a human.',
+            'You the Alien, are your own enemy. You must’ve really hated your own kind for you to travel all the way from Mars.',
+            'You were always the underdog of aliens, they all thought you weren’t good enough and you knew it.',
+            'You want us to believe you got on a spaceship all alone for 157 just for research? Who are you kidding ? You were never good enough for your people, they underestimated you.',
+            'The only time they ever looked up to you was because you let them down. And now you come here to this planet, thinking you’re superior, plotting to take over the world.',
+            'You all, look at yourselves now. Look at where the devil in you got you.',
+            'The more you look, the deeper you see, the faster the darkness takes over.',
+            'All you touch and all you see is all your lives would ever be.',
+            'But now all there is, is darkness. You and everything surrounding you vanish into nothingness.',
+            'So long my friends, i am pained to have lost this way.'])
+    story.get_page(character_name='adventurer', chapter=4,
+                   page='outro').set_last_page(True)
 
 
     # ----- Detective : -----
@@ -527,7 +528,7 @@ def set_example_story(story):
     story.get_page(character_name='detective', chapter=4, page='intro').add_page_variation(
         txt=['The door slams wide open and you all are overwhelmed by someone. Someone you can’t see, but you can feel.',
         ' You can sense him with your entity, moving through your body and into your soul.',
-        'Messing with your head, reaching your heart and pulling it strings. The feeling is so intense you wish he would just rip it out already. '.
+        'Messing with your head, reaching your heart and pulling it strings. The feeling is so intense you wish he would just rip it out already. ',
         'Yes it’s him. He is real and he is here. The greatest trick he ever pulled was convincing the world he didn’t exist.',
        'You must be wondering why he went through all this trouble to gather you all here. What are the chances that four beings,',
         'with such contrasting backgrounds and traits, ending up here. At this exact place, this exact time.'
@@ -538,34 +539,43 @@ def set_example_story(story):
     story.get_page(character_name='detective', chapter=4, page='outro').add_page_variation(
         txt=['How did he plan all this? Let me help you my dears by telling you that he didn’t.',
 
-'You by your own choice and your own will, took every step that led you to this place.',
+            'You by your own choice and your own will, took every step that led you to this place.',
 
+<<<<<<< HEAD
 'And he, like always, is ecstatic that the entire universe conspired to help  him find you.',
+=======
+            'And he, like always, is ecstatic that the entire universe conspired to help  him find you.',
+>>>>>>> 0b4f87a72411b8b4dd63d97e45f26a3ba4db1156
 
-'He is not your enemy. The only real enemy to have ever existed, is an internal one.',
+            'He is not your enemy. The only real enemy to have ever existed, is an internal one.',
 
+<<<<<<< HEAD
 'You can’t give in to this. You can’t get sucked in by the darkness.',
 
 'This is exactly what he wants, don’t hand it to him. Don’t pour salt to the open wound. Fight his evil with good, and his darkness with light.',
+=======
+            'You can’t give in to this. You can’t get sucked in by the darkness.',
+>>>>>>> 0b4f87a72411b8b4dd63d97e45f26a3ba4db1156
 
-'Can you see it now? Is it getting clearer? Can you see how each and every one of you, despite your differences, helped one another do and be better?',
+            'This is exactly what he wants, don’t hand it to him. Don’t pour salt to the open wound. Fight his evil with good, and his darkness with light.',
 
-'You came to this city all alone, you crossed paths with a hundred other people. But you chose these three standing in front of you.',
+            'Can you see it now? Is it getting clearer? Can you see how each and every one of you, despite your differences, helped one another do and be better?',
 
-'You didn’t fall into this maze. You  walked into it, with your eyes wide open, choosing to take every step along the way.',
- 'Maybe there is no fate or destiny, but I believe you are only fated to do the things that you’d choose anyway.'
-'And you’d choose each other; in a hundred lifetimes, in a hundred worlds, in any version of reality, you’d find one another and you’d choose one another.',
+            'You came to this city all alone, you crossed paths with a hundred other people. But you chose these three standing in front of you.',
 
-'You all, remember where you were when this journey first started, and look at yourselves now.',
+            'You didn’t fall into this maze. You  walked into it, with your eyes wide open, choosing to take every step along the way.',
+            'Maybe there is no fate or destiny, but I believe you are only fated to do the things that you’d choose anyway.'
+            'And you’d choose each other; in a hundred lifetimes, in a hundred worlds, in any version of reality, you’d find one another and you’d choose one another.',
 
-'The more you look, the clearer you see, the faster the peace and serenity take over.',
+            'You all, remember where you were when this journey first started, and look at yourselves now.',
 
-'All you touch and all you see is all your lives would ever be. And now, your lives would never be the same, after crossing paths with these exceptional people.'
+            'The more you look, the clearer you see, the faster the peace and serenity take over.',
 
-'So here’s the best part, distilled for you; you saved yourselves, and in the process saved the world from doom.'
+            'All you touch and all you see is all your lives would ever be. And now, your lives would never be the same, after crossing paths with these exceptional people.'
 
-'Congrats my dears. It was a blast accompanying you on this journey.
-']
+            'So here’s the best part, distilled for you; you saved yourselves, and in the process saved the world from doom.'
+
+            'Congrats my dears. It was a blast accompanying you on this journey.']
     )
 
     story.get_page(character_name='detective', chapter=4, page='outro').add_page_variation(
@@ -592,7 +602,8 @@ def set_example_story(story):
 'So long my friends, i am pained to have lost this way.']
     )
 
-    story.get_page(character_name='detective', chapter=4, page='outro').set_last_page(True)
+    story.get_page(character_name='detective', chapter=4,
+                   page='outro').set_last_page(True)
 
     # ----- Wizard : -----
     story.get_page(character_name='wizard', chapter=0, page='intro').add_page_variation(
@@ -731,13 +742,15 @@ def set_example_story(story):
         'It is barely illuminated and you have no idea where it leads to. You look at the adventurer and she shrugs her shoulders.',
         'Alas, you don’t have any choice but to descend and hope for the best. It takes a long time but when you finally exit the tunnel you are…in a lab?']
     )
-    assert len(story.get_page(character_name='wizard', chapter=3, page='outro').page_variations) == 2
-    story.get_page(character_name='wizard', chapter=3, page='outro').set_last_page(True)
+    assert len(story.get_page(character_name='wizard',
+               chapter=3, page='outro').page_variations) == 2
+    story.get_page(character_name='wizard', chapter=3,
+                   page='outro').set_last_page(True)
 
-      story.get_page(character_name='wizard', chapter=4, page='intro').add_page_variation(
+    story.get_page(character_name='wizard', chapter=4, page='intro').add_page_variation(
         txt=['The door slams wide open and you all are overwhelmed by someone. Someone you can’t see, but you can feel.',
         ' You can sense him with your entity, moving through your body and into your soul.',
-        'Messing with your head, reaching your heart and pulling it strings. The feeling is so intense you wish he would just rip it out already. '.
+        'Messing with your head, reaching your heart and pulling it strings. The feeling is so intense you wish he would just rip it out already. ',
         'Yes it’s him. He is real and he is here. The greatest trick he ever pulled was convincing the world he didn’t exist.',
        'You must be wondering why he went through all this trouble to gather you all here. What are the chances that four beings,',
         'with such contrasting backgrounds and traits, ending up here. At this exact place, this exact time.'
@@ -748,56 +761,73 @@ def set_example_story(story):
     story.get_page(character_name='wizard', chapter=4, page='outro').add_page_variation(
         txt=['How did he plan all this? Let me help you my dears by telling you that he didn’t.',
 
-'You by your own choice and your own will, took every step that led you to this place.',
+            'You by your own choice and your own will, took every step that led you to this place.',
 
+<<<<<<< HEAD
 'And he, like always, is ecstatic that the entire universe conspired to help  him find you.',
+=======
+            'And he, like always, is ecstatic that the entire universe conspired to help  him find you.',
+>>>>>>> 0b4f87a72411b8b4dd63d97e45f26a3ba4db1156
 
-'He is not your enemy. The only real enemy to have ever existed, is an internal one.',
+            'He is not your enemy. The only real enemy to have ever existed, is an internal one.',
 
+            'You can’t give in to this. You can’t get sucked in by the darkness.',
+
+<<<<<<< HEAD
 'You can’t give in to this. You can’t get sucked in by the darkness.',
 
 'This is exactly what he wants, don’t hand it to him. Don’t pour salt to the open wound. Fight his evil with good, and his darkness with light.',
+=======
+            'This is exactly what he wants, don’t hand it to him. Don’t pour salt to the open wound. Fight his evil with good, and his darkness with light.',
+>>>>>>> 0b4f87a72411b8b4dd63d97e45f26a3ba4db1156
 
-'Can you see it now? Is it getting clearer? Can you see how each and every one of you, despite your differences, helped one another do and be better?',
+            'Can you see it now? Is it getting clearer? Can you see how each and every one of you, despite your differences, helped one another do and be better?',
 
-'You came to this city all alone, you crossed paths with a hundred other people. But you chose these three standing in front of you.',
+            'You came to this city all alone, you crossed paths with a hundred other people. But you chose these three standing in front of you.',
 
-'You didn’t fall into this maze. You  walked into it, with your eyes wide open, choosing to take every step along the way.',
- 'Maybe there is no fate or destiny, but I believe you are only fated to do the things that you’d choose anyway.'
-'And you’d choose each other; in a hundred lifetimes, in a hundred worlds, in any version of reality, you’d find one another and you’d choose one another.',
+            'You didn’t fall into this maze. You  walked into it, with your eyes wide open, choosing to take every step along the way.',
+            'Maybe there is no fate or destiny, but I believe you are only fated to do the things that you’d choose anyway.'
+            'And you’d choose each other; in a hundred lifetimes, in a hundred worlds, in any version of reality, you’d find one another and you’d choose one another.',
 
-'You all, remember where you were when this journey first started, and look at yourselves now.',
+            'You all, remember where you were when this journey first started, and look at yourselves now.',
 
-'The more you look, the clearer you see, the faster the peace and serenity take over.',
+            'The more you look, the clearer you see, the faster the peace and serenity take over.',
 
-'All you touch and all you see is all your lives would ever be. And now, your lives would never be the same, after crossing paths with these exceptional people.'
+            'All you touch and all you see is all your lives would ever be. And now, your lives would never be the same, after crossing paths with these exceptional people.'
 
+<<<<<<< HEAD
 'So here’s the best part, distilled for you; you saved yourselves, and in the process saved the world from doom.',
 
 'Congrats my dears. It was a blast accompanying you on this journey.']
+=======
+            'So here’s the best part, distilled for you; you saved yourselves, and in the process saved the world from doom.'
+
+            'Congrats my dears. It was a blast accompanying you on this journey.']
+>>>>>>> 0b4f87a72411b8b4dd63d97e45f26a3ba4db1156
     )
 
     story.get_page(character_name='wizard', chapter=4, page='outro').add_page_variation(
         txt=['How did he plan all this? Let me help you my dears by telling you that he didn’t.',
-'You by your own choice and your own will, took every step that led you to this place.',
-'And he, like always, is ecstatic that the entire universe conspired to help  him find you.',
-'He is not your enemy. The only real enemy to have ever existed, is an internal one.',
-'You the adventurer, are your own enemy. Fleeing from place to place all your life, trying to fill the void inside.',
- 'But in reality you are fleeing yourself. Fleeing the dissatisfaction, seeking glorification and validation, as if your values increases by the count of the places you explore.',
-'You the detective, are your own enemy. Spending your entire time solving people’s issues so you wouldn’t have to face your own.',
- 'Helping people is merely an overcorrection for the fact that you were responsible for your own brother’s death.',
-'You the Wizard, are your own enemy. You spent your entire life isolated,  hating humans before they hate you.',
- 'Convincing yourself that you are better than them, more powerful, and that your magic is something they envy you for.',
-  'When really you are the one envying them for a life so simple and sweet. All you ever wanted was to flee and live a normal life.',
-   'To live like a human.',
-'You the Alien, are your own enemy. You must’ve really hated your own kind for you to travel all the way from Mars.',
- 'You were always the underdog of aliens, they all thought you weren’t good enough and you knew it.',
-'You want us to believe you got on a spaceship all alone for 157 just for research? Who are you kidding ? You were never good enough for your people, they underestimated you.',
- 'The only time they ever looked up to you was because you let them down. And now you come here to this planet, thinking you’re superior, plotting to take over the world.',
-'You all, look at yourselves now. Look at where the devil in you got you.',
-'The more you look, the deeper you see, the faster the darkness takes over.',
-'All you touch and all you see is all your lives would ever be.',
-'But now all there is, is darkness. You and everything surrounding you vanish into nothingness.',
-'So long my friends, i am pained to have lost this way.']
+            'You by your own choice and your own will, took every step that led you to this place.',
+            'And he, like always, is ecstatic that the entire universe conspired to help  him find you.',
+            'He is not your enemy. The only real enemy to have ever existed, is an internal one.',
+            'You the adventurer, are your own enemy. Fleeing from place to place all your life, trying to fill the void inside.',
+            'But in reality you are fleeing yourself. Fleeing the dissatisfaction, seeking glorification and validation, as if your values increases by the count of the places you explore.',
+            'You the detective, are your own enemy. Spending your entire time solving people’s issues so you wouldn’t have to face your own.',
+            'Helping people is merely an overcorrection for the fact that you were responsible for your own brother’s death.',
+            'You the Wizard, are your own enemy. You spent your entire life isolated,  hating humans before they hate you.',
+            'Convincing yourself that you are better than them, more powerful, and that your magic is something they envy you for.',
+            'When really you are the one envying them for a life so simple and sweet. All you ever wanted was to flee and live a normal life.',
+            'To live like a human.',
+            'You the Alien, are your own enemy. You must’ve really hated your own kind for you to travel all the way from Mars.',
+            'You were always the underdog of aliens, they all thought you weren’t good enough and you knew it.',
+            'You want us to believe you got on a spaceship all alone for 157 just for research? Who are you kidding ? You were never good enough for your people, they underestimated you.',
+            'The only time they ever looked up to you was because you let them down. And now you come here to this planet, thinking you’re superior, plotting to take over the world.',
+            'You all, look at yourselves now. Look at where the devil in you got you.',
+            'The more you look, the deeper you see, the faster the darkness takes over.',
+            'All you touch and all you see is all your lives would ever be.',
+            'But now all there is, is darkness. You and everything surrounding you vanish into nothingness.',
+            'So long my friends, i am pained to have lost this way.'])
 
-    story.get_page(character_name='wizard', chapter=4, page='outro').set_last_page(True)
+    story.get_page(character_name='wizard', chapter=4,
+                   page='outro').set_last_page(True)
