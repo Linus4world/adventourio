@@ -106,6 +106,7 @@ export class GamePage implements AfterViewInit {
   }
 
   private async presentStoryPage() {
+    console.warn(this.stage.story)
     const modal = await this.modalController.create({
       component: StoryPage,
       componentProps: {
