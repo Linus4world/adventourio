@@ -308,5 +308,5 @@ class PageVariation:
 
     def __init__(self):
         self.txt = []
-        self.challenge = {}
+        self.challenge = None
         self.story_location = [0, 0, 0]
