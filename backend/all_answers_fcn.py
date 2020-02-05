@@ -94,11 +94,11 @@ def placesCategory(all_answers, places):
     places_result = dict()
 
     for answer in all_answers['all_answers']:
-        if answer['answers'][0] == 'a':
+        if answer['answers'][0] == 'Entertainment':
             results[0] = results[0] + 1
-        elif answer['answers'][0] == 'b':
+        elif answer['answers'][0] == 'University':
             results[1] = results[1] + 1
-        elif answer['answers'][0] == 'c':
+        elif answer['answers'][0] == 'Sightseeing':
             results[2] = results[2] + 1
 
     if len(numpy.where(results == numpy.amax(results))[0]) == 1:

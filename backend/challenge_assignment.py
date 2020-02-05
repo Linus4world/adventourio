@@ -48,6 +48,7 @@ def new_place(game):
     places_in = game.get_place_category()
     stage = game.get_current_chapter() + 1
     one_json = {}
+    print('stage: ', stage)
 
     if stage == 1:
 

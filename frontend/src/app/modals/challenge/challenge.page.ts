@@ -76,4 +76,8 @@ export class ChallengePage {
     this.answer = value;
   }
 
+  isCorrectInput(): boolean {
+    return (this.challenge.right_answer as string[]).indexOf(this.answer) >= 0;
+  }
+
 }
