@@ -61,6 +61,7 @@ def join(player_id):
 
 @app.route('/stage/<player_id>', methods=['POST'])
 def get_next_story_section(player_id):
+    global challenges
     if not debug_mode:
         player_data = request.get_json()
     else:
@@ -68,19 +69,18 @@ def get_next_story_section(player_id):
 
     challenge_outcome = None
     player_location = None
-    print(player_data)
     if 'challengeOutcome' in player_data:
         challenge_outcome = player_data['challengeOutcome']
     if 'playerLocation' in player_data:
-        player_location = player_data['playerLocation']
+        game.get_player(player_id).geo_location = player_data['playerLocation']
 
     if game.is_game_ready():
 
         # Get the challenges:
-        global challenges
         challenges = new_place(game)
 
         game.ready_to_play = True
+        print('Open')
         game.current_chapter += 1
 
     # Wait for other players to finish their challenge
@@ -90,11 +90,6 @@ def get_next_story_section(player_id):
         return json.dumps(challenges[player_id])
     if not debug_mode:
         return abort('MAX_TIMEOUT')
-
-
-@app.route('/here/<player_id>')
-def here(player_id):
-    return SUCCESS
 
 
 def abort(message: str):

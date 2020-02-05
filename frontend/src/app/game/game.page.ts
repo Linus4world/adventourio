@@ -106,6 +106,7 @@ export class GamePage implements AfterViewInit {
   }
 
   private async presentStoryPage() {
+    console.warn(this.stage.story)
     const modal = await this.modalController.create({
       component: StoryPage,
       componentProps: {
@@ -113,7 +114,8 @@ export class GamePage implements AfterViewInit {
       }
     });
     modal.onDidDismiss().then(() => {
-      if (this.stage.game_finished) {
+      console.warn(this.stage.game_finished)
+      if (this.stage.game_finished === true) {
         this.presentFeedbackPage();
       }
     });
