@@ -94,25 +94,25 @@ class Story:
 
     # --------------- BLANKS: ---------------
     #
-    # def add_blank_v2(self, blank_id, list_of_words, changes_every_time=False):
-    #     blank = dict(
-    #         changes_every_time=changes_every_time,
-    #         list_of_words=list_of_words,
-    #     )
-    #     self.blanks[blank_id] = blank
-    #
-    # def get_the_word_for_the_blank_v2(self, blank_id):
-    #     if blank_id in assigned_blanks.keys():
-    #         ret_word = assigned_blanks[blank_id]
-    #     else:
-    #
-    #         blank = self.blanks[blank_id]
-    #         random.seed()
-    #         ret_word = random.choice(blank['list_of_words'])
-    #
-    #         if not blank['changes_every_time']:
-    #             assigned_blanks[blank_id] = ret_word
-    #     return ret_word
+    def add_blank_v2(self, blank_id, list_of_words, changes_every_time=False):
+        blank = dict(
+            changes_every_time=changes_every_time,
+            list_of_words=list_of_words,
+        )
+        self.blanks[blank_id] = blank
+    
+    def get_the_word_for_the_blank_v2(self, blank_id):
+        if blank_id in assigned_blanks.keys():
+            ret_word = assigned_blanks[blank_id]
+        else:
+    
+            blank = self.blanks[blank_id]
+            random.seed()
+            ret_word = random.choice(blank['list_of_words'])
+    
+            if not blank['changes_every_time']:
+                assigned_blanks[blank_id] = ret_word
+        return ret_word
 
     def add_blank(self, blank_id, word_type='', changes_every_time=False, list_of_words=None):
         """
