@@ -30,7 +30,7 @@ export class GameProvider {
     public sendQuestionnaireAnswers(answers: QuestionnaireAnswers): Observable<void> {
         return this.http.POST('join/' + this.account.getID(), JSON.stringify(answers), this.MAX_TIMEOUT).pipe(
             map((response: { playerNames: string[], character: string}) => {
-                console.log('Players in session: ', response.playerNames);
+                console.log(response);
                 const friends = this.account.getFriends();
                 for (const friend of response.playerNames) {
                     if (friend !== this.account.getName() && friends.indexOf(friend) < 0) {

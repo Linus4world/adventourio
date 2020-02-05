@@ -45,37 +45,37 @@ def get_character_assignment(answers):
     # calculating the answers into points for specific characters for every person
     a = 0
     for answer in answers['all_answers']:
-        if answer['answers'][3] == 'a':
+        if answer['answers'][3] == 'Adventurer/action':
             points_id[a]['points_adventurer'] = points_id[a]['points_adventurer'] + 1
-        elif answer['answers'][3] == 'b':
+        elif answer['answers'][3] == 'Science-fiction':
             points_id[a]['points_alien'] = points_id[a]['points_alien'] + 1
-        elif answer['answers'][3] == 'c':
+        elif answer['answers'][3] == 'Fantasy':
             points_id[a]['points_wizard'] = points_id[a]['points_wizard'] + 1
-        elif answer['answers'][3] == 'd':
+        elif answer['answers'][3] == 'crime':
             points_id[a]['points_detective'] = points_id[a]['points_detective'] + 1
-        if answer['answers'][4] == 'a':
+        if answer['answers'][4] == 'To experience other cultures':
             points_id[a]['points_wizard'] = points_id[a]['points_wizard'] + 1
-        elif answer['answers'][4] == 'b':
+        elif answer['answers'][4] == "Because it's fun":
             points_id[a]['points_adventurer'] = points_id[a]['points_adventurer'] + 1
-        elif answer['answers'][4] == 'c':
+        elif answer['answers'][4] == 'To get away from where I normally live':
             points_id[a]['points_detective'] = points_id[a]['points_detective'] + 1
-        elif answer['answers'][4] == 'd':
+        elif answer['answers'][4] == 'To get some more academic experience':
             points_id[a]['points_alien'] = points_id[a]['points_alien'] + 1
-        if answer['answers'][5] == 'a':
+        if answer['answers'][5] == 'Deutsches Museum':
             points_id[a]['points_alien'] = points_id[a]['points_alien'] + 1
-        elif answer['answers'][5] == 'b':
+        elif answer['answers'][5] == 'Oktoberfest':
             points_id[a]['points_adventurer'] = points_id[a]['points_adventurer'] + 1
-        elif answer['answers'][5] == 'c':
+        elif answer['answers'][5] == 'any restaurant with typical German cuisine':
             points_id[a]['points_wizard'] = points_id[a]['points_wizard'] + 1
-        elif answer['answers'][5] == 'd':
+        elif answer['answers'][5] == 'none of the above':
             points_id[a]['points_detective'] = points_id[a]['points_detective'] + 1
-        if answer['answers'][6] == 'a':
+        if answer['answers'][6] == 'mostly friends from the university':
             points_id[a]['points_alien'] = points_id[a]['points_alien'] + 1
-        elif answer['answers'][6] == 'b':
+        elif answer['answers'][6] == 'lots of people from Germany':
             points_id[a]['points_detective'] = points_id[a]['points_detective'] + 1
-        elif answer['answers'][6] == 'c':
+        elif answer['answers'][6] == 'friends who came here with me':
             points_id[a]['points_adventurer'] = points_id[a]['points_adventurer'] + 1
-        elif answer['answers'][6] == 'd':
+        elif answer['answers'][6] == "no one in particular, people I've met here and there":
             points_id[a]['points_wizard'] = points_id[a]['points_wizard'] + 1
         a = a + 1
 
@@ -106,6 +106,7 @@ def get_character_assignment(answers):
         all_alien_points[i] = points_id[i]['points_alien']
         all_wizard_points[i] = points_id[i]['points_wizard']
         all_detective_points[i] = points_id[i]['points_detective']
+    print(all_adventurer_points, all_alien_points, all_wizard_points, all_detective_points)
 
     count = 0
     for j in range(0, 4):
@@ -120,7 +121,7 @@ def get_character_assignment(answers):
                     chosen_characters[0] = 0
                 elif chosen_characters[3] == 1:
                     # max points detective
-                    [all_adventurer_points, all_alien_points, all_wizard_points, all_detective_points, detecctive,
+                    [all_adventurer_points, all_alien_points, all_wizard_points, all_detective_points, detective,
                      chosen] = \
                         maxDetective(all_adventurer_points, all_alien_points, all_wizard_points, all_detective_points,
                                      points_id, detective, chosen)

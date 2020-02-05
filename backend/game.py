@@ -88,12 +88,13 @@ class Game:
         # ------------------ HANDLE MOCK PLAYERS: -------------------
         # Add Player
         for i in range(number_of_dummy_players):
-            player_input = {
-                "name": 'Player'+str(i),
-                "answers": [
-                    "Entertainment","yes","yes","Adventure/action","To experience other cultures","Deutsches Museum","mostly friends from the university"
-                    ]
-                }
+            # player_input = {
+            #     "name": 'Player'+str(i),
+            #     "answers": [
+            #         "Entertainment","yes","yes","Adventure/action","To experience other cultures","Deutsches Museum","mostly friends from the university"
+            #         ]
+            #     }
+            player_input = {"name":"Player","answers":["University","no","yes","Science-fiction","Because it’s fun","Oktoberfest","friends who came here with me"]}
             self.add_player(str(i), player_input)
             player = self.get_player(str(i))
             player.challenge_outcomes.append(True)

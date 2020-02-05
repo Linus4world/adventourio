@@ -7,6 +7,7 @@ ion-content {
     border-radius: 25px;
     border: 1px solid black;
     max-height: 50vh;
+    overflow: scroll;
     h1 {
         font-size: 5vw;
     }
@@ -39,7 +40,7 @@ ion-input {
     text-align: start;
 }
 
-.wrong.item-radio-checked {
+.wrong.item-radio-checked, .wrong.input-answer {
     --background: red;
 }
 

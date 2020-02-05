@@ -21,7 +21,7 @@
   </ion-radio-group>
   <div *ngIf="challenge.challenge_type === 2" class="ion-margin ion-padding">
     <ion-list lines="full" class="ion-no-margin ion-no-padding">
-      <ion-item>
+      <ion-item class="input-answer" [ngClass]="{'wrong': submitted && !isCorrectInput(), 'correct': submitted && isCorrectInput()}">
         <ion-input type="text" minlength=1 placeholder="Your Answer" required
           (input)="handleUserAnswer($event.target.value)">
         </ion-input>
