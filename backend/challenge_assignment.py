@@ -47,7 +47,7 @@ def new_place(game):
 
     places_in = game.get_place_category()
     stage = game.get_current_chapter() + 1
-    one_json = dict()
+    one_json = {}
 
     if stage == 1:
 
@@ -452,4 +452,5 @@ def new_place(game):
                         adventurer_id: {'destinationName': destinationName, 'destinationCoords': destinationCoords,
                                         'challenge': {'challenge': challenge, 'challenge_type': challenge_type,
                                                       'right_answer': right_answer}}}
-        return one_json
+        
+    return one_json

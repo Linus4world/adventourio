@@ -225,15 +225,16 @@ class Game:
         page = self.story.get_page_raw(row, column + 1)
         if page.is_it_the_last_page():
             player.game_finished = True
+            self.finished_game = True
 
         page_variation = PageVariation()
 
+        # If the page is a challenge page:
+        if page.page_type == 'challenge':
+            page_variation.challenge = dict()
         if page.page_variations:
-            # If the page is a challenge page:
-            if page.page_type == 'challenge':
-                page_variation.challenge = dict()
             # If the page is an outcome page:
-            elif page.page_type == 'outcome':
+            if page.page_type == 'outcome':
                 assert len(page.page_variations) == 2, str(len(page.page_variations))
                 page_variation = story.select_good_or_bad_outcome(page.page_variations, player)
             # IF IT IS NOT SPECIFIED WHAT TYPE OF PAGE THIS IS, A RANDOM PAGE VARIATION WILL BE SELECTED!
@@ -260,8 +261,7 @@ class Game:
             # This has to be called AFTER get_next_page_variation
             game_finished = self.players[player_id].game_finished
 
-            if page_variation.txt != '':
-                story_text.extend(page_variation.txt)
+            story_text.extend(page_variation.txt)
             if page_variation.challenge is not None:
                 challenge_found = True
 

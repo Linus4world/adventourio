@@ -86,6 +86,8 @@ def get_next_story_section(player_id):
     # Wait for other players to finish their challenge
     if not debug_mode and game.wait_for_game_ready():
         story_content = game.get_next_story_section(player_id, challenge_outcome)
+        if not challenges:
+            return json.dumps(story_content)
         challenges[player_id].update(story_content)
         return json.dumps(challenges[player_id])
     if not debug_mode:
