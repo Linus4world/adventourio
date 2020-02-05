@@ -93,26 +93,26 @@ class Story:
         return self.challenges[challenge_id]
 
     # --------------- BLANKS: ---------------
-
-    def add_blank_v2(self, blank_id, list_of_words, changes_every_time=False):
-        blank = dict(
-            changes_every_time=changes_every_time,
-            list_of_words=list_of_words,
-        )
-        self.blanks[blank_id] = blank
-
-    def get_the_word_for_the_blank_v2(self, blank_id):
-        if blank_id in assigned_blanks.keys():
-            ret_word = assigned_blanks[blank_id]
-        else:
-
-            blank = self.blanks[blank_id]
-            random.seed()
-            ret_word = random.choice(blank['list_of_words'])
-
-            if not blank['changes_every_time']:
-                assigned_blanks[blank_id] = ret_word
-        return ret_word
+    #
+    # def add_blank_v2(self, blank_id, list_of_words, changes_every_time=False):
+    #     blank = dict(
+    #         changes_every_time=changes_every_time,
+    #         list_of_words=list_of_words,
+    #     )
+    #     self.blanks[blank_id] = blank
+    #
+    # def get_the_word_for_the_blank_v2(self, blank_id):
+    #     if blank_id in assigned_blanks.keys():
+    #         ret_word = assigned_blanks[blank_id]
+    #     else:
+    #
+    #         blank = self.blanks[blank_id]
+    #         random.seed()
+    #         ret_word = random.choice(blank['list_of_words'])
+    #
+    #         if not blank['changes_every_time']:
+    #             assigned_blanks[blank_id] = ret_word
+    #     return ret_word
 
     def add_blank(self, blank_id, word_type='', changes_every_time=False, list_of_words=None):
         """
@@ -163,6 +163,7 @@ class Story:
                 return random.choice(pycorpora.words.literature.lovecraft_words['words'])
             elif blank_id == "shakespeare_words":
                 return random.choice(pycorpora.words.literature.shakespeare_words['words'])
+
             else:
                 return "you messed up, buddy"  # LOL
 
@@ -193,6 +194,10 @@ class Story:
                     weapon = random.choice(detective_weapon)
                     assigned_keywords["weapon"] = weapon
                     return weapon
+                elif blank_id == "villain":
+                    name= get_random_name()
+                    assigned_keywords["villain"] = name
+                    return name
             else:
                 return assigned_keywords[blank_id]
 

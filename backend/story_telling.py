@@ -39,12 +39,13 @@ def set_example_story(story):
             story.get_page_raw(row, i + 1).set_page_type('outcome')
 
     # --------------- ADDING BLANKS ---------------
-    story.add_blank_v2('treasure', adventurer_treasure)
-    story.add_blank_v2('map', adventurer_map)
-    story.add_blank_v2('tech', sci_fi_thing)
-    story.add_blank_v2('magic', magic_thing)
-    story.add_blank_v2('weapon', detective_weapon)
-    story.add_blank_v2('B00', pycorpora.words.strange_words['words'])
+    story.add_blank('treasure', adventurer_treasure)
+    story.add_blank('map', adventurer_map)
+    story.add_blank('tech', sci_fi_thing)
+    story.add_blank('magic', magic_thing)
+    story.add_blank('weapon', detective_weapon)
+    story.add_blank('B00', pycorpora.words.strange_words['words'])
+    story.add_blank('villain')
 
     # --------------- ADDING CONTENT ---------------
 
@@ -107,7 +108,7 @@ def set_example_story(story):
     story.get_page(character_name='alien', chapter=2, page='outro').add_page_variation(
         txt=['Okay, no need to panic. But it does seem to me like everyone is staring at you. No worries though, worst case scenario it’s just because they don’t like your outfit. '
              'But don’t take it personally, that’s just how humans react to what’s different. ',
-             'A nice lady just approached you and invited you into her office for a chat. If you decline you’d come off suspicious. So just go with it, and if things escalate just use your ~tech~ . ' 
+             'A nice lady just approached you and invited you into her office for a chat. If you decline you’d come off suspicious. So just go with it, and if things escalate just use your ~tech~ . '
              'Oh no, you seem to have forgotten it with the adventurer. Classic. ',
              'Oh look at her with her manners, offering you a cup of water. Just drink it, humans drink water. Tastes horrible, right? That’s actually the main reason they want to invade your planet. ',
              'Come on now, she’s talking to you, answer her. Why did you suddenly get so dizzy? Are you okay? You seem to be losing your consciousness. ',
@@ -128,7 +129,7 @@ def set_example_story(story):
     )
 
     story.get_page(character_name='alien', chapter=3, page='intro').add_page_variation(
-        txt=['Rise and shine you Alien. Okay maybe just rise. There is no shining inside the cage you’re in. Although there is a well dressed human waiting for you in this room. ', 
+        txt=['Rise and shine you Alien. Okay maybe just rise. There is no shining inside the cage you’re in. Although there is a well dressed human waiting for you in this room. ',
              'He is too chic to be a scientist. Just listen to what he has to stay, and try to gain his trust. ',
              'Oh for the love of science! He’s been going on and on about how he’s a detective but he can’t figure out that you’re not the bad guy. ',
              'I give up, just start begging until he frees you. Well that was easier than I expected. ',
@@ -140,7 +141,7 @@ def set_example_story(story):
     )
     story.get_page(character_name='alien', chapter=3, page='outro').add_page_variation(
         txt=['What kind of mastermind orchestrated this whole charade? This place is like nothing you’ve ever seen before. ',
-             'Hold on a second, is that the ~treasure~ you found with the adventurer? Pick it up quickly! What’s this thing beneath it? ' 
+             'Hold on a second, is that the ~treasure~ you found with the adventurer? Pick it up quickly! What’s this thing beneath it? '
              'It’s probably some human thing, ask the detective. He says it’s just some piece of jewelry. Hand it over and let him examine it further. ',
              'Wait, why did he suddenly get so ecstatic? Did he really just hug you? I am no expert but this does not seem like such usual human behaviour. ',
              'Screaming out “ I remember! I figured it all out!”. He seems to be having a Eureka moment. ',
@@ -210,7 +211,7 @@ def set_example_story(story):
              'He recognizes the initials! What are the chances! ',
              'You two better start asking around to get to the end of this. But you need to step up your game. Everyone either takes you for lunatics or just avoids the subject. I wonder why..'
              ]
-    )   
+    )
 
     story.get_page(character_name='adventurer', chapter=2, page='outro').add_page_variation(
         txt=['A wise man just approached you. He heard you and the detective and says you’re looking in the wrong place. He seems to know something about the matter and advises you to go east. ',
@@ -220,7 +221,7 @@ def set_example_story(story):
     )
     story.get_page(character_name='adventurer', chapter=2, page='outro').add_page_variation(
         txt=['Wow, it seems like you came off a bit too invasive. People here get annoyed very quickly. You mix that with alcohol and you get a ticking bomb. ',
-             'Oh great, look at what you’ve done. Now they’re all yelling and throwing chairs at you. ', 
+             'Oh great, look at what you’ve done. Now they’re all yelling and throwing chairs at you. ',
              'Quick, run! And make sure to split up so they won’t find you. ',
              'And next time try being more subtle with your questions maybe? ',
              'And also maybe not forget the ~treasure~ with the wise man?'
@@ -257,7 +258,7 @@ def set_example_story(story):
              'Now you must go through the tunnel, it’s the only way out. ',
              'You can thank me later.'
              ]
-    )   
+    )
 
     story.get_page(character_name='adventurer', chapter=4, page='outro').set_last_page(True)
 
@@ -290,10 +291,10 @@ def set_example_story(story):
             'Upon opening it, two slivers of paper fall out: the first one is a short note. It simply reads: Do You Miss Me? And then, at the bottom, initials.',
             'They are so familiar to you that it aches. Where have you seen them before? From where do you know this handwriting?',
             'You feel the beginning of a headache develop behind the back of your eyes. You tell yourself to focus, dig deeper and then… a memory.',
-            'Hatred bubbling up in you, a flash of blue eyes and a sneer. You remember him. He is here. Your...nemesis. It leaves you shaking. Does he know you’re here?',
+            'Hatred bubbling up in you, a flash of blue eyes and a sneer. You remember him. ~villain~. He is here. Your...nemesis. It leaves you shaking. Does he know you’re here?',
             'Is he following you? What does he want? You do not know what is written on the second paper but it must be equally concerning, as the wizard pales at the sight of the letter.',
             'She attempts to tell you what the problem is, tries to convince you to join her. But you feel numb. Her words pass through you and all you can think about… is him.',
-            'Him, on your tracks like a bloodhound. It is not difficult to imagine what he would do to this young woman, if he found her with you.',
+            '~villain~, on your tracks like a bloodhound. It is not difficult to imagine what he would do to this young woman, if he found her with you.',
             'So you tell her that you have to attend to personal matters. It’s better if she doesn’t know. It’s safer this way. And thus, your ways part.']
     )
 
@@ -301,12 +302,12 @@ def set_example_story(story):
         txt=['By sheer coincidence you find an envelope. It is tucked between the branches of a tree and curiously, it is addressed to… you.',
             'Upon opening it, two slivers of paper fall out: the first one is a short note. It simply reads: Do You Miss Me? And then, at the bottom, initials.',
             'They are so familiar to you that it aches. Where have you seen them before? From where do you know this handwriting? You feel the beginning of a headache develop behind the back of your eyes.',
-            'You tell yourself to focus, dig deeper and then… a memory. Hatred bubbling up in you, a flash of blue eyes and a sneer. You remember him. Your...nemesis. But how is it possible?',
+            'You tell yourself to focus, dig deeper and then… a memory. Hatred bubbling up in you, a flash of blue eyes and a sneer. You remember him. ~villain~. Your...nemesis. But how is it possible?',
             'You remember… wasn’t he dead? It leaves you shaking. Is he still alive? Is he following you? Another even more terrifiyng thought enters your head.'
             'The thought of an imposter, trying to lure you into a trap. Someone who wants… what? Revenge, maybe?',
             'You do not know what is written on the second paper but it must be equally concerning, as the wizard pales at the sight of the letter.',
             'She attempts to tell you what the problem is, tries to convince you to join her. But you feel numb. Her words pass through you and all you can think about…',
-            'is whoever wrote this letter. They are on your tracks like a bloodhound. And it is not difficult to imagine what they would do to this young woman, if they found her with you.',
+            'is whoever wrote this letter. ~villain~, someone else, who knows. They are on your tracks like a bloodhound. And it is not difficult to imagine what they would do to this young woman, if they found her with you.',
             'So you tell her that you have to attend to personal matters. It’s better if she doesn’t know. It’s safer this way. And thus, your ways part.']
     )
 
@@ -322,7 +323,7 @@ def set_example_story(story):
             'There is dirt beneath her nails, so she works with her hands. Well-worn backpack, she travels light and often but doesn’t have the cash to buy new equipment.',
             'Some sort of freelancer maybe? She strikes you as the adventorous type. Either way, she’s not from here which makes her useless to you. That is, until she explains why she is here.',
             'She got a tip from someone and when she names their initials your blood freezes in its veins.',
-            'She says something about a curse, God, what is it with people and magic these days, you wonder, but if she’s working with him, you bet that you’re going to help her with whatever she wants.',
+            'She says something about a curse, God, what is it with people and magic these days, you wonder, but if she’s working with ~villain~, you bet that you’re going to help her with whatever she wants.',
             'Maybe this way you’ll figure out what is going on. And since she wants to talk to locals about some kind of curse that she has unleashed and since she needs help… why the hell not?']
     )
 
@@ -334,7 +335,7 @@ def set_example_story(story):
             'It takes everything in you not to get up right then and there to confront that bastard and your fingers are twitching, almost reaching for your ~weapon~. Instead, you wait.',
             'The woman returns to you and says she got a tip to go eastwards. She’ll be moving on and thanks you for your help. You grimace, say nothing, and wave her goodbye.',
             'It’s likely that the man is deliberately trying to distract her and that he sent her off to who knows where. But whoever that man is… he was too skilled to be a simple pick-pocket.',
-            'He’s probably affiliated with someone of his likes. And also, you’re going to get that woman her treasure back, damn it. Like hell you’re letting a thief get away with something like this.',
+            'He’s probably affiliated with someone the likes of ~villain~. And also, you’re going to get that woman her treasure back, damn it. Like hell you’re letting a thief get away with something like this.',
             'So as soon the man finishes his drink and gets up to leave, you follow from a distance. Eventually, you see him enter a building – it seems like a research facility.',
             'You don’t have the time for a stake out, so you sneak around the building and break a window on the ground floor. Fuck it, you’ll deal with the consequences once you’re inside.']
     )
@@ -371,10 +372,10 @@ def set_example_story(story):
 
     story.get_page(character_name='detective', chapter=3, page='outro').add_page_variation(
         txt=['The alien yelps and points at the desk. He recognizes these, he says, what are the odds? To your surprise, you find the treasure of the woman and some kind of… jewelry?',
-            'Why is that also so familiar to you? And then suddenly all your memories come rushing back. He is there, after all these years of animosity, after all these times you nearly caught him.',
-            'He has your brother, you are there as well, pleading him to let him go. Instead, a shot rings out and the lifeless body of your brother drops to the floor.',
+            'Why is that also so familiar to you? And then suddenly all your memories come rushing back. ~villain~ is there, after all these years of animosity, after all these times you nearly caught him.',
+            'He has your brother, you are there as well, pleading ~villain~ to let him go. Instead, a shot rings out and the lifeless body of your brother drops to the floor.',
             'You cry out, seeking revenge but he, your nemesis, he keeps going on and on about the way all the artefacts are supposed to fit together.',
-            'You are familiar with this topc of course, after all you memorized the plan before destroying it. That was why he attempted to blackmail you in the first place.',
+            'You are familiar with this topc of course, after all you memorized the plan before destroying it. That was why ~villain~ attempted to blackmail you in the first place.',
             'With nothing to hold you back now you lunge at him, tackling him to the ground.',
             'But he quickly escapes your grip and gets a fistful of your hair before he smashes your head into a boulder. Then: darkness.',
             'You grip your head, now, in the present. You are shaking but you remember everything. And...you are pissed.',
@@ -383,10 +384,10 @@ def set_example_story(story):
 
     story.get_page(character_name='detective', chapter=3, page='outro').add_page_variation(
         txt=['On the desk you find the treasure of the woman and some kind of… jewelry?',
-            'Why is that also so familiar to you? And then suddenly all your memories come rushing back. He is there, after all these years of animosity, after all these times you nearly caught him.',
-            'He has your brother, you are there as well, pleading him to let him go. Instead, a shot rings out and the lifeless body of your brother drops to the floor.',
+            'Why is that also so familiar to you? And then suddenly all your memories come rushing back. ~villain~ is there, after all these years of animosity, after all these times you nearly caught him.',
+            'He has your brother, you are there as well, pleading ~villain~ to let him go. Instead, a shot rings out and the lifeless body of your brother drops to the floor.',
             'You cry out, seeking revenge but he, your nemesis, he keeps going on and on about the way all the artefacts are supposed to fit together.',
-            'You are familiar with this topc of course, after all you memorized the plan before destroying it. That was why he attempted to blackmail you in the first place.',
+            'You are familiar with this topc of course, after all you memorized the plan before destroying it. That was why ~villain~ attempted to blackmail you in the first place.',
             'With nothing to hold you back now you lunge at him, tackling him to the ground.',
             'But he quickly escapes your grip and gets a fistful of your hair before he smashes your head into a boulder. Then: darkness.',
             'You grip your head, now, in the present. You are shaking but you remember everything. And...you are pissed.',
