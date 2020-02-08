@@ -94,30 +94,30 @@ def placesCategory(all_answers, places):
     places_result = dict()
 
     for answer in all_answers['all_answers']:
-        if answer['answers'][0] == 'a':
+        if answer['answers'][0] == 'Entertainment':
             results[0] = results[0] + 1
-        elif answer['answers'][0] == 'b':
+        elif answer['answers'][0] == 'University':
             results[1] = results[1] + 1
-        elif answer['answers'][0] == 'c':
+        elif answer['answers'][0] == 'Sightseeing':
             results[2] = results[2] + 1
 
     if len(numpy.where(results == numpy.amax(results))[0]) == 1:
         n = numpy.where(results == numpy.amax(results))[0]
         if n == 0:
-            max_res = 'entertainment'
+            max_res = 'Entertainment'
         elif n == 1:
-            max_res = 'university'
+            max_res = 'University'
         elif n == 2:
-            max_res = 'sightseeing'
+            max_res = 'Sightseeing'
     else:
         a = random.randint(0, len(numpy.where(results == numpy.amax(results))[0]) - 1)
         n = numpy.where(results == numpy.amax(results))[0][a]
         if n == 0:
-            max_res = 'entertainment'
+            max_res = 'Entertainment'
         elif n == 1:
-            max_res = 'university'
+            max_res = 'University'
         elif n == 2:
-            max_res = 'sightseeing'
+            max_res = 'Sightseeing'
 
     for place in places['places']:
         if place['category'] == max_res:

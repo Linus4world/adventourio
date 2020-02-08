@@ -51,10 +51,6 @@ This will install all necessary dependencies specified in the `package.json`. Ma
 To start a local development server run:
 ```sh
 ionic serve
-
-or
-
-npm start
 ```
 This will run a live development server at port 8000. You can access it by navigating to `http://localhost:8000` in your browser. If you change the code, the server will automatically update and show the changes.
 
@@ -100,10 +96,10 @@ You can the deploy the contents of the `www/` folder.
 
 ### Usage
 ##### Android
-*NOTE* for this you need to have the Android SDK Manager installed! 
+*NOTE: for this you need to have the Android SDK Manager installed!*
 
 If you just want to use install the app on your phone use the already build .apk file under `platform/android/build/outputs/apk/`. 
-You first have to activate USB debuggin on your device. You can find option under development settings.
+You first have to activate USB debuggin on your device. You can find the option under development settings.
 Connect your phone with the machine and open a terminal. Run 
 ```sh
 adb devices

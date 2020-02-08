@@ -2,7 +2,7 @@
   "places": [
     {
       "id": 1,
-      "category": "entertainment",
+      "category": "Entertainment",
       "stages": [
         {
           "stage": 1,
@@ -279,7 +279,7 @@
         {
           "stage": 3,
           "description": "exploring the history",
-          "place": [
+          "places": [
             {
               "title": "Mensa Garching",
               "challenge": "Well, nice for you, you found the new, shiny mensa. But did you know there is also a more obscure, old one, that all locals know? Find it! It’s not that far away!",
@@ -485,7 +485,11 @@
                 "Jimi Hendrix",
                 "Helene Fischer"
               ],
-              "right_answer": "Jimi Hendrix"
+              "right_answer": "Jimi Hendrix",
+              "coordinates": [
+                48.1300061,
+                11.5832644
+              ]
             }
           ]
         },
@@ -495,8 +499,8 @@
           "places": [
              {
               "title": "Hofbräuhaus am Platzl",
-              "challenge_type": 1,
-               "challenge": "The most famous beer house in Munich! I hope you are enjoying the food in this place..Here’s a riddle. What  can a human never eat for breakfast? ",
+              "challenge_type": 2,
+              "challenge": "The most famous beer house in Munich! I hope you are enjoying the food in this place..Here’s a riddle. What can a human never eat for breakfast? ",
               "right_answer": ["lunch", "dinner"],
               "coordinates": [
                 48.137674,
@@ -506,7 +510,7 @@
             {
               "title": "Viktualienmarkt",
               "challenge": "An italian Lady gave birth to 7 baby girls: Donatella, Rebecca, Mila, Fabianna, Sofia and Lamitta. What is the name of the 7th one? Giorgia, Camilla, Tianna or Laritta?",
-              "challenge_type": 1,
+              "challenge_type": 2,
               "right_answer": "Tianna",
               "coordinates": [
                 48.135265,
@@ -516,7 +520,7 @@
             {
               "title": "Marienplatz",
               "challenge": "The Evil Genius has servants with six, seven, or eight legs. The servants with seven legs always lie, but the servants with either six or eight legs always say the truth. One day, 4 servants met: The blue one says: “Altogether we have 28 legs”; the green one says: “Altogether we have 27 legs”; the yellow one says: “Altogether we have 26 legs”; the red one says: “Altogether we have 25 legs”. What is the colour of the servant that says the truth?",
-              "challenge_type": 1,
+              "challenge_type": 2,
               "right_answer": "green",
               "coordinates": [
                 48.137577,

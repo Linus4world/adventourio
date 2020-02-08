@@ -387,7 +387,8 @@ def new_place(game):
                                                       'right_answer': right_answer1}}
         return one_json
 
-    elif stage == 4:
+    elif stage == 4 or stage == 5:
+        stage = 4
         destination1 = game.players[wizard_id].geo_location
         destination2 = game.players[detective_id].geo_location
         destination1 = game.players[wizard_id].geo_location
