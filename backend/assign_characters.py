@@ -51,7 +51,7 @@ def get_character_assignment(answers):
             points_id[a]['points_alien'] = points_id[a]['points_alien'] + 1
         elif answer['answers'][3] == 'Fantasy':
             points_id[a]['points_wizard'] = points_id[a]['points_wizard'] + 1
-        elif answer['answers'][3] == 'crime':
+        elif answer['answers'][3] == 'Crime':
             points_id[a]['points_detective'] = points_id[a]['points_detective'] + 1
         if answer['answers'][4] == 'To experience other cultures':
             points_id[a]['points_wizard'] = points_id[a]['points_wizard'] + 1
