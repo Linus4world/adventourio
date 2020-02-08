@@ -40,7 +40,7 @@
       "question": "Why did you decide to do an exchange semester?",
       "options": [
         "To experience other cultures",
-        "Because it’s fun",
+        "Because it is fun",
         "To get away from where I normally live",
         "To get some more academic experience"
       ]
@@ -51,18 +51,18 @@
       "options": [
         "Deutsches Museum",
         "Oktoberfest",
-        "any restaurant with typical German cuisine",
-        "none of the above"
+        "Any restaurant with typical German cuisine",
+        "None of the above"
       ]
     },
     {
       "id": 7,
       "question": "Who did you hang out with in Munich up till now?",
       "options": [
-        "mostly friends from the university",
-        "lots of people from Germany",
-        "friends who came here with me",
-        "no one in particular, people I've met here and there"
+        "Mostly friends from the university",
+        "Lots of people from Germany",
+        "Friends who came here with me",
+        "No one in particular, people I have met here and there"
       ]
     }
   ]

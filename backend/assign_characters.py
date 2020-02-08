@@ -55,7 +55,7 @@ def get_character_assignment(answers):
             points_id[a]['points_detective'] = points_id[a]['points_detective'] + 1
         if answer['answers'][4] == 'To experience other cultures':
             points_id[a]['points_wizard'] = points_id[a]['points_wizard'] + 1
-        elif answer['answers'][4] == "Because it's fun":
+        elif answer['answers'][4] == "Because it is fun":
             points_id[a]['points_adventurer'] = points_id[a]['points_adventurer'] + 1
         elif answer['answers'][4] == 'To get away from where I normally live':
             points_id[a]['points_detective'] = points_id[a]['points_detective'] + 1
@@ -65,17 +65,17 @@ def get_character_assignment(answers):
             points_id[a]['points_alien'] = points_id[a]['points_alien'] + 1
         elif answer['answers'][5] == 'Oktoberfest':
             points_id[a]['points_adventurer'] = points_id[a]['points_adventurer'] + 1
-        elif answer['answers'][5] == 'any restaurant with typical German cuisine':
+        elif answer['answers'][5] == 'Any restaurant with typical German cuisine':
             points_id[a]['points_wizard'] = points_id[a]['points_wizard'] + 1
-        elif answer['answers'][5] == 'none of the above':
+        elif answer['answers'][5] == 'None of the above':
             points_id[a]['points_detective'] = points_id[a]['points_detective'] + 1
-        if answer['answers'][6] == 'mostly friends from the university':
+        if answer['answers'][6] == 'Mostly friends from the university':
             points_id[a]['points_alien'] = points_id[a]['points_alien'] + 1
-        elif answer['answers'][6] == 'lots of people from Germany':
+        elif answer['answers'][6] == 'Lots of people from Germany':
             points_id[a]['points_detective'] = points_id[a]['points_detective'] + 1
-        elif answer['answers'][6] == 'friends who came here with me':
+        elif answer['answers'][6] == 'Friends who came here with me':
             points_id[a]['points_adventurer'] = points_id[a]['points_adventurer'] + 1
-        elif answer['answers'][6] == "no one in particular, people I've met here and there":
+        elif answer['answers'][6] == "No one in particular, people I have met here and there":
             points_id[a]['points_wizard'] = points_id[a]['points_wizard'] + 1
         a = a + 1
 
