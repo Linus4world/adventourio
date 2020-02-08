@@ -24,6 +24,21 @@ export class StoryPage {
     this.character = gameProvider.getCharacter();
   }
 
+  shorterStory(): string[] {
+    if (this.story === undefined) {
+      return undefined;
+    }
+    const shorterStory = [];
+    for (let i = 0; i < this.story.length; i++) {
+      if (i + 1 < this.story.length) {
+        shorterStory.push(this.story[i] + this.story[++i]);
+      } else {
+        shorterStory.push(this.story[i]);
+      }
+    }
+    return shorterStory;
+  }
+
   continue() {
     this.modalCtrl.dismiss();
   }
@@ -34,6 +49,6 @@ export class StoryPage {
 
   ionViewDidEnter() {
     this.showSlides = true;
-}
+  }
 
 }
