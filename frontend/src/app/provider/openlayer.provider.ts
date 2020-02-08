@@ -8,7 +8,7 @@ import XYZ from 'ol/source/XYZ';
 import { Feature } from 'ol';
 import Point from 'ol/geom/Point';
 import VectorSource from 'ol/source/Vector';
-import {Style, Fill, Stroke, Circle} from 'ol/style';
+import {Style, Fill, Stroke, Circle, Icon} from 'ol/style';
 import MultiPoint from 'ol/geom/MultiPoint';
 
 @Injectable()
@@ -44,10 +44,14 @@ export class OpenlayerProvider {
 
         this.marker.setStyle(
             new Style({
-                image: new Circle({
-                    fill: new Fill({ color: [255, 0, 0, 1] }),
-                    stroke: new Stroke({ color: [0, 0, 0, 1] }),
-                    radius: 5
+                // image: new Circle({
+                //     fill: new Fill({ color: [255, 0, 0, 1] }),
+                //     stroke: new Stroke({ color: [0, 0, 0, 1] }),
+                //     radius: 5
+                // })
+                image: new Icon({
+                    src: '../../assets/location.png',
+                    scale: 0.08
                 })
             })
         );
@@ -58,10 +62,14 @@ export class OpenlayerProvider {
 
         this.target.setStyle(
             new Style({
-                image: new Circle({
-                    fill: new Fill({ color: [0, 0, 255, 1] }),
-                    stroke: new Stroke({ color: [0, 0, 0, 1] }),
-                    radius: 5
+                // image: new Circle({
+                //     fill: new Fill({ color: [0, 0, 255, 1] }),
+                //     stroke: new Stroke({ color: [0, 0, 0, 1] }),
+                //     radius: 5
+                // })
+                image: new Icon({
+                    src: '../../assets/target.png',
+                    scale: 0.08
                 })
             })
         );
