@@ -12,6 +12,11 @@ cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 SUCCESS = json.dumps({'success': True}), 200, {'ContentType': 'application/json'}
 
+# ------------------  Set this according to your needs  ----------------
+NUMBER_OF_PLAYERS = 1
+NUMBER_OF_PAGES = 3*5
+NUMBER_OF_DUMMY_PLAYERS = 3
+
 game = None
 challenges = {}
 
@@ -84,9 +89,12 @@ def leave(player_id):
 def setup():
     global game
     global challenges
+    global NUMBER_OF_PLAYERS
+    global NUMBER_OF_PAGES
+    global NUMBER_OF_DUMMY_PLAYERS
 
     print('Setting up the server...')
-    game = Game(number_of_players=1, number_of_pages=3*5, number_of_dummy_players=3)
+    game = Game(number_of_players=NUMBER_OF_PLAYERS, number_of_pages=NUMBER_OF_PAGES, number_of_dummy_players=NUMBER_OF_DUMMY_PLAYERS)
     challenges = {}
     game.story.setup_story()
     print('Setup complete!')
