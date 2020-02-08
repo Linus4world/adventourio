@@ -12,21 +12,22 @@ The backend project is the server implentation of our application. It uses Flask
     python -V
     
     # check if pip is installed
-
     pip -V
     ```
 2. Dependencies
     First we have to install one dependency by hand:
     ```sh
+    # Navigate to the folder
     cd pycorpora-master
     python setup.py install
+
+    # Navigate back for next steps
     cd ..
     ```
     You can then install all other dependencies by running:
     ```sh
     pip install -r requirements.txt
     ```
-
     *If you add new dependencies in the future make sure to also add them to the requirements.txt file!*
 
 ##### Running the server
@@ -45,7 +46,7 @@ You can easily test the server API without using the frontend. For this we recom
 2. Select either GET or POST.
 3. For **server url** use `http://localhost:5000/` and append the endpoint you want to querry, e.g. `http://localhost:5000/join/12345`.
 4. You can also define a **body** for POST requests. Set the **content type** to `raw` and select `JSON`.
-5. After you click send the response of the request should be displayed below.
+5. After you click "Send" the response of the request should be displayed below.
 *NOTE: You can see possible server errors in the console where the server was started!*
 
 You can also send GET or POST request with the command line using `curl`. The equivalent of the example above would be:

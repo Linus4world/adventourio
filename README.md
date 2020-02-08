@@ -11,7 +11,20 @@ The project is devided into two subprojects:
 1. Click [here](https://gitlab.ldv.ei.tum.de/komcrea/g3-19/tree/master/frontend) to learn more about the **frontend** part.
 2. Click [here](https://gitlab.ldv.ei.tum.de/komcrea/g3-19/tree/master/backend) to learn more about the **backend** part.
 
-### Useful links:
+### Run <span>Adventour.io</span>
+To install the necessary dependencies please read the related install guides.
+1. Run the server:
+    ```sh
+    cd backend
+    python server.py
+    ```
+2. Run the client:
+    ```sh
+    cd frontend
+    ionic serve
+    ```
+*Note: Running the program like this is for development only! Do not use it in a production deployment!*
+### Useful links
 
 - Trello:
 https://trello.com/b/yoNO9tfS/app
