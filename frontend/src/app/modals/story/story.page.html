@@ -1,5 +1,8 @@
 <ion-content *ngIf="showSlides">
   <ion-slides pager="true" [options]="slideOpts" class="full-height" #mySlider>
+    <ion-slide>
+      <ion-button expand="block" (click)="continue()">Continue</ion-button>
+    </ion-slide>
     <ion-slide *ngFor="let part of story; let i = index">
       <h1 *ngIf="i==0">Story</h1><br>
       <p>

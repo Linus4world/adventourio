@@ -57,4 +57,8 @@ export class GameProvider {
     public getCharacter(): string {
         return this.character;
     }
+
+    public leaveGame() {
+        this.http.GET('leave/' + this.account.getID()).subscribe(response => console.warn('Left the game!'));
+    }
 }

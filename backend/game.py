@@ -6,7 +6,6 @@ from challenge_assignment import new_place
 from mocks_and_dummies import *
 from all_answers_fcn import *
 
-
 class PlayerError(Exception):
     pass
 
@@ -88,13 +87,7 @@ class Game:
         # ------------------ HANDLE MOCK PLAYERS: -------------------
         # Add Player
         for i in range(number_of_dummy_players):
-            # player_input = {
-            #     "name": 'Player'+str(i),
-            #     "answers": [
-            #         "Entertainment","yes","yes","Adventure/action","To experience other cultures","Deutsches Museum","mostly friends from the university"
-            #         ]
-            #     }
-            player_input = {"name":"Player","answers":["University","no","yes","Science-fiction","Because it’s fun","Oktoberfest","friends who came here with me"]}
+            player_input = {"name":"MockPlayer","answers":["University","no","yes","Science-fiction","Because it’s fun","Oktoberfest","friends who came here with me"]}
             self.add_player(str(i), player_input)
             player = self.get_player(str(i))
             player.challenge_outcomes.append(True)
@@ -143,6 +136,14 @@ class Game:
         new_player.player_id = player_id
         new_player.answers = player_input['answers']
         self.players[player_id] = new_player
+        print('Player', player_id, new_player.name, 'joined the game')
+
+    def leave_game(self, player_id):
+        if player_id not in self.players.keys():
+            return False
+        print('Player', self.players[player_id].name, 'leaves the game')
+        del self.players[player_id]
+        return len(self.players.keys()) <= self.number_of_dummy_players
 
     def get_player_id_with_character_name(self, character_name):
         for player_id in self.players.keys():
@@ -175,13 +176,13 @@ class Game:
         counter = 0
         while counter < self.MAX_WAIT:
             if self.ready_to_play:
-                self.leave_game()
+                self.leave_section()
                 return True
             time.sleep(2)
             counter += 1
         return False
 
-    def leave_game(self):
+    def leave_section(self):
         self.ready_queue -= 1
         if self.ready_queue <= 0:
             self.ready_to_play = False

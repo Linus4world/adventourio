@@ -141,4 +141,8 @@ export class GamePage implements AfterViewInit {
     this.stopTracking();
   }
 
+  ionViewDidLeave() {
+    this.gameProvider.leaveGame();
+  }
+
 }
