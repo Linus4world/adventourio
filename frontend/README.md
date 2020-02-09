@@ -98,14 +98,15 @@ You can the deploy the contents of the `www/` folder.
 ##### Android
 *NOTE: for this you need to have the Android SDK Manager installed!*
 
-If you just want to use install the app on your phone use the already build .apk file under `platform/android/build/outputs/apk/`. 
+If you just want to use install the app on your phone use the already build apk file, do the following: 
 You first have to activate USB debuggin on your device. You can find the option under development settings.
 Connect your phone with the machine and open a terminal. Run 
 ```sh
+# Make sure to have adb installed! Your device should then be listed
 adb devices
 ```
 to ensure your phone is recognized by the computer.
-Run
+To install the app, run:
 ```sh
 adb install -r PATH_TO_APK
 ```
